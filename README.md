@@ -82,6 +82,14 @@ senate_hearing_audio_capture/
 │   │   ├── performance_tracker.py # Performance analytics & monitoring
 │   │   ├── error_handler.py     # Enhanced error handling & circuit breakers
 │   │   └── performance_optimizer.py # Performance profiling & optimization
+│   ├── sync/                    # Automated data synchronization (Phase 7A)
+│   │   ├── __init__.py
+│   │   ├── database_schema.py   # Unified hearing database with multi-source tracking
+│   │   ├── congress_api_enhanced.py # Enhanced Congress.gov API client
+│   │   ├── committee_scraper.py # Committee website scraper for real-time updates
+│   │   ├── deduplication_engine.py # Intelligent duplicate detection and merging
+│   │   ├── sync_orchestrator.py # Main synchronization coordinator
+│   │   └── automated_scheduler.py # Automated scheduling and monitoring
 │   └── utils/                   # Utility functions
 │       ├── __init__.py
 │       └── page_inspector.py    # Web page analysis
@@ -114,8 +122,10 @@ senate_hearing_audio_capture/
 ├── test_phase6_integration.py   # Phase 6A+6B integration tests
 ├── test_phase6c_learning_system.py # Phase 6C learning system tests
 ├── test_phase6c_improvements.py # Phase 6C improvements verification
+├── test_phase7a_sync_system.py  # Phase 7A automated sync system tests
 ├── phase6b_voice_demo.py        # Phase 6B voice recognition demo
 ├── phase6c_learning_demo.py     # Phase 6C learning system demo
+├── demo_phase7a_sync_system.py  # Phase 7A automated sync demonstration
 ├── run_dashboard.py             # Dashboard server launcher
 ├── testing_summary.md           # Test results summary
 ├── AUTOMATED_SYNC_AND_UI_PLAN.md # Phase 7 research and planning
@@ -141,9 +151,9 @@ senate_hearing_audio_capture/
 ```
 
 ## Current Status
-- **Phase**: ✅ ADVANCED LEARNING & FEEDBACK INTEGRATION (Phase 6C) - OPERATIONAL
+- **Phase**: ✅ AUTOMATED DATA SYNCHRONIZATION (Phase 7A) - DEPLOYED
 - **Last Updated**: 2025-06-28  
-- **Pipeline**: Complete Audio → Transcription → Speaker ID → Congressional Enrichment → Learning & Optimization
+- **Pipeline**: Complete Audio → Transcription → Speaker ID → Congressional Enrichment → Learning & Optimization → Automated Sync
 - **Transcription**: OpenAI Whisper integration with congressional optimization
 - **Data Source**: Official Congress.gov API (Library of Congress)
 - **Committee Coverage**: 4/4 priority ISVP-compatible committees (100% success rate)
@@ -164,6 +174,10 @@ senate_hearing_audio_capture/
 - **Advanced Learning**: Pattern analysis, threshold optimization, and predictive identification
 - **Real-time Feedback**: Continuous learning from human corrections with automated optimization
 - **Performance Analytics**: Comprehensive monitoring with trend analysis and alerting
+- **Automated Synchronization**: Congress.gov API + committee website dual-source integration
+- **Intelligent Deduplication**: 90% auto-merge threshold with pattern-based duplicate detection
+- **Production Scheduling**: Automated daily sync with real-time committee website monitoring
+- **Enterprise Monitoring**: Circuit breakers, health checks, and automated recovery systems
 
 ## Dependencies
 - Python 3.11+
@@ -172,6 +186,36 @@ senate_hearing_audio_capture/
 - Requests/httpx for HTTP handling
 
 ## Usage
+
+### Phase 7A: Automated Data Synchronization (Current)
+```bash
+# Test complete sync system
+python test_phase7a_sync_system.py
+
+# Run comprehensive demo
+python demo_phase7a_sync_system.py
+
+# Start automated scheduler (production)
+python src/sync/automated_scheduler.py
+
+# Manual sync operation
+python src/sync/automated_scheduler.py --manual-sync --committees SCOM SSCI
+
+# Check sync status
+python -c "
+from src.sync.sync_orchestrator import SyncOrchestrator
+orchestrator = SyncOrchestrator()
+print(orchestrator.get_sync_status())
+orchestrator.close()
+"
+```
+
+**Automated Sync Features:**
+- **Dual Source Integration**: Congress.gov API + committee websites for comprehensive coverage
+- **Intelligent Scheduling**: Daily API sync + 3x website updates for real-time discovery
+- **Smart Deduplication**: 90% auto-merge threshold with manual review queue
+- **Circuit Breaker Protection**: Automatic failure recovery and source health monitoring
+- **Enterprise Monitoring**: Performance analytics, health checks, and automated alerting
 
 ### Phase 6C: Advanced Learning & Feedback Integration (Complete)
 ```bash
