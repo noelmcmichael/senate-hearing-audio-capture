@@ -56,18 +56,18 @@ def verify_audio_file(file_path: Path):
 def main():
     output_dir = Path('output')
     
-    # Find WAV files
-    wav_files = list(output_dir.glob('*.wav'))
+    # Find audio files
+    audio_files = list(output_dir.glob('*.wav')) + list(output_dir.glob('*.mp3'))
     
-    if not wav_files:
-        print("No WAV files found in output directory")
+    if not audio_files:
+        print("No audio files found in output directory")
         return
     
-    print(f"Found {len(wav_files)} audio file(s):")
+    print(f"Found {len(audio_files)} audio file(s):")
     
-    for wav_file in wav_files:
-        print(f"\n🎵 Verifying: {wav_file.name}")
-        verify_audio_file(wav_file)
+    for audio_file in sorted(audio_files):
+        print(f"\n🎵 Verifying: {audio_file.name}")
+        verify_audio_file(audio_file)
 
 if __name__ == "__main__":
     main()
