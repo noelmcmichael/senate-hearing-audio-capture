@@ -46,6 +46,42 @@ senate_hearing_audio_capture/
 │   ├── transcription/           # Whisper transcription modules (Phase 5)
 │   │   ├── __init__.py
 │   │   └── whisper_transcriber.py # OpenAI Whisper integration
+│   ├── review/                  # Human review system (Phase 6A)
+│   │   ├── __init__.py
+│   │   ├── correction_store.py  # SQLite-based correction storage
+│   │   ├── review_api.py        # FastAPI backend for corrections
+│   │   └── review_utils.py      # Review workflow utilities
+│   ├── voice/                   # Voice recognition enhancement (Phase 6B)
+│   │   ├── __init__.py
+│   │   ├── sample_collector.py  # Automated voice sample collection
+│   │   ├── voice_processor.py   # Voice feature extraction
+│   │   ├── speaker_models.py    # Speaker model management
+│   │   └── voice_matcher.py     # Enhanced voice+text matching
+│   ├── learning/                # Advanced learning & feedback (Phase 6C)
+│   │   ├── __init__.py
+│   │   ├── pattern_analyzer.py  # Correction pattern analysis
+│   │   ├── threshold_optimizer.py # Dynamic threshold optimization
+│   │   ├── predictive_identifier.py # Context-aware speaker prediction
+│   │   ├── feedback_integrator.py # Real-time learning integration
+│   │   └── performance_tracker.py # Performance analytics
+│   │   ├── review_api.py        # FastAPI backend for review operations
+│   │   ├── correction_store.py  # SQLite database for corrections
+│   │   └── review_utils.py      # Review utilities and transcript enhancement
+│   ├── voice/                   # Voice recognition enhancement (Phase 6B)
+│   │   ├── __init__.py
+│   │   ├── sample_collector.py  # Automated voice sample collection
+│   │   ├── voice_processor.py   # Voice feature extraction and fingerprinting
+│   │   ├── speaker_models.py    # Speaker model management and storage
+│   │   └── voice_matcher.py     # Voice-enhanced speaker identification
+│   ├── learning/                # Advanced learning & feedback (Phase 6C)
+│   │   ├── __init__.py
+│   │   ├── pattern_analyzer.py  # Correction pattern analysis and insights
+│   │   ├── threshold_optimizer.py # Dynamic threshold optimization + A/B testing
+│   │   ├── predictive_identifier.py # Context-aware speaker prediction
+│   │   ├── feedback_integrator.py # Real-time learning integration
+│   │   ├── performance_tracker.py # Performance analytics & monitoring
+│   │   ├── error_handler.py     # Enhanced error handling & circuit breakers
+│   │   └── performance_optimizer.py # Performance profiling & optimization
 │   └── utils/                   # Utility functions
 │       ├── __init__.py
 │       └── page_inspector.py    # Web page analysis
@@ -73,8 +109,24 @@ senate_hearing_audio_capture/
 ├── demo_transcript_enrichment.py # Phase 3 transcript enrichment demo
 ├── transcription_pipeline.py    # Phase 5 complete transcription pipeline
 ├── test_whisper_integration.py  # Phase 5 Whisper integration tests
+├── test_phase6a_review_system.py # Phase 6A human review system tests
+├── test_phase6b_voice_system.py # Phase 6B voice recognition tests
+├── test_phase6_integration.py   # Phase 6A+6B integration tests
+├── test_phase6c_learning_system.py # Phase 6C learning system tests
+├── test_phase6c_improvements.py # Phase 6C improvements verification
+├── phase6b_voice_demo.py        # Phase 6B voice recognition demo
+├── phase6c_learning_demo.py     # Phase 6C learning system demo
 ├── run_dashboard.py             # Dashboard server launcher
 ├── testing_summary.md           # Test results summary
+├── PHASE_1_SUMMARY.md           # Phase 1 implementation summary
+├── PHASE_2_SUMMARY.md           # Phase 2 implementation summary  
+├── PHASE_3_SUMMARY.md           # Phase 3 implementation summary
+├── PHASE_4_SUMMARY.md           # Phase 4 implementation summary
+├── PHASE_5_SUMMARY.md           # Phase 5 implementation summary
+├── PHASE_6A_SUMMARY.md          # Phase 6A implementation summary
+├── PHASE_6B_SUMMARY.md          # Phase 6B implementation summary
+├── PHASE_6C_SUMMARY.md          # Phase 6C implementation summary
+├── PHASE_6C_IMPLEMENTATION_PLAN.md # Phase 6C detailed implementation plan
 ├── dashboard/                   # React dashboard application
 │   ├── src/
 │   │   ├── App.js              # Main dashboard component
@@ -87,9 +139,9 @@ senate_hearing_audio_capture/
 ```
 
 ## Current Status
-- **Phase**: ✅ WHISPER INTEGRATION & COMPLETE TRANSCRIPTION PIPELINE - OPERATIONAL
-- **Last Updated**: 2025-06-27  
-- **Pipeline**: Complete Audio → Transcription → Speaker ID → Congressional Enrichment
+- **Phase**: ✅ ADVANCED LEARNING & FEEDBACK INTEGRATION (Phase 6C) - OPERATIONAL
+- **Last Updated**: 2025-06-28  
+- **Pipeline**: Complete Audio → Transcription → Speaker ID → Congressional Enrichment → Learning & Optimization
 - **Transcription**: OpenAI Whisper integration with congressional optimization
 - **Data Source**: Official Congress.gov API (Library of Congress)
 - **Committee Coverage**: 4/4 priority ISVP-compatible committees (100% success rate)
@@ -103,6 +155,13 @@ senate_hearing_audio_capture/
 - **Speaker Identification**: 100% accuracy across expanded committee coverage
 - **Real Audio Processing**: Demonstrated success on captured Senate hearing content
 - **Dashboard**: React-based monitoring system with real-time metrics
+- **Human Review**: Web-based transcript review with speaker correction interface
+- **Review API**: FastAPI backend with SQLite correction storage and audit trail
+- **Voice Recognition**: Automated voice sample collection and speaker model creation
+- **Enhanced Identification**: Voice + text fusion for 70%+ speaker identification accuracy
+- **Advanced Learning**: Pattern analysis, threshold optimization, and predictive identification
+- **Real-time Feedback**: Continuous learning from human corrections with automated optimization
+- **Performance Analytics**: Comprehensive monitoring with trend analysis and alerting
 
 ## Dependencies
 - Python 3.11+
@@ -112,7 +171,57 @@ senate_hearing_audio_capture/
 
 ## Usage
 
-### Phase 5: Complete Transcription Pipeline (Latest)
+### Phase 6C: Advanced Learning & Feedback Integration (Latest)
+```bash
+# Test complete learning system
+python test_phase6c_learning_system.py
+
+# Test improvements and fixes
+python test_phase6c_improvements.py
+
+# Run comprehensive demo
+python phase6c_learning_demo.py
+
+# Previous phases
+# Test voice recognition system
+python test_phase6b_voice_system.py
+
+# Run voice recognition demonstration
+python phase6b_voice_demo.py
+
+# Begin automated voice sample collection
+python -c "
+import asyncio
+from src.voice.sample_collector import VoiceSampleCollector
+collector = VoiceSampleCollector()
+asyncio.run(collector.collect_all_samples())
+"
+```
+
+**Voice Recognition Features:**
+- **Multi-Source Collection**: C-SPAN, YouTube, Senate.gov, committee sites
+- **Advanced Processing**: MFCC, spectral, prosodic, and temporal feature extraction
+- **Speaker Modeling**: Gaussian Mixture Models with 77 priority senators
+- **Enhanced Identification**: Voice + text fusion with confidence thresholding
+
+### Phase 6A: Human Review System
+```bash
+# Start review API server
+uvicorn src.review.review_api:create_app --factory --host 0.0.0.0 --port 8001 --reload
+
+# Start React dashboard with review interface
+cd dashboard && npm start
+
+# Test review system components
+python test_phase6a_review_system.py
+```
+
+**Access URLs:**
+- **Dashboard**: http://localhost:3000 - Main dashboard with transcript list
+- **Review Interface**: Click "Review" on any transcript in dashboard
+- **API Documentation**: http://localhost:8001/docs - FastAPI auto-generated docs
+
+### Phase 5: Complete Transcription Pipeline
 ```bash
 # Complete pipeline: Audio → Whisper → Speaker ID → Enrichment
 python transcription_pipeline.py --audio "hearing.wav" --hearing-id "SCOM-2025-06-27"
@@ -367,6 +476,56 @@ python test_congress_api.py
 - **Committee Loading**: Senate and House committees operational
 - **Integration Ready**: Capture workflow enhanced
 
+## Phase Development Summary
+
+### ✅ Phase 1: Core ISVP Extraction (Complete)
+**Objective**: Extract audio from Senate ISVP players
+- **Achieved**: Single-page ISVP stream detection and audio capture
+- **Output**: High-quality audio files from Senate committee hearings
+- **Status**: Operational for individual hearings
+
+### ✅ Phase 2: Hybrid Platform Support (Complete) 
+**Objective**: Support both ISVP and YouTube sources
+- **Achieved**: Intelligent platform detection and unified extraction interface
+- **Output**: Multi-platform audio capture with automatic fallback
+- **Status**: Production-ready for diverse hearing sources
+
+### ✅ Phase 3: Congressional Metadata System (Complete)
+**Objective**: Add structured congressional context to hearings
+- **Achieved**: Committee member databases, speaker identification, transcript enrichment
+- **Output**: Context-aware hearing records with speaker annotation
+- **Status**: Government-grade metadata accuracy across 4 committees
+
+### ✅ Phase 4: Congress.gov API Integration (Complete)
+**Objective**: Official government data source for congressional metadata
+- **Achieved**: Secure API integration with automatic member synchronization
+- **Output**: Real-time accurate committee rosters from Library of Congress
+- **Status**: 95+ senators with verified government data
+
+### ✅ Phase 5: Whisper Transcription Pipeline (Complete)
+**Objective**: Complete audio-to-enriched-transcript workflow
+- **Achieved**: OpenAI Whisper integration with congressional optimization
+- **Output**: Full transcription pipeline with speaker identification and enrichment
+- **Status**: Operational end-to-end processing from audio to structured transcript
+
+### ✅ Phase 6A: Human Review System (Complete)
+**Objective**: Web-based interface for human speaker correction and quality assurance
+- **Achieved**: React frontend + FastAPI backend for transcript review and correction
+- **Output**: Production-ready system for human-in-the-loop speaker verification
+- **Status**: Live system with audio-synchronized review interface and correction database
+
+### ✅ Phase 6B: Voice Recognition Enhancement (Complete)
+**Objective**: Automated voice pattern recognition to improve speaker identification
+- **Achieved**: Multi-source voice collection system with 77 priority senators
+- **Output**: Voice feature extraction, speaker modeling, and enhanced identification
+- **Status**: 70%+ baseline accuracy capability with continuous learning from Phase 6A
+
+### 📋 Phase 6C: Learning & Feedback Integration (Planned)
+**Objective**: Machine learning from human corrections for continuous improvement
+- **Target**: Pattern analysis and automated accuracy enhancement
+- **Goal**: 15-25% improvement in speaker identification over time
+- **Dependencies**: Phase 6A correction data and Phase 6B voice profiles
+
 ## Next Steps
 1. ✅ Set up project structure and documentation
 2. ✅ Analyze target page ISVP implementation
@@ -379,10 +538,13 @@ python test_congress_api.py
 9. ✅ Congress.gov API integration with official metadata
 10. ✅ Priority committee expansion (4 ISVP-compatible committees)
 11. ✅ Complete transcription pipeline (Whisper integration with congressional enrichment)
-12. ⏳ Real-time live hearing processing and monitoring
-13. ⏳ Additional committee expansion (Finance, Armed Services, etc.)
-14. ⏳ Advanced speaker diarization and content analysis
-15. ⏳ Service deployment and scaling
+12. ✅ Human review system (Phase 6A - Web-based speaker correction interface)
+13. ✅ Voice recognition enhancement (Phase 6B - Automated voice pattern recognition)
+14. 🔄 Learning and feedback integration (Phase 6C - ML from human corrections)
+15. ⏳ Real-time live hearing processing and monitoring
+16. ⏳ Additional committee expansion (Finance, Armed Services, etc.)
+17. ⏳ Advanced speaker diarization and content analysis
+18. ⏳ Service deployment and scaling
 
 ## Notes
 - This tool is intended for civic engagement and policy analysis

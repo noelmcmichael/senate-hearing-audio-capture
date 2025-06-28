@@ -1,0 +1,40 @@
+{
+  "real_time_learning": {
+    "enabled": true,
+    "batch_size": 10,
+    "update_interval_minutes": 30,
+    "min_corrections_for_update": 5
+  },
+  "model_retraining": {
+    "auto_retrain_enabled": true,
+    "performance_threshold": 0.05,
+    "min_data_for_retrain": 50,
+    "retrain_interval_hours": 24
+  },
+  "threshold_optimization": {
+    "auto_optimize_enabled": true,
+    "optimization_interval_hours": 6,
+    "min_samples_for_optimization": 20,
+    "performance_improvement_threshold": 0.02
+  },
+  "pattern_analysis": {
+    "analysis_interval_hours": 12,
+    "cache_refresh_hours": 4,
+    "min_corrections_for_patterns": 10
+  },
+  "alerts": {
+    "performance_degradation_threshold": 0.1,
+    "correction_burst_threshold": 20,
+    "model_accuracy_threshold": 0.7,
+    "notification_channels": [
+      "log",
+      "email"
+    ]
+  },
+  "integration_weights": {
+    "voice_recognition_weight": 0.4,
+    "pattern_analysis_weight": 0.3,
+    "predictive_modeling_weight": 0.3
+  },
+  "last_updated": "2025-06-28T06:45:22.045654"
+}

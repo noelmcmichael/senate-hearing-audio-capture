@@ -1,0 +1,72 @@
+{
+  "test_id": "ab_test_20250628_064732",
+  "test_name": "Demo A/B Test",
+  "start_time": "2025-06-28T06:47:32.762530",
+  "end_time": "2025-06-29T06:47:32.762531",
+  "control_thresholds": {
+    "voice_thresholds": {
+      "high_confidence": 0.9,
+      "medium_confidence": 0.65,
+      "low_confidence": 0.45,
+      "minimum_confidence": 0.25
+    },
+    "text_thresholds": {
+      "high_confidence": 0.9,
+      "medium_confidence": 0.7,
+      "low_confidence": 0.5
+    },
+    "combined_thresholds": {
+      "voice_override": 0.85,
+      "voice_boost": 0.65,
+      "voice_suggest": 0.45,
+      "voice_ignore": 0.25
+    },
+    "decision_rules": {
+      "voice_weight": 0.6,
+      "text_weight": 0.4,
+      "uncertainty_threshold": 0.3
+    },
+    "last_updated": "2025-06-28T06:45:22.030802",
+    "optimization_history": []
+  },
+  "treatment_thresholds": {
+    "voice_thresholds": {
+      "high_confidence": 0.9,
+      "medium_confidence": 0.65,
+      "low_confidence": 0.45,
+      "minimum_confidence": 0.25
+    },
+    "text_thresholds": {
+      "high_confidence": 0.9,
+      "medium_confidence": 0.7,
+      "low_confidence": 0.5
+    },
+    "combined_thresholds": {
+      "voice_override": 0.85,
+      "voice_boost": 0.65,
+      "voice_suggest": 0.45,
+      "voice_ignore": 0.25
+    },
+    "decision_rules": {
+      "voice_weight": 0.6,
+      "text_weight": 0.4,
+      "uncertainty_threshold": 0.3
+    },
+    "last_updated": "2025-06-28T06:45:22.030802",
+    "optimization_history": []
+  },
+  "status": "active",
+  "traffic_split": 0.5,
+  "performance_metrics": {
+    "control": {
+      "samples": 0,
+      "accuracy": 0,
+      "coverage": 0
+    },
+    "treatment": {
+      "samples": 0,
+      "accuracy": 0,
+      "coverage": 0
+    }
+  }
+}

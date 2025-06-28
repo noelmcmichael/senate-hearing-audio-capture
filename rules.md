@@ -86,6 +86,10 @@
 - **2025-06-27**: Phase 3 - Added congressional metadata system (data/, models/, enrichment/)
 - **2025-06-27**: Phase 4 - Congress.gov API integration with priority committee expansion
 - **2025-06-27**: Phase 5 - Whisper integration and complete transcription pipeline (transcription/)
+- **2025-06-27**: Phase 6A - Human review system with React frontend and FastAPI backend (review/)
+- **2025-06-28**: Phase 6B - Voice recognition enhancement with automated sample collection and speaker modeling (voice/)
+- **2025-06-28**: Phase 6C - Advanced learning & feedback integration with pattern analysis, threshold optimization, and predictive identification (learning/)
+- **2025-06-28**: Phase 6C Improvements - Enhanced error handling, performance optimization, SQLite fixes, and production readiness (error_handler.py, performance_optimizer.py)
 
 ---
 

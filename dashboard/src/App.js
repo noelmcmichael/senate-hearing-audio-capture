@@ -1,8 +1,198 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp } from 'lucide-react';
+import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp, FileText, MessageSquare } from 'lucide-react';
+import TranscriptViewer from './components/TranscriptViewer/TranscriptViewer';
 
-const Dashboard = () => {
+const TranscriptList = ({ onViewTranscript }) => {
+  const [transcripts, setTranscripts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTranscripts();
+  }, []);
+
+  const fetchTranscripts = async () => {
+    try {
+      const response = await fetch('http://localhost:8001/transcripts');
+      if (response.ok) {
+        const data = await response.json();
+        setTranscripts(data.transcripts || []);
+      } else {
+        // Mock data for development
+        setTranscripts([
+          {
+            file_path: "output/demo_transcription/senate_hearing_20250627_123720_stream1_complete_transcript.json",
+            filename: "senate_hearing_20250627_123720_stream1_complete_transcript.json",
+            hearing_id: "DEMO-HEARING",
+            segments_count: 150,
+            has_corrections: false,
+            created: Date.now() / 1000
+          }
+        ]);
+      }
+    } catch (error) {
+      console.error('Error fetching transcripts:', error);
+      // Mock data fallback
+      setTranscripts([
+        {
+          file_path: "output/demo_transcription/senate_hearing_20250627_123720_stream1_complete_transcript.json",
+          filename: "senate_hearing_20250627_123720_stream1_complete_transcript.json",
+          hearing_id: "DEMO-HEARING",
+          segments_count: 150,
+          has_corrections: false,
+          created: Date.now() / 1000
+        }
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div style={{ color: '#888', padding: '20px' }}>Loading transcripts...</div>;
+  }
+
+  if (transcripts.length === 0) {
+    return (
+      <div style={{ 
+        textAlign: 'center', 
+        padding: '40px', 
+        color: '#888',
+        border: '2px dashed #444',
+        borderRadius: '8px'
+      }}>
+        No transcripts available for review yet.
+        <br />
+        <small>Run the transcription pipeline to generate transcripts.</small>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: 'grid', gap: '12px' }}>
+      {transcripts.map((transcript, index) => (
+        <div
+          key={index}
+          style={{
+            background: '#2A2B2F',
+            border: '1px solid #444',
+            borderRadius: '8px',
+            padding: '16px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}
+        >
+          <div>
+            <div style={{ 
+              fontWeight: '500', 
+              color: '#FFFFFF', 
+              marginBottom: '4px' 
+            }}>
+              {transcript.hearing_id}
+            </div>
+            <div style={{ 
+              fontSize: '14px', 
+              color: '#888',
+              marginBottom: '4px'
+            }}>
+              {transcript.segments_count} segments
+              {transcript.has_corrections && (
+                <span style={{ 
+                  marginLeft: '8px',
+                  background: '#27ae60',
+                  color: '#FFFFFF',
+                  padding: '2px 6px',
+                  borderRadius: '3px',
+                  fontSize: '12px'
+                }}>
+                  Has corrections
+                </span>
+              )}
+            </div>
+            <div style={{ fontSize: '12px', color: '#666' }}>
+              {new Date(transcript.created * 1000).toLocaleString()}
+            </div>
+          </div>
+          
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button
+              onClick={() => onViewTranscript(transcript.filename)}
+              style={{
+                background: '#4ECDC4',
+                color: '#1B1C20',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <MessageSquare size={16} />
+              Review
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const App = () => {
+  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'review'
+  const [selectedTranscript, setSelectedTranscript] = useState(null);
+
+  const handleViewTranscript = (transcriptId) => {
+    setSelectedTranscript(transcriptId);
+    setCurrentView('review');
+  };
+
+  const handleBackToDashboard = () => {
+    setCurrentView('dashboard');
+    setSelectedTranscript(null);
+  };
+
+  if (currentView === 'review' && selectedTranscript) {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
+        <div style={{ 
+          padding: '20px',
+          borderBottom: '1px solid #333',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px'
+        }}>
+          <button
+            onClick={handleBackToDashboard}
+            style={{
+              background: '#4ECDC4',
+              color: '#1B1C20',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: '500'
+            }}
+          >
+            ← Back to Dashboard
+          </button>
+          <h1 style={{ color: '#FFFFFF', margin: 0 }}>
+            <MessageSquare size={24} style={{ display: 'inline', marginRight: '8px' }} />
+            Transcript Review
+          </h1>
+        </div>
+        <TranscriptViewer transcriptId={selectedTranscript} />
+      </div>
+    );
+  }
+
+  return <Dashboard onViewTranscript={handleViewTranscript} />;
+};
+
+const Dashboard = ({ onViewTranscript }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -306,6 +496,15 @@ const Dashboard = () => {
         </div>
       </div>
 
+      {/* Transcripts Section */}
+      <div className="card" style={{ marginBottom: '2rem' }}>
+        <h3 style={{ margin: '0 0 1rem 0', color: '#f1f5f9' }}>
+          <FileText size={20} style={{ display: 'inline', marginRight: '0.5rem' }} />
+          Available Transcripts for Review
+        </h3>
+        <TranscriptList onViewTranscript={onViewTranscript} />
+      </div>
+
       {/* Recent Extractions Table */}
       <div className="card">
         <h3 style={{ margin: '0 0 1rem 0', color: '#f1f5f9' }}>Recent Extractions</h3>
@@ -346,4 +545,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default App;
