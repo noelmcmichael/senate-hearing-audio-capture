@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp, FileText, MessageSquare } from 'lucide-react';
+import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp, FileText, MessageSquare, Calendar, Shield, AlertTriangle } from 'lucide-react';
 import TranscriptViewer from './components/TranscriptViewer/TranscriptViewer';
+import HearingQueue from './components/hearings/HearingQueue';
+import SystemHealth from './components/monitoring/SystemHealth';
 
 const TranscriptList = ({ onViewTranscript }) => {
   const [transcripts, setTranscripts] = useState([]);
@@ -142,7 +144,7 @@ const TranscriptList = ({ onViewTranscript }) => {
 };
 
 const App = () => {
-  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'review'
+  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard', 'review', 'hearings', 'health'
   const [selectedTranscript, setSelectedTranscript] = useState(null);
 
   const handleViewTranscript = (transcriptId) => {
@@ -155,44 +157,114 @@ const App = () => {
     setSelectedTranscript(null);
   };
 
+  const handleNavigateToHearings = () => {
+    setCurrentView('hearings');
+  };
+
+  const handleNavigateToHealth = () => {
+    setCurrentView('health');
+  };
+
+  const handleViewHearingDetails = (hearingId) => {
+    console.log('View hearing details:', hearingId);
+    // TODO: Implement hearing details view
+  };
+
+  const handleTriggerCapture = (hearingId) => {
+    console.log('Trigger capture for hearing:', hearingId);
+    // TODO: Implement capture trigger
+  };
+
+  const handleResolveAlert = (alertId) => {
+    console.log('Resolve alert:', alertId);
+    // TODO: Implement alert resolution
+  };
+
+  // Navigation Header Component
+  const NavigationHeader = ({ title, icon, onBack }) => (
+    <div style={{ 
+      padding: '20px',
+      borderBottom: '1px solid #333',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '16px',
+      backgroundColor: '#2A2B2F'
+    }}>
+      <button
+        onClick={onBack}
+        style={{
+          background: '#4ECDC4',
+          color: '#1B1C20',
+          border: 'none',
+          padding: '8px 16px',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          fontWeight: '500'
+        }}
+      >
+        ← Back to Dashboard
+      </button>
+      <h1 style={{ color: '#FFFFFF', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+        {icon}
+        {title}
+      </h1>
+    </div>
+  );
+
+  // Route to different views
   if (currentView === 'review' && selectedTranscript) {
     return (
       <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
-        <div style={{ 
-          padding: '20px',
-          borderBottom: '1px solid #333',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '16px'
-        }}>
-          <button
-            onClick={handleBackToDashboard}
-            style={{
-              background: '#4ECDC4',
-              color: '#1B1C20',
-              border: 'none',
-              padding: '8px 16px',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontWeight: '500'
-            }}
-          >
-            ← Back to Dashboard
-          </button>
-          <h1 style={{ color: '#FFFFFF', margin: 0 }}>
-            <MessageSquare size={24} style={{ display: 'inline', marginRight: '8px' }} />
-            Transcript Review
-          </h1>
-        </div>
+        <NavigationHeader 
+          title="Transcript Review" 
+          icon={<MessageSquare size={24} />}
+          onBack={handleBackToDashboard}
+        />
         <TranscriptViewer transcriptId={selectedTranscript} />
       </div>
     );
   }
 
-  return <Dashboard onViewTranscript={handleViewTranscript} />;
+  if (currentView === 'hearings') {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
+        <NavigationHeader 
+          title="Hearing Queue Management" 
+          icon={<Calendar size={24} />}
+          onBack={handleBackToDashboard}
+        />
+        <HearingQueue 
+          onViewDetails={handleViewHearingDetails}
+          onTriggerCapture={handleTriggerCapture}
+        />
+      </div>
+    );
+  }
+
+  if (currentView === 'health') {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
+        <NavigationHeader 
+          title="System Health Monitor" 
+          icon={<Shield size={24} />}
+          onBack={handleBackToDashboard}
+        />
+        <SystemHealth 
+          onResolveAlert={handleResolveAlert}
+          onViewDetails={handleViewHearingDetails}
+        />
+      </div>
+    );
+  }
+
+  return <Dashboard 
+    onViewTranscript={handleViewTranscript} 
+    onNavigateToHearings={handleNavigateToHearings}
+    onNavigateToHealth={handleNavigateToHealth}
+  />;
 };
 
-const Dashboard = ({ onViewTranscript }) => {
+const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -348,9 +420,51 @@ const Dashboard = ({ onViewTranscript }) => {
   return (
     <div className="container">
       <div className="header">
-        <h1>🏛️ Senate Hearing Audio Capture</h1>
-        <p>Real-time monitoring of ISVP stream extractions</p>
-        <p style={{ fontSize: '0.9rem', color: '#64748b' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <div>
+            <h1>🏛️ Senate Hearing Audio Capture</h1>
+            <p>Phase 7B Enhanced UI with automated hearing discovery and management</p>
+          </div>
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <button
+              onClick={onNavigateToHearings}
+              style={{
+                background: '#4ECDC4',
+                color: '#1B1C20',
+                border: 'none',
+                padding: '12px 16px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <Calendar size={18} />
+              Hearing Queue
+            </button>
+            <button
+              onClick={onNavigateToHealth}
+              style={{
+                background: '#3b82f6',
+                color: '#FFFFFF',
+                border: 'none',
+                padding: '12px 16px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <Shield size={18} />
+              System Health
+            </button>
+          </div>
+        </div>
+        <p style={{ fontSize: '0.9rem', color: '#64748b', margin: 0 }}>
           Last updated: {new Date(data.last_updated).toLocaleString()}
         </p>
       </div>
