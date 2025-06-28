@@ -43,6 +43,9 @@ senate_hearing_audio_capture/
 │   ├── api/                     # Dashboard data services
 │   │   ├── __init__.py
 │   │   └── dashboard_data.py    # Dashboard API endpoints
+│   ├── transcription/           # Whisper transcription modules (Phase 5)
+│   │   ├── __init__.py
+│   │   └── whisper_transcriber.py # OpenAI Whisper integration
 │   └── utils/                   # Utility functions
 │       ├── __init__.py
 │       └── page_inspector.py    # Web page analysis
@@ -68,6 +71,8 @@ senate_hearing_audio_capture/
 ├── comprehensive_test_suite.py  # Complete system test suite
 ├── test_metadata_system.py      # Phase 3 metadata system tests
 ├── demo_transcript_enrichment.py # Phase 3 transcript enrichment demo
+├── transcription_pipeline.py    # Phase 5 complete transcription pipeline
+├── test_whisper_integration.py  # Phase 5 Whisper integration tests
 ├── run_dashboard.py             # Dashboard server launcher
 ├── testing_summary.md           # Test results summary
 ├── dashboard/                   # React dashboard application
@@ -82,18 +87,21 @@ senate_hearing_audio_capture/
 ```
 
 ## Current Status
-- **Phase**: ✅ PRIORITY COMMITTEE EXPANSION - COMPREHENSIVE API COVERAGE COMPLETE
+- **Phase**: ✅ WHISPER INTEGRATION & COMPLETE TRANSCRIPTION PIPELINE - OPERATIONAL
 - **Last Updated**: 2025-06-27  
+- **Pipeline**: Complete Audio → Transcription → Speaker ID → Congressional Enrichment
+- **Transcription**: OpenAI Whisper integration with congressional optimization
 - **Data Source**: Official Congress.gov API (Library of Congress)
 - **Committee Coverage**: 4/4 priority ISVP-compatible committees (100% success rate)
-  - ✅ Commerce, Science, and Transportation
-  - ✅ Intelligence  
-  - ✅ Banking, Housing, and Urban Affairs
-  - ✅ Judiciary
-- **Member Database**: 100 Senate members with official government metadata
+  - ✅ Commerce, Science, and Transportation (28 members)
+  - ✅ Intelligence (21 members)
+  - ✅ Banking, Housing, and Urban Affairs (24 members)
+  - ✅ Judiciary (22 members)
+- **Member Database**: 95 Senate members with official government metadata
 - **Platform Support**: Hybrid orchestrator with intelligent detection  
 - **Metadata System**: Government-verified congressional data with secure API integration
 - **Speaker Identification**: 100% accuracy across expanded committee coverage
+- **Real Audio Processing**: Demonstrated success on captured Senate hearing content
 - **Dashboard**: React-based monitoring system with real-time metrics
 
 ## Dependencies
@@ -104,7 +112,26 @@ senate_hearing_audio_capture/
 
 ## Usage
 
-### Congress API Integration (Latest)
+### Phase 5: Complete Transcription Pipeline (Latest)
+```bash
+# Complete pipeline: Audio → Whisper → Speaker ID → Enrichment
+python transcription_pipeline.py --audio "hearing.wav" --hearing-id "SCOM-2025-06-27"
+
+# Batch processing of multiple hearings
+python transcription_pipeline.py --audio "./hearings/" --batch --output "./transcriptions/"
+
+# Demo with captured audio
+python transcription_pipeline.py --demo
+
+# Test system components
+python transcription_pipeline.py --test-system
+
+# Different Whisper models for speed/accuracy tradeoff
+python transcription_pipeline.py --audio "hearing.wav" --model base  # Recommended
+python transcription_pipeline.py --audio "hearing.wav" --model large # Highest accuracy
+```
+
+### Congress API Integration
 ```bash
 # Sync with official Congress.gov API
 python sync_congress_data.py
@@ -113,7 +140,7 @@ python sync_congress_data.py
 python test_congress_api.py
 ```
 
-### Phase 3: Enhanced Capture with Official Metadata (Recommended)
+### Phase 3: Enhanced Capture with Official Metadata
 ```bash
 # Hybrid capture with official API-synced metadata
 python capture_hybrid.py --url "https://judiciary.house.gov/hearing" --format mp3 --enrich-metadata
@@ -160,6 +187,9 @@ python test_congress_api.py
 
 ### Testing & Verification
 ```bash
+# Test complete Whisper integration pipeline
+python test_whisper_integration.py
+
 # Verify extracted audio
 python verify_audio.py
 
@@ -177,6 +207,18 @@ python run_dashboard.py
 ```
 
 ### Options
+
+#### Transcription Pipeline Options
+- `--audio`: Path to audio file or directory (required)
+- `--hearing-id`: Hearing ID for congressional metadata context
+- `--output`: Output directory for transcription results (default: ./output/transcriptions)
+- `--model`: Whisper model size - tiny, base, small, medium, large (default: base)
+- `--batch`: Process all audio files in directory
+- `--demo`: Run demonstration with existing audio
+- `--test-system`: Test system components without processing audio
+- `--verbose`: Enable verbose logging
+
+#### Audio Capture Options  
 - `--url`: Congressional hearing page URL (required)
 - `--output`: Output directory (default: ./output)
 - `--format`: Audio format - wav, mp3, flac (default: wav)
@@ -336,9 +378,11 @@ python test_congress_api.py
 8. ✅ Dashboard and monitoring system
 9. ✅ Congress.gov API integration with official metadata
 10. ✅ Priority committee expansion (4 ISVP-compatible committees)
-11. ⏳ Automated transcription pipeline (Whisper integration)
-12. ⏳ Additional committee expansion (Finance, Armed Services, etc.)
-13. ⏳ Service deployment and scaling
+11. ✅ Complete transcription pipeline (Whisper integration with congressional enrichment)
+12. ⏳ Real-time live hearing processing and monitoring
+13. ⏳ Additional committee expansion (Finance, Armed Services, etc.)
+14. ⏳ Advanced speaker diarization and content analysis
+15. ⏳ Service deployment and scaling
 
 ## Notes
 - This tool is intended for civic engagement and policy analysis
