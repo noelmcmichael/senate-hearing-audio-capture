@@ -4,284 +4,141 @@
     "full_name": "Select Committee on Intelligence",
     "chamber": "Senate",
     "system_code": "slin00",
-    "api_sync_date": "2025-06-27T22:21:24.230469",
-    "api_source": "Congress.gov API v3",
+    "api_sync_date": "2025-06-27T22:32:44.962873",
+    "api_source": "Official Senate.gov committee rosters + Congress.gov API v3",
     "congress": 119,
     "priority": 2,
     "isvp_compatible": true,
-    "sync_note": "Representative sample of 25 senate members for transcript enrichment"
+    "sync_note": "Accurate committee roster with 21 actual members"
   },
   "members": [
     {
-      "member_id": "SEN_SHEEHY_T",
-      "full_name": "Tim Sheehy",
+      "member_id": "SEN_COTTON_T",
+      "full_name": "Tom Cotton",
       "title": "Senator",
       "party": "Republican",
-      "state": "Montana",
+      "state": "Arkansas",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
-      "role": null,
+      "role": "Chairman",
       "aliases": [
-        "Sheehy, Tim",
-        "Tim Sheehy",
-        "Sen. Sheehy",
-        "Senator Sheehy"
+        "Chairman Tom Cotton",
+        "Senator Tom Cotton",
+        "Senator Cotton",
+        "Chairman",
+        "Tom Cotton",
+        "Sen. Cotton",
+        "Chairman Cotton",
+        "Sen. Tom Cotton"
       ]
     },
     {
-      "member_id": "SEN_LUJ\u00c1N_B",
-      "full_name": "Ben Ray Luj\u00e1n",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "New Mexico",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Luj\u00e1n",
-        "Luj\u00e1n, Ben Ray",
-        "Ben Ray Luj\u00e1n",
-        "Sen. Luj\u00e1n"
-      ]
-    },
-    {
-      "member_id": "SEN_HAWLEY_J",
-      "full_name": "Josh Hawley",
+      "member_id": "SEN_RISCH_J",
+      "full_name": "James E. Risch",
       "title": "Senator",
       "party": "Republican",
-      "state": "Missouri",
+      "state": "Idaho",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Josh Hawley",
-        "Sen. Hawley",
-        "Hawley, Josh",
-        "Senator Hawley"
+        "Senator James E. Risch",
+        "James E. Risch",
+        "Senator Risch",
+        "Sen. Risch",
+        "Sen. James E. Risch"
       ]
     },
     {
-      "member_id": "SEN_WELCH_P",
-      "full_name": "Peter Welch",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Vermont",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Welch",
-        "Peter Welch",
-        "Senator Welch",
-        "Welch, Peter"
-      ]
-    },
-    {
-      "member_id": "SEN_MORENO_B",
-      "full_name": "Bernie Moreno",
+      "member_id": "SEN_COLLINS_S",
+      "full_name": "Susan M. Collins",
       "title": "Senator",
       "party": "Republican",
-      "state": "Ohio",
+      "state": "Maine",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Moreno, Bernie",
-        "Sen. Moreno",
-        "Bernie Moreno",
-        "Senator Moreno"
+        "Sen. Collins",
+        "Senator Susan M. Collins",
+        "Senator Collins",
+        "Sen. Susan M. Collins",
+        "Susan M. Collins"
       ]
     },
     {
-      "member_id": "SEN_MOODY_A",
-      "full_name": "Ashley Moody",
+      "member_id": "SEN_CORNYN_J",
+      "full_name": "John Cornyn",
       "title": "Senator",
       "party": "Republican",
-      "state": "Florida",
+      "state": "Texas",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Moody, Ashley",
-        "Sen. Moody",
-        "Ashley Moody",
-        "Senator Moody"
+        "Senator John Cornyn",
+        "John Cornyn",
+        "Sen. John Cornyn",
+        "Senator Cornyn",
+        "Sen. Cornyn"
       ]
     },
     {
-      "member_id": "SEN_CURTIS_J",
-      "full_name": "John R. Curtis",
+      "member_id": "SEN_MORAN_J",
+      "full_name": "Jerry Moran",
       "title": "Senator",
       "party": "Republican",
-      "state": "Utah",
+      "state": "Kansas",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Curtis, John R.",
-        "Sen. Curtis",
-        "Senator Curtis",
-        "John R. Curtis"
+        "Jerry Moran",
+        "Senator Moran",
+        "Sen. Moran",
+        "Sen. Jerry Moran",
+        "Senator Jerry Moran"
       ]
     },
     {
-      "member_id": "SEN_HUSTED_J",
-      "full_name": "Jon Husted",
+      "member_id": "SEN_LANKFORD_J",
+      "full_name": "James Lankford",
       "title": "Senator",
       "party": "Republican",
-      "state": "Ohio",
+      "state": "Oklahoma",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Sen. Husted",
-        "Senator Husted",
-        "Jon Husted",
-        "Husted, Jon"
+        "Senator James Lankford",
+        "Sen. James Lankford",
+        "Sen. Lankford",
+        "James Lankford",
+        "Senator Lankford"
       ]
     },
     {
-      "member_id": "SEN_SCHMITT_E",
-      "full_name": "Eric Schmitt",
+      "member_id": "SEN_ROUNDS_M",
+      "full_name": "Mike Rounds",
       "title": "Senator",
       "party": "Republican",
-      "state": "Missouri",
+      "state": "South Dakota",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Schmitt, Eric",
-        "Senator Schmitt",
-        "Eric Schmitt",
-        "Sen. Schmitt"
-      ]
-    },
-    {
-      "member_id": "SEN_ALSOBROOKS_A",
-      "full_name": "Angela D. Alsobrooks",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Maryland",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Alsobrooks, Angela D.",
-        "Senator Alsobrooks",
-        "Angela D. Alsobrooks",
-        "Sen. Alsobrooks"
-      ]
-    },
-    {
-      "member_id": "SEN_BRITT_K",
-      "full_name": "Katie Boyd Britt",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Alabama",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Britt",
-        "Britt, Katie Boyd",
-        "Katie Boyd Britt",
-        "Sen. Britt"
-      ]
-    },
-    {
-      "member_id": "SEN_BUDD_T",
-      "full_name": "Ted Budd",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "North Carolina",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Ted Budd",
-        "Budd, Ted",
-        "Senator Budd",
-        "Sen. Budd"
-      ]
-    },
-    {
-      "member_id": "SEN_SLOTKIN_E",
-      "full_name": "Elissa Slotkin",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Michigan",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Slotkin",
-        "Senator Slotkin",
-        "Elissa Slotkin",
-        "Slotkin, Elissa"
-      ]
-    },
-    {
-      "member_id": "SEN_KIM_A",
-      "full_name": "Andy Kim",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "New Jersey",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Kim",
-        "Kim, Andy",
-        "Senator Kim",
-        "Andy Kim"
-      ]
-    },
-    {
-      "member_id": "SEN_MCCORMICK_D",
-      "full_name": "David McCormick",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Pennsylvania",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. McCormick",
-        "McCormick, David",
-        "Senator McCormick",
-        "David McCormick"
-      ]
-    },
-    {
-      "member_id": "SEN_BANKS_J",
-      "full_name": "Jim Banks",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Indiana",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Banks",
-        "Senator Banks",
-        "Banks, Jim",
-        "Jim Banks"
+        "Sen. Rounds",
+        "Mike Rounds",
+        "Senator Rounds",
+        "Senator Mike Rounds",
+        "Sen. Mike Rounds"
       ]
     },
     {
@@ -295,10 +152,92 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Young, Todd",
         "Sen. Young",
+        "Senator Todd Young",
         "Todd Young",
-        "Senator Young"
+        "Senator Young",
+        "Sen. Todd Young"
+      ]
+    },
+    {
+      "member_id": "SEN_BUDD_T",
+      "full_name": "Ted Budd",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "North Carolina",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Ted Budd",
+        "Senator Budd",
+        "Sen. Budd",
+        "Ted Budd",
+        "Senator Ted Budd"
+      ]
+    },
+    {
+      "member_id": "SEN_THUNE_J",
+      "full_name": "John Thune",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "South Dakota",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": "Ex Officio",
+      "aliases": [
+        "Ex Officio",
+        "Ex Officio Thune",
+        "Senator Thune",
+        "Sen. Thune",
+        "John Thune",
+        "Ex Officio John Thune",
+        "Senator John Thune",
+        "Sen. John Thune"
+      ]
+    },
+    {
+      "member_id": "SEN_WICKER_R",
+      "full_name": "Roger F. Wicker",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Mississippi",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": "Ex Officio",
+      "aliases": [
+        "Senator Roger F. Wicker",
+        "Senator Wicker",
+        "Ex Officio",
+        "Ex Officio Roger F. Wicker",
+        "Roger F. Wicker",
+        "Sen. Wicker",
+        "Sen. Roger F. Wicker",
+        "Ex Officio Wicker"
+      ]
+    },
+    {
+      "member_id": "SEN_WARNER_M",
+      "full_name": "Mark R. Warner",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Virginia",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": "Vice Chairman",
+      "aliases": [
+        "Senator Warner",
+        "Vice Chairman Mark R. Warner",
+        "Senator Mark R. Warner",
+        "Vice Chairman",
+        "Sen. Warner",
+        "Vice Chairman Warner",
+        "Sen. Mark R. Warner",
+        "Mark R. Warner"
       ]
     },
     {
@@ -312,15 +251,88 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Ron Wyden",
-        "Wyden, Ron",
         "Senator Wyden",
-        "Sen. Wyden"
+        "Sen. Wyden",
+        "Sen. Ron Wyden",
+        "Ron Wyden",
+        "Senator Ron Wyden"
       ]
     },
     {
-      "member_id": "SEN_WARNOCK_R",
-      "full_name": "Raphael G. Warnock",
+      "member_id": "SEN_HEINRICH_M",
+      "full_name": "Martin Heinrich",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "New Mexico",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Martin Heinrich",
+        "Senator Heinrich",
+        "Sen. Heinrich",
+        "Senator Martin Heinrich",
+        "Martin Heinrich"
+      ]
+    },
+    {
+      "member_id": "SEN_KING_A",
+      "full_name": "Angus S. King",
+      "title": "Senator",
+      "party": "Independent",
+      "state": "Maine",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Angus S. King",
+        "Senator King",
+        "Sen. King",
+        "Senator Angus S. King",
+        "Sen. Angus S. King"
+      ]
+    },
+    {
+      "member_id": "SEN_BENNET_M",
+      "full_name": "Michael F. Bennet",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Colorado",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Michael F. Bennet",
+        "Sen. Bennet",
+        "Senator Bennet",
+        "Michael F. Bennet",
+        "Senator Michael F. Bennet"
+      ]
+    },
+    {
+      "member_id": "SEN_GILLIBRAND_K",
+      "full_name": "Kirsten E. Gillibrand",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "New York",
+      "chamber": "Senate",
+      "committee": "Select Committee on Intelligence",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Kirsten E. Gillibrand",
+        "Senator Gillibrand",
+        "Sen. Gillibrand",
+        "Sen. Kirsten E. Gillibrand",
+        "Kirsten E. Gillibrand"
+      ]
+    },
+    {
+      "member_id": "SEN_OSSOFF_J",
+      "full_name": "Jon Ossoff",
       "title": "Senator",
       "party": "Democratic",
       "state": "Georgia",
@@ -329,112 +341,71 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Sen. Warnock",
-        "Senator Warnock",
-        "Warnock, Raphael G.",
-        "Raphael G. Warnock"
+        "Senator Ossoff",
+        "Jon Ossoff",
+        "Senator Jon Ossoff",
+        "Sen. Jon Ossoff",
+        "Sen. Ossoff"
       ]
     },
     {
-      "member_id": "SEN_WARREN_E",
-      "full_name": "Elizabeth Warren",
+      "member_id": "SEN_KELLY_M",
+      "full_name": "Mark Kelly",
       "title": "Senator",
       "party": "Democratic",
-      "state": "Massachusetts",
+      "state": "Arizona",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Senator Warren",
-        "Sen. Warren",
-        "Elizabeth Warren",
-        "Warren, Elizabeth"
+        "Mark Kelly",
+        "Sen. Mark Kelly",
+        "Sen. Kelly",
+        "Senator Kelly",
+        "Senator Mark Kelly"
       ]
     },
     {
-      "member_id": "SEN_WHITEHOUSE_S",
-      "full_name": "Sheldon Whitehouse",
+      "member_id": "SEN_REED_J",
+      "full_name": "Jack Reed",
       "title": "Senator",
       "party": "Democratic",
       "state": "Rhode Island",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
-      "role": null,
+      "role": "Ex Officio",
       "aliases": [
-        "Whitehouse, Sheldon",
-        "Sheldon Whitehouse",
-        "Sen. Whitehouse",
-        "Senator Whitehouse"
+        "Sen. Reed",
+        "Senator Reed",
+        "Sen. Jack Reed",
+        "Ex Officio",
+        "Ex Officio Jack Reed",
+        "Senator Jack Reed",
+        "Ex Officio Reed",
+        "Jack Reed"
       ]
     },
     {
-      "member_id": "SEN_WARNER_M",
-      "full_name": "Mark R. Warner",
+      "member_id": "SEN_SCHUMER_C",
+      "full_name": "Charles E. Schumer",
       "title": "Senator",
       "party": "Democratic",
-      "state": "Virginia",
+      "state": "New York",
       "chamber": "Senate",
       "committee": "Select Committee on Intelligence",
       "subcommittee": null,
-      "role": null,
+      "role": "Ex Officio",
       "aliases": [
-        "Mark R. Warner",
-        "Senator Warner",
-        "Warner, Mark R.",
-        "Sen. Warner"
-      ]
-    },
-    {
-      "member_id": "SEN_WICKER_R",
-      "full_name": "Roger F. Wicker",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Mississippi",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Wicker",
-        "Wicker, Roger F.",
-        "Roger F. Wicker",
-        "Sen. Wicker"
-      ]
-    },
-    {
-      "member_id": "SEN_VAN HOLLEN_C",
-      "full_name": "Chris Van Hollen",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Maryland",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Van Hollen, Chris",
-        "Senator Van Hollen",
-        "Sen. Van Hollen",
-        "Chris Van Hollen"
-      ]
-    },
-    {
-      "member_id": "SEN_TUBERVILLE_T",
-      "full_name": "Tommy Tuberville",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Alabama",
-      "chamber": "Senate",
-      "committee": "Select Committee on Intelligence",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Tommy Tuberville",
-        "Tuberville, Tommy",
-        "Senator Tuberville",
-        "Sen. Tuberville"
+        "Senator Charles E. Schumer",
+        "Sen. Charles E. Schumer",
+        "Sen. Schumer",
+        "Ex Officio",
+        "Charles E. Schumer",
+        "Ex Officio Schumer",
+        "Ex Officio Charles E. Schumer",
+        "Senator Schumer"
       ]
     }
   ]

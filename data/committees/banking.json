@@ -4,182 +4,141 @@
     "full_name": "Committee on Banking, Housing, and Urban Affairs",
     "chamber": "Senate",
     "system_code": "ssbk00",
-    "api_sync_date": "2025-06-27T22:21:29.057231",
-    "api_source": "Congress.gov API v3",
+    "api_sync_date": "2025-06-27T22:32:44.963667",
+    "api_source": "Official Senate.gov committee rosters + Congress.gov API v3",
     "congress": 119,
     "priority": 3,
     "isvp_compatible": true,
-    "sync_note": "Representative sample of 25 senate members for transcript enrichment"
+    "sync_note": "Accurate committee roster with 24 actual members"
   },
   "members": [
     {
-      "member_id": "SEN_SHEEHY_T",
-      "full_name": "Tim Sheehy",
+      "member_id": "SEN_SCOTT_T",
+      "full_name": "Tim Scott",
       "title": "Senator",
       "party": "Republican",
-      "state": "Montana",
+      "state": "South Carolina",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
-      "role": null,
+      "role": "Chairman",
       "aliases": [
-        "Sheehy, Tim",
-        "Tim Sheehy",
-        "Sen. Sheehy",
-        "Senator Sheehy"
+        "Chairman Scott",
+        "Senator Scott",
+        "Sen. Tim Scott",
+        "Sen. Scott",
+        "Chairman",
+        "Chairman Tim Scott",
+        "Senator Tim Scott",
+        "Tim Scott"
       ]
     },
     {
-      "member_id": "SEN_LUJ\u00c1N_B",
-      "full_name": "Ben Ray Luj\u00e1n",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "New Mexico",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Luj\u00e1n",
-        "Luj\u00e1n, Ben Ray",
-        "Ben Ray Luj\u00e1n",
-        "Sen. Luj\u00e1n"
-      ]
-    },
-    {
-      "member_id": "SEN_HAWLEY_J",
-      "full_name": "Josh Hawley",
+      "member_id": "SEN_CRAPO_M",
+      "full_name": "Mike Crapo",
       "title": "Senator",
       "party": "Republican",
-      "state": "Missouri",
+      "state": "Idaho",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Josh Hawley",
-        "Sen. Hawley",
-        "Hawley, Josh",
-        "Senator Hawley"
+        "Sen. Mike Crapo",
+        "Senator Crapo",
+        "Senator Mike Crapo",
+        "Sen. Crapo",
+        "Mike Crapo"
       ]
     },
     {
-      "member_id": "SEN_WELCH_P",
-      "full_name": "Peter Welch",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Vermont",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Welch",
-        "Peter Welch",
-        "Senator Welch",
-        "Welch, Peter"
-      ]
-    },
-    {
-      "member_id": "SEN_MORENO_B",
-      "full_name": "Bernie Moreno",
+      "member_id": "SEN_ROUNDS_M",
+      "full_name": "Mike Rounds",
       "title": "Senator",
       "party": "Republican",
-      "state": "Ohio",
+      "state": "South Dakota",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Moreno, Bernie",
-        "Sen. Moreno",
-        "Bernie Moreno",
-        "Senator Moreno"
+        "Sen. Rounds",
+        "Mike Rounds",
+        "Senator Rounds",
+        "Senator Mike Rounds",
+        "Sen. Mike Rounds"
       ]
     },
     {
-      "member_id": "SEN_MOODY_A",
-      "full_name": "Ashley Moody",
+      "member_id": "SEN_TILLIS_T",
+      "full_name": "Thom Tillis",
       "title": "Senator",
       "party": "Republican",
-      "state": "Florida",
+      "state": "North Carolina",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Moody, Ashley",
-        "Sen. Moody",
-        "Ashley Moody",
-        "Senator Moody"
+        "Sen. Thom Tillis",
+        "Senator Thom Tillis",
+        "Thom Tillis",
+        "Sen. Tillis",
+        "Senator Tillis"
       ]
     },
     {
-      "member_id": "SEN_CURTIS_J",
-      "full_name": "John R. Curtis",
+      "member_id": "SEN_KENNEDY_J",
+      "full_name": "John Kennedy",
       "title": "Senator",
       "party": "Republican",
-      "state": "Utah",
+      "state": "Louisiana",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Curtis, John R.",
-        "Sen. Curtis",
-        "Senator Curtis",
-        "John R. Curtis"
+        "John Kennedy",
+        "Sen. John Kennedy",
+        "Sen. Kennedy",
+        "Senator John Kennedy",
+        "Senator Kennedy"
       ]
     },
     {
-      "member_id": "SEN_HUSTED_J",
-      "full_name": "Jon Husted",
+      "member_id": "SEN_HAGERTY_B",
+      "full_name": "Bill Hagerty",
       "title": "Senator",
       "party": "Republican",
-      "state": "Ohio",
+      "state": "Tennessee",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Sen. Husted",
-        "Senator Husted",
-        "Jon Husted",
-        "Husted, Jon"
+        "Bill Hagerty",
+        "Senator Bill Hagerty",
+        "Sen. Hagerty",
+        "Senator Hagerty",
+        "Sen. Bill Hagerty"
       ]
     },
     {
-      "member_id": "SEN_SCHMITT_E",
-      "full_name": "Eric Schmitt",
+      "member_id": "SEN_LUMMIS_C",
+      "full_name": "Cynthia M. Lummis",
       "title": "Senator",
       "party": "Republican",
-      "state": "Missouri",
+      "state": "Wyoming",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Schmitt, Eric",
-        "Senator Schmitt",
-        "Eric Schmitt",
-        "Sen. Schmitt"
-      ]
-    },
-    {
-      "member_id": "SEN_ALSOBROOKS_A",
-      "full_name": "Angela D. Alsobrooks",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Maryland",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Alsobrooks, Angela D.",
-        "Senator Alsobrooks",
-        "Angela D. Alsobrooks",
-        "Sen. Alsobrooks"
+        "Cynthia M. Lummis",
+        "Senator Lummis",
+        "Sen. Lummis",
+        "Senator Cynthia M. Lummis",
+        "Sen. Cynthia M. Lummis"
       ]
     },
     {
@@ -193,78 +152,29 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
+        "Sen. Katie Boyd Britt",
+        "Sen. Britt",
         "Senator Britt",
-        "Britt, Katie Boyd",
-        "Katie Boyd Britt",
-        "Sen. Britt"
+        "Senator Katie Boyd Britt",
+        "Katie Boyd Britt"
       ]
     },
     {
-      "member_id": "SEN_BUDD_T",
-      "full_name": "Ted Budd",
+      "member_id": "SEN_RICKETTS_P",
+      "full_name": "Pete Ricketts",
       "title": "Senator",
       "party": "Republican",
-      "state": "North Carolina",
+      "state": "Nebraska",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Ted Budd",
-        "Budd, Ted",
-        "Senator Budd",
-        "Sen. Budd"
-      ]
-    },
-    {
-      "member_id": "SEN_SLOTKIN_E",
-      "full_name": "Elissa Slotkin",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Michigan",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Slotkin",
-        "Senator Slotkin",
-        "Elissa Slotkin",
-        "Slotkin, Elissa"
-      ]
-    },
-    {
-      "member_id": "SEN_KIM_A",
-      "full_name": "Andy Kim",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "New Jersey",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Kim",
-        "Kim, Andy",
-        "Senator Kim",
-        "Andy Kim"
-      ]
-    },
-    {
-      "member_id": "SEN_MCCORMICK_D",
-      "full_name": "David McCormick",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Pennsylvania",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. McCormick",
-        "McCormick, David",
-        "Senator McCormick",
-        "David McCormick"
+        "Pete Ricketts",
+        "Sen. Pete Ricketts",
+        "Senator Ricketts",
+        "Senator Pete Ricketts",
+        "Sen. Ricketts"
       ]
     },
     {
@@ -278,44 +188,176 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Sen. Banks",
+        "Senator Jim Banks",
         "Senator Banks",
-        "Banks, Jim",
-        "Jim Banks"
+        "Jim Banks",
+        "Sen. Jim Banks",
+        "Sen. Banks"
       ]
     },
     {
-      "member_id": "SEN_YOUNG_T",
-      "full_name": "Todd Young",
+      "member_id": "SEN_CRAMER_K",
+      "full_name": "Kevin Cramer",
       "title": "Senator",
       "party": "Republican",
-      "state": "Indiana",
+      "state": "North Dakota",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Young, Todd",
-        "Sen. Young",
-        "Todd Young",
-        "Senator Young"
+        "Senator Kevin Cramer",
+        "Sen. Cramer",
+        "Senator Cramer",
+        "Kevin Cramer",
+        "Sen. Kevin Cramer"
       ]
     },
     {
-      "member_id": "SEN_WYDEN_R",
-      "full_name": "Ron Wyden",
+      "member_id": "SEN_MORENO_B",
+      "full_name": "Bernie Moreno",
       "title": "Senator",
-      "party": "Democratic",
-      "state": "Oregon",
+      "party": "Republican",
+      "state": "Ohio",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Ron Wyden",
-        "Wyden, Ron",
-        "Senator Wyden",
-        "Sen. Wyden"
+        "Sen. Bernie Moreno",
+        "Sen. Moreno",
+        "Senator Bernie Moreno",
+        "Bernie Moreno",
+        "Senator Moreno"
+      ]
+    },
+    {
+      "member_id": "SEN_MCCORMICK_D",
+      "full_name": "David McCormick",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Pennsylvania",
+      "chamber": "Senate",
+      "committee": "Committee on Banking, Housing, and Urban Affairs",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator David McCormick",
+        "Sen. David McCormick",
+        "David McCormick",
+        "Senator McCormick",
+        "Sen. McCormick"
+      ]
+    },
+    {
+      "member_id": "SEN_WARREN_E",
+      "full_name": "Elizabeth Warren",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Massachusetts",
+      "chamber": "Senate",
+      "committee": "Committee on Banking, Housing, and Urban Affairs",
+      "subcommittee": null,
+      "role": "Ranking Member",
+      "aliases": [
+        "Elizabeth Warren",
+        "Senator Warren",
+        "Sen. Warren",
+        "Sen. Elizabeth Warren",
+        "Ranking Member Warren",
+        "Ranking Member",
+        "Ranking Member Elizabeth Warren",
+        "Senator Elizabeth Warren"
+      ]
+    },
+    {
+      "member_id": "SEN_REED_J",
+      "full_name": "Jack Reed",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Rhode Island",
+      "chamber": "Senate",
+      "committee": "Committee on Banking, Housing, and Urban Affairs",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Reed",
+        "Senator Reed",
+        "Sen. Jack Reed",
+        "Senator Jack Reed",
+        "Jack Reed"
+      ]
+    },
+    {
+      "member_id": "SEN_WARNER_M",
+      "full_name": "Mark R. Warner",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Virginia",
+      "chamber": "Senate",
+      "committee": "Committee on Banking, Housing, and Urban Affairs",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Warner",
+        "Senator Mark R. Warner",
+        "Sen. Warner",
+        "Sen. Mark R. Warner",
+        "Mark R. Warner"
+      ]
+    },
+    {
+      "member_id": "SEN_HOLLEN_C",
+      "full_name": "Chris Van Hollen",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Maryland",
+      "chamber": "Senate",
+      "committee": "Committee on Banking, Housing, and Urban Affairs",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Chris Van Hollen",
+        "Chris Van Hollen",
+        "Sen. Chris Van Hollen",
+        "Senator Hollen",
+        "Sen. Hollen"
+      ]
+    },
+    {
+      "member_id": "SEN_MASTO_C",
+      "full_name": "Catherine Cortez Masto",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Nevada",
+      "chamber": "Senate",
+      "committee": "Committee on Banking, Housing, and Urban Affairs",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Catherine Cortez Masto",
+        "Sen. Masto",
+        "Catherine Cortez Masto",
+        "Sen. Catherine Cortez Masto",
+        "Senator Masto"
+      ]
+    },
+    {
+      "member_id": "SEN_SMITH_T",
+      "full_name": "Tina Smith",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Minnesota",
+      "chamber": "Senate",
+      "committee": "Committee on Banking, Housing, and Urban Affairs",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Smith",
+        "Tina Smith",
+        "Senator Tina Smith",
+        "Sen. Smith",
+        "Sen. Tina Smith"
       ]
     },
     {
@@ -330,82 +372,69 @@
       "role": null,
       "aliases": [
         "Sen. Warnock",
+        "Senator Raphael G. Warnock",
         "Senator Warnock",
-        "Warnock, Raphael G.",
+        "Sen. Raphael G. Warnock",
         "Raphael G. Warnock"
       ]
     },
     {
-      "member_id": "SEN_WARREN_E",
-      "full_name": "Elizabeth Warren",
+      "member_id": "SEN_KIM_A",
+      "full_name": "Andy Kim",
       "title": "Senator",
       "party": "Democratic",
-      "state": "Massachusetts",
+      "state": "New Jersey",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Senator Warren",
-        "Sen. Warren",
-        "Elizabeth Warren",
-        "Warren, Elizabeth"
+        "Sen. Kim",
+        "Senator Kim",
+        "Andy Kim",
+        "Senator Andy Kim",
+        "Sen. Andy Kim"
       ]
     },
     {
-      "member_id": "SEN_WHITEHOUSE_S",
-      "full_name": "Sheldon Whitehouse",
+      "member_id": "SEN_GALLEGO_R",
+      "full_name": "Ruben Gallego",
       "title": "Senator",
       "party": "Democratic",
-      "state": "Rhode Island",
+      "state": "Arizona",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Whitehouse, Sheldon",
-        "Sheldon Whitehouse",
-        "Sen. Whitehouse",
-        "Senator Whitehouse"
+        "Senator Gallego",
+        "Senator Ruben Gallego",
+        "Sen. Gallego",
+        "Ruben Gallego",
+        "Sen. Ruben Gallego"
       ]
     },
     {
-      "member_id": "SEN_WARNER_M",
-      "full_name": "Mark R. Warner",
+      "member_id": "SEN_ROCHESTER_L",
+      "full_name": "Lisa Blunt Rochester",
       "title": "Senator",
       "party": "Democratic",
-      "state": "Virginia",
+      "state": "Delaware",
       "chamber": "Senate",
       "committee": "Committee on Banking, Housing, and Urban Affairs",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Mark R. Warner",
-        "Senator Warner",
-        "Warner, Mark R.",
-        "Sen. Warner"
+        "Senator Lisa Blunt Rochester",
+        "Sen. Rochester",
+        "Lisa Blunt Rochester",
+        "Sen. Lisa Blunt Rochester",
+        "Senator Rochester"
       ]
     },
     {
-      "member_id": "SEN_WICKER_R",
-      "full_name": "Roger F. Wicker",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Mississippi",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Wicker",
-        "Wicker, Roger F.",
-        "Roger F. Wicker",
-        "Sen. Wicker"
-      ]
-    },
-    {
-      "member_id": "SEN_VAN HOLLEN_C",
-      "full_name": "Chris Van Hollen",
+      "member_id": "SEN_ALSOBROOKS_A",
+      "full_name": "Angela D. Alsobrooks",
       "title": "Senator",
       "party": "Democratic",
       "state": "Maryland",
@@ -414,27 +443,11 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Van Hollen, Chris",
-        "Senator Van Hollen",
-        "Sen. Van Hollen",
-        "Chris Van Hollen"
-      ]
-    },
-    {
-      "member_id": "SEN_TUBERVILLE_T",
-      "full_name": "Tommy Tuberville",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Alabama",
-      "chamber": "Senate",
-      "committee": "Committee on Banking, Housing, and Urban Affairs",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Tommy Tuberville",
-        "Tuberville, Tommy",
-        "Senator Tuberville",
-        "Sen. Tuberville"
+        "Senator Angela D. Alsobrooks",
+        "Senator Alsobrooks",
+        "Sen. Angela D. Alsobrooks",
+        "Sen. Alsobrooks",
+        "Angela D. Alsobrooks"
       ]
     }
   ]

@@ -4,199 +4,159 @@
     "full_name": "Committee on Commerce, Science, and Transportation",
     "chamber": "Senate",
     "system_code": "sscm00",
-    "api_sync_date": "2025-06-27T22:21:18.709309",
-    "api_source": "Congress.gov API v3",
+    "api_sync_date": "2025-06-27T22:32:44.961826",
+    "api_source": "Official Senate.gov committee rosters + Congress.gov API v3",
     "congress": 119,
     "priority": 1,
     "isvp_compatible": true,
-    "sync_note": "Representative sample of 25 senate members for transcript enrichment"
+    "sync_note": "Accurate committee roster with 28 actual members"
   },
   "members": [
     {
-      "member_id": "SEN_SHEEHY_T",
-      "full_name": "Tim Sheehy",
+      "member_id": "SEN_CRUZ_T",
+      "full_name": "Ted Cruz",
       "title": "Senator",
       "party": "Republican",
-      "state": "Montana",
+      "state": "Texas",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
-      "role": null,
+      "role": "Chairman",
       "aliases": [
-        "Sheehy, Tim",
-        "Tim Sheehy",
-        "Sen. Sheehy",
-        "Senator Sheehy"
+        "Sen. Ted Cruz",
+        "Chairman Ted Cruz",
+        "Sen. Cruz",
+        "Chairman",
+        "Chairman Cruz",
+        "Senator Ted Cruz",
+        "Senator Cruz",
+        "Ted Cruz"
       ]
     },
     {
-      "member_id": "SEN_LUJ\u00c1N_B",
-      "full_name": "Ben Ray Luj\u00e1n",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "New Mexico",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Luj\u00e1n",
-        "Luj\u00e1n, Ben Ray",
-        "Ben Ray Luj\u00e1n",
-        "Sen. Luj\u00e1n"
-      ]
-    },
-    {
-      "member_id": "SEN_HAWLEY_J",
-      "full_name": "Josh Hawley",
+      "member_id": "SEN_THUNE_J",
+      "full_name": "John Thune",
       "title": "Senator",
       "party": "Republican",
-      "state": "Missouri",
+      "state": "South Dakota",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Josh Hawley",
-        "Sen. Hawley",
-        "Hawley, Josh",
-        "Senator Hawley"
+        "Senator Thune",
+        "Sen. Thune",
+        "John Thune",
+        "Senator John Thune",
+        "Sen. John Thune"
       ]
     },
     {
-      "member_id": "SEN_WELCH_P",
-      "full_name": "Peter Welch",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Vermont",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Welch",
-        "Peter Welch",
-        "Senator Welch",
-        "Welch, Peter"
-      ]
-    },
-    {
-      "member_id": "SEN_MORENO_B",
-      "full_name": "Bernie Moreno",
+      "member_id": "SEN_WICKER_R",
+      "full_name": "Roger Wicker",
       "title": "Senator",
       "party": "Republican",
-      "state": "Ohio",
+      "state": "Mississippi",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Moreno, Bernie",
-        "Sen. Moreno",
-        "Bernie Moreno",
-        "Senator Moreno"
+        "Senator Wicker",
+        "Sen. Roger Wicker",
+        "Senator Roger Wicker",
+        "Roger Wicker",
+        "Sen. Wicker"
       ]
     },
     {
-      "member_id": "SEN_MOODY_A",
-      "full_name": "Ashley Moody",
+      "member_id": "SEN_FISCHER_D",
+      "full_name": "Deb Fischer",
       "title": "Senator",
       "party": "Republican",
-      "state": "Florida",
+      "state": "Nebraska",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Moody, Ashley",
-        "Sen. Moody",
-        "Ashley Moody",
-        "Senator Moody"
+        "Sen. Fischer",
+        "Deb Fischer",
+        "Sen. Deb Fischer",
+        "Senator Fischer",
+        "Senator Deb Fischer"
       ]
     },
     {
-      "member_id": "SEN_CURTIS_J",
-      "full_name": "John R. Curtis",
+      "member_id": "SEN_MORAN_J",
+      "full_name": "Jerry Moran",
       "title": "Senator",
       "party": "Republican",
-      "state": "Utah",
+      "state": "Kansas",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Curtis, John R.",
-        "Sen. Curtis",
-        "Senator Curtis",
-        "John R. Curtis"
+        "Jerry Moran",
+        "Senator Moran",
+        "Sen. Moran",
+        "Sen. Jerry Moran",
+        "Senator Jerry Moran"
       ]
     },
     {
-      "member_id": "SEN_HUSTED_J",
-      "full_name": "Jon Husted",
+      "member_id": "SEN_SULLIVAN_D",
+      "full_name": "Dan Sullivan",
       "title": "Senator",
       "party": "Republican",
-      "state": "Ohio",
+      "state": "Alaska",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Sen. Husted",
-        "Senator Husted",
-        "Jon Husted",
-        "Husted, Jon"
+        "Sen. Sullivan",
+        "Sen. Dan Sullivan",
+        "Senator Sullivan",
+        "Senator Dan Sullivan",
+        "Dan Sullivan"
       ]
     },
     {
-      "member_id": "SEN_SCHMITT_E",
-      "full_name": "Eric Schmitt",
+      "member_id": "SEN_BLACKBURN_M",
+      "full_name": "Marsha Blackburn",
       "title": "Senator",
       "party": "Republican",
-      "state": "Missouri",
+      "state": "Tennessee",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Schmitt, Eric",
-        "Senator Schmitt",
-        "Eric Schmitt",
-        "Sen. Schmitt"
+        "Marsha Blackburn",
+        "Sen. Blackburn",
+        "Senator Marsha Blackburn",
+        "Sen. Marsha Blackburn",
+        "Senator Blackburn"
       ]
     },
     {
-      "member_id": "SEN_ALSOBROOKS_A",
-      "full_name": "Angela D. Alsobrooks",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Maryland",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Alsobrooks, Angela D.",
-        "Senator Alsobrooks",
-        "Angela D. Alsobrooks",
-        "Sen. Alsobrooks"
-      ]
-    },
-    {
-      "member_id": "SEN_BRITT_K",
-      "full_name": "Katie Boyd Britt",
+      "member_id": "SEN_YOUNG_T",
+      "full_name": "Todd Young",
       "title": "Senator",
       "party": "Republican",
-      "state": "Alabama",
+      "state": "Indiana",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Senator Britt",
-        "Britt, Katie Boyd",
-        "Katie Boyd Britt",
-        "Sen. Britt"
+        "Sen. Young",
+        "Senator Todd Young",
+        "Todd Young",
+        "Senator Young",
+        "Sen. Todd Young"
       ]
     },
     {
@@ -210,15 +170,199 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Ted Budd",
-        "Budd, Ted",
+        "Sen. Ted Budd",
         "Senator Budd",
-        "Sen. Budd"
+        "Sen. Budd",
+        "Ted Budd",
+        "Senator Ted Budd"
       ]
     },
     {
-      "member_id": "SEN_SLOTKIN_E",
-      "full_name": "Elissa Slotkin",
+      "member_id": "SEN_SCHMITT_E",
+      "full_name": "Eric Schmitt",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Missouri",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Eric Schmitt",
+        "Senator Schmitt",
+        "Eric Schmitt",
+        "Sen. Schmitt",
+        "Sen. Eric Schmitt"
+      ]
+    },
+    {
+      "member_id": "SEN_CURTIS_J",
+      "full_name": "John Curtis",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Utah",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Curtis",
+        "Senator John Curtis",
+        "John Curtis",
+        "Sen. Curtis",
+        "Sen. John Curtis"
+      ]
+    },
+    {
+      "member_id": "SEN_MORENO_B",
+      "full_name": "Bernie Moreno",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Ohio",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Bernie Moreno",
+        "Sen. Moreno",
+        "Senator Bernie Moreno",
+        "Bernie Moreno",
+        "Senator Moreno"
+      ]
+    },
+    {
+      "member_id": "SEN_SHEEHY_T",
+      "full_name": "Tim Sheehy",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Montana",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Sheehy",
+        "Senator Tim Sheehy",
+        "Tim Sheehy",
+        "Sen. Tim Sheehy",
+        "Senator Sheehy"
+      ]
+    },
+    {
+      "member_id": "SEN_CAPITO_S",
+      "full_name": "Shelley Moore Capito",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "West Virginia",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Shelley Moore Capito",
+        "Senator Shelley Moore Capito",
+        "Sen. Capito",
+        "Shelley Moore Capito",
+        "Senator Capito"
+      ]
+    },
+    {
+      "member_id": "SEN_LUMMIS_C",
+      "full_name": "Cynthia Lummis",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Wyoming",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Cynthia Lummis",
+        "Senator Cynthia Lummis",
+        "Senator Lummis",
+        "Sen. Cynthia Lummis",
+        "Sen. Lummis"
+      ]
+    },
+    {
+      "member_id": "SEN_CANTWELL_M",
+      "full_name": "Maria Cantwell",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Washington",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": "Ranking Member",
+      "aliases": [
+        "Sen. Maria Cantwell",
+        "Maria Cantwell",
+        "Senator Maria Cantwell",
+        "Senator Cantwell",
+        "Ranking Member Cantwell",
+        "Ranking Member",
+        "Sen. Cantwell",
+        "Ranking Member Maria Cantwell"
+      ]
+    },
+    {
+      "member_id": "SEN_KLOBUCHAR_A",
+      "full_name": "Amy Klobuchar",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Minnesota",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Klobuchar",
+        "Amy Klobuchar",
+        "Sen. Amy Klobuchar",
+        "Senator Klobuchar",
+        "Senator Amy Klobuchar"
+      ]
+    },
+    {
+      "member_id": "SEN_SCHATZ_B",
+      "full_name": "Brian Schatz",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Hawaii",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Schatz",
+        "Brian Schatz",
+        "Sen. Brian Schatz",
+        "Senator Brian Schatz",
+        "Senator Schatz"
+      ]
+    },
+    {
+      "member_id": "SEN_MARKEY_E",
+      "full_name": "Ed Markey",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Massachusetts",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Markey",
+        "Senator Ed Markey",
+        "Ed Markey",
+        "Senator Markey",
+        "Sen. Ed Markey"
+      ]
+    },
+    {
+      "member_id": "SEN_PETERS_G",
+      "full_name": "Gary Peters",
       "title": "Senator",
       "party": "Democratic",
       "state": "Michigan",
@@ -227,10 +371,119 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Sen. Slotkin",
-        "Senator Slotkin",
-        "Elissa Slotkin",
-        "Slotkin, Elissa"
+        "Gary Peters",
+        "Senator Peters",
+        "Sen. Peters",
+        "Sen. Gary Peters",
+        "Senator Gary Peters"
+      ]
+    },
+    {
+      "member_id": "SEN_BALDWIN_T",
+      "full_name": "Tammy Baldwin",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Wisconsin",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Tammy Baldwin",
+        "Sen. Tammy Baldwin",
+        "Senator Baldwin",
+        "Senator Tammy Baldwin",
+        "Sen. Baldwin"
+      ]
+    },
+    {
+      "member_id": "SEN_DUCKWORTH_T",
+      "full_name": "Tammy Duckworth",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Illinois",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Tammy Duckworth",
+        "Sen. Duckworth",
+        "Senator Tammy Duckworth",
+        "Senator Duckworth",
+        "Sen. Tammy Duckworth"
+      ]
+    },
+    {
+      "member_id": "SEN_ROSEN_J",
+      "full_name": "Jacky Rosen",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Nevada",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Jacky Rosen",
+        "Senator Jacky Rosen",
+        "Senator Rosen",
+        "Sen. Rosen",
+        "Sen. Jacky Rosen"
+      ]
+    },
+    {
+      "member_id": "SEN_LUJ\u00c1N_B",
+      "full_name": "Ben Ray Luj\u00e1n",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "New Mexico",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Ben Ray Luj\u00e1n",
+        "Ben Ray Luj\u00e1n",
+        "Senator Luj\u00e1n",
+        "Sen. Luj\u00e1n",
+        "Sen. Ben Ray Luj\u00e1n"
+      ]
+    },
+    {
+      "member_id": "SEN_HICKENLOOPER_J",
+      "full_name": "John Hickenlooper",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Colorado",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. John Hickenlooper",
+        "Sen. Hickenlooper",
+        "Senator John Hickenlooper",
+        "Senator Hickenlooper",
+        "John Hickenlooper"
+      ]
+    },
+    {
+      "member_id": "SEN_FETTERMAN_J",
+      "full_name": "John Fetterman",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Pennsylvania",
+      "chamber": "Senate",
+      "committee": "Committee on Commerce, Science, and Transportation",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator John Fetterman",
+        "Sen. Fetterman",
+        "Senator Fetterman",
+        "Sen. John Fetterman",
+        "John Fetterman"
       ]
     },
     {
@@ -245,196 +498,28 @@
       "role": null,
       "aliases": [
         "Sen. Kim",
-        "Kim, Andy",
         "Senator Kim",
-        "Andy Kim"
+        "Andy Kim",
+        "Senator Andy Kim",
+        "Sen. Andy Kim"
       ]
     },
     {
-      "member_id": "SEN_MCCORMICK_D",
-      "full_name": "David McCormick",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Pennsylvania",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. McCormick",
-        "McCormick, David",
-        "Senator McCormick",
-        "David McCormick"
-      ]
-    },
-    {
-      "member_id": "SEN_BANKS_J",
-      "full_name": "Jim Banks",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Indiana",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Banks",
-        "Senator Banks",
-        "Banks, Jim",
-        "Jim Banks"
-      ]
-    },
-    {
-      "member_id": "SEN_YOUNG_T",
-      "full_name": "Todd Young",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Indiana",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Young, Todd",
-        "Sen. Young",
-        "Todd Young",
-        "Senator Young"
-      ]
-    },
-    {
-      "member_id": "SEN_WYDEN_R",
-      "full_name": "Ron Wyden",
+      "member_id": "SEN_ROCHESTER_L",
+      "full_name": "Lisa Blunt Rochester",
       "title": "Senator",
       "party": "Democratic",
-      "state": "Oregon",
+      "state": "Delaware",
       "chamber": "Senate",
       "committee": "Committee on Commerce, Science, and Transportation",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Ron Wyden",
-        "Wyden, Ron",
-        "Senator Wyden",
-        "Sen. Wyden"
-      ]
-    },
-    {
-      "member_id": "SEN_WARNOCK_R",
-      "full_name": "Raphael G. Warnock",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Georgia",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Warnock",
-        "Senator Warnock",
-        "Warnock, Raphael G.",
-        "Raphael G. Warnock"
-      ]
-    },
-    {
-      "member_id": "SEN_WARREN_E",
-      "full_name": "Elizabeth Warren",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Massachusetts",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Warren",
-        "Sen. Warren",
-        "Elizabeth Warren",
-        "Warren, Elizabeth"
-      ]
-    },
-    {
-      "member_id": "SEN_WHITEHOUSE_S",
-      "full_name": "Sheldon Whitehouse",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Rhode Island",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Whitehouse, Sheldon",
-        "Sheldon Whitehouse",
-        "Sen. Whitehouse",
-        "Senator Whitehouse"
-      ]
-    },
-    {
-      "member_id": "SEN_WARNER_M",
-      "full_name": "Mark R. Warner",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Virginia",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Mark R. Warner",
-        "Senator Warner",
-        "Warner, Mark R.",
-        "Sen. Warner"
-      ]
-    },
-    {
-      "member_id": "SEN_WICKER_R",
-      "full_name": "Roger F. Wicker",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Mississippi",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Wicker",
-        "Wicker, Roger F.",
-        "Roger F. Wicker",
-        "Sen. Wicker"
-      ]
-    },
-    {
-      "member_id": "SEN_VAN HOLLEN_C",
-      "full_name": "Chris Van Hollen",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Maryland",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Van Hollen, Chris",
-        "Senator Van Hollen",
-        "Sen. Van Hollen",
-        "Chris Van Hollen"
-      ]
-    },
-    {
-      "member_id": "SEN_TUBERVILLE_T",
-      "full_name": "Tommy Tuberville",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Alabama",
-      "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Tommy Tuberville",
-        "Tuberville, Tommy",
-        "Senator Tuberville",
-        "Sen. Tuberville"
+        "Senator Lisa Blunt Rochester",
+        "Sen. Rochester",
+        "Lisa Blunt Rochester",
+        "Sen. Lisa Blunt Rochester",
+        "Senator Rochester"
       ]
     }
   ]

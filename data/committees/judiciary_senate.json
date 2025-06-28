@@ -4,46 +4,105 @@
     "full_name": "Committee on the Judiciary",
     "chamber": "Senate",
     "system_code": "ssju00",
-    "api_sync_date": "2025-06-27T22:21:34.164022",
-    "api_source": "Congress.gov API v3",
+    "api_sync_date": "2025-06-27T22:32:44.964365",
+    "api_source": "Official Senate.gov committee rosters + Congress.gov API v3",
     "congress": 119,
     "priority": 4,
     "isvp_compatible": true,
-    "sync_note": "Representative sample of 25 senate members for transcript enrichment"
+    "sync_note": "Accurate committee roster with 22 actual members"
   },
   "members": [
     {
-      "member_id": "SEN_SHEEHY_T",
-      "full_name": "Tim Sheehy",
+      "member_id": "SEN_GRASSLEY_C",
+      "full_name": "Chuck Grassley",
       "title": "Senator",
       "party": "Republican",
-      "state": "Montana",
+      "state": "Iowa",
       "chamber": "Senate",
       "committee": "Committee on the Judiciary",
       "subcommittee": null,
-      "role": null,
+      "role": "Chairman",
       "aliases": [
-        "Sheehy, Tim",
-        "Tim Sheehy",
-        "Sen. Sheehy",
-        "Senator Sheehy"
+        "Chuck Grassley",
+        "Sen. Chuck Grassley",
+        "Chairman Chuck Grassley",
+        "Chairman",
+        "Senator Chuck Grassley",
+        "Chairman Grassley",
+        "Senator Grassley",
+        "Sen. Grassley"
       ]
     },
     {
-      "member_id": "SEN_LUJ\u00c1N_B",
-      "full_name": "Ben Ray Luj\u00e1n",
+      "member_id": "SEN_GRAHAM_L",
+      "full_name": "Lindsey Graham",
       "title": "Senator",
-      "party": "Democratic",
-      "state": "New Mexico",
+      "party": "Republican",
+      "state": "South Carolina",
       "chamber": "Senate",
       "committee": "Committee on the Judiciary",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Senator Luj\u00e1n",
-        "Luj\u00e1n, Ben Ray",
-        "Ben Ray Luj\u00e1n",
-        "Sen. Luj\u00e1n"
+        "Lindsey Graham",
+        "Senator Lindsey Graham",
+        "Sen. Lindsey Graham",
+        "Sen. Graham",
+        "Senator Graham"
+      ]
+    },
+    {
+      "member_id": "SEN_CORNYN_J",
+      "full_name": "John Cornyn",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Texas",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator John Cornyn",
+        "John Cornyn",
+        "Sen. John Cornyn",
+        "Senator Cornyn",
+        "Sen. Cornyn"
+      ]
+    },
+    {
+      "member_id": "SEN_LEE_M",
+      "full_name": "Mike Lee",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Utah",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Mike Lee",
+        "Senator Lee",
+        "Sen. Mike Lee",
+        "Sen. Lee",
+        "Mike Lee"
+      ]
+    },
+    {
+      "member_id": "SEN_CRUZ_T",
+      "full_name": "Ted Cruz",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Texas",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Ted Cruz",
+        "Sen. Cruz",
+        "Senator Ted Cruz",
+        "Senator Cruz",
+        "Ted Cruz"
       ]
     },
     {
@@ -57,10 +116,266 @@
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Josh Hawley",
+        "Senator Hawley",
+        "Senator Josh Hawley",
         "Sen. Hawley",
-        "Hawley, Josh",
-        "Senator Hawley"
+        "Sen. Josh Hawley",
+        "Josh Hawley"
+      ]
+    },
+    {
+      "member_id": "SEN_TILLIS_T",
+      "full_name": "Thom Tillis",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "North Carolina",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Thom Tillis",
+        "Senator Thom Tillis",
+        "Thom Tillis",
+        "Sen. Tillis",
+        "Senator Tillis"
+      ]
+    },
+    {
+      "member_id": "SEN_KENNEDY_J",
+      "full_name": "John Kennedy",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Louisiana",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "John Kennedy",
+        "Sen. John Kennedy",
+        "Sen. Kennedy",
+        "Senator John Kennedy",
+        "Senator Kennedy"
+      ]
+    },
+    {
+      "member_id": "SEN_BLACKBURN_M",
+      "full_name": "Marsha Blackburn",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Tennessee",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Marsha Blackburn",
+        "Sen. Blackburn",
+        "Senator Marsha Blackburn",
+        "Sen. Marsha Blackburn",
+        "Senator Blackburn"
+      ]
+    },
+    {
+      "member_id": "SEN_SCHMITT_E",
+      "full_name": "Eric Schmitt",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Missouri",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Eric Schmitt",
+        "Senator Schmitt",
+        "Eric Schmitt",
+        "Sen. Schmitt",
+        "Sen. Eric Schmitt"
+      ]
+    },
+    {
+      "member_id": "SEN_BRITT_K",
+      "full_name": "Katie Boyd Britt",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Alabama",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Katie Boyd Britt",
+        "Sen. Britt",
+        "Senator Britt",
+        "Senator Katie Boyd Britt",
+        "Katie Boyd Britt"
+      ]
+    },
+    {
+      "member_id": "SEN_MOODY_A",
+      "full_name": "Ashley Moody",
+      "title": "Senator",
+      "party": "Republican",
+      "state": "Florida",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Ashley Moody",
+        "Sen. Moody",
+        "Senator Moody",
+        "Senator Ashley Moody",
+        "Ashley Moody"
+      ]
+    },
+    {
+      "member_id": "SEN_DURBIN_R",
+      "full_name": "Richard J. Durbin",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Illinois",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": "Ranking Member",
+      "aliases": [
+        "Richard J. Durbin",
+        "Sen. Richard J. Durbin",
+        "Senator Richard J. Durbin",
+        "Senator Durbin",
+        "Sen. Durbin",
+        "Ranking Member",
+        "Ranking Member Durbin",
+        "Ranking Member Richard J. Durbin"
+      ]
+    },
+    {
+      "member_id": "SEN_WHITEHOUSE_S",
+      "full_name": "Sheldon Whitehouse",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Rhode Island",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sheldon Whitehouse",
+        "Sen. Whitehouse",
+        "Senator Whitehouse",
+        "Sen. Sheldon Whitehouse",
+        "Senator Sheldon Whitehouse"
+      ]
+    },
+    {
+      "member_id": "SEN_KLOBUCHAR_A",
+      "full_name": "Amy Klobuchar",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Minnesota",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Klobuchar",
+        "Amy Klobuchar",
+        "Sen. Amy Klobuchar",
+        "Senator Klobuchar",
+        "Senator Amy Klobuchar"
+      ]
+    },
+    {
+      "member_id": "SEN_COONS_C",
+      "full_name": "Christopher A. Coons",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Delaware",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Coons",
+        "Sen. Christopher A. Coons",
+        "Sen. Coons",
+        "Senator Christopher A. Coons",
+        "Christopher A. Coons"
+      ]
+    },
+    {
+      "member_id": "SEN_BLUMENTHAL_R",
+      "full_name": "Richard Blumenthal",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Connecticut",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Senator Blumenthal",
+        "Richard Blumenthal",
+        "Senator Richard Blumenthal",
+        "Sen. Richard Blumenthal",
+        "Sen. Blumenthal"
+      ]
+    },
+    {
+      "member_id": "SEN_HIRONO_M",
+      "full_name": "Mazie K. Hirono",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "Hawaii",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Mazie K. Hirono",
+        "Sen. Mazie K. Hirono",
+        "Sen. Hirono",
+        "Senator Mazie K. Hirono",
+        "Senator Hirono"
+      ]
+    },
+    {
+      "member_id": "SEN_BOOKER_C",
+      "full_name": "Cory A. Booker",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "New Jersey",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Sen. Booker",
+        "Senator Booker",
+        "Senator Cory A. Booker",
+        "Sen. Cory A. Booker",
+        "Cory A. Booker"
+      ]
+    },
+    {
+      "member_id": "SEN_PADILLA_A",
+      "full_name": "Alex Padilla",
+      "title": "Senator",
+      "party": "Democratic",
+      "state": "California",
+      "chamber": "Senate",
+      "committee": "Committee on the Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Alex Padilla",
+        "Sen. Padilla",
+        "Sen. Alex Padilla",
+        "Senator Alex Padilla",
+        "Senator Padilla"
       ]
     },
     {
@@ -76,365 +391,27 @@
       "aliases": [
         "Sen. Welch",
         "Peter Welch",
+        "Sen. Peter Welch",
         "Senator Welch",
-        "Welch, Peter"
+        "Senator Peter Welch"
       ]
     },
     {
-      "member_id": "SEN_MORENO_B",
-      "full_name": "Bernie Moreno",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Ohio",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Moreno, Bernie",
-        "Sen. Moreno",
-        "Bernie Moreno",
-        "Senator Moreno"
-      ]
-    },
-    {
-      "member_id": "SEN_MOODY_A",
-      "full_name": "Ashley Moody",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Florida",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Moody, Ashley",
-        "Sen. Moody",
-        "Ashley Moody",
-        "Senator Moody"
-      ]
-    },
-    {
-      "member_id": "SEN_CURTIS_J",
-      "full_name": "John R. Curtis",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Utah",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Curtis, John R.",
-        "Sen. Curtis",
-        "Senator Curtis",
-        "John R. Curtis"
-      ]
-    },
-    {
-      "member_id": "SEN_HUSTED_J",
-      "full_name": "Jon Husted",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Ohio",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Husted",
-        "Senator Husted",
-        "Jon Husted",
-        "Husted, Jon"
-      ]
-    },
-    {
-      "member_id": "SEN_SCHMITT_E",
-      "full_name": "Eric Schmitt",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Missouri",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Schmitt, Eric",
-        "Senator Schmitt",
-        "Eric Schmitt",
-        "Sen. Schmitt"
-      ]
-    },
-    {
-      "member_id": "SEN_ALSOBROOKS_A",
-      "full_name": "Angela D. Alsobrooks",
+      "member_id": "SEN_SCHIFF_A",
+      "full_name": "Adam B. Schiff",
       "title": "Senator",
       "party": "Democratic",
-      "state": "Maryland",
+      "state": "California",
       "chamber": "Senate",
       "committee": "Committee on the Judiciary",
       "subcommittee": null,
       "role": null,
       "aliases": [
-        "Alsobrooks, Angela D.",
-        "Senator Alsobrooks",
-        "Angela D. Alsobrooks",
-        "Sen. Alsobrooks"
-      ]
-    },
-    {
-      "member_id": "SEN_BRITT_K",
-      "full_name": "Katie Boyd Britt",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Alabama",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Britt",
-        "Britt, Katie Boyd",
-        "Katie Boyd Britt",
-        "Sen. Britt"
-      ]
-    },
-    {
-      "member_id": "SEN_BUDD_T",
-      "full_name": "Ted Budd",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "North Carolina",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Ted Budd",
-        "Budd, Ted",
-        "Senator Budd",
-        "Sen. Budd"
-      ]
-    },
-    {
-      "member_id": "SEN_SLOTKIN_E",
-      "full_name": "Elissa Slotkin",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Michigan",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Slotkin",
-        "Senator Slotkin",
-        "Elissa Slotkin",
-        "Slotkin, Elissa"
-      ]
-    },
-    {
-      "member_id": "SEN_KIM_A",
-      "full_name": "Andy Kim",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "New Jersey",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Kim",
-        "Kim, Andy",
-        "Senator Kim",
-        "Andy Kim"
-      ]
-    },
-    {
-      "member_id": "SEN_MCCORMICK_D",
-      "full_name": "David McCormick",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Pennsylvania",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. McCormick",
-        "McCormick, David",
-        "Senator McCormick",
-        "David McCormick"
-      ]
-    },
-    {
-      "member_id": "SEN_BANKS_J",
-      "full_name": "Jim Banks",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Indiana",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Banks",
-        "Senator Banks",
-        "Banks, Jim",
-        "Jim Banks"
-      ]
-    },
-    {
-      "member_id": "SEN_YOUNG_T",
-      "full_name": "Todd Young",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Indiana",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Young, Todd",
-        "Sen. Young",
-        "Todd Young",
-        "Senator Young"
-      ]
-    },
-    {
-      "member_id": "SEN_WYDEN_R",
-      "full_name": "Ron Wyden",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Oregon",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Ron Wyden",
-        "Wyden, Ron",
-        "Senator Wyden",
-        "Sen. Wyden"
-      ]
-    },
-    {
-      "member_id": "SEN_WARNOCK_R",
-      "full_name": "Raphael G. Warnock",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Georgia",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Sen. Warnock",
-        "Senator Warnock",
-        "Warnock, Raphael G.",
-        "Raphael G. Warnock"
-      ]
-    },
-    {
-      "member_id": "SEN_WARREN_E",
-      "full_name": "Elizabeth Warren",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Massachusetts",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Warren",
-        "Sen. Warren",
-        "Elizabeth Warren",
-        "Warren, Elizabeth"
-      ]
-    },
-    {
-      "member_id": "SEN_WHITEHOUSE_S",
-      "full_name": "Sheldon Whitehouse",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Rhode Island",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Whitehouse, Sheldon",
-        "Sheldon Whitehouse",
-        "Sen. Whitehouse",
-        "Senator Whitehouse"
-      ]
-    },
-    {
-      "member_id": "SEN_WARNER_M",
-      "full_name": "Mark R. Warner",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Virginia",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Mark R. Warner",
-        "Senator Warner",
-        "Warner, Mark R.",
-        "Sen. Warner"
-      ]
-    },
-    {
-      "member_id": "SEN_WICKER_R",
-      "full_name": "Roger F. Wicker",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Mississippi",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Senator Wicker",
-        "Wicker, Roger F.",
-        "Roger F. Wicker",
-        "Sen. Wicker"
-      ]
-    },
-    {
-      "member_id": "SEN_VAN HOLLEN_C",
-      "full_name": "Chris Van Hollen",
-      "title": "Senator",
-      "party": "Democratic",
-      "state": "Maryland",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Van Hollen, Chris",
-        "Senator Van Hollen",
-        "Sen. Van Hollen",
-        "Chris Van Hollen"
-      ]
-    },
-    {
-      "member_id": "SEN_TUBERVILLE_T",
-      "full_name": "Tommy Tuberville",
-      "title": "Senator",
-      "party": "Republican",
-      "state": "Alabama",
-      "chamber": "Senate",
-      "committee": "Committee on the Judiciary",
-      "subcommittee": null,
-      "role": null,
-      "aliases": [
-        "Tommy Tuberville",
-        "Tuberville, Tommy",
-        "Senator Tuberville",
-        "Sen. Tuberville"
+        "Sen. Schiff",
+        "Senator Schiff",
+        "Sen. Adam B. Schiff",
+        "Adam B. Schiff",
+        "Senator Adam B. Schiff"
       ]
     }
   ]
