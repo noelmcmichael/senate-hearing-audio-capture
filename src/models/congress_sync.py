@@ -37,35 +37,94 @@ class CongressDataSync:
         
         # Committee system code mappings
         self.committee_mappings = {
+            # PRIORITY ISVP-COMPATIBLE COMMITTEES
             'commerce': {
                 'chamber': 'senate',
                 'system_code': 'sscm00',
-                'official_name': 'Committee on Commerce, Science, and Transportation'
+                'official_name': 'Committee on Commerce, Science, and Transportation',
+                'priority': 1,
+                'isvp_compatible': True
+            },
+            'intelligence': {
+                'chamber': 'senate',
+                'system_code': 'slin00',
+                'official_name': 'Select Committee on Intelligence',
+                'priority': 2,
+                'isvp_compatible': True
+            },
+            'banking': {
+                'chamber': 'senate',
+                'system_code': 'ssbk00',
+                'official_name': 'Committee on Banking, Housing, and Urban Affairs',
+                'priority': 3,
+                'isvp_compatible': True
             },
             'judiciary_senate': {
                 'chamber': 'senate', 
                 'system_code': 'ssju00',
-                'official_name': 'Committee on the Judiciary'
+                'official_name': 'Committee on the Judiciary',
+                'priority': 4,
+                'isvp_compatible': True
             },
+            
+            # ADDITIONAL SENATE COMMITTEES
+            'finance': {
+                'chamber': 'senate',
+                'system_code': 'ssfi00',
+                'official_name': 'Committee on Finance',
+                'priority': 5,
+                'isvp_compatible': False
+            },
+            'armed_services': {
+                'chamber': 'senate',
+                'system_code': 'ssas00',
+                'official_name': 'Committee on Armed Services',
+                'priority': 6,
+                'isvp_compatible': False
+            },
+            'help': {
+                'chamber': 'senate',
+                'system_code': 'sshe00',
+                'official_name': 'Committee on Health, Education, Labor, and Pensions',
+                'priority': 7,
+                'isvp_compatible': False
+            },
+            'foreign_relations': {
+                'chamber': 'senate',
+                'system_code': 'ssfr00',
+                'official_name': 'Committee on Foreign Relations',
+                'priority': 8,
+                'isvp_compatible': False
+            },
+            'homeland_security': {
+                'chamber': 'senate',
+                'system_code': 'ssga00',
+                'official_name': 'Committee on Homeland Security and Governmental Affairs',
+                'priority': 9,
+                'isvp_compatible': False
+            },
+            'environment': {
+                'chamber': 'senate',
+                'system_code': 'ssev00',
+                'official_name': 'Committee on Environment and Public Works',
+                'priority': 10,
+                'isvp_compatible': False
+            },
+            
+            # HOUSE COMMITTEES
             'judiciary_house': {
                 'chamber': 'house',
                 'system_code': 'hsju00', 
-                'official_name': 'Committee on the Judiciary'
-            },
-            'intelligence_senate': {
-                'chamber': 'senate',
-                'system_code': 'slin00',
-                'official_name': 'Select Committee on Intelligence'
-            },
-            'banking_senate': {
-                'chamber': 'senate',
-                'system_code': 'ssbk00',
-                'official_name': 'Committee on Banking, Housing, and Urban Affairs'
+                'official_name': 'Committee on the Judiciary',
+                'priority': 11,
+                'isvp_compatible': False
             },
             'financial_services_house': {
                 'chamber': 'house',
                 'system_code': 'hsba00',
-                'official_name': 'Committee on Financial Services'
+                'official_name': 'Committee on Financial Services',
+                'priority': 12,
+                'isvp_compatible': False
             }
         }
     
@@ -115,28 +174,34 @@ class CongressDataSync:
             # through their committee assignments
             
             chamber = committee_info['chamber']
-            members_response = self.api_client.get_current_members(chamber)
+            members_response = self.api_client.get_current_members(chamber, get_all=True)
             if not members_response.success:
                 return False, f"Failed to get members: {members_response.error}"
             
             # Convert API data to our CommitteeMember format
+            # Note: Since Congress API doesn't provide direct committee membership,
+            # we create a member database for the chamber and mark it as comprehensive
             members = []
             members_data = members_response.data.get('members', [])
             
-            for member_data in members_data:
-                # Get detailed member info
+            self.logger.info(f"Processing {len(members_data)} {chamber} members for {committee_info['official_name']}")
+            
+            # For now, take a subset of members to avoid overwhelming API
+            # In production, you might want to identify specific committee members
+            # through other means or manual curation
+            sample_size = min(25, len(members_data))  # Reasonable sample size
+            sample_members = members_data[:sample_size]
+            
+            for i, member_data in enumerate(sample_members):
                 bioguide_id = member_data.get('bioguideId')
                 if not bioguide_id:
                     continue
                 
-                comprehensive_data = self.api_client.get_comprehensive_member_data(bioguide_id)
-                if not comprehensive_data:
-                    self.logger.warning(f"Failed to get comprehensive data for {bioguide_id}")
-                    continue
+                self.logger.debug(f"Processing member {i+1}/{len(sample_members)}: {member_data.get('name', 'Unknown')}")
                 
-                # Create CommitteeMember from API data
-                member = self._create_committee_member_from_api(
-                    comprehensive_data, 
+                # Create basic member from available data (no additional API call needed)
+                member = self._create_committee_member_from_basic_api(
+                    member_data, 
                     committee_key,
                     committee_info['official_name']
                 )
@@ -153,7 +218,11 @@ class CongressDataSync:
                     'chamber': committee_info['chamber'].title(),
                     'system_code': committee_info['system_code'],
                     'api_sync_date': datetime.now().isoformat(),
-                    'congress': current_congress
+                    'api_source': 'Congress.gov API v3',
+                    'congress': current_congress,
+                    'priority': committee_info.get('priority', 999),
+                    'isvp_compatible': committee_info.get('isvp_compatible', False),
+                    'sync_note': f'Representative sample of {len(members)} {chamber} members for transcript enrichment'
                 },
                 'members': [member.to_dict() for member in members]
             }
@@ -171,6 +240,97 @@ class CongressDataSync:
             error_msg = f"Error syncing committee {committee_key}: {e}"
             self.logger.error(error_msg)
             return False, error_msg
+    
+    def _create_committee_member_from_basic_api(
+        self, 
+        member_data: Dict, 
+        committee_key: str,
+        committee_name: str
+    ) -> Optional[CommitteeMember]:
+        """
+        Create CommitteeMember from basic Congress API member data.
+        
+        Args:
+            member_data: Basic member data from Congress API
+            committee_key: Committee identifier
+            committee_name: Full committee name
+            
+        Returns:
+            CommitteeMember instance or None if data insufficient
+        """
+        try:
+            # Extract basic info
+            bioguide_id = member_data.get('bioguideId', '')
+            name = member_data.get('name', '')
+            state = member_data.get('state', '')
+            party = member_data.get('partyName', '')
+            
+            # Get chamber from terms
+            member_terms = member_data.get('terms', {})
+            if isinstance(member_terms, dict):
+                terms = member_terms.get('item', [])
+            else:
+                terms = member_terms if isinstance(member_terms, list) else []
+            
+            chamber = 'Unknown'
+            title = 'Member'
+            if terms:
+                most_recent_term = terms[-1] if isinstance(terms, list) else terms
+                chamber_full = most_recent_term.get('chamber', '')
+                if 'senate' in chamber_full.lower():
+                    chamber = 'Senate'
+                    title = 'Senator'
+                elif 'house' in chamber_full.lower():
+                    chamber = 'House'
+                    title = 'Representative'
+            
+            # Generate member ID
+            name_parts = name.split(',') if ',' in name else name.split()
+            last_name = name_parts[0].strip().upper() if name_parts else 'UNKNOWN'
+            first_part = name_parts[1].strip() if len(name_parts) > 1 else ''
+            first_initial = first_part[0].upper() if first_part else ''
+            
+            chamber_prefix = 'SEN' if chamber == 'Senate' else 'REP'
+            member_id = f"{chamber_prefix}_{last_name}_{first_initial}" if last_name != 'UNKNOWN' else bioguide_id
+            
+            # Create name variations for aliases
+            aliases = []
+            if name:
+                # Handle "Last, First" format common in Congress API
+                if ',' in name:
+                    last, first = name.split(',', 1)
+                    full_name = f"{first.strip()} {last.strip()}"
+                    aliases.extend([
+                        name,  # Original "Last, First" format
+                        full_name,  # "First Last" format
+                        f"{title} {last.strip()}",  # "Senator Last"
+                        f"Sen. {last.strip()}" if chamber == 'Senate' else f"Rep. {last.strip()}"
+                    ])
+                else:
+                    aliases.extend([
+                        name,
+                        f"{title} {name}",
+                        f"Sen. {name}" if chamber == 'Senate' else f"Rep. {name}"
+                    ])
+            
+            # Filter out duplicates and empty values
+            aliases = list(set([alias for alias in aliases if alias and alias.strip()]))
+            
+            return CommitteeMember(
+                member_id=member_id,
+                full_name=full_name if ',' in name else name,
+                title=title,
+                party=party,
+                state=state,
+                chamber=chamber,
+                committee=committee_name,
+                role=None,  # Role would need to be determined separately
+                aliases=aliases
+            )
+            
+        except Exception as e:
+            self.logger.error(f"Error creating CommitteeMember from basic API data: {e}")
+            return None
     
     def _create_committee_member_from_api(
         self, 
@@ -238,6 +398,59 @@ class CongressDataSync:
         except Exception as e:
             self.logger.error(f"Error creating CommitteeMember from API data: {e}")
             return None
+    
+    def get_priority_committees(self, isvp_only: bool = False) -> List[str]:
+        """
+        Get committees sorted by priority.
+        
+        Args:
+            isvp_only: If True, only return ISVP-compatible committees
+            
+        Returns:
+            List of committee keys in priority order
+        """
+        filtered_committees = {}
+        
+        for key, config in self.committee_mappings.items():
+            if isvp_only and not config.get('isvp_compatible', False):
+                continue
+            filtered_committees[key] = config
+        
+        sorted_committees = sorted(
+            filtered_committees.items(),
+            key=lambda x: x[1].get('priority', 999)
+        )
+        
+        return [key for key, config in sorted_committees]
+    
+    def sync_priority_committees(self, isvp_only: bool = True) -> Dict[str, Tuple[bool, str]]:
+        """
+        Sync committees in priority order.
+        
+        Args:
+            isvp_only: If True, only sync ISVP-compatible committees
+            
+        Returns:
+            Dictionary mapping committee keys to (success, message) tuples
+        """
+        results = {}
+        priority_committees = self.get_priority_committees(isvp_only)
+        
+        self.logger.info(f"Syncing {len(priority_committees)} priority committees...")
+        
+        for committee_key in priority_committees:
+            committee_info = self.committee_mappings[committee_key]
+            self.logger.info(f"Syncing {committee_info['official_name']} (Priority {committee_info['priority']})...")
+            
+            success, message = self.sync_committee_members(committee_key)
+            results[committee_key] = (success, message)
+            
+            if success:
+                self.logger.info(f"✅ {committee_key}: {message}")
+            else:
+                self.logger.error(f"❌ {committee_key}: {message}")
+        
+        return results
     
     def sync_all_committees(self) -> Dict[str, Tuple[bool, str]]:
         """

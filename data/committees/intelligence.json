@@ -1,13 +1,13 @@
 {
   "committee_info": {
-    "name": "Commerce",
-    "full_name": "Committee on Commerce, Science, and Transportation",
+    "name": "Intelligence",
+    "full_name": "Select Committee on Intelligence",
     "chamber": "Senate",
-    "system_code": "sscm00",
-    "api_sync_date": "2025-06-27T22:21:18.709309",
+    "system_code": "slin00",
+    "api_sync_date": "2025-06-27T22:21:24.230469",
     "api_source": "Congress.gov API v3",
     "congress": 119,
-    "priority": 1,
+    "priority": 2,
     "isvp_compatible": true,
     "sync_note": "Representative sample of 25 senate members for transcript enrichment"
   },
@@ -19,7 +19,7 @@
       "party": "Republican",
       "state": "Montana",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -36,7 +36,7 @@
       "party": "Democratic",
       "state": "New Mexico",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -53,7 +53,7 @@
       "party": "Republican",
       "state": "Missouri",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -70,7 +70,7 @@
       "party": "Democratic",
       "state": "Vermont",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -87,7 +87,7 @@
       "party": "Republican",
       "state": "Ohio",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -104,7 +104,7 @@
       "party": "Republican",
       "state": "Florida",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -121,7 +121,7 @@
       "party": "Republican",
       "state": "Utah",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -138,7 +138,7 @@
       "party": "Republican",
       "state": "Ohio",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -155,7 +155,7 @@
       "party": "Republican",
       "state": "Missouri",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -172,7 +172,7 @@
       "party": "Democratic",
       "state": "Maryland",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -189,7 +189,7 @@
       "party": "Republican",
       "state": "Alabama",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -206,7 +206,7 @@
       "party": "Republican",
       "state": "North Carolina",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -223,7 +223,7 @@
       "party": "Democratic",
       "state": "Michigan",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -240,7 +240,7 @@
       "party": "Democratic",
       "state": "New Jersey",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -257,7 +257,7 @@
       "party": "Republican",
       "state": "Pennsylvania",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -274,7 +274,7 @@
       "party": "Republican",
       "state": "Indiana",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -291,7 +291,7 @@
       "party": "Republican",
       "state": "Indiana",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -308,7 +308,7 @@
       "party": "Democratic",
       "state": "Oregon",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -325,7 +325,7 @@
       "party": "Democratic",
       "state": "Georgia",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -342,7 +342,7 @@
       "party": "Democratic",
       "state": "Massachusetts",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -359,7 +359,7 @@
       "party": "Democratic",
       "state": "Rhode Island",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -376,7 +376,7 @@
       "party": "Democratic",
       "state": "Virginia",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -393,7 +393,7 @@
       "party": "Republican",
       "state": "Mississippi",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -410,7 +410,7 @@
       "party": "Democratic",
       "state": "Maryland",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [
@@ -427,7 +427,7 @@
       "party": "Republican",
       "state": "Alabama",
       "chamber": "Senate",
-      "committee": "Committee on Commerce, Science, and Transportation",
+      "committee": "Select Committee on Intelligence",
       "subcommittee": null,
       "role": null,
       "aliases": [

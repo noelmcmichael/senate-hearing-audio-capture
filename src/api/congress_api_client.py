@@ -127,28 +127,80 @@ class CongressAPIClient:
             self.logger.error(error_msg)
             return APIResponse(success=False, error=error_msg)
     
-    def get_current_members(self, chamber: Optional[str] = None, limit: int = 250) -> APIResponse:
+    def get_current_members(self, chamber: Optional[str] = None, limit: int = 250, get_all: bool = False) -> APIResponse:
         """
         Get current members of Congress.
         
         Args:
-            chamber: Optional chamber filter ('house' or 'senate')
-            limit: Number of results to return (max 250)
+            chamber: Optional chamber filter ('house' or 'senate') - applied after retrieval
+            limit: Number of results to return per page (max 250)
+            get_all: If True, retrieve all members across all pages
             
         Returns:
-            APIResponse containing member data
+            APIResponse containing member data, filtered by chamber if specified
         """
-        params = {
-            'currentMember': 'true',
-            'limit': min(limit, 250)
-        }
+        all_members = []
+        offset = 0
         
-        if chamber:
-            endpoint = f"member/{chamber.lower()}"
-        else:
+        while True:
+            params = {
+                'currentMember': 'true',
+                'limit': min(limit, 250),
+                'offset': offset
+            }
+            
             endpoint = "member"
+            response = self._make_request(endpoint, params)
+            
+            if not response.success:
+                return response
+            
+            page_members = response.data.get('members', [])
+            all_members.extend(page_members)
+            
+            # Check if we need to get more pages
+            if not get_all:
+                break
+                
+            pagination = response.data.get('pagination', {})
+            next_url = pagination.get('next')
+            if not next_url or len(page_members) == 0:
+                break
+                
+            offset += len(page_members)
+            self.logger.debug(f"Retrieved {len(all_members)} members so far...")
         
-        return self._make_request(endpoint, params)
+        # Update response with all collected members
+        response.data['members'] = all_members
+        
+        # If chamber filter requested, filter results
+        if chamber and response.success and response.data:
+            chamber_normalized = chamber.lower()
+            filtered_members = []
+            
+            for member in all_members:
+                # Get member's current chamber from terms
+                member_terms = member.get('terms', {})
+                if isinstance(member_terms, dict):
+                    terms = member_terms.get('item', [])
+                else:
+                    terms = member_terms if isinstance(member_terms, list) else []
+                
+                # Check most recent term for chamber
+                if terms:
+                    most_recent_term = terms[-1] if isinstance(terms, list) else terms
+                    member_chamber = most_recent_term.get('chamber', '').lower()
+                    
+                    # Match chamber (Congress API uses 'House of Representatives' and 'Senate')
+                    if (chamber_normalized == 'senate' and member_chamber == 'senate') or \
+                       (chamber_normalized == 'house' and 'house' in member_chamber.lower()):
+                        filtered_members.append(member)
+            
+            # Update response with filtered data
+            response.data['members'] = filtered_members
+            self.logger.debug(f"Filtered {len(all_members)} members to {len(filtered_members)} for chamber '{chamber}'")
+        
+        return response
     
     def get_member_details(self, bioguide_id: str) -> APIResponse:
         """
