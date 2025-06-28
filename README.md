@@ -82,15 +82,14 @@ senate_hearing_audio_capture/
 ```
 
 ## Current Status
-- **Phase**: ✅ PHASE 3 FOUNDATION - METADATA & TRANSCRIPT ENRICHMENT COMPLETE
+- **Phase**: ✅ CONGRESS API INTEGRATION - OFFICIAL DATA SOURCE COMPLETE
 - **Last Updated**: 2025-06-27  
+- **Data Source**: Official Congress.gov API (Library of Congress)
 - **Extraction**: 100% success rate across both Senate ISVP and House YouTube platforms
-- **Committee Coverage**: 6/20 congressional committees (30% coverage)
-  - Senate: Commerce, Intelligence, Banking, Judiciary (ISVP)
-  - House: Judiciary, Financial Services (YouTube)
+- **Committee Coverage**: Scalable to all 535+ congressional members via API
 - **Platform Support**: Hybrid orchestrator with intelligent detection
-- **Metadata System**: Congressional member/witness identification (100% test success)
-- **Transcript Enrichment**: Speaker identification and context annotation ready
+- **Metadata System**: Government-verified congressional data with secure API integration
+- **Transcript Enrichment**: Official bioguide IDs and verified member information
 - **Dashboard**: React-based monitoring system with real-time metrics
 
 ## Dependencies
@@ -101,12 +100,21 @@ senate_hearing_audio_capture/
 
 ## Usage
 
-### Phase 3: Enhanced Capture with Metadata (Recommended)
+### Congress API Integration (Latest)
 ```bash
-# Hybrid capture with metadata enrichment
+# Sync with official Congress.gov API
+python sync_congress_data.py
+
+# Test Congress API integration
+python test_congress_api.py
+```
+
+### Phase 3: Enhanced Capture with Official Metadata (Recommended)
+```bash
+# Hybrid capture with official API-synced metadata
 python capture_hybrid.py --url "https://judiciary.house.gov/hearing" --format mp3 --enrich-metadata
 
-# Senate committee (ISVP) with metadata
+# Senate committee (ISVP) with official metadata
 python capture_hybrid.py --url "https://commerce.senate.gov/hearing" --format mp3 --enrich-metadata
 
 # Analysis only (no audio extraction)
@@ -226,8 +234,8 @@ enriched = enricher.enrich_transcript(transcript_text, hearing_id)
 ### Data Structure
 ```
 data/
-├── committees/           # Committee rosters
-│   ├── commerce.json     # Senate Commerce
+├── committees/           # Committee rosters (API-synced)
+│   ├── commerce.json     # Senate Commerce (from Congress API)
 │   └── house_judiciary.json
 ├── hearings/            # Individual hearing records
 │   └── {hearing_id}/
@@ -235,6 +243,61 @@ data/
 │       └── witnesses.json
 ├── members/             # Member cache
 └── witnesses/           # Witness cache
+```
+
+## Congress.gov API Integration
+
+### Official Data Source
+The system now integrates with the **official Congress.gov API** (Library of Congress) for authoritative congressional data:
+
+- **Government-Verified**: Direct from official federal source
+- **Always Current**: Real-time access to latest member information
+- **Comprehensive**: All 535+ members of Congress automatically available
+- **Secure**: API key managed through system keyring
+
+### API Features
+```python
+from api.congress_api_client import CongressAPIClient
+
+# Initialize with secure API key
+client = CongressAPIClient()
+
+# Get current members
+members = client.get_current_members(chamber='senate')
+
+# Get detailed member information
+details = client.get_member_details('C000127')  # Cantwell's bioguide ID
+```
+
+### Data Synchronization
+```bash
+# Sync with official Congress.gov data
+python sync_congress_data.py
+
+# Test API integration
+python test_congress_api.py
+```
+
+### Enhanced Member Data
+```json
+{
+  "committee_info": {
+    "api_sync_date": "2025-06-27T21:50:54.058113",
+    "api_source": "Congress.gov API v3",
+    "congress": 119
+  },
+  "members": [
+    {
+      "member_id": "SEN_LUJÁN",
+      "full_name": "Ben Ray Luján",
+      "bioguide_id": "L000570",
+      "title": "Senator",
+      "party": "D",
+      "state": "NM",
+      "aliases": ["Sen. Luján", "Senator Luján"]
+    }
+  ]
+}
 ```
 
 ### Test Results
