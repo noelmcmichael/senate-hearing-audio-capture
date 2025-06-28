@@ -18,6 +18,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from extractors.extraction_orchestrator import ExtractionOrchestrator, analyze_congressional_url
 from converters.hybrid_converter import HybridConverter
+from models.metadata_loader import MetadataLoader
+from models.hearing import Hearing
 
 
 def setup_logging(log_dir: Path) -> logging.Logger:
@@ -83,6 +85,11 @@ def main():
         '--analyze-only',
         action='store_true',
         help='Only analyze the URL without extracting audio'
+    )
+    parser.add_argument(
+        '--enrich-metadata',
+        action='store_true',
+        help='Create hearing metadata record for future transcript enrichment'
     )
     
     args = parser.parse_args()
@@ -234,6 +241,43 @@ def main():
             json.dump(full_results, f, indent=2)
         
         logger.info(f"💾 Results saved: {results_file}")
+        
+        # Step 7: Create metadata record if requested
+        if args.enrich_metadata and successful_conversions > 0:
+            logger.info("📋 Creating hearing metadata record...")
+            metadata_loader = MetadataLoader()
+            
+            # Extract metadata from successful streams
+            for result in results:
+                if result['result']['success']:
+                    stream_metadata = result['stream']['metadata']
+                    committee = stream_metadata.get('committee', 'Unknown')
+                    
+                    # Generate hearing ID
+                    date_str = datetime.now().strftime("%Y-%m-%d")
+                    safe_title = "".join(c for c in result['stream']['title'] if c.isalnum() or c in ' -').strip()
+                    safe_title = safe_title.replace(' ', '-')[:30]
+                    hearing_id = f"{committee.upper().replace(' ', '')}-{date_str}-{safe_title}".replace('--', '-')
+                    
+                    # Create hearing record
+                    hearing = Hearing(
+                        hearing_id=hearing_id,
+                        title=result['stream']['title'],
+                        committee=committee,
+                        date=date_str,
+                        video_url=result['stream']['url'],
+                        audio_file=str(result['result']['output_path']),
+                        status='captured',
+                        duration_minutes=int(result['result']['duration_seconds'] / 60) if result['result']['duration_seconds'] else None
+                    )
+                    
+                    # Save hearing metadata
+                    try:
+                        metadata_loader.save_hearing(hearing)
+                        logger.info(f"   ✅ Hearing metadata saved: {hearing_id}")
+                        logger.info(f"   📁 Ready for transcript enrichment")
+                    except Exception as e:
+                        logger.warning(f"   ⚠️  Failed to save hearing metadata: {e}")
         
         # Summary
         successful_conversions = sum(1 for r in results if r['result']['success'])

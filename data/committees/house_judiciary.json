@@ -1,0 +1,337 @@
+{
+  "committee_info": {
+    "name": "House Judiciary",
+    "full_name": "House Committee on the Judiciary",
+    "chamber": "House",
+    "jurisdiction": "Constitutional law, civil rights, immigration, federal courts, intellectual property",
+    "website": "https://judiciary.house.gov"
+  },
+  "members": [
+    {
+      "member_id": "REP_JORDAN",
+      "full_name": "Jim Jordan",
+      "title": "Representative",
+      "party": "R",
+      "state": "OH",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": "Chair",
+      "aliases": [
+        "Chair Jordan",
+        "Rep. Jordan",
+        "Mr. Jordan",
+        "Chairman Jordan",
+        "The Chair",
+        "Jim Jordan"
+      ]
+    },
+    {
+      "member_id": "REP_NADLER",
+      "full_name": "Jerrold Nadler",
+      "title": "Representative",
+      "party": "D",
+      "state": "NY",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": "Ranking Member",
+      "aliases": [
+        "Ranking Member Nadler",
+        "Rep. Nadler",
+        "Mr. Nadler",
+        "Jerry Nadler",
+        "The Ranking Member"
+      ]
+    },
+    {
+      "member_id": "REP_JOHNSON_LA",
+      "full_name": "Mike Johnson",
+      "title": "Representative",
+      "party": "R",
+      "state": "LA",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Johnson",
+        "Mr. Johnson",
+        "Mike Johnson"
+      ]
+    },
+    {
+      "member_id": "REP_LOFGREN",
+      "full_name": "Zoe Lofgren",
+      "title": "Representative",
+      "party": "D",
+      "state": "CA",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Lofgren",
+        "Ms. Lofgren",
+        "Zoe Lofgren"
+      ]
+    },
+    {
+      "member_id": "REP_GAETZ",
+      "full_name": "Matt Gaetz",
+      "title": "Representative",
+      "party": "R",
+      "state": "FL",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Gaetz",
+        "Mr. Gaetz",
+        "Matt Gaetz"
+      ]
+    },
+    {
+      "member_id": "REP_JACKSON_LEE",
+      "full_name": "Sheila Jackson Lee",
+      "title": "Representative",
+      "party": "D",
+      "state": "TX",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Jackson Lee",
+        "Ms. Jackson Lee",
+        "Sheila Jackson Lee"
+      ]
+    },
+    {
+      "member_id": "REP_GOHMERT",
+      "full_name": "Louie Gohmert",
+      "title": "Representative",
+      "party": "R",
+      "state": "TX",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Gohmert",
+        "Mr. Gohmert",
+        "Louie Gohmert"
+      ]
+    },
+    {
+      "member_id": "REP_COHEN",
+      "full_name": "Steve Cohen",
+      "title": "Representative",
+      "party": "D",
+      "state": "TN",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Cohen",
+        "Mr. Cohen",
+        "Steve Cohen"
+      ]
+    },
+    {
+      "member_id": "REP_RESCHENTHALER",
+      "full_name": "Guy Reschenthaler",
+      "title": "Representative",
+      "party": "R",
+      "state": "PA",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Reschenthaler",
+        "Mr. Reschenthaler",
+        "Guy Reschenthaler"
+      ]
+    },
+    {
+      "member_id": "REP_JOHNSON_GA",
+      "full_name": "Hank Johnson",
+      "title": "Representative",
+      "party": "D",
+      "state": "GA",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Johnson",
+        "Mr. Johnson",
+        "Hank Johnson"
+      ]
+    },
+    {
+      "member_id": "REP_MCCLINTOCK",
+      "full_name": "Tom McClintock",
+      "title": "Representative",
+      "party": "R",
+      "state": "CA",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. McClintock",
+        "Mr. McClintock",
+        "Tom McClintock"
+      ]
+    },
+    {
+      "member_id": "REP_DEUTCH",
+      "full_name": "Theodore Deutch",
+      "title": "Representative",
+      "party": "D",
+      "state": "FL",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Deutch",
+        "Mr. Deutch",
+        "Ted Deutch",
+        "Theodore Deutch"
+      ]
+    },
+    {
+      "member_id": "REP_BUCK",
+      "full_name": "Ken Buck",
+      "title": "Representative",
+      "party": "R",
+      "state": "CO",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Buck",
+        "Mr. Buck",
+        "Ken Buck"
+      ]
+    },
+    {
+      "member_id": "REP_BASS",
+      "full_name": "Karen Bass",
+      "title": "Representative",
+      "party": "D",
+      "state": "CA",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Bass",
+        "Ms. Bass",
+        "Karen Bass"
+      ]
+    },
+    {
+      "member_id": "REP_GATES",
+      "full_name": "Rick Gates",
+      "title": "Representative",
+      "party": "R",
+      "state": "FL",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Gates",
+        "Mr. Gates",
+        "Rick Gates"
+      ]
+    },
+    {
+      "member_id": "REP_ARMSTRONG",
+      "full_name": "Kelly Armstrong",
+      "title": "Representative",
+      "party": "R",
+      "state": "ND",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Armstrong",
+        "Mr. Armstrong",
+        "Kelly Armstrong"
+      ]
+    },
+    {
+      "member_id": "REP_ESCOBAR",
+      "full_name": "Veronica Escobar",
+      "title": "Representative",
+      "party": "D",
+      "state": "TX",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Escobar",
+        "Ms. Escobar",
+        "Veronica Escobar"
+      ]
+    },
+    {
+      "member_id": "REP_BISHOP",
+      "full_name": "Dan Bishop",
+      "title": "Representative",
+      "party": "R",
+      "state": "NC",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Bishop",
+        "Mr. Bishop",
+        "Dan Bishop"
+      ]
+    },
+    {
+      "member_id": "REP_JONES",
+      "full_name": "Mondaire Jones",
+      "title": "Representative",
+      "party": "D",
+      "state": "NY",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Jones",
+        "Mr. Jones",
+        "Mondaire Jones"
+      ]
+    },
+    {
+      "member_id": "REP_TIFFANY",
+      "full_name": "Tom Tiffany",
+      "title": "Representative",
+      "party": "R",
+      "state": "WI",
+      "chamber": "House",
+      "committee": "House Judiciary",
+      "subcommittee": null,
+      "role": null,
+      "aliases": [
+        "Rep. Tiffany",
+        "Mr. Tiffany",
+        "Tom Tiffany"
+      ]
+    }
+  ]
+}

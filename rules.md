@@ -83,6 +83,7 @@
 ## Change Log
 - **2025-06-27**: Initial rules file created
 - **2025-06-27**: Established project structure and naming conventions
+- **2025-06-27**: Phase 3 - Added congressional metadata system (data/, models/, enrichment/)
 
 ---
 

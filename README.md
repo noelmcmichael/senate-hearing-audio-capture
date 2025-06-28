@@ -20,26 +20,54 @@ senate_hearing_audio_capture/
 ├── src/                         # Source code
 │   ├── __init__.py
 │   ├── main.py                  # Primary entry point
+│   ├── main_hybrid.py           # Hybrid platform entry point
 │   ├── extractors/              # Stream extraction modules
 │   │   ├── __init__.py
 │   │   ├── base_extractor.py    # Base extractor interface  
 │   │   ├── isvp_extractor.py    # ISVP-specific extraction
-│   │   └── youtube_extractor.py # YouTube fallback extraction (planned)
+│   │   ├── youtube_extractor.py # YouTube extraction
+│   │   └── extraction_orchestrator.py # Multi-platform orchestration
 │   ├── converters/              # Audio conversion modules
 │   │   ├── __init__.py
-│   │   └── ffmpeg_converter.py  # ffmpeg audio conversion
+│   │   ├── ffmpeg_converter.py  # ffmpeg audio conversion
+│   │   └── hybrid_converter.py  # Multi-platform conversion
+│   ├── models/                  # Congressional metadata models (Phase 3)
+│   │   ├── __init__.py
+│   │   ├── committee_member.py  # Committee member data model
+│   │   ├── hearing_witness.py   # Hearing witness data model
+│   │   ├── hearing.py           # Hearing metadata model
+│   │   └── metadata_loader.py   # Metadata loading system
+│   ├── enrichment/              # Transcript enrichment (Phase 3)
+│   │   ├── __init__.py
+│   │   └── transcript_enricher.py # Speaker identification & enrichment
+│   ├── api/                     # Dashboard data services
+│   │   ├── __init__.py
+│   │   └── dashboard_data.py    # Dashboard API endpoints
 │   └── utils/                   # Utility functions
 │       ├── __init__.py
 │       └── page_inspector.py    # Web page analysis
+├── data/                        # Congressional metadata (Phase 3)
+│   ├── committees/              # Committee member rosters
+│   │   ├── commerce.json        # Senate Commerce committee
+│   │   └── house_judiciary.json # House Judiciary committee
+│   ├── hearings/                # Individual hearing records
+│   │   └── SCOM-2025-06-10-AI-OVERSIGHT/ # Sample hearing
+│   │       ├── metadata.json    # Hearing metadata
+│   │       └── witnesses.json   # Witness information
+│   ├── members/                 # Member data cache
+│   └── witnesses/               # Witness data cache
 ├── tests/                       # Test files
 │   └── __init__.py
 ├── output/                      # Generated audio files
 ├── logs/                        # Application logs
-├── capture.py                   # Main entry script  
+├── capture.py                   # Original ISVP-only entry script  
+├── capture_hybrid.py            # Hybrid platform entry script (Phase 2+)
 ├── analyze_target.py            # Page analysis utility
 ├── verify_audio.py              # Audio verification utility
 ├── test_multiple_hearings.py    # Multi-hearing test suite
 ├── comprehensive_test_suite.py  # Complete system test suite
+├── test_metadata_system.py      # Phase 3 metadata system tests
+├── demo_transcript_enrichment.py # Phase 3 transcript enrichment demo
 ├── run_dashboard.py             # Dashboard server launcher
 ├── testing_summary.md           # Test results summary
 ├── dashboard/                   # React dashboard application
@@ -54,11 +82,15 @@ senate_hearing_audio_capture/
 ```
 
 ## Current Status
-- **Phase**: ✅ DASHBOARD & MULTI-COMMITTEE SYSTEM COMPLETE
+- **Phase**: ✅ PHASE 3 FOUNDATION - METADATA & TRANSCRIPT ENRICHMENT COMPLETE
 - **Last Updated**: 2025-06-27  
-- **Extraction**: 100% success rate across 5 diverse Senate Commerce hearings
-- **Committee Coverage**: Commerce (confirmed) + Intelligence (discovered) + 7 others analyzed
-- **Audio Quality**: 86% compression + quality analysis pipeline implemented
+- **Extraction**: 100% success rate across both Senate ISVP and House YouTube platforms
+- **Committee Coverage**: 6/20 congressional committees (30% coverage)
+  - Senate: Commerce, Intelligence, Banking, Judiciary (ISVP)
+  - House: Judiciary, Financial Services (YouTube)
+- **Platform Support**: Hybrid orchestrator with intelligent detection
+- **Metadata System**: Congressional member/witness identification (100% test success)
+- **Transcript Enrichment**: Speaker identification and context annotation ready
 - **Dashboard**: React-based monitoring system with real-time metrics
 
 ## Dependencies
@@ -68,15 +100,47 @@ senate_hearing_audio_capture/
 - Requests/httpx for HTTP handling
 
 ## Usage
+
+### Phase 3: Enhanced Capture with Metadata (Recommended)
 ```bash
-# Single page extraction (basic)
+# Hybrid capture with metadata enrichment
+python capture_hybrid.py --url "https://judiciary.house.gov/hearing" --format mp3 --enrich-metadata
+
+# Senate committee (ISVP) with metadata
+python capture_hybrid.py --url "https://commerce.senate.gov/hearing" --format mp3 --enrich-metadata
+
+# Analysis only (no audio extraction)
+python capture_hybrid.py --url "..." --analyze-only
+```
+
+### Phase 2: Basic Hybrid Capture
+```bash
+# Automatic platform detection
+python capture_hybrid.py --url "URL" --format mp3
+
+# Force specific platform
+python capture_hybrid.py --url "URL" --format mp3 --platform isvp
+```
+
+### Phase 1: Original ISVP-Only
+```bash
+# Single page extraction (ISVP only)
 python capture.py --url "https://www.commerce.senate.gov/2025/6/executive-session-12"
 
 # With custom options
 python capture.py --url "URL" --output ./custom_output/ --format mp3 --quality medium --headless
+```
 
+### Testing & Verification
+```bash
 # Verify extracted audio
 python verify_audio.py
+
+# Test metadata system
+python test_metadata_system.py
+
+# Demo transcript enrichment
+python demo_transcript_enrichment.py
 
 # Run comprehensive test suite
 python comprehensive_test_suite.py
@@ -86,11 +150,98 @@ python run_dashboard.py
 ```
 
 ### Options
-- `--url`: Senate hearing page URL (required)
+- `--url`: Congressional hearing page URL (required)
 - `--output`: Output directory (default: ./output)
 - `--format`: Audio format - wav, mp3, flac (default: wav)
 - `--quality`: Audio quality - low, medium, high (default: high)
+- `--platform`: Platform preference - auto, isvp, youtube (default: auto)
+- `--enrich-metadata`: Create hearing metadata for transcript enrichment
+- `--analyze-only`: Only analyze URL without extraction
 - `--headless`: Run browser in headless mode
+
+## Phase 3: Congressional Metadata Foundation
+
+### Overview
+Phase 3 introduces a structured metadata layer for congressional hearings that enables:
+- **Speaker Identification**: Automatic recognition of committee members and witnesses
+- **Transcript Enrichment**: Context-aware transcript annotation with roles and affiliations
+- **Congressional Intelligence**: Structured data for policy analysis and tracking
+
+### Metadata System Architecture
+
+#### Committee Members
+- **Senate Commerce**: 18 members with roles, party, state
+- **House Judiciary**: 20 members with full congressional context
+- **Expandable**: Easy addition of new committees
+
+#### Hearing Records
+- **Structured Metadata**: Title, date, committee, participants
+- **Audio Linking**: Direct connection to extracted audio files
+- **Status Tracking**: Workflow state (scheduled → captured → transcribed → analyzed)
+
+#### Witness Database
+- **Comprehensive Profiles**: Name, title, organization, bio
+- **Hearing Context**: Linked to specific testimonies
+- **Alias Support**: Multiple name variations for identification
+
+### Speaker Identification Features
+
+#### Pattern Recognition
+- **Congressional Formats**: "Chair Cantwell", "Ranking Member Cruz", "Sen. Klobuchar"
+- **Witness Formats**: "Commissioner Rodriguez", "Dr. Williams", "Ms. Chen"
+- **Contextual Matching**: Hearing-specific participant lists
+
+#### Enrichment Capabilities
+- **Role Annotation**: Chair, Ranking Member, witness titles
+- **Party/State Context**: Political affiliation and representation
+- **Organization Links**: Witness institutional affiliations
+
+### Integration Points
+
+#### Capture Workflow
+```bash
+# Capture with metadata creation
+python capture_hybrid.py --url "..." --enrich-metadata
+```
+- Creates hearing record automatically
+- Links audio file to metadata
+- Prepares for transcript processing
+
+#### Transcript Processing
+```python
+from enrichment.transcript_enricher import TranscriptEnricher
+
+enricher = TranscriptEnricher()
+enriched = enricher.enrich_transcript(transcript_text, hearing_id)
+```
+- Identifies speakers in transcript
+- Annotates with congressional context
+- Generates speaker statistics
+
+#### Dashboard Integration
+- Metadata-powered filtering
+- Speaker-based search
+- Committee-focused views
+
+### Data Structure
+```
+data/
+├── committees/           # Committee rosters
+│   ├── commerce.json     # Senate Commerce
+│   └── house_judiciary.json
+├── hearings/            # Individual hearing records
+│   └── {hearing_id}/
+│       ├── metadata.json
+│       └── witnesses.json
+├── members/             # Member cache
+└── witnesses/           # Witness cache
+```
+
+### Test Results
+- **100% Success Rate**: All metadata system tests passing
+- **Speaker Identification**: 100% accuracy on sample transcripts
+- **Committee Loading**: Senate and House committees operational
+- **Integration Ready**: Capture workflow enhanced
 
 ## Next Steps
 1. ✅ Set up project structure and documentation

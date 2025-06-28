@@ -1,0 +1,33 @@
+{
+  "hearing_id": "SCOM-2025-06-10-AI-OVERSIGHT",
+  "title": "Oversight of Artificial Intelligence: Examining the Need for Legislative Action",
+  "committee": "Senate Commerce",
+  "subcommittee": null,
+  "date": "2025-06-10",
+  "members_present": [
+    "SEN_CANTWELL",
+    "SEN_CRUZ",
+    "SEN_KLOBUCHAR",
+    "SEN_BLACKBURN",
+    "SEN_SCHATZ",
+    "SEN_THUNE"
+  ],
+  "witnesses": [
+    "WTN_SARAH_CHEN_OPENAI",
+    "WTN_MICHAEL_RODRIGUEZ_FTC",
+    "WTN_DR_JENNIFER_WILLIAMS_STANFORD"
+  ],
+  "video_url": "https://www-senate-gov-media-srs.akamaized.net/hls/live/2036909/commerce/commerce20250610/master.m3u8",
+  "audio_file": null,
+  "transcript_file": null,
+  "summary": "Comprehensive examination of AI governance, safety standards, and regulatory frameworks with industry leaders and federal officials.",
+  "topics": [
+    "AI Safety",
+    "Regulatory Framework",
+    "Innovation vs Regulation",
+    "Federal Trade Commission Role",
+    "Industry Standards"
+  ],
+  "duration_minutes": null,
+  "status": "scheduled"
+}

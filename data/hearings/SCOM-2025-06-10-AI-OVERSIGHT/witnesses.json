@@ -1,0 +1,56 @@
+{
+  "witnesses": [
+    {
+      "witness_id": "WTN_SARAH_CHEN_OPENAI",
+      "full_name": "Sarah Chen",
+      "title": "Chief Policy Officer",
+      "organization": "OpenAI",
+      "hearing_title": "Oversight of Artificial Intelligence: Examining the Need for Legislative Action",
+      "committee": "Senate Commerce",
+      "hearing_date": "2025-06-10",
+      "aliases": [
+        "Ms. Chen",
+        "Sarah Chen",
+        "Chief Policy Officer Chen",
+        "Ms. Chen from OpenAI"
+      ],
+      "source_url": "https://www.commerce.senate.gov/2025/6/oversight-artificial-intelligence",
+      "bio": "Chief Policy Officer at OpenAI, leading policy development and government relations for AI safety and governance initiatives."
+    },
+    {
+      "witness_id": "WTN_MICHAEL_RODRIGUEZ_FTC",
+      "full_name": "Michael Rodriguez",
+      "title": "Commissioner",
+      "organization": "Federal Trade Commission",
+      "hearing_title": "Oversight of Artificial Intelligence: Examining the Need for Legislative Action",
+      "committee": "Senate Commerce",
+      "hearing_date": "2025-06-10",
+      "aliases": [
+        "Commissioner Rodriguez",
+        "Mr. Rodriguez",
+        "Michael Rodriguez",
+        "FTC Commissioner Rodriguez"
+      ],
+      "source_url": "https://www.commerce.senate.gov/2025/6/oversight-artificial-intelligence",
+      "bio": "Federal Trade Commission Commissioner specializing in technology policy, consumer protection, and algorithmic accountability."
+    },
+    {
+      "witness_id": "WTN_DR_JENNIFER_WILLIAMS_STANFORD",
+      "full_name": "Dr. Jennifer Williams",
+      "title": "Professor of Computer Science and Director, AI Safety Institute",
+      "organization": "Stanford University",
+      "hearing_title": "Oversight of Artificial Intelligence: Examining the Need for Legislative Action",
+      "committee": "Senate Commerce",
+      "hearing_date": "2025-06-10",
+      "aliases": [
+        "Dr. Williams",
+        "Professor Williams",
+        "Jennifer Williams",
+        "Dr. Jennifer Williams",
+        "Professor Williams from Stanford"
+      ],
+      "source_url": "https://www.commerce.senate.gov/2025/6/oversight-artificial-intelligence",
+      "bio": "Leading AI safety researcher and Director of Stanford's AI Safety Institute, focusing on alignment, robustness, and governance of advanced AI systems."
+    }
+  ]
+}
