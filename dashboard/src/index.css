@@ -134,3 +134,25 @@ code {
   color: #a78bfa;
   font-weight: 500;
 }
+
+.coverage-stat {
+  text-align: center;
+  padding: 1rem;
+  background: #0f172a;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+.coverage-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 0.25rem;
+}
+
+.coverage-label {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

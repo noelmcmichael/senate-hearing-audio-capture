@@ -105,14 +105,22 @@ class DataService:
             return 'Commerce'
         elif 'judiciary.senate.gov' in url:
             return 'Judiciary'
-        elif 'finance.senate.gov' in url:
-            return 'Finance'
+        elif 'intelligence.senate.gov' in url:
+            return 'Intelligence'
         elif 'banking.senate.gov' in url:
             return 'Banking'
+        elif 'finance.senate.gov' in url:
+            return 'Finance'
         elif 'help.senate.gov' in url:
             return 'HELP'
         elif 'armed-services.senate.gov' in url:
             return 'Armed Services'
+        elif 'foreign.senate.gov' in url:
+            return 'Foreign Relations'
+        elif 'hsgac.senate.gov' in url:
+            return 'Homeland Security'
+        elif 'epw.senate.gov' in url:
+            return 'Environment'
         else:
             return 'Unknown'
     
@@ -148,6 +156,19 @@ class DataService:
             if record.success:
                 committee_stats[record.committee] = committee_stats.get(record.committee, 0) + 1
         
+        # Multi-committee coverage data
+        all_committees = ['Commerce', 'Intelligence', 'Banking', 'Judiciary', 'Finance', 
+                         'Armed Services', 'HELP', 'Foreign Relations', 'Homeland Security', 'Environment']
+        isvp_compatible = ['Commerce', 'Intelligence', 'Banking', 'Judiciary']
+        active_committees = len([c for c in committee_stats.keys() if c in isvp_compatible])
+        
+        committee_coverage = {
+            'total_committees': len(all_committees),
+            'isvp_compatible': len(isvp_compatible),
+            'active_committees': active_committees,
+            'coverage_percentage': round((len(isvp_compatible) / len(all_committees)) * 100, 1)
+        }
+        
         # Recent extractions (last 10)
         recent_extractions = []
         for record in records[:10]:
@@ -172,6 +193,7 @@ class DataService:
                 'avg_compression_ratio': self._calculate_avg_compression()
             },
             'committee_stats': committee_stats,
+            'committee_coverage': committee_coverage,
             'recent_extractions': recent_extractions,
             'last_updated': datetime.now().isoformat()
         }

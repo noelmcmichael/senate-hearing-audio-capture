@@ -27,7 +27,16 @@ const Dashboard = () => {
           avg_compression_ratio: 86.3
         },
         committee_stats: {
-          'Commerce': 5
+          'Commerce': 5,
+          'Banking': 2,
+          'Judiciary': 3,
+          'Intelligence': 1
+        },
+        committee_coverage: {
+          total_committees: 10,
+          isvp_compatible: 4,
+          active_committees: 4,
+          coverage_percentage: 40.0
         },
         recent_extractions: [
           {
@@ -45,6 +54,33 @@ const Dashboard = () => {
             committee: 'Commerce',
             duration_minutes: 101.9,
             file_size_mb: 139.9,
+            format: 'mp3',
+            success: true
+          },
+          {
+            timestamp: '20250627_202000',
+            hearing_name: 'Executive Business Meeting',
+            committee: 'Judiciary',
+            duration_minutes: 45.2,
+            file_size_mb: 62.1,
+            format: 'mp3',
+            success: true
+          },
+          {
+            timestamp: '20250627_201500',
+            hearing_name: 'Semiannual Monetary Policy Report',
+            committee: 'Banking',
+            duration_minutes: 87.3,
+            file_size_mb: 119.8,
+            format: 'mp3',
+            success: true
+          },
+          {
+            timestamp: '20250627_201000',
+            hearing_name: 'Worldwide Threats Assessment',
+            committee: 'Intelligence',
+            duration_minutes: 132.1,
+            file_size_mb: 181.4,
             format: 'mp3',
             success: true
           },
@@ -109,7 +145,7 @@ const Dashboard = () => {
     );
   }
 
-  const { summary, committee_stats, recent_extractions } = data;
+  const { summary, committee_stats, committee_coverage, recent_extractions } = data;
 
   // Prepare chart data
   const committeeChartData = Object.entries(committee_stats).map(([name, count]) => ({
@@ -164,6 +200,52 @@ const Dashboard = () => {
           <div className="stat-label">
             <Zap size={16} style={{ display: 'inline', marginRight: '0.5rem' }} />
             Compression
+          </div>
+        </div>
+      </div>
+
+      {/* Committee Coverage Section */}
+      <div className="card" style={{ marginBottom: '2rem' }}>
+        <h3 style={{ margin: '0 0 1rem 0', color: '#f1f5f9' }}>
+          🏛️ Multi-Committee Coverage (Phase 1)
+        </h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+          <div className="coverage-stat">
+            <div className="coverage-value">{committee_coverage.isvp_compatible}</div>
+            <div className="coverage-label">ISVP Compatible</div>
+          </div>
+          <div className="coverage-stat">
+            <div className="coverage-value">{committee_coverage.active_committees}</div>
+            <div className="coverage-label">Active Committees</div>
+          </div>
+          <div className="coverage-stat">
+            <div className="coverage-value">{committee_coverage.coverage_percentage}%</div>
+            <div className="coverage-label">Senate Coverage</div>
+          </div>
+          <div className="coverage-stat">
+            <div className="coverage-value">{committee_coverage.total_committees}</div>
+            <div className="coverage-label">Total Committees</div>
+          </div>
+        </div>
+        
+        <div style={{ marginTop: '1.5rem' }}>
+          <h4 style={{ color: '#10b981', marginBottom: '0.5rem' }}>✅ Supported Committees:</h4>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {Object.keys(committee_stats).map((committee, index) => (
+              <span 
+                key={committee}
+                style={{
+                  backgroundColor: COLORS[index % COLORS.length],
+                  color: 'white',
+                  padding: '0.25rem 0.75rem',
+                  borderRadius: '12px',
+                  fontSize: '0.875rem',
+                  fontWeight: '500'
+                }}
+              >
+                {committee}
+              </span>
+            ))}
           </div>
         </div>
       </div>
