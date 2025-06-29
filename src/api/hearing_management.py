@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 from .database_enhanced import get_enhanced_db
 from ..sync.sync_orchestrator import SyncOrchestrator
-from ..sync.deduplication_engine import HearingDeduplicator
+from ..sync.deduplication_engine import DeduplicationEngine
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ class HearingManagementAPI:
     def __init__(self):
         self.db = get_enhanced_db()
         self.sync_orchestrator = SyncOrchestrator()
-        self.deduplicator = HearingDeduplicator()
+        self.deduplicator = DeduplicationEngine()
     
     def get_hearing_queue(self, 
                          committee_codes: Optional[List[str]] = None,
@@ -129,15 +129,16 @@ class HearingManagementAPI:
             for row in cursor.fetchall():
                 hearing = dict(row)
                 
-                # Parse JSON fields
-                if hearing['streams']:
+                # Parse JSON fields (handle missing fields gracefully)
+                if hearing.get('streams'):
                     hearing['streams'] = eval(hearing['streams']) if hearing['streams'] != '{}' else {}
-                if hearing['witnesses']:
-                    hearing['witnesses'] = eval(hearing['witnesses']) if hearing['witnesses'] != '[]' else []
-                if hearing['documents']:
-                    hearing['documents'] = eval(hearing['documents']) if hearing['documents'] != '[]' else []
-                if hearing['external_urls']:
-                    hearing['external_urls'] = eval(hearing['external_urls']) if hearing['external_urls'] != '[]' else []
+                else:
+                    hearing['streams'] = {}
+                    
+                # Handle optional fields that may not exist in demo database
+                hearing['witnesses'] = eval(hearing['witnesses']) if hearing.get('witnesses') and hearing['witnesses'] != '[]' else []
+                hearing['documents'] = eval(hearing['documents']) if hearing.get('documents') and hearing['documents'] != '[]' else []
+                hearing['external_urls'] = eval(hearing['external_urls']) if hearing.get('external_urls') and hearing['external_urls'] != '[]' else []
                 
                 # Add computed fields
                 hearing['has_streams'] = bool(hearing['streams'])
@@ -202,10 +203,13 @@ class HearingManagementAPI:
             
             hearing = dict(row)
             
-            # Parse JSON fields
+            # Parse JSON fields (handle missing fields gracefully)
             for field in ['streams', 'witnesses', 'documents', 'external_urls']:
-                if hearing[field]:
+                if hearing.get(field):
                     hearing[field] = eval(hearing[field]) if hearing[field] not in ['{}', '[]'] else ([] if field != 'streams' else {})
+                else:
+                    # Set default values for missing fields
+                    hearing[field] = [] if field != 'streams' else {}
             
             # Add computed fields
             hearing['has_streams'] = bool(hearing['streams'])

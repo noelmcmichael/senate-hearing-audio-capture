@@ -1,6 +1,6 @@
 {
   "phase": "Phase 7B - Enhanced UI/UX Workflows",
-  "demo_date": "2025-06-28T11:00:07.752674",
+  "demo_date": "2025-06-29T06:39:31.682326",
   "database_path": "data/demo_enhanced_ui.db",
   "features_demonstrated": [
     "Automated hearing discovery and synchronization",
@@ -12,41 +12,41 @@
     "Alert system with auto-resolution"
   ],
   "data_summary": {
-    "hearings_unified": 5,
-    "user_sessions": 4,
-    "review_assignments": 4,
-    "system_alerts": 3,
-    "quality_metrics": 4,
-    "sync_status": 3
+    "hearings_unified": 10,
+    "user_sessions": 8,
+    "review_assignments": 8,
+    "system_alerts": 6,
+    "quality_metrics": 8,
+    "sync_status": 6
   },
   "review_queue_status": {
-    "completed": 1,
-    "in_progress": 1,
-    "pending": 2
+    "completed": 2,
+    "in_progress": 2,
+    "pending": 4
   },
   "active_alerts_by_severity": {
-    "high": 1,
-    "medium": 2
+    "high": 2,
+    "medium": 4
   },
   "committee_coverage": {
     "HJUD": {
-      "hearing_count": 1,
+      "hearing_count": 2,
       "avg_confidence": 0.68
     },
     "SBAN": {
-      "hearing_count": 1,
+      "hearing_count": 2,
       "avg_confidence": 0.91
     },
     "SCOM": {
-      "hearing_count": 1,
+      "hearing_count": 2,
       "avg_confidence": 0.95
     },
     "SSCI": {
-      "hearing_count": 1,
+      "hearing_count": 2,
       "avg_confidence": 0.72
     },
     "SSJU": {
-      "hearing_count": 1,
+      "hearing_count": 2,
       "avg_confidence": 0.87
     }
   }

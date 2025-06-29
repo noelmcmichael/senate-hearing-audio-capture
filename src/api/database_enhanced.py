@@ -467,4 +467,8 @@ class EnhancedUIDatabase(UnifiedHearingDatabase):
 # Convenience function to get database instance
 def get_enhanced_db() -> EnhancedUIDatabase:
     """Get singleton enhanced database instance"""
+    # Use demo database if it exists, otherwise default
+    demo_db_path = "data/demo_enhanced_ui.db"
+    if Path(demo_db_path).exists():
+        return EnhancedUIDatabase(demo_db_path)
     return EnhancedUIDatabase()
