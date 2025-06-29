@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { StatusIndicator, StatusManager } from '../status';
 import './CommitteeDetail.css';
 
 const CommitteeDetail = ({ committee, onBack }) => {
@@ -7,6 +8,12 @@ const CommitteeDetail = ({ committee, onBack }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('hearings');
+  
+  // Status management state
+  const [statusModalOpen, setStatusModalOpen] = useState(false);
+  const [selectedHearing, setSelectedHearing] = useState(null);
+  const [selectedHearings, setSelectedHearings] = useState([]);
+  const [statusFilter, setStatusFilter] = useState('all');
 
   useEffect(() => {
     if (committee) {
@@ -64,6 +71,38 @@ const CommitteeDetail = ({ committee, onBack }) => {
     if (confidence >= 0.9) return '#4CAF50';
     if (confidence >= 0.8) return '#FF9800';
     return '#f44336';
+  };
+
+  // Status management functions
+  const handleStatusClick = (hearing) => {
+    setSelectedHearing(hearing);
+    setSelectedHearings([]);
+    setStatusModalOpen(true);
+  };
+
+  const handleBulkStatusUpdate = () => {
+    if (selectedHearings.length === 0) return;
+    setSelectedHearing(null);
+    setStatusModalOpen(true);
+  };
+
+  const handleStatusUpdate = (result) => {
+    // Refresh committee data after status update
+    fetchCommitteeData();
+    setSelectedHearings([]);
+  };
+
+  const toggleHearingSelection = (hearingId) => {
+    setSelectedHearings(prev => 
+      prev.includes(hearingId) 
+        ? prev.filter(id => id !== hearingId)
+        : [...prev, hearingId]
+    );
+  };
+
+  const getFilteredHearings = () => {
+    if (statusFilter === 'all') return hearings;
+    return hearings.filter(hearing => hearing.status === statusFilter);
   };
 
   if (!committee) {
@@ -136,26 +175,96 @@ const CommitteeDetail = ({ committee, onBack }) => {
       <div className="tab-content">
         {activeTab === 'hearings' && (
           <div className="hearings-tab">
-            {hearings.length === 0 ? (
-              <div className="no-hearings">No hearings found for this committee</div>
+            <div className="hearings-controls">
+              <div className="status-filters">
+                <label>Filter by Status:</label>
+                <select 
+                  value={statusFilter} 
+                  onChange={(e) => setStatusFilter(e.target.value)}
+                  className="status-filter-select"
+                >
+                  <option value="all">All Statuses</option>
+                  <option value="new">New</option>
+                  <option value="queued">Queued</option>
+                  <option value="processing">Processing</option>
+                  <option value="review">Review</option>
+                  <option value="complete">Complete</option>
+                  <option value="error">Error</option>
+                </select>
+              </div>
+              
+              {selectedHearings.length > 0 && (
+                <div className="bulk-actions">
+                  <span className="selection-count">
+                    {selectedHearings.length} hearing{selectedHearings.length > 1 ? 's' : ''} selected
+                  </span>
+                  <button 
+                    className="btn-bulk-action"
+                    onClick={handleBulkStatusUpdate}
+                  >
+                    Update Status
+                  </button>
+                  <button 
+                    className="btn-bulk-clear"
+                    onClick={() => setSelectedHearings([])}
+                  >
+                    Clear Selection
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {getFilteredHearings().length === 0 ? (
+              <div className="no-hearings">
+                {statusFilter === 'all' 
+                  ? 'No hearings found for this committee' 
+                  : `No hearings with status '${statusFilter}'`
+                }
+              </div>
             ) : (
               <div className="hearings-list">
-                {hearings.map((hearing) => (
+                {getFilteredHearings().map((hearing) => (
                   <div key={hearing.id} className="hearing-card">
+                    <div className="hearing-selection">
+                      <input
+                        type="checkbox"
+                        checked={selectedHearings.includes(hearing.id)}
+                        onChange={() => toggleHearingSelection(hearing.id)}
+                        className="hearing-checkbox"
+                      />
+                    </div>
+                    
                     <div className="hearing-header">
                       <div className="hearing-title-row">
                         <h3 className="hearing-title">{hearing.title}</h3>
-                        <div 
-                          className="hearing-confidence"
-                          style={{ backgroundColor: getConfidenceColor(hearing.sync_confidence) }}
-                        >
-                          {Math.round(hearing.sync_confidence * 100)}%
+                        <div className="hearing-badges">
+                          <div 
+                            className="hearing-confidence"
+                            style={{ backgroundColor: getConfidenceColor(hearing.sync_confidence) }}
+                          >
+                            {Math.round(hearing.sync_confidence * 100)}%
+                          </div>
                         </div>
                       </div>
                       <div className="hearing-meta">
                         <span className="hearing-date">{formatDate(hearing.date)}</span>
                         <span className="hearing-type">{hearing.type}</span>
                       </div>
+                    </div>
+                    
+                    <div className="hearing-status-section">
+                      <StatusIndicator 
+                        status={hearing.status || 'new'}
+                        processing_stage={hearing.processing_stage || 'discovered'}
+                        showStage={true}
+                        clickable={true}
+                        onClick={() => handleStatusClick(hearing)}
+                      />
+                      {hearing.assigned_reviewer && (
+                        <div className="reviewer-info">
+                          Reviewer: <span className="reviewer-name">{hearing.assigned_reviewer}</span>
+                        </div>
+                      )}
                     </div>
                     
                     <div className="hearing-details">
@@ -166,14 +275,27 @@ const CommitteeDetail = ({ committee, onBack }) => {
                         </span>
                       </div>
                       <div className="detail-row">
-                        <span className="detail-label">Added:</span>
-                        <span className="detail-value">{formatDateTime(hearing.created_at)}</span>
+                        <span className="detail-label">Status Updated:</span>
+                        <span className="detail-value">
+                          {hearing.status_updated_at ? formatDateTime(hearing.status_updated_at) : 'Never'}
+                        </span>
                       </div>
+                      {hearing.reviewer_notes && (
+                        <div className="detail-row">
+                          <span className="detail-label">Notes:</span>
+                          <span className="detail-value">{hearing.reviewer_notes}</span>
+                        </div>
+                      )}
                     </div>
                     
                     <div className="hearing-actions">
                       <button className="btn-action">View Details</button>
-                      <button className="btn-action secondary">Process Audio</button>
+                      <button 
+                        className="btn-action secondary"
+                        onClick={() => handleStatusClick(hearing)}
+                      >
+                        Update Status
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -234,6 +356,16 @@ const CommitteeDetail = ({ committee, onBack }) => {
           </div>
         )}
       </div>
+
+      {/* Status Management Modal */}
+      <StatusManager
+        isOpen={statusModalOpen}
+        onClose={() => setStatusModalOpen(false)}
+        hearingIds={selectedHearings}
+        currentHearing={selectedHearing}
+        onStatusUpdate={handleStatusUpdate}
+        bulkMode={selectedHearings.length > 0}
+      />
     </div>
   );
 };
