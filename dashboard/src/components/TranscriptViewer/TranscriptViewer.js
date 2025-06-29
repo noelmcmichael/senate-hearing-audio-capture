@@ -24,7 +24,7 @@ const TranscriptViewer = ({ transcriptId }) => {
   const loadTranscript = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8001/transcripts/${transcriptId}`);
+      const response = await fetch(`http://localhost:8001/api/transcripts/${transcriptId}`);
       if (!response.ok) throw new Error('Failed to load transcript');
       
       const data = await response.json();
@@ -50,7 +50,7 @@ const TranscriptViewer = ({ transcriptId }) => {
     try {
       setSaveStatus('saving');
       
-      const response = await fetch(`http://localhost:8001/transcripts/${transcriptId}/corrections`, {
+      const response = await fetch(`http://localhost:8001/api/transcripts/${transcriptId}/corrections`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -91,7 +91,7 @@ const TranscriptViewer = ({ transcriptId }) => {
     try {
       setSaveStatus('saving');
       
-      const response = await fetch(`http://localhost:8001/transcripts/${transcriptId}/bulk-corrections`, {
+      const response = await fetch(`http://localhost:8001/api/transcripts/${transcriptId}/bulk-corrections`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -133,7 +133,7 @@ const TranscriptViewer = ({ transcriptId }) => {
 
   const handleExportTranscript = async () => {
     try {
-      const response = await fetch(`http://localhost:8001/transcripts/${transcriptId}/export`, {
+      const response = await fetch(`http://localhost:8001/api/transcripts/${transcriptId}/export`, {
         method: 'POST'
       });
 
