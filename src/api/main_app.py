@@ -17,6 +17,7 @@ from typing import Dict, Any
 # Import API modules
 from .hearing_management import setup_hearing_management_routes
 from .system_monitoring import setup_system_monitoring_routes
+from .status_management import setup_status_management_routes
 from .database_enhanced import get_enhanced_db
 
 # Import existing dashboard data API
@@ -425,6 +426,7 @@ class EnhancedUIApp:
         # Setup component API routes
         setup_hearing_management_routes(self.app)
         setup_system_monitoring_routes(self.app)
+        setup_status_management_routes(self.app)
     
     def _setup_static_files(self):
         """Setup static file serving for React app"""
