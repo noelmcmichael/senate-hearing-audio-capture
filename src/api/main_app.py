@@ -122,6 +122,77 @@ class EnhancedUIApp:
             """Legacy transcript content endpoint"""
             return self.dashboard_api.get_transcript_content(transcript_id)
         
+        # Enhanced API endpoints (with /api prefix)
+        @self.app.get("/api/transcripts")
+        async def get_api_transcripts():
+            """Get list of transcripts (API version)"""
+            try:
+                return self.dashboard_api.get_transcripts()
+            except Exception as e:
+                logger.error(f"Error getting transcripts: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": "Failed to load transcripts", "detail": str(e)}
+                )
+        
+        @self.app.get("/api/transcripts/{transcript_id}")
+        async def get_api_transcript_content(transcript_id: str):
+            """Get specific transcript content (API version)"""
+            try:
+                return self.dashboard_api.get_transcript_content(transcript_id)
+            except Exception as e:
+                logger.error(f"Error getting transcript {transcript_id}: {e}")
+                return JSONResponse(
+                    status_code=404,
+                    content={"error": "Transcript not found", "detail": str(e)}
+                )
+        
+        @self.app.get("/api/committees")
+        async def get_committees():
+            """Get committee statistics and hearing counts"""
+            try:
+                # Get committee stats from database
+                cursor = self.db.connection.execute("""
+                    SELECT 
+                        committee_code,
+                        COUNT(*) as hearing_count,
+                        MAX(hearing_date) as latest_hearing,
+                        AVG(sync_confidence) as avg_confidence
+                    FROM hearings_unified 
+                    GROUP BY committee_code
+                    ORDER BY hearing_count DESC
+                """)
+                
+                committees = []
+                committee_names = {
+                    'SCOM': 'Commerce, Science, and Transportation',
+                    'SSCI': 'Intelligence',
+                    'SBANK': 'Banking, Housing, and Urban Affairs', 
+                    'SJUD': 'Judiciary'
+                }
+                
+                for row in cursor.fetchall():
+                    committees.append({
+                        'code': row[0],
+                        'name': committee_names.get(row[0], row[0]),
+                        'hearing_count': row[1],
+                        'latest_hearing': row[2],
+                        'avg_confidence': round(row[3], 2) if row[3] else 0
+                    })
+                
+                return {
+                    'committees': committees,
+                    'total_committees': len(committees),
+                    'total_hearings': sum(c['hearing_count'] for c in committees)
+                }
+                
+            except Exception as e:
+                logger.error(f"Error getting committees: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": "Failed to load committees", "detail": str(e)}
+                )
+        
         # Enhanced API endpoints
         @self.app.get("/api/overview")
         async def get_system_overview():

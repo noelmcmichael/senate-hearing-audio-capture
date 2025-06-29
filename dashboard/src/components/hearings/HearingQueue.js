@@ -86,7 +86,7 @@ const HearingQueue = ({ onViewDetails, onTriggerCapture }) => {
         params.append('date_from', dateFrom.toISOString().split('T')[0]);
       }
 
-      const response = await fetch(`/api/hearings/queue?${params}`);
+      const response = await fetch(`http://localhost:8001/api/hearings/queue?${params}`);
       
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);

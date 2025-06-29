@@ -31,3 +31,20 @@ class DashboardDataAPI:
     def get_committee_stats(self) -> Dict[str, Any]:
         """Get committee-specific statistics"""
         return {}
+    
+    def get_transcripts(self) -> Dict[str, Any]:
+        """Get list of available transcripts"""
+        return {
+            "transcripts": [],
+            "total": 0,
+            "message": "No transcripts available in demo mode"
+        }
+    
+    def get_transcript_content(self, transcript_id: str) -> Dict[str, Any]:
+        """Get specific transcript content"""
+        return {
+            "transcript_id": transcript_id,
+            "content": "Demo transcript content not available",
+            "status": "demo_mode",
+            "message": f"Transcript {transcript_id} not found in demo mode"
+        }

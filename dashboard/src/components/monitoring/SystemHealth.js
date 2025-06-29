@@ -37,7 +37,7 @@ const SystemHealth = ({ onResolveAlert, onViewDetails }) => {
 
   const fetchHealthData = async () => {
     try {
-      const response = await fetch('/api/system/health?include_details=true');
+      const response = await fetch('http://localhost:8001/api/system/health?include_details=true');
       
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);

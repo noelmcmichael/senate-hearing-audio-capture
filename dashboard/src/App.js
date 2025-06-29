@@ -15,7 +15,7 @@ const TranscriptList = ({ onViewTranscript }) => {
 
   const fetchTranscripts = async () => {
     try {
-      const response = await fetch('http://localhost:8001/transcripts');
+      const response = await fetch('http://localhost:8001/api/transcripts');
       if (response.ok) {
         const data = await response.json();
         setTranscripts(data.transcripts || []);
