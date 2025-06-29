@@ -166,9 +166,10 @@ class EnhancedUIApp:
                 committees = []
                 committee_names = {
                     'SCOM': 'Commerce, Science, and Transportation',
-                    'SSCI': 'Intelligence',
-                    'SBANK': 'Banking, Housing, and Urban Affairs', 
-                    'SJUD': 'Judiciary'
+                    'SSCI': 'Intelligence', 
+                    'SBAN': 'Banking, Housing, and Urban Affairs',
+                    'SSJU': 'Judiciary',
+                    'HJUD': 'House Judiciary'
                 }
                 
                 for row in cursor.fetchall():
@@ -191,6 +192,140 @@ class EnhancedUIApp:
                 return JSONResponse(
                     status_code=500,
                     content={"error": "Failed to load committees", "detail": str(e)}
+                )
+        
+        @self.app.get("/api/committees/{committee_code}/hearings")
+        async def get_committee_hearings(committee_code: str):
+            """Get all hearings for a specific committee"""
+            try:
+                cursor = self.db.connection.execute("""
+                    SELECT 
+                        id,
+                        committee_code,
+                        hearing_title,
+                        hearing_date,
+                        hearing_type,
+                        sync_confidence,
+                        streams,
+                        created_at,
+                        updated_at
+                    FROM hearings_unified 
+                    WHERE committee_code = ?
+                    ORDER BY hearing_date DESC
+                """, (committee_code.upper(),))
+                
+                hearings = []
+                for row in cursor.fetchall():
+                    hearings.append({
+                        'id': row[0],
+                        'committee_code': row[1],
+                        'title': row[2],
+                        'date': row[3],
+                        'type': row[4],
+                        'sync_confidence': row[5],
+                        'streams': json.loads(row[6]) if row[6] else {},
+                        'created_at': row[7],
+                        'updated_at': row[8]
+                    })
+                
+                committee_names = {
+                    'SCOM': 'Commerce, Science, and Transportation',
+                    'SSCI': 'Intelligence', 
+                    'SBAN': 'Banking, Housing, and Urban Affairs',
+                    'SSJU': 'Judiciary',
+                    'HJUD': 'House Judiciary'
+                }
+                
+                return {
+                    'committee': {
+                        'code': committee_code.upper(),
+                        'name': committee_names.get(committee_code.upper(), committee_code.upper())
+                    },
+                    'hearings': hearings,
+                    'total_hearings': len(hearings)
+                }
+                
+            except Exception as e:
+                logger.error(f"Error getting hearings for committee {committee_code}: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Failed to load hearings for {committee_code}", "detail": str(e)}
+                )
+        
+        @self.app.get("/api/committees/{committee_code}/stats")
+        async def get_committee_stats(committee_code: str):
+            """Get detailed statistics for a specific committee"""
+            try:
+                # Basic stats
+                cursor = self.db.connection.execute("""
+                    SELECT 
+                        COUNT(*) as total_hearings,
+                        MIN(hearing_date) as earliest_hearing,
+                        MAX(hearing_date) as latest_hearing,
+                        AVG(sync_confidence) as avg_confidence,
+                        COUNT(DISTINCT hearing_type) as hearing_types
+                    FROM hearings_unified 
+                    WHERE committee_code = ?
+                """, (committee_code.upper(),))
+                
+                stats_row = cursor.fetchone()
+                
+                # Hearing types breakdown
+                cursor = self.db.connection.execute("""
+                    SELECT 
+                        hearing_type,
+                        COUNT(*) as count
+                    FROM hearings_unified 
+                    WHERE committee_code = ?
+                    GROUP BY hearing_type
+                    ORDER BY count DESC
+                """, (committee_code.upper(),))
+                
+                hearing_types = []
+                for row in cursor.fetchall():
+                    hearing_types.append({
+                        'type': row[0],
+                        'count': row[1]
+                    })
+                
+                # Recent activity (last 30 days)
+                cursor = self.db.connection.execute("""
+                    SELECT COUNT(*) as recent_hearings
+                    FROM hearings_unified 
+                    WHERE committee_code = ? 
+                    AND hearing_date >= date('now', '-30 days')
+                """, (committee_code.upper(),))
+                
+                recent_activity = cursor.fetchone()[0]
+                
+                committee_names = {
+                    'SCOM': 'Commerce, Science, and Transportation',
+                    'SSCI': 'Intelligence', 
+                    'SBAN': 'Banking, Housing, and Urban Affairs',
+                    'SSJU': 'Judiciary',
+                    'HJUD': 'House Judiciary'
+                }
+                
+                return {
+                    'committee': {
+                        'code': committee_code.upper(),
+                        'name': committee_names.get(committee_code.upper(), committee_code.upper())
+                    },
+                    'stats': {
+                        'total_hearings': stats_row[0],
+                        'earliest_hearing': stats_row[1],
+                        'latest_hearing': stats_row[2],
+                        'avg_confidence': round(stats_row[3], 2) if stats_row[3] else 0,
+                        'hearing_types': hearing_types,
+                        'recent_activity': recent_activity
+                    }
+                }
+                
+            except Exception as e:
+                logger.error(f"Error getting stats for committee {committee_code}: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Failed to load stats for {committee_code}", "detail": str(e)}
                 )
         
         # Enhanced API endpoints

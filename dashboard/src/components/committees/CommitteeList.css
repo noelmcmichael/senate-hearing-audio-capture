@@ -1,0 +1,159 @@
+.committee-list {
+  padding: 20px;
+}
+
+.committee-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+.committee-list-header h2 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.summary-stats .stat {
+  color: #666;
+  font-size: 14px;
+}
+
+.summary-stats .stat strong {
+  color: #333;
+  font-size: 16px;
+}
+
+.committee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.committee-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.committee-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-color: #2196F3;
+}
+
+.committee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.committee-code {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2196F3;
+  margin: 0;
+}
+
+.confidence-indicator {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+
+.committee-name {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.committee-stats {
+  margin-bottom: 20px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.stat-value {
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.committee-actions {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+}
+
+.btn-primary {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background: #1976D2;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 16px;
+}
+
+.error {
+  color: #f44336;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .committee-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .summary-stats {
+    gap: 15px;
+  }
+  
+  .committee-grid {
+    grid-template-columns: 1fr;
+  }
+}

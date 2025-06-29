@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp, FileText, MessageSquare, Calendar, Shield, AlertTriangle } from 'lucide-react';
+import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp, FileText, MessageSquare, Calendar, Shield, AlertTriangle, Building } from 'lucide-react';
 import TranscriptViewer from './components/TranscriptViewer/TranscriptViewer';
 import HearingQueue from './components/hearings/HearingQueue';
 import SystemHealth from './components/monitoring/SystemHealth';
+import CommitteeList from './components/committees/CommitteeList';
+import CommitteeDetail from './components/committees/CommitteeDetail';
 
 const TranscriptList = ({ onViewTranscript }) => {
   const [transcripts, setTranscripts] = useState([]);
@@ -144,8 +146,9 @@ const TranscriptList = ({ onViewTranscript }) => {
 };
 
 const App = () => {
-  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard', 'review', 'hearings', 'health'
+  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard', 'review', 'hearings', 'health', 'committees', 'committee-detail'
   const [selectedTranscript, setSelectedTranscript] = useState(null);
+  const [selectedCommittee, setSelectedCommittee] = useState(null);
 
   const handleViewTranscript = (transcriptId) => {
     setSelectedTranscript(transcriptId);
@@ -155,6 +158,7 @@ const App = () => {
   const handleBackToDashboard = () => {
     setCurrentView('dashboard');
     setSelectedTranscript(null);
+    setSelectedCommittee(null);
   };
 
   const handleNavigateToHearings = () => {
@@ -163,6 +167,20 @@ const App = () => {
 
   const handleNavigateToHealth = () => {
     setCurrentView('health');
+  };
+
+  const handleNavigateToCommittees = () => {
+    setCurrentView('committees');
+  };
+
+  const handleSelectCommittee = (committee) => {
+    setSelectedCommittee(committee);
+    setCurrentView('committee-detail');
+  };
+
+  const handleBackToCommittees = () => {
+    setCurrentView('committees');
+    setSelectedCommittee(null);
   };
 
   const handleViewHearingDetails = (hearingId) => {
@@ -257,14 +275,39 @@ const App = () => {
     );
   }
 
+  if (currentView === 'committees') {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
+        <NavigationHeader 
+          title="Committee Browser" 
+          icon={<Building size={24} />}
+          onBack={handleBackToDashboard}
+        />
+        <CommitteeList onSelectCommittee={handleSelectCommittee} />
+      </div>
+    );
+  }
+
+  if (currentView === 'committee-detail' && selectedCommittee) {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
+        <CommitteeDetail 
+          committee={selectedCommittee}
+          onBack={handleBackToCommittees}
+        />
+      </div>
+    );
+  }
+
   return <Dashboard 
     onViewTranscript={handleViewTranscript} 
     onNavigateToHearings={handleNavigateToHearings}
     onNavigateToHealth={handleNavigateToHealth}
+    onNavigateToCommittees={handleNavigateToCommittees}
   />;
 };
 
-const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth }) => {
+const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth, onNavigateToCommittees }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -426,6 +469,24 @@ const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth 
             <p>Phase 7B Enhanced UI with automated hearing discovery and management</p>
           </div>
           <div style={{ display: 'flex', gap: '1rem' }}>
+            <button
+              onClick={onNavigateToCommittees}
+              style={{
+                background: '#8b5cf6',
+                color: '#FFFFFF',
+                border: 'none',
+                padding: '12px 16px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <Building size={18} />
+              Committees
+            </button>
             <button
               onClick={onNavigateToHearings}
               style={{

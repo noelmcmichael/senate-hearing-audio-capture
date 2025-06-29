@@ -1,0 +1,131 @@
+.committee-selector {
+  position: relative;
+  min-width: 300px;
+}
+
+.committee-selector.loading {
+  padding: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+.selector-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  min-height: 40px;
+}
+
+.selector-button:hover {
+  border-color: #2196F3;
+}
+
+.selected-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.committee-code {
+  background: #2196F3;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.dropdown-arrow {
+  color: #666;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-header {
+  padding: 10px 15px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.dropdown-item {
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #f5f5f5;
+}
+
+.dropdown-item.selected {
+  background: #e3f2fd;
+}
+
+.dropdown-item.disabled {
+  padding: 12px 15px;
+  color: #999;
+  cursor: not-allowed;
+  font-style: italic;
+}
+
+.committee-option {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 15px;
+  gap: 4px;
+}
+
+.committee-name {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hearing-count {
+  color: #666;
+  font-size: 12px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .committee-selector {
+    min-width: 250px;
+  }
+  
+  .dropdown-menu {
+    max-height: 200px;
+  }
+}
