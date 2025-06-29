@@ -1,0 +1,327 @@
+/**
+ * StatusManager CSS Styles for Phase 7C Milestone 2
+ * Modal interface styling with professional form design
+ */
+
+.status-manager-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.status-manager-modal {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.status-manager-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.status-manager-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    flex: 1;
+}
+
+.status-manager-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6b7280;
+    padding: 0.25rem;
+    line-height: 1;
+    margin-left: 1rem;
+    transition: color 0.2s ease;
+    border-radius: 0.25rem;
+}
+
+.status-manager-close:hover {
+    color: #374151;
+    background-color: #f3f4f6;
+}
+
+.status-manager-close:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.status-manager-content {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.current-hearing-info {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.current-hearing-info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+.hearing-meta {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.current-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.status-preview {
+    margin-top: 0.5rem;
+}
+
+.status-manager-error {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #dc2626;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: white;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group select:disabled,
+.form-group textarea:disabled {
+    background-color: #f9fafb;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.status-manager-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+}
+
+.btn-secondary,
+.btn-primary {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.btn-secondary {
+    background-color: white;
+    border-color: #d1d5db;
+    color: #374151;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .status-manager-overlay {
+        padding: 0.5rem;
+    }
+    
+    .status-manager-modal {
+        max-width: none;
+    }
+    
+    .status-manager-header {
+        padding: 1rem 1rem 0.75rem;
+    }
+    
+    .status-manager-header h3 {
+        font-size: 1.125rem;
+    }
+    
+    .status-manager-content {
+        padding: 1rem;
+    }
+    
+    .current-hearing-info {
+        padding: 0.75rem;
+    }
+    
+    .status-manager-actions {
+        padding: 0.75rem 1rem;
+        flex-direction: column;
+    }
+    
+    .btn-secondary,
+    .btn-primary {
+        flex: none;
+    }
+    
+    .current-status {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+/* Animation for modal appearance */
+@keyframes modal-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.status-manager-modal {
+    animation: modal-fade-in 0.2s ease-out;
+}
+
+/* Focus management */
+.status-manager-modal {
+    isolation: isolate;
+}
+
+.form-group select:focus,
+.form-group textarea:focus,
+.btn-secondary:focus,
+.btn-primary:focus,
+.status-manager-close:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .status-manager-modal {
+        background: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .status-manager-header {
+        border-bottom-color: #374151;
+    }
+    
+    .status-manager-header h3 {
+        color: #f9fafb;
+    }
+    
+    .current-hearing-info {
+        background-color: #374151;
+        border-color: #4b5563;
+    }
+    
+    .current-hearing-info h4 {
+        color: #f9fafb;
+    }
+    
+    .form-group select,
+    .form-group textarea {
+        background-color: #374151;
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+    
+    .status-manager-actions {
+        background-color: #374151;
+        border-top-color: #4b5563;
+    }
+    
+    .btn-secondary {
+        background-color: #4b5563;
+        border-color: #6b7280;
+        color: #f9fafb;
+    }
+}
