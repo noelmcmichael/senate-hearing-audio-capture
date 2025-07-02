@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StatusIndicator, StatusManager } from '../status';
 import SearchBox from '../search/SearchBox';
 import AdvancedSearch from '../search/AdvancedSearch';
 import SearchResults from '../search/SearchResults';
-import SearchFilters from '../search/SearchFilters';
 import './CommitteeDetail.css';
 
 const CommitteeDetail = ({ committee, onBack }) => {
@@ -29,13 +28,7 @@ const CommitteeDetail = ({ committee, onBack }) => {
   const [searchMetadata, setSearchMetadata] = useState({});
   const [suggestions, setSuggestions] = useState([]);
 
-  useEffect(() => {
-    if (committee) {
-      fetchCommitteeData();
-    }
-  }, [committee]);
-
-  const fetchCommitteeData = async () => {
+  const fetchCommitteeData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -61,7 +54,13 @@ const CommitteeDetail = ({ committee, onBack }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [committee]);
+
+  useEffect(() => {
+    if (committee) {
+      fetchCommitteeData();
+    }
+  }, [committee, fetchCommitteeData]);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -201,14 +200,7 @@ const CommitteeDetail = ({ committee, onBack }) => {
     console.log('Clicked result:', result);
   };
 
-  const handleFilterChange = (filters) => {
-    setSearchFilters(filters);
-    if (Object.keys(filters).length > 0) {
-      handleAdvancedSearch({ ...searchFilters, ...filters });
-    } else if (!searchQuery) {
-      handleSearchClear();
-    }
-  };
+
 
   const fetchSuggestions = async (query) => {
     if (query.length < 2) {
