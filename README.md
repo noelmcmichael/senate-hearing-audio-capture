@@ -22,8 +22,9 @@
 - Real-time search suggestions (<1ms response)
 - **Working processing pipeline**: Hearings progress through stages
 - **Functional capture & details buttons**: Real API integration
+- **Transcript Browser**: 🆕 Browse and view all processed transcripts
 - Background processor with live progress indicators
-- Mock transcript generation for completed hearings
+- Mock transcript generation for completed hearings (14+ files available)
 - Mobile-responsive design
 - Professional UI with dark theme
 
@@ -35,6 +36,8 @@
 - **Capture & Details buttons**: ✅ Fully functional with proper error handling
 
 ### Next Steps Available
+- **Step 2**: Enhanced Details & Progress Visibility (20 min) 
+- **Step 3**: System Health & API Management (10 min)
 - **Milestone 4**: Bulk Operations & Advanced Analytics
 - Global search integration
 - Real audio capture integration (currently simulated)
