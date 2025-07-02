@@ -184,14 +184,18 @@ const App = () => {
   };
 
   const handleViewHearingDetails = async (hearingId) => {
+    console.log('View details clicked for hearing ID:', hearingId);
     try {
       const response = await fetch(`http://localhost:8001/api/hearings/${hearingId}`);
       if (response.ok) {
         const hearingDetails = await response.json();
+        console.log('Hearing details fetched:', hearingDetails);
         // Create a modal or new view for hearing details
-        alert(`Hearing Details:\n\nTitle: ${hearingDetails.hearing_title}\nCommittee: ${hearingDetails.committee_code}\nDate: ${hearingDetails.hearing_date}\nStatus: ${hearingDetails.status}\nStage: ${hearingDetails.processing_stage}\n\n(Full details modal will be implemented next)`);
+        alert(`Hearing Details:\n\nTitle: ${hearingDetails.hearing_title}\nCommittee: ${hearingDetails.committee_code}\nDate: ${hearingDetails.hearing_date}\nStatus: ${hearingDetails.status}\nStage: ${hearingDetails.processing_stage}\n\nStreams: ${JSON.stringify(hearingDetails.streams)}\nConfidence: ${hearingDetails.sync_confidence}\n\n(Full details modal will be implemented next)`);
       } else {
-        throw new Error('Failed to fetch hearing details');
+        const errorData = await response.json();
+        console.error('API error response:', errorData);
+        throw new Error(errorData.detail || `HTTP ${response.status}: Failed to fetch hearing details`);
       }
     } catch (error) {
       console.error('Error fetching hearing details:', error);
@@ -207,7 +211,7 @@ const App = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          hearing_id: hearingId,
+          hearing_id: String(hearingId),
           priority: 1,
           capture_options: {
             quality: 'high',
@@ -223,7 +227,20 @@ const App = () => {
         window.location.reload();
       } else {
         const errorData = await response.json();
-        throw new Error(errorData.detail || 'Failed to trigger capture');
+        let errorMessage = 'Failed to trigger capture';
+        
+        if (errorData.detail) {
+          if (Array.isArray(errorData.detail)) {
+            // Handle Pydantic validation errors
+            errorMessage = errorData.detail.map(err => `${err.loc.join('.')}: ${err.msg}`).join('\n');
+          } else if (typeof errorData.detail === 'string') {
+            errorMessage = errorData.detail;
+          } else {
+            errorMessage = JSON.stringify(errorData.detail);
+          }
+        }
+        
+        throw new Error(errorMessage);
       }
     } catch (error) {
       console.error('Error triggering capture:', error);
