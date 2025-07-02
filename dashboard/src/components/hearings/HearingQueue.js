@@ -11,6 +11,7 @@ import {
   MoreVertical,
   ChevronDown
 } from 'lucide-react';
+import CompactPipelineStatus from '../status/CompactPipelineStatus';
 
 const HearingQueue = ({ onViewDetails, onTriggerCapture }) => {
   const [hearings, setHearings] = useState([]);
@@ -117,7 +118,9 @@ const HearingQueue = ({ onViewDetails, onTriggerCapture }) => {
           review_priority: 8,
           review_status: 'pending',
           sync_confidence: 0.95,
-          capture_readiness: { score: 0.85, recommendation: 'Ready for immediate capture' }
+          capture_readiness: { score: 0.85, recommendation: 'Ready for immediate capture' },
+          processing_stage: 'transcribed',
+          status: 'processing'
         },
         {
           id: '2',
@@ -131,7 +134,9 @@ const HearingQueue = ({ onViewDetails, onTriggerCapture }) => {
           review_priority: 5,
           review_status: 'in_progress',
           sync_confidence: 0.78,
-          capture_readiness: { score: 0.45, recommendation: 'Not recommended for capture' }
+          capture_readiness: { score: 0.45, recommendation: 'Not recommended for capture' },
+          processing_stage: 'captured',
+          status: 'review'
         }
       ]);
     } finally {
@@ -473,6 +478,17 @@ const HearingQueue = ({ onViewDetails, onTriggerCapture }) => {
                           {hearing.has_streams ? <CheckCircle size={16} /> : <AlertCircle size={16} />}
                           {hearing.has_streams ? `${Object.keys(hearing.streams).length} available` : 'None found'}
                         </div>
+                      </div>
+
+                      {/* Pipeline Status */}
+                      <div>
+                        <div style={{ color: '#888', fontSize: '0.875rem' }}>Pipeline Status</div>
+                        <CompactPipelineStatus 
+                          stage={hearing.processing_stage} 
+                          status={hearing.status}
+                          showLabel={true}
+                          size={14}
+                        />
                       </div>
 
                       {/* Review Status */}

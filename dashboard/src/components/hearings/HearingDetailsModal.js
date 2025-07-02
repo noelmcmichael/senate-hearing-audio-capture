@@ -11,6 +11,7 @@ import {
   PlayCircle,
   Download
 } from 'lucide-react';
+import PipelineStatusIndicator from '../status/PipelineStatusIndicator';
 
 const HearingDetailsModal = ({ hearing, isOpen, onClose }) => {
   if (!isOpen || !hearing) {
@@ -269,6 +270,19 @@ const HearingDetailsModal = ({ hearing, isOpen, onClose }) => {
               </div>
             </div>
           )}
+
+          {/* Pipeline Status */}
+          <div style={{ marginBottom: '24px' }}>
+            <h4 style={{
+              color: '#4ECDC4',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              margin: '0 0 12px 0'
+            }}>
+              Processing Pipeline Status
+            </h4>
+            <PipelineStatusIndicator hearingId={hearing.id} />
+          </div>
 
           {/* Technical Details */}
           <div style={{

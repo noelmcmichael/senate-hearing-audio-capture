@@ -23,6 +23,13 @@
 - Real-time search suggestions (<1ms response)
 - **Working processing pipeline**: Hearings progress through stages
 - **Functional capture & details buttons**: Real API integration
+- **Professional hearing details modal**: Complete hearing information display
+  
+### Current UX Improvements (Step 2/3) 🔄
+- ✅ **Step 2.1**: Enhanced Details & Progress Visibility - Professional Modal (Complete)
+- 🔄 **Step 2.2**: Real-time Pipeline Status Indicators (In Progress)
+- 📋 **Step 2.3**: Processing Progress Visualization (Planned)
+- 📋 **Step 3**: System Health & API Management (Planned)
 - **Transcript Browser**: 🆕 Browse and view all processed transcripts
 - Background processor with live progress indicators
 - Mock transcript generation for completed hearings (14+ files available)

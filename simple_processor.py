@@ -42,7 +42,7 @@ class SimpleProcessor:
         cursor = conn.execute("""
             SELECT id, hearing_title, committee_code, status, processing_stage
             FROM hearings_unified 
-            WHERE status IN ('queued', 'processing') 
+            WHERE status IN ('queued', 'processing', 'new', 'review') 
             AND processing_stage IN ('discovered', 'analyzed', 'captured', 'transcribed', 'reviewed')
             ORDER BY created_at ASC
             LIMIT 3
