@@ -221,6 +221,13 @@ const App = () => {
     setSelectedHearing(null);
   };
 
+  const handleViewTranscriptFromModal = (hearingId) => {
+    // Close the modal and navigate to transcripts
+    setShowHearingDetails(false);
+    setSelectedHearing(null);
+    setCurrentView('transcripts');
+  };
+
   const handleTriggerCapture = async (hearingId) => {
     try {
       const response = await fetch(`http://localhost:8001/api/hearings/${hearingId}/capture?user_id=ui_user`, {
@@ -400,6 +407,7 @@ const App = () => {
         isOpen={showHearingDetails}
         onClose={handleCloseHearingDetails}
         onCapture={handleTriggerCapture}
+        onViewTranscript={handleViewTranscriptFromModal}
       />
     </>
   );

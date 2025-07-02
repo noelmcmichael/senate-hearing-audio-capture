@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   Calendar, 
@@ -13,9 +13,17 @@ import {
 } from 'lucide-react';
 import PipelineStatusIndicator from '../status/PipelineStatusIndicator';
 
-const HearingDetailsModal = ({ hearing, isOpen, onClose, onCapture }) => {
+const HearingDetailsModal = ({ hearing, isOpen, onClose, onCapture, onViewTranscript }) => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [captureResult, setCaptureResult] = useState(null);
+  const [transcriptAvailable, setTranscriptAvailable] = useState(false);
+
+  useEffect(() => {
+    if (hearing && hearing.processing_stage) {
+      // Check if transcript should be available based on pipeline stage
+      setTranscriptAvailable(['transcribed', 'reviewed', 'published'].includes(hearing.processing_stage));
+    }
+  }, [hearing]);
 
   if (!isOpen || !hearing) {
     return null;
@@ -513,6 +521,28 @@ const HearingDetailsModal = ({ hearing, isOpen, onClose, onCapture }) => {
             borderTop: '1px solid #444',
             paddingTop: '16px'
           }}>
+            {transcriptAvailable && (
+              <button
+                onClick={() => onViewTranscript && onViewTranscript(hearing.id)}
+                style={{
+                  backgroundColor: '#8A2BE2',
+                  color: '#FFFFFF',
+                  border: 'none',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}
+              >
+                <FileText size={16} />
+                View Transcript
+              </button>
+            )}
+
             {hearing.has_streams && hearing.processing_stage !== 'published' && (
               <button 
                 onClick={handleCapture}
