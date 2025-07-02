@@ -113,7 +113,7 @@ const CompactPipelineStatus = ({ stage, status, showLabel = true, size = 16 }) =
         </span>
       )}
 
-      <style jsx>{`
+      <style>{`
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.5; }

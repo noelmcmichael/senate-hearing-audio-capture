@@ -240,8 +240,8 @@ const App = () => {
       
       if (response.ok) {
         const result = await response.json();
-        alert(`Capture initiated!\n\nHearing: ${result.hearing_title}\nCapture ID: ${result.capture_id}\nStatus: ${result.status}\n\nProcessing will begin shortly...`);
-        // Refresh the hearing queue to show updated status
+        console.log('Capture initiated successfully:', result);
+        return result; // Return the result for the modal to handle
         window.location.reload();
       } else {
         const errorData = await response.json();
@@ -262,7 +262,7 @@ const App = () => {
       }
     } catch (error) {
       console.error('Error triggering capture:', error);
-      alert(`Error starting capture: ${error.message}`);
+      throw error; // Re-throw for the modal to handle
     }
   };
 
@@ -399,6 +399,7 @@ const App = () => {
         hearing={selectedHearing}
         isOpen={showHearingDetails}
         onClose={handleCloseHearingDetails}
+        onCapture={handleTriggerCapture}
       />
     </>
   );

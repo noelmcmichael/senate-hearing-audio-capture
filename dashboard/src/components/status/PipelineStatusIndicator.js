@@ -282,7 +282,7 @@ const PipelineStatusIndicator = ({ hearingId, refreshInterval = 5000 }) => {
       </div>
 
       {/* Add spinning animation CSS */}
-      <style jsx>{`
+      <style>{`
         @keyframes spin {
           to {
             transform: rotate(360deg);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   X, 
   Calendar, 
@@ -13,10 +13,32 @@ import {
 } from 'lucide-react';
 import PipelineStatusIndicator from '../status/PipelineStatusIndicator';
 
-const HearingDetailsModal = ({ hearing, isOpen, onClose }) => {
+const HearingDetailsModal = ({ hearing, isOpen, onClose, onCapture }) => {
+  const [isCapturing, setIsCapturing] = useState(false);
+  const [captureResult, setCaptureResult] = useState(null);
+
   if (!isOpen || !hearing) {
     return null;
   }
+
+  const handleCapture = async () => {
+    if (!onCapture) {
+      alert('Capture functionality not available');
+      return;
+    }
+
+    setIsCapturing(true);
+    setCaptureResult(null);
+
+    try {
+      const result = await onCapture(hearing.id);
+      setCaptureResult({ success: true, message: 'Capture initiated successfully' });
+    } catch (error) {
+      setCaptureResult({ success: false, message: error.message || 'Capture failed' });
+    } finally {
+      setIsCapturing(false);
+    }
+  };
 
   const getStatusBadge = (status, stage) => {
     const statusColors = {
@@ -84,7 +106,7 @@ const HearingDetailsModal = ({ hearing, isOpen, onClose }) => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 1000,
+      zIndex: 9999,
       padding: '20px'
     }}>
       <div style={{
@@ -456,6 +478,32 @@ const HearingDetailsModal = ({ hearing, isOpen, onClose }) => {
             </div>
           )}
 
+          {/* Capture Result Feedback */}
+          {captureResult && (
+            <div style={{
+              backgroundColor: captureResult.success ? '#00FF0020' : '#FF444420',
+              borderRadius: '8px',
+              padding: '12px',
+              marginTop: '16px',
+              border: `1px solid ${captureResult.success ? '#00FF00' : '#FF4444'}`
+            }}>
+              <div style={{
+                color: captureResult.success ? '#00FF00' : '#FF4444',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}>
+                {captureResult.success ? '✅ Success' : '❌ Error'}
+              </div>
+              <div style={{
+                color: '#FFFFFF',
+                fontSize: '13px',
+                marginTop: '4px'
+              }}>
+                {captureResult.message}
+              </div>
+            </div>
+          )}
+
           {/* Action Buttons */}
           <div style={{
             display: 'flex',
@@ -465,23 +513,41 @@ const HearingDetailsModal = ({ hearing, isOpen, onClose }) => {
             borderTop: '1px solid #444',
             paddingTop: '16px'
           }}>
-            {hearing.has_streams && (
-              <button style={{
-                backgroundColor: '#4ECDC4',
-                color: '#1B1C20',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '6px',
-                cursor: 'pointer',
+            {hearing.has_streams && hearing.processing_stage !== 'published' && (
+              <button 
+                onClick={handleCapture}
+                disabled={isCapturing}
+                style={{
+                  backgroundColor: isCapturing ? '#666' : '#4ECDC4',
+                  color: '#1B1C20',
+                  border: 'none',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  cursor: isCapturing ? 'not-allowed' : 'pointer',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  opacity: isCapturing ? 0.7 : 1
+                }}
+              >
+                <PlayCircle size={16} />
+                {isCapturing ? 'Capturing...' : 'Capture Audio'}
+              </button>
+            )}
+
+            {hearing.processing_stage === 'published' && (
+              <div style={{
+                color: '#00FF00',
                 fontSize: '14px',
-                fontWeight: 'bold',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px'
               }}>
-                <PlayCircle size={16} />
-                Capture Audio
-              </button>
+                <CheckCircle size={16} />
+                Already Published
+              </div>
             )}
             
             <button
