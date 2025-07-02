@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StatusIndicator, StatusManager } from '../status';
+import SearchBox from '../search/SearchBox';
+import AdvancedSearch from '../search/AdvancedSearch';
+import SearchResults from '../search/SearchResults';
+import SearchFilters from '../search/SearchFilters';
 import './CommitteeDetail.css';
 
 const CommitteeDetail = ({ committee, onBack }) => {
@@ -14,6 +18,16 @@ const CommitteeDetail = ({ committee, onBack }) => {
   const [selectedHearing, setSelectedHearing] = useState(null);
   const [selectedHearings, setSelectedHearings] = useState([]);
   const [statusFilter, setStatusFilter] = useState('all');
+  
+  // Search state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const [searchFilters, setSearchFilters] = useState({});
+  const [isSearchMode, setIsSearchMode] = useState(false);
+  const [searchMetadata, setSearchMetadata] = useState({});
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     if (committee) {
@@ -105,6 +119,126 @@ const CommitteeDetail = ({ committee, onBack }) => {
     return hearings.filter(hearing => hearing.status === statusFilter);
   };
 
+  // Search functions
+  const handleSearch = async (query) => {
+    if (!query.trim()) {
+      setIsSearchMode(false);
+      setSearchResults([]);
+      return;
+    }
+
+    setSearchLoading(true);
+    setIsSearchMode(true);
+    setSearchQuery(query);
+
+    try {
+      // Add committee filter to search for committee-specific results
+      const searchUrl = `/api/search/hearings?query=${encodeURIComponent(query)}&committee=${committee.code}&limit=20`;
+      const response = await fetch(searchUrl);
+      
+      if (!response.ok) {
+        throw new Error('Search failed');
+      }
+      
+      const data = await response.json();
+      setSearchResults(data.results || []);
+      setSearchMetadata(data.search_metadata || {});
+    } catch (error) {
+      console.error('Search error:', error);
+      setSearchResults([]);
+    } finally {
+      setSearchLoading(false);
+    }
+  };
+
+  const handleAdvancedSearch = async (filters) => {
+    setSearchLoading(true);
+    setIsSearchMode(true);
+    setSearchFilters(filters);
+
+    try {
+      // Add committee filter to advanced search
+      const searchBody = {
+        ...filters,
+        committee: committee.code,
+        limit: 20
+      };
+
+      const response = await fetch('/api/search/advanced', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchBody)
+      });
+      
+      if (!response.ok) {
+        throw new Error('Advanced search failed');
+      }
+      
+      const data = await response.json();
+      setSearchResults(data.results || []);
+      setSearchMetadata(data.search_metadata || {});
+    } catch (error) {
+      console.error('Advanced search error:', error);
+      setSearchResults([]);
+    } finally {
+      setSearchLoading(false);
+    }
+  };
+
+  const handleSearchClear = () => {
+    setSearchQuery('');
+    setSearchResults([]);
+    setSearchFilters({});
+    setSearchMetadata({});
+    setIsSearchMode(false);
+    setSuggestions([]);
+  };
+
+  const handleResultClick = (result) => {
+    // Handle clicking on a search result - could navigate to hearing detail
+    console.log('Clicked result:', result);
+  };
+
+  const handleFilterChange = (filters) => {
+    setSearchFilters(filters);
+    if (Object.keys(filters).length > 0) {
+      handleAdvancedSearch({ ...searchFilters, ...filters });
+    } else if (!searchQuery) {
+      handleSearchClear();
+    }
+  };
+
+  const fetchSuggestions = async (query) => {
+    if (query.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/search/suggest?q=${encodeURIComponent(query)}&limit=5`);
+      if (response.ok) {
+        const data = await response.json();
+        setSuggestions(data.suggestions || []);
+      }
+    } catch (error) {
+      console.error('Error fetching suggestions:', error);
+      setSuggestions([]);
+    }
+  };
+
+  // Debounced suggestion fetching
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (searchQuery) {
+        fetchSuggestions(searchQuery);
+      }
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery]);
+
   if (!committee) {
     return <div className="committee-detail">No committee selected</div>;
   }
@@ -175,23 +309,56 @@ const CommitteeDetail = ({ committee, onBack }) => {
       <div className="tab-content">
         {activeTab === 'hearings' && (
           <div className="hearings-tab">
-            <div className="hearings-controls">
-              <div className="status-filters">
-                <label>Filter by Status:</label>
-                <select 
-                  value={statusFilter} 
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                  className="status-filter-select"
-                >
-                  <option value="all">All Statuses</option>
-                  <option value="new">New</option>
-                  <option value="queued">Queued</option>
-                  <option value="processing">Processing</option>
-                  <option value="review">Review</option>
-                  <option value="complete">Complete</option>
-                  <option value="error">Error</option>
-                </select>
+            {/* Search Interface */}
+            <div className="search-section">
+              <div className="search-header">
+                <h3>Search {committee.name} Hearings</h3>
+                <div className="search-actions">
+                  <button 
+                    className="btn-advanced-search"
+                    onClick={() => setShowAdvancedSearch(true)}
+                  >
+                    Advanced Search
+                  </button>
+                  {isSearchMode && (
+                    <button 
+                      className="btn-clear-search"
+                      onClick={handleSearchClear}
+                    >
+                      Clear Search
+                    </button>
+                  )}
+                </div>
               </div>
+              
+              <SearchBox
+                onSearch={handleSearch}
+                placeholder={`Search ${committee.name} hearings...`}
+                suggestions={suggestions}
+                value={searchQuery}
+                showSuggestions={true}
+              />
+            </div>
+
+            <div className="hearings-controls">
+              {!isSearchMode && (
+                <div className="status-filters">
+                  <label>Filter by Status:</label>
+                  <select 
+                    value={statusFilter} 
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                    className="status-filter-select"
+                  >
+                    <option value="all">All Statuses</option>
+                    <option value="new">New</option>
+                    <option value="queued">Queued</option>
+                    <option value="processing">Processing</option>
+                    <option value="review">Review</option>
+                    <option value="complete">Complete</option>
+                    <option value="error">Error</option>
+                  </select>
+                </div>
+              )}
               
               {selectedHearings.length > 0 && (
                 <div className="bulk-actions">
@@ -214,15 +381,30 @@ const CommitteeDetail = ({ committee, onBack }) => {
               )}
             </div>
 
-            {getFilteredHearings().length === 0 ? (
-              <div className="no-hearings">
-                {statusFilter === 'all' 
-                  ? 'No hearings found for this committee' 
-                  : `No hearings with status '${statusFilter}'`
-                }
-              </div>
+            {/* Search Results or Regular Hearings */}
+            {isSearchMode ? (
+              <SearchResults
+                results={searchResults}
+                totalCount={searchResults.length}
+                searchMetadata={searchMetadata}
+                loading={searchLoading}
+                onResultClick={handleResultClick}
+                onStatusChange={(hearingId, newStatus) => {
+                  setSelectedHearing({ id: hearingId });
+                  setStatusModalOpen(true);
+                }}
+              />
             ) : (
-              <div className="hearings-list">
+              <>
+                {getFilteredHearings().length === 0 ? (
+                  <div className="no-hearings">
+                    {statusFilter === 'all' 
+                      ? 'No hearings found for this committee' 
+                      : `No hearings with status '${statusFilter}'`
+                    }
+                  </div>
+                ) : (
+                  <div className="hearings-list">
                 {getFilteredHearings().map((hearing) => (
                   <div key={hearing.id} className="hearing-card">
                     <div className="hearing-selection">
@@ -299,7 +481,9 @@ const CommitteeDetail = ({ committee, onBack }) => {
                     </div>
                   </div>
                 ))}
-              </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
         )}
@@ -356,6 +540,14 @@ const CommitteeDetail = ({ committee, onBack }) => {
           </div>
         )}
       </div>
+
+      {/* Advanced Search Modal */}
+      <AdvancedSearch
+        isOpen={showAdvancedSearch}
+        onClose={() => setShowAdvancedSearch(false)}
+        onSearch={handleAdvancedSearch}
+        initialFilters={{ committee: committee.code, ...searchFilters }}
+      />
 
       {/* Status Management Modal */}
       <StatusManager
