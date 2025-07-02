@@ -71,7 +71,7 @@ const StatusManager = ({
         try {
             if (bulkMode) {
                 // Bulk update
-                const response = await fetch('/api/hearings/bulk-status', {
+                const response = await fetch('http://localhost:8001/api/hearings/bulk-status', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

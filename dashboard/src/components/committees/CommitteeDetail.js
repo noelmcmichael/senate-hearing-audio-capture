@@ -132,7 +132,7 @@ const CommitteeDetail = ({ committee, onBack }) => {
 
     try {
       // Add committee filter to search for committee-specific results
-      const searchUrl = `/api/search/hearings?query=${encodeURIComponent(query)}&committee=${committee.code}&limit=20`;
+      const searchUrl = `http://localhost:8001/api/search/hearings?query=${encodeURIComponent(query)}&committee=${committee.code}&limit=20`;
       const response = await fetch(searchUrl);
       
       if (!response.ok) {
@@ -163,7 +163,7 @@ const CommitteeDetail = ({ committee, onBack }) => {
         limit: 20
       };
 
-      const response = await fetch('/api/search/advanced', {
+      const response = await fetch('http://localhost:8001/api/search/advanced', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ const CommitteeDetail = ({ committee, onBack }) => {
     }
 
     try {
-      const response = await fetch(`/api/search/suggest?q=${encodeURIComponent(query)}&limit=5`);
+      const response = await fetch(`http://localhost:8001/api/search/suggest?q=${encodeURIComponent(query)}&limit=5`);
       if (response.ok) {
         const data = await response.json();
         setSuggestions(data.suggestions || []);
