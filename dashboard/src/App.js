@@ -4,6 +4,7 @@ import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp, FileText, Mes
 import TranscriptViewer from './components/TranscriptViewer/TranscriptViewer';
 import TranscriptBrowser from './components/transcripts/TranscriptBrowser';
 import HearingQueue from './components/hearings/HearingQueue';
+import HearingDetailsModal from './components/hearings/HearingDetailsModal';
 import SystemHealth from './components/monitoring/SystemHealth';
 import CommitteeList from './components/committees/CommitteeList';
 import CommitteeDetail from './components/committees/CommitteeDetail';
@@ -150,6 +151,8 @@ const App = () => {
   const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard', 'review', 'hearings', 'health', 'committees', 'committee-detail', 'transcripts'
   const [selectedTranscript, setSelectedTranscript] = useState(null);
   const [selectedCommittee, setSelectedCommittee] = useState(null);
+  const [selectedHearing, setSelectedHearing] = useState(null);
+  const [showHearingDetails, setShowHearingDetails] = useState(false);
 
   const handleViewTranscript = (transcriptId) => {
     setSelectedTranscript(transcriptId);
@@ -200,8 +203,8 @@ const App = () => {
       if (response.ok) {
         const hearingDetails = await response.json();
         console.log('Hearing details fetched:', hearingDetails);
-        // Create a modal or new view for hearing details
-        alert(`Hearing Details:\n\nTitle: ${hearingDetails.hearing_title}\nCommittee: ${hearingDetails.committee_code}\nDate: ${hearingDetails.hearing_date}\nStatus: ${hearingDetails.status}\nStage: ${hearingDetails.processing_stage}\n\nStreams: ${JSON.stringify(hearingDetails.streams)}\nConfidence: ${hearingDetails.sync_confidence}\n\n(Full details modal will be implemented next)`);
+        setSelectedHearing(hearingDetails);
+        setShowHearingDetails(true);
       } else {
         const errorData = await response.json();
         console.error('API error response:', errorData);
@@ -211,6 +214,11 @@ const App = () => {
       console.error('Error fetching hearing details:', error);
       alert(`Error loading hearing details: ${error.message}`);
     }
+  };
+
+  const handleCloseHearingDetails = () => {
+    setShowHearingDetails(false);
+    setSelectedHearing(null);
   };
 
   const handleTriggerCapture = async (hearingId) => {
@@ -359,6 +367,7 @@ const App = () => {
         <CommitteeDetail 
           committee={selectedCommittee}
           onBack={handleBackToCommittees}
+          onViewDetails={handleViewHearingDetails}
         />
       </div>
     );
@@ -375,13 +384,24 @@ const App = () => {
     );
   }
 
-  return <Dashboard 
-    onViewTranscript={handleViewTranscript} 
-    onNavigateToHearings={handleNavigateToHearings}
-    onNavigateToHealth={handleNavigateToHealth}
-    onNavigateToCommittees={handleNavigateToCommittees}
-    onNavigateToTranscripts={handleViewTranscriptBrowser}
-  />;
+  return (
+    <>
+      <Dashboard 
+        onViewTranscript={handleViewTranscript} 
+        onNavigateToHearings={handleNavigateToHearings}
+        onNavigateToHealth={handleNavigateToHealth}
+        onNavigateToCommittees={handleNavigateToCommittees}
+        onNavigateToTranscripts={handleViewTranscriptBrowser}
+      />
+      
+      {/* Hearing Details Modal */}
+      <HearingDetailsModal
+        hearing={selectedHearing}
+        isOpen={showHearingDetails}
+        onClose={handleCloseHearingDetails}
+      />
+    </>
+  );
 };
 
 const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth, onNavigateToCommittees, onNavigateToTranscripts }) => {

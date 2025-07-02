@@ -5,7 +5,7 @@ import AdvancedSearch from '../search/AdvancedSearch';
 import SearchResults from '../search/SearchResults';
 import './CommitteeDetail.css';
 
-const CommitteeDetail = ({ committee, onBack }) => {
+const CommitteeDetail = ({ committee, onBack, onViewDetails }) => {
   const [hearings, setHearings] = useState([]);
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -463,7 +463,12 @@ const CommitteeDetail = ({ committee, onBack }) => {
                     </div>
                     
                     <div className="hearing-actions">
-                      <button className="btn-action">View Details</button>
+                      <button 
+                        className="btn-action"
+                        onClick={() => onViewDetails && onViewDetails(hearing.id)}
+                      >
+                        View Details
+                      </button>
                       <button 
                         className="btn-action secondary"
                         onClick={() => handleStatusClick(hearing)}
