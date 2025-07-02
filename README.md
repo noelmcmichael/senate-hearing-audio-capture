@@ -7,7 +7,7 @@
 - **Backend API**: Running on http://localhost:8001 ✅
 - **Frontend Dashboard**: Running on http://localhost:3000 ✅
 - **Background Processor**: Processing hearings through pipeline stages ✅
-- **Database**: `data/demo_enhanced_ui.db` with 10 demo hearings ✅
+- **Database**: `data/demo_enhanced_ui.db` with 32 demo hearings ✅
 - **Compilation**: Clean - all React warnings resolved ✅
 
 ### Milestones Complete ✅
@@ -28,11 +28,11 @@
 - Professional UI with dark theme
 
 ### Pipeline Status (Live) 🔄
-- **Hearing #1**: processing/transcribed (✅ Mock transcript created)
-- **Hearing #2**: processing/analyzed (⏳ Progressing to captured)
-- **Hearing #5**: review/transcribed (📋 Ready for review)
-- **3 hearings** actively processing through stages
+- **32 total hearings** across 5 committees (realistic 2025 Congress simulation)
+- **Committee distribution**: HJUD(8), SCOM(8), SBAN(6), SSCI(5), SSJU(5)
+- **Multiple hearings** actively processing through stages
 - **Processing stages**: discovered → analyzed → captured → transcribed → reviewed → published
+- **Capture & Details buttons**: ✅ Fully functional with proper error handling
 
 ### Next Steps Available
 - **Milestone 4**: Bulk Operations & Advanced Analytics
