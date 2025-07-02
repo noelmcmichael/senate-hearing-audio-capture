@@ -19,6 +19,7 @@ from .hearing_management import setup_hearing_management_routes
 from .system_monitoring import setup_system_monitoring_routes
 from .status_management import setup_status_management_routes
 from .search_management import setup_search_routes
+from .transcript_management import setup_transcript_routes
 from .database_enhanced import get_enhanced_db
 
 # Import existing dashboard data API
@@ -429,6 +430,7 @@ class EnhancedUIApp:
         setup_system_monitoring_routes(self.app)
         setup_status_management_routes(self.app)
         setup_search_routes(self.app)
+        setup_transcript_routes(self.app, self.db)
     
     def _setup_static_files(self):
         """Setup static file serving for React app"""

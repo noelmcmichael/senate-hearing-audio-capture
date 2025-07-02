@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Activity, CheckCircle, Clock, HardDrive, Zap, TrendingUp, FileText, MessageSquare, Calendar, Shield, AlertTriangle, Building } from 'lucide-react';
 import TranscriptViewer from './components/TranscriptViewer/TranscriptViewer';
+import TranscriptBrowser from './components/transcripts/TranscriptBrowser';
 import HearingQueue from './components/hearings/HearingQueue';
 import SystemHealth from './components/monitoring/SystemHealth';
 import CommitteeList from './components/committees/CommitteeList';
@@ -146,7 +147,7 @@ const TranscriptList = ({ onViewTranscript }) => {
 };
 
 const App = () => {
-  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard', 'review', 'hearings', 'health', 'committees', 'committee-detail'
+  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard', 'review', 'hearings', 'health', 'committees', 'committee-detail', 'transcripts'
   const [selectedTranscript, setSelectedTranscript] = useState(null);
   const [selectedCommittee, setSelectedCommittee] = useState(null);
 
@@ -176,6 +177,15 @@ const App = () => {
   const handleSelectCommittee = (committee) => {
     setSelectedCommittee(committee);
     setCurrentView('committee-detail');
+  };
+
+  const handleViewTranscriptBrowser = () => {
+    setCurrentView('transcripts');
+  };
+
+  const handleViewTranscriptFromBrowser = (transcript) => {
+    setSelectedTranscript(transcript);
+    setCurrentView('review');
   };
 
   const handleBackToCommittees = () => {
@@ -354,15 +364,27 @@ const App = () => {
     );
   }
 
+  if (currentView === 'transcripts') {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
+        <TranscriptBrowser 
+          onViewTranscript={handleViewTranscriptFromBrowser}
+          onBack={handleBackToDashboard}
+        />
+      </div>
+    );
+  }
+
   return <Dashboard 
     onViewTranscript={handleViewTranscript} 
     onNavigateToHearings={handleNavigateToHearings}
     onNavigateToHealth={handleNavigateToHealth}
     onNavigateToCommittees={handleNavigateToCommittees}
+    onNavigateToTranscripts={handleViewTranscriptBrowser}
   />;
 };
 
-const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth, onNavigateToCommittees }) => {
+const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth, onNavigateToCommittees, onNavigateToTranscripts }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -559,6 +581,24 @@ const Dashboard = ({ onViewTranscript, onNavigateToHearings, onNavigateToHealth,
             >
               <Calendar size={18} />
               Hearing Queue
+            </button>
+            <button
+              onClick={onNavigateToTranscripts}
+              style={{
+                background: '#8b5cf6',
+                color: '#FFFFFF',
+                border: 'none',
+                padding: '12px 16px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <FileText size={18} />
+              Transcripts
             </button>
             <button
               onClick={onNavigateToHealth}
