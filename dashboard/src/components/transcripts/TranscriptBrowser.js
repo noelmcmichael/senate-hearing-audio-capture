@@ -38,7 +38,7 @@ const TranscriptBrowser = ({ onViewTranscript, onBack }) => {
   const fetchHearingTranscripts = async () => {
     // Fetch hearing-based transcripts (hearing_X_transcript.json files)
     try {
-      const response = await fetch('http://localhost:8001/api/hearings/transcripts');
+      const response = await fetch('http://localhost:8001/api/transcript-browser/hearings');
       if (response.ok) {
         const data = await response.json();
         return data.transcripts || [];

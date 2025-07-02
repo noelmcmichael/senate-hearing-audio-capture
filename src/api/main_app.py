@@ -463,16 +463,16 @@ class EnhancedUIApp:
             session_id = self.db.create_user_session(user_id="demo_user", role="admin")
             logger.info(f"Demo user session created: {session_id}")
             
-            # Create some demo alerts for testing
-            self.db.create_alert(
-                alert_type="system_error",
-                severity="medium",
-                title="Demo Alert: API Rate Limit Approaching",
-                description="Congress.gov API usage at 85% of daily limit",
-                component="api",
-                metadata={"current_usage": 850, "daily_limit": 1000},
-                auto_resolvable=True
-            )
+            # Create some demo alerts for testing (disabled to avoid confusion)
+            # self.db.create_alert(
+            #     alert_type="system_error",
+            #     severity="medium", 
+            #     title="Demo Alert: API Rate Limit Approaching",
+            #     description="Congress.gov API usage at 85% of daily limit",
+            #     component="api",
+            #     metadata={"current_usage": 850, "daily_limit": 1000},
+            #     auto_resolvable=True
+            # )
             
             # Record some demo quality metrics
             self.db.record_quality_metric(
