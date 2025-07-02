@@ -183,14 +183,52 @@ const App = () => {
     setSelectedCommittee(null);
   };
 
-  const handleViewHearingDetails = (hearingId) => {
-    console.log('View hearing details:', hearingId);
-    // TODO: Implement hearing details view
+  const handleViewHearingDetails = async (hearingId) => {
+    try {
+      const response = await fetch(`http://localhost:8001/api/hearings/${hearingId}`);
+      if (response.ok) {
+        const hearingDetails = await response.json();
+        // Create a modal or new view for hearing details
+        alert(`Hearing Details:\n\nTitle: ${hearingDetails.hearing_title}\nCommittee: ${hearingDetails.committee_code}\nDate: ${hearingDetails.hearing_date}\nStatus: ${hearingDetails.status}\nStage: ${hearingDetails.processing_stage}\n\n(Full details modal will be implemented next)`);
+      } else {
+        throw new Error('Failed to fetch hearing details');
+      }
+    } catch (error) {
+      console.error('Error fetching hearing details:', error);
+      alert(`Error loading hearing details: ${error.message}`);
+    }
   };
 
-  const handleTriggerCapture = (hearingId) => {
-    console.log('Trigger capture for hearing:', hearingId);
-    // TODO: Implement capture trigger
+  const handleTriggerCapture = async (hearingId) => {
+    try {
+      const response = await fetch(`http://localhost:8001/api/hearings/${hearingId}/capture?user_id=ui_user`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          hearing_id: hearingId,
+          priority: 1,
+          capture_options: {
+            quality: 'high',
+            format: 'wav'
+          }
+        })
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        alert(`Capture initiated!\n\nHearing: ${result.hearing_title}\nCapture ID: ${result.capture_id}\nStatus: ${result.status}\n\nProcessing will begin shortly...`);
+        // Refresh the hearing queue to show updated status
+        window.location.reload();
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Failed to trigger capture');
+      }
+    } catch (error) {
+      console.error('Error triggering capture:', error);
+      alert(`Error starting capture: ${error.message}`);
+    }
   };
 
   const handleResolveAlert = (alertId) => {
