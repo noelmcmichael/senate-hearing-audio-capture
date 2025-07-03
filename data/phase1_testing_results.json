@@ -1,0 +1,131 @@
+{
+  "phase": "Phase 1: High-Priority ISVP Validation",
+  "start_time": "2025-07-03T11:46:49.005217",
+  "target_hearings": 5,
+  "success_criteria": 0.9,
+  "results": [
+    {
+      "hearing_number": 1,
+      "hearing_id": "SCOM_712d37cb",
+      "hearing_title": "Executive Session 12 - U.S. Senate Committee on Commerce, Science, & Transportat...",
+      "committee": "Commerce, Science, and Transportation",
+      "committee_code": "SCOM",
+      "readiness_score": 0.9800000000000001,
+      "priority_score": 117.4,
+      "processing_start": "2025-07-03T11:46:49.005317",
+      "processing_end": "2025-07-03T11:46:54.020855",
+      "processing_duration_seconds": 5.015538,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_SCOM_712d37cb_1751568409",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SCOM_712d37cb/audio_SCOM_712d37cb.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SCOM_712d37cb/transcript_SCOM_712d37cb.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_SCOM_712d37cb_1751568409.json"
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "hearing_number": 2,
+      "hearing_id": "SCOM_405fdf1b",
+      "hearing_title": "On the Right Track: Modernizing America\u2019s Rail Network - U.S. Senate Committee o...",
+      "committee": "Commerce, Science, and Transportation",
+      "committee_code": "SCOM",
+      "readiness_score": 0.9800000000000001,
+      "priority_score": 117.4,
+      "processing_start": "2025-07-03T11:46:56.025658",
+      "processing_end": "2025-07-03T11:47:01.038385",
+      "processing_duration_seconds": 5.012727,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_SCOM_405fdf1b_1751568416",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SCOM_405fdf1b/audio_SCOM_405fdf1b.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SCOM_405fdf1b/transcript_SCOM_405fdf1b.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_SCOM_405fdf1b_1751568416.json"
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "hearing_number": 3,
+      "hearing_id": "SCOM_35190975",
+      "hearing_title": "WADA Shame: Swimming in Denial Over Chinese Doping - U.S. Senate Committee on Co...",
+      "committee": "Commerce, Science, and Transportation",
+      "committee_code": "SCOM",
+      "readiness_score": 0.9800000000000001,
+      "priority_score": 117.4,
+      "processing_start": "2025-07-03T11:47:03.042966",
+      "processing_end": "2025-07-03T11:47:08.059965",
+      "processing_duration_seconds": 5.016999,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_SCOM_35190975_1751568423",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SCOM_35190975/audio_SCOM_35190975.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SCOM_35190975/transcript_SCOM_35190975.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_SCOM_35190975_1751568423.json"
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "hearing_number": 4,
+      "hearing_id": "HELP_b92f88f2",
+      "hearing_title": "NEXT WEEK: Senate HELP Committee to Hold Hearing on Future of Health Care, Protecting Americans\u2019 Health Privacy",
+      "committee": "Health, Education, Labor and Pensions",
+      "committee_code": "HELP",
+      "readiness_score": 0.9299999999999999,
+      "priority_score": 101.9,
+      "processing_start": "2025-07-03T11:47:10.062997",
+      "processing_end": "2025-07-03T11:47:15.079870",
+      "processing_duration_seconds": 5.016873,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_HELP_b92f88f2_1751568430",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_HELP_b92f88f2/audio_HELP_b92f88f2.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_HELP_b92f88f2/transcript_HELP_b92f88f2.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_HELP_b92f88f2_1751568430.json"
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "hearing_number": 5,
+      "hearing_id": "SAPP_4457153e",
+      "hearing_title": "United States Senate Committee onAPPROPRIATIONS",
+      "committee": "Appropriations",
+      "committee_code": "SAPP",
+      "readiness_score": 0.92,
+      "priority_score": 98.6,
+      "processing_start": "2025-07-03T11:47:17.083642",
+      "processing_end": "2025-07-03T11:47:22.100271",
+      "processing_duration_seconds": 5.016629,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_SAPP_4457153e_1751568437",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SAPP_4457153e/audio_SAPP_4457153e.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SAPP_4457153e/transcript_SAPP_4457153e.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_SAPP_4457153e_1751568437.json"
+      },
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "total_hearings": 5,
+    "successful_hearings": 5,
+    "failed_hearings": 0,
+    "success_rate": 1.0,
+    "target_success_rate": 0.9,
+    "phase1_passed": true,
+    "total_processing_time_seconds": 25.078766,
+    "average_processing_time_seconds": 5.015753200000001,
+    "total_errors": 0,
+    "total_warnings": 0,
+    "completion_time": "2025-07-03T11:47:22.100415"
+  }
+}
