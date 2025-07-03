@@ -410,11 +410,8 @@ const HearingQueue = ({ onViewDetails, onTriggerCapture }) => {
                       <h3 style={{ 
                         margin: 0, 
                         color: '#FFFFFF',
-                        cursor: 'pointer',
-                        textDecoration: 'underline'
-                      }}
-                      onClick={() => onViewDetails && onViewDetails(hearing.id)}
-                      >
+                        cursor: 'default'
+                      }}>
                         {hearing.hearing_title}
                       </h3>
                       
@@ -551,7 +548,10 @@ const HearingQueue = ({ onViewDetails, onTriggerCapture }) => {
                     )}
                     
                     <button
-                      onClick={() => onViewDetails && onViewDetails(hearing.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onViewDetails && onViewDetails(hearing.id);
+                      }}
                       style={{
                         backgroundColor: 'transparent',
                         color: '#4ECDC4',

@@ -465,7 +465,10 @@ const CommitteeDetail = ({ committee, onBack, onViewDetails }) => {
                     <div className="hearing-actions">
                       <button 
                         className="btn-action"
-                        onClick={() => onViewDetails && onViewDetails(hearing.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onViewDetails && onViewDetails(hearing.id);
+                        }}
                       >
                         View Details
                       </button>

@@ -1,0 +1,153 @@
+{
+  "api_health": true,
+  "multiple_hearings": {
+    "1": {
+      "success": true,
+      "response_time": 0.002193927764892578,
+      "hearing_title": "Oversight of Federal Maritime Administration",
+      "processing_stage": "published"
+    },
+    "2": {
+      "success": true,
+      "response_time": 0.002161264419555664,
+      "hearing_title": "Executive Session - Judicial Nominations",
+      "processing_stage": "published"
+    },
+    "3": {
+      "success": true,
+      "response_time": 0.0018527507781982422,
+      "hearing_title": "Annual Threat Assessment Briefing",
+      "processing_stage": "published"
+    },
+    "4": {
+      "success": true,
+      "response_time": 0.0020029544830322266,
+      "hearing_title": "Semiannual Monetary Policy Report",
+      "processing_stage": "published"
+    }
+  },
+  "transcripts": {
+    "total_transcripts": 17,
+    "hearing_transcripts": {
+      "22": {
+        "title": "Intellectual Property Rights in AI and Technology",
+        "committee": "HJUD",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "16": {
+        "title": "Supply Chain Resilience and Port Infrastructure",
+        "committee": "SCOM",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "10": {
+        "title": "Markup of H.R. 1234",
+        "committee": "HJUD",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "9": {
+        "title": "Semiannual Monetary Policy Report",
+        "committee": "SBAN",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "8": {
+        "title": "Annual Threat Assessment Briefing",
+        "committee": "SSCI",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "32": {
+        "title": "Corporate Accountability and White-Collar Crime Enforcement",
+        "committee": "SSJU",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "29": {
+        "title": "Counterintelligence and Emerging Technology Threats",
+        "committee": "SSCI",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "26": {
+        "title": "Climate Risk in Financial Services and Banking",
+        "committee": "SBAN",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "25": {
+        "title": "Community Development Financial Institutions Oversight",
+        "committee": "SBAN",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "21": {
+        "title": "Criminal Justice Reform and Federal Sentencing Guidelines",
+        "committee": "HJUD",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "20": {
+        "title": "Voting Rights and Election Security Legislation",
+        "committee": "HJUD",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "14": {
+        "title": "Transportation Safety and Infrastructure Modernization",
+        "committee": "SCOM",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "13": {
+        "title": "Space Commerce and Innovation: Private Sector Partnerships",
+        "committee": "SCOM",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "4": {
+        "title": "Semiannual Monetary Policy Report",
+        "committee": "SBAN",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "3": {
+        "title": "Annual Threat Assessment Briefing",
+        "committee": "SSCI",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "2": {
+        "title": "Executive Session - Judicial Nominations",
+        "committee": "SSJU",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      },
+      "1": {
+        "title": "Oversight of Federal Maritime Administration",
+        "committee": "SCOM",
+        "status": "published",
+        "confidence": 0.85,
+        "segments": 3
+      }
+    }
+  }
+}

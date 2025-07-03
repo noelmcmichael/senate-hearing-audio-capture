@@ -1,0 +1,41 @@
+INFO:     Will watch for changes in these directories: ['/Users/noelmcmichael/Workspace/senate_hearing_audio_capture']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [3623] using StatReload
+/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2025-07-02 19:53:35,969 - src.api.database_enhanced - INFO - Enhanced UI database schema created successfully
+2025-07-02 19:53:35,971 - src.api.database_enhanced - INFO - Enhanced UI database schema created successfully
+2025-07-02 19:53:35,971 - src.sync.sync_orchestrator - WARNING - Congress API not available: Congress API key required. Set CONGRESS_API_KEY environment variable.
+2025-07-02 19:53:35,974 - src.api.database_enhanced - INFO - Enhanced UI database schema created successfully
+2025-07-02 19:53:35,974 - src.sync.sync_orchestrator - WARNING - Congress API not available: Congress API key required. Set CONGRESS_API_KEY environment variable.
+2025-07-02 19:53:35,978 - src.api.status_management - INFO - Status management routes configured successfully
+2025-07-02 19:53:35,981 - src.api.transcript_management - INFO - Transcript management routes configured
+2025-07-02 19:53:35,981 - src.api.main_app - WARNING - React build not found. Run 'npm run build' in dashboard directory.
+2025-07-02 19:53:35,982 - src.api.main_app - INFO - Demo user session created: 789af9c6-cf12-4a34-aa7c-a56a07491b61
+2025-07-02 19:53:35,982 - src.api.main_app - INFO - Demo data initialized successfully
+2025-07-02 19:53:35,982 - src.api.main_app - INFO - Phase 7B Enhanced UI application created successfully
+INFO:     Started server process [3625]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-07-02 19:53:54,125 - src.api.main_app - INFO - GET /api/ - Status: 307 - Time: 0.000s
+INFO:     127.0.0.1:62395 - "GET /api/ HTTP/1.1" 307 Temporary Redirect
+2025-07-02 19:54:10,813 - src.api.main_app - INFO - GET /api - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62398 - "GET /api HTTP/1.1" 200 OK
+2025-07-02 19:54:19,020 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62400 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 19:56:14,361 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62413 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 19:56:14,362 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62413 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 19:57:33,211 - src.api.main_app - INFO - GET /api - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62420 - "GET /api HTTP/1.1" 200 OK
+2025-07-02 19:57:33,213 - src.api.main_app - INFO - GET /api/hearings/1 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62422 - "GET /api/hearings/1 HTTP/1.1" 200 OK
+2025-07-02 19:57:33,215 - src.api.main_app - INFO - GET /api/hearings/2 - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62424 - "GET /api/hearings/2 HTTP/1.1" 200 OK
+2025-07-02 19:57:33,217 - src.api.main_app - INFO - GET /api/hearings/3 - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62426 - "GET /api/hearings/3 HTTP/1.1" 200 OK
+2025-07-02 19:57:33,219 - src.api.main_app - INFO - GET /api/hearings/4 - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62428 - "GET /api/hearings/4 HTTP/1.1" 200 OK
+2025-07-02 19:57:33,223 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62430 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK

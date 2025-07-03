@@ -197,6 +197,12 @@ const App = () => {
   };
 
   const handleViewHearingDetails = async (hearingId) => {
+    // Prevent multiple modal openings
+    if (showHearingDetails) {
+      console.log('Modal already open, ignoring click');
+      return;
+    }
+    
     console.log('View details clicked for hearing ID:', hearingId);
     try {
       const response = await fetch(`http://localhost:8001/api/hearings/${hearingId}`);
@@ -221,11 +227,31 @@ const App = () => {
     setSelectedHearing(null);
   };
 
-  const handleViewTranscriptFromModal = (hearingId) => {
-    // Close the modal and navigate to transcripts
-    setShowHearingDetails(false);
-    setSelectedHearing(null);
-    setCurrentView('transcripts');
+  const handleViewTranscriptFromModal = async (hearingId) => {
+    try {
+      // Fetch the specific transcript for this hearing
+      const response = await fetch(`http://localhost:8001/api/transcript-browser/hearings`);
+      if (response.ok) {
+        const data = await response.json();
+        // Find the transcript for this hearing ID
+        const transcript = data.transcripts.find(t => t.hearing_id === hearingId);
+        
+        if (transcript) {
+          // Close the modal and navigate to transcript review
+          setShowHearingDetails(false);
+          setSelectedHearing(null);
+          setSelectedTranscript(transcript);
+          setCurrentView('review');
+        } else {
+          alert('Transcript not found for this hearing');
+        }
+      } else {
+        throw new Error('Failed to fetch transcript');
+      }
+    } catch (error) {
+      console.error('Error loading transcript:', error);
+      alert(`Error loading transcript: ${error.message}`);
+    }
   };
 
   const handleTriggerCapture = async (hearingId) => {
