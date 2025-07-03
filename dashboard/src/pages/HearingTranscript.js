@@ -9,7 +9,9 @@ import {
   CheckCircle,
   FileText,
   Play,
-  Pause
+  Pause,
+  Table,
+  BarChart3
 } from 'lucide-react';
 
 const HearingTranscript = () => {
@@ -130,6 +132,84 @@ const HearingTranscript = () => {
     URL.revokeObjectURL(url);
   };
 
+  const handleExportCSV = () => {
+    if (!transcript) return;
+
+    // CSV header
+    let csvContent = 'Hearing ID,Title,Committee,Date,Start Time,End Time,Duration (sec),Speaker,Text\n';
+    
+    // CSV rows
+    transcript.segments.forEach(segment => {
+      const duration = segment.end - segment.start;
+      const row = [
+        hearing.id,
+        `"${hearing.hearing_title.replace(/"/g, '""')}"`,
+        hearing.committee_code,
+        hearing.hearing_date,
+        formatTimestamp(segment.start),
+        formatTimestamp(segment.end),
+        duration,
+        segment.speaker,
+        `"${segment.text.replace(/"/g, '""')}"`
+      ].join(',');
+      csvContent += row + '\n';
+    });
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `hearing_${hearing.id}_transcript.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleExportSummaryReport = () => {
+    if (!transcript) return;
+
+    const progress = getSpeakerReviewProgress();
+    const speakerCounts = {};
+    let totalDuration = 0;
+
+    transcript.segments.forEach(segment => {
+      const speaker = segment.speaker || 'UNKNOWN';
+      const duration = segment.end - segment.start;
+      
+      if (!speakerCounts[speaker]) {
+        speakerCounts[speaker] = { count: 0, duration: 0 };
+      }
+      speakerCounts[speaker].count++;
+      speakerCounts[speaker].duration += duration;
+      totalDuration += duration;
+    });
+
+    let reportContent = `HEARING TRANSCRIPT ANALYSIS REPORT\n`;
+    reportContent += `${'='.repeat(50)}\n\n`;
+    reportContent += `Hearing: ${hearing.hearing_title}\n`;
+    reportContent += `Committee: ${hearing.committee_code}\n`;
+    reportContent += `Date: ${hearing.hearing_date}\n`;
+    reportContent += `Total Duration: ${formatTimestamp(totalDuration)}\n`;
+    reportContent += `Total Segments: ${transcript.segments.length}\n`;
+    reportContent += `Speaker Review Progress: ${progress}%\n\n`;
+    
+    reportContent += `SPEAKER BREAKDOWN:\n`;
+    reportContent += `${'='.repeat(30)}\n`;
+    Object.entries(speakerCounts).forEach(([speaker, data]) => {
+      const percentage = ((data.duration / totalDuration) * 100).toFixed(1);
+      reportContent += `${speaker}: ${data.count} segments, ${formatTimestamp(data.duration)} (${percentage}%)\n`;
+    });
+
+    reportContent += `\n\nGENERATED: ${new Date().toLocaleString()}\n`;
+
+    const blob = new Blob([reportContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `hearing_${hearing.id}_analysis_report.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   if (!hearing) {
     return (
       <div style={{ 
@@ -214,7 +294,7 @@ const HearingTranscript = () => {
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <button
               onClick={() => navigate(`/hearings/${id}/review`)}
               style={{
@@ -235,43 +315,90 @@ const HearingTranscript = () => {
               {reviewProgress < 100 ? 'Review Speakers' : 'Edit Speakers'}
             </button>
             
-            <button
-              onClick={handleExportTranscript}
-              style={{
-                backgroundColor: 'transparent',
-                color: '#4ECDC4',
-                border: '1px solid #4ECDC4',
-                padding: '8px 16px',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px'
-              }}
-            >
-              <Download size={16} />
-              Export JSON
-            </button>
-            
-            <button
-              onClick={handleExportText}
-              style={{
-                backgroundColor: 'transparent',
-                color: '#4ECDC4',
-                border: '1px solid #4ECDC4',
-                padding: '8px 16px',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px'
-              }}
-            >
-              <FileText size={16} />
-              Export Text
-            </button>
+            <div style={{ 
+              display: 'flex', 
+              gap: '8px',
+              backgroundColor: '#1B1C20',
+              padding: '4px',
+              borderRadius: '8px',
+              border: '1px solid #444'
+            }}>
+              <button
+                onClick={handleExportTranscript}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#4ECDC4',
+                  border: 'none',
+                  padding: '6px 12px',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <Download size={14} />
+                JSON
+              </button>
+              
+              <button
+                onClick={handleExportText}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#4ECDC4',
+                  border: 'none',
+                  padding: '6px 12px',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <FileText size={14} />
+                Text
+              </button>
+              
+              <button
+                onClick={handleExportCSV}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#4ECDC4',
+                  border: 'none',
+                  padding: '6px 12px',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <Table size={14} />
+                CSV
+              </button>
+              
+              <button
+                onClick={handleExportSummaryReport}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#4ECDC4',
+                  border: 'none',
+                  padding: '6px 12px',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <BarChart3 size={14} />
+                Report
+              </button>
+            </div>
           </div>
         </div>
 
