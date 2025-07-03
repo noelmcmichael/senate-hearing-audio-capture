@@ -36,7 +36,7 @@ const HearingLayout = () => {
         throw new Error(`Failed to fetch hearing: ${hearingResponse.status}`);
       }
       const hearingData = await hearingResponse.json();
-      setHearing(hearingData);
+      setHearing(hearingData.hearing || hearingData);
 
       // Fetch transcript if available
       try {

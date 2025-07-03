@@ -86,31 +86,22 @@ def get_committee_hearings(committee_code):
 def get_transcript_hearings():
     """Get all hearings with transcript information."""
     try:
-        conn = get_db_connection()
-        cursor = conn.cursor()
+        import os
+        import glob
         
-        # For now, return some mock transcript data
-        # In a real implementation, this would query a transcripts table
-        transcripts = [
-            {
-                'hearing_id': 1,
-                'confidence': 0.95,
-                'segments': [
-                    {'speaker': 'Chair Cantwell', 'text': 'The hearing will come to order.'},
-                    {'speaker': 'Sen. Cruz', 'text': 'Thank you, Chair Cantwell.'}
-                ]
-            },
-            {
-                'hearing_id': 3,
-                'confidence': 0.88,
-                'segments': [
-                    {'speaker': 'Chair Warner', 'text': 'Welcome to today\'s briefing.'},
-                    {'speaker': 'UNKNOWN', 'text': 'Thank you for having me.'}
-                ]
-            }
-        ]
+        # Load transcript files from the output directory
+        transcript_dir = Path(__file__).parent / 'output' / 'demo_transcription'
+        transcript_files = glob.glob(str(transcript_dir / 'hearing_*_transcript.json'))
         
-        conn.close()
+        transcripts = []
+        for file_path in transcript_files:
+            try:
+                with open(file_path, 'r') as f:
+                    transcript_data = json.load(f)
+                    transcripts.append(transcript_data)
+            except Exception as e:
+                print(f"Error loading transcript {file_path}: {e}")
+                continue
         
         return jsonify({
             'success': True,
@@ -162,6 +153,37 @@ def get_hearing_details(hearing_id):
         return jsonify({
             'success': True,
             'hearing': hearing
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/transcript', methods=['GET'])
+def get_hearing_transcript(hearing_id):
+    """Get transcript for a specific hearing."""
+    try:
+        import os
+        import glob
+        
+        # Load transcript file for this hearing
+        transcript_dir = Path(__file__).parent / 'output' / 'demo_transcription'
+        transcript_file = transcript_dir / f'hearing_{hearing_id}_transcript.json'
+        
+        if not transcript_file.exists():
+            return jsonify({
+                'success': False,
+                'error': 'Transcript not found for this hearing'
+            }), 404
+        
+        with open(transcript_file, 'r') as f:
+            transcript_data = json.load(f)
+        
+        return jsonify({
+            'success': True,
+            'transcript': transcript_data
         })
         
     except Exception as e:
