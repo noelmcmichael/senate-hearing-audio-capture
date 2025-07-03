@@ -1,0 +1,26 @@
+{
+  "hearing_id": 33,
+  "committee": "SSJU",
+  "committee_name": "Senate Judiciary Committee",
+  "title": "Deregulation and Competition: Reducing Regulatory Burdens to Unlock Innovation and Spur New Entry",
+  "date": "2024-12-05",
+  "url": "https://www.judiciary.senate.gov/committee-activity/hearings/deregulation-and-competition-reducing-regulatory-burdens-to-unlock-innovation-and-spur-new-entry",
+  "type": "Committee Hearing",
+  "benchmark_approach": {
+    "professional_transcript": "politicopro PDF",
+    "audio_source": "TBD - Senate website or YouTube",
+    "comparison_metrics": [
+      "word_accuracy",
+      "speaker_identification",
+      "timing_accuracy",
+      "content_completeness"
+    ]
+  },
+  "directories": {
+    "audio": "output/real_audio/hearing_33/",
+    "transcripts": "output/real_transcripts/hearing_33/",
+    "benchmark": "output/benchmark_comparisons/hearing_33/",
+    "professional": "data/professional_transcripts/hearing_33/"
+  },
+  "created_at": "2025-07-03T07:44:43.139575"
+}
