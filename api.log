@@ -299,3 +299,96 @@ INFO:     127.0.0.1:62182 - "GET /api/committees/SBAN/hearings HTTP/1.1" 200 OK
 INFO:     127.0.0.1:62184 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
 2025-07-02 23:20:27,342 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
 INFO:     127.0.0.1:62184 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:02,201 - src.api.main_app - INFO - GET /api/hearings/13 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63305 - "GET /api/hearings/13 HTTP/1.1" 200 OK
+2025-07-02 23:25:02,207 - src.api.main_app - INFO - GET /api/hearings/13 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63305 - "GET /api/hearings/13 HTTP/1.1" 200 OK
+2025-07-02 23:25:02,214 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.006s
+INFO:     127.0.0.1:63307 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:02,216 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63305 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,862 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63419 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,866 - src.api.main_app - INFO - GET /api/committees/SSCI/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63423 - "GET /api/committees/SSCI/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,866 - src.api.main_app - INFO - GET /api/committees/HJUD/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63425 - "GET /api/committees/HJUD/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,866 - src.api.main_app - INFO - GET /api/committees/SSJU/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63426 - "GET /api/committees/SSJU/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,867 - src.api.main_app - INFO - GET /api/committees/SBAN/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63428 - "GET /api/committees/SBAN/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,867 - src.api.main_app - INFO - GET /api/committees/SSAF/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63429 - "GET /api/committees/SSAF/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,870 - src.api.main_app - INFO - GET /api/committees/SSHR/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63419 - "GET /api/committees/SSHR/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,872 - src.api.main_app - INFO - GET /api/committees/SSBE/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63423 - "GET /api/committees/SSBE/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,872 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.004s
+INFO:     127.0.0.1:63425 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,873 - src.api.main_app - INFO - GET /api/committees/SSCI/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63426 - "GET /api/committees/SSCI/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,873 - src.api.main_app - INFO - GET /api/committees/HJUD/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63428 - "GET /api/committees/HJUD/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,873 - src.api.main_app - INFO - GET /api/committees/SSJU/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63429 - "GET /api/committees/SSJU/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,876 - src.api.main_app - INFO - GET /api/committees/SBAN/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63419 - "GET /api/committees/SBAN/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,879 - src.api.main_app - INFO - GET /api/committees/SSAF/hearings - Status: 200 - Time: 0.004s
+INFO:     127.0.0.1:63423 - "GET /api/committees/SSAF/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,879 - src.api.main_app - INFO - GET /api/committees/SSHR/hearings - Status: 200 - Time: 0.004s
+INFO:     127.0.0.1:63425 - "GET /api/committees/SSHR/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,879 - src.api.main_app - INFO - GET /api/committees/SSBE/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63426 - "GET /api/committees/SSBE/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,879 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63428 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:29,882 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63428 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:40,153 - src.api.main_app - INFO - GET /api/hearings/16 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63477 - "GET /api/hearings/16 HTTP/1.1" 200 OK
+2025-07-02 23:25:40,154 - src.api.main_app - INFO - GET /api/hearings/16 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63479 - "GET /api/hearings/16 HTTP/1.1" 200 OK
+2025-07-02 23:25:40,157 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63477 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:25:40,159 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63479 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,541 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63583 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,544 - src.api.main_app - INFO - GET /api/committees/SSCI/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63587 - "GET /api/committees/SSCI/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,544 - src.api.main_app - INFO - GET /api/committees/HJUD/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63589 - "GET /api/committees/HJUD/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,544 - src.api.main_app - INFO - GET /api/committees/SSJU/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63590 - "GET /api/committees/SSJU/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,544 - src.api.main_app - INFO - GET /api/committees/SBAN/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63591 - "GET /api/committees/SBAN/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,545 - src.api.main_app - INFO - GET /api/committees/SSHR/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63583 - "GET /api/committees/SSHR/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,547 - src.api.main_app - INFO - GET /api/committees/SSAF/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63593 - "GET /api/committees/SSAF/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,549 - src.api.main_app - INFO - GET /api/committees/SSBE/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63587 - "GET /api/committees/SSBE/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,549 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63589 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,549 - src.api.main_app - INFO - GET /api/committees/SSCI/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63590 - "GET /api/committees/SSCI/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,549 - src.api.main_app - INFO - GET /api/committees/HJUD/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63591 - "GET /api/committees/HJUD/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,551 - src.api.main_app - INFO - GET /api/committees/SSJU/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63583 - "GET /api/committees/SSJU/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,552 - src.api.main_app - INFO - GET /api/committees/SBAN/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63593 - "GET /api/committees/SBAN/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,554 - src.api.main_app - INFO - GET /api/committees/SSHR/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63587 - "GET /api/committees/SSHR/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,554 - src.api.main_app - INFO - GET /api/committees/SSAF/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63589 - "GET /api/committees/SSAF/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,554 - src.api.main_app - INFO - GET /api/committees/SSBE/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63590 - "GET /api/committees/SSBE/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,555 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63591 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:26:04,557 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63591 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3625]
+INFO:     Stopping reloader process [3623]
