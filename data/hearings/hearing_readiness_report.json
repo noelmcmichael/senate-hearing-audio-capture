@@ -1,0 +1,636 @@
+{
+  "assessment_date": "2025-07-03T11:29:57.679482",
+  "total_hearings": 78,
+  "readiness_distribution": {
+    "FAIR": 25,
+    "EXCELLENT": 35,
+    "GOOD": 12,
+    "POOR": 6
+  },
+  "audio_source_distribution": {
+    "YouTube": 13,
+    "None": 30,
+    "ISVP": 35
+  },
+  "processing_statistics": {
+    "avg_processing_time": 103.8974358974359,
+    "median_processing_time": 106.0,
+    "total_processing_time": 8104,
+    "avg_success_probability": 0.2799647435897436,
+    "high_success_hearings": 0
+  },
+  "recommendations": {
+    "immediate_processing": [
+      {
+        "hearing_id": "SSVA_116cb0a1",
+        "title": "Correcting Mismanagement of the Veterans Crisis Line - U.S. Senate Committee on...",
+        "committee": "SSVA",
+        "score": 0.99,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SSVA_270828bb",
+        "title": "Hearing to Consider Pending Nominations - U.S. Senate Committee on Veterans' Aff...",
+        "committee": "SSVA",
+        "score": 0.99,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SSVA_04f4ced7",
+        "title": "Hearing to Consider Pending Legislation - U.S. Senate Committee on Veterans' Aff...",
+        "committee": "SSVA",
+        "score": 0.99,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SCOM_712d37cb",
+        "title": "Executive Session 12 - U.S. Senate Committee on Commerce, Science, & Transportat...",
+        "committee": "SCOM",
+        "score": 0.9800000000000001,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SCOM_405fdf1b",
+        "title": "On the Right Track: Modernizing America\u2019s Rail Network - U.S. Senate Committee o...",
+        "committee": "SCOM",
+        "score": 0.9800000000000001,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SCOM_35190975",
+        "title": "WADA Shame: Swimming in Denial Over Chinese Doping - U.S. Senate Committee on Co...",
+        "committee": "SCOM",
+        "score": 0.9800000000000001,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SINT_40b508dc",
+        "title": "MURKOWSKI, SCHATZ LEAD OVERSIGHT HEARING ON DELIVERING ESSENTIAL PUBLIC HEALTH AND SOCIAL SERVICES TO NATIVE AMERICANS AT THE DEPARTMENT OF HEALTH AND HUMAN SERVICES",
+        "committee": "SINT",
+        "score": 0.975,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SAGR_5084ddca",
+        "title": "Nomination Hearing",
+        "committee": "SAGR",
+        "score": 0.975,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SAGR_f6a551f0",
+        "title": "Nomination Hearing",
+        "committee": "SAGR",
+        "score": 0.975,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SMAL_e39af262",
+        "title": "POSTPONED - Reforms After the Storms: Conducting Oversight of SBA\u2019s Disaster Loan Program - Hearings - U.S. Committee on Small Business & Entrepreneurship",
+        "committee": "SMAL",
+        "score": 0.965,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SMAL_9b2c7db9",
+        "title": "Joint House & Senate Small Business Committee Hearing: Prosperity on Main Street: Keeping Taxes Low for Small Businesses - Hearings - U.S. Committee on Small Business & Entrepreneurship",
+        "committee": "SMAL",
+        "score": 0.965,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SMAL_26541c25",
+        "title": "Beyond the Trailhead: Supporting Outdoor Recreation in an Uncertain Economy - Hearings - U.S. Committee on Small Business & Entrepreneurship",
+        "committee": "SMAL",
+        "score": 0.965,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SMAL_58632ac8",
+        "title": "Fueling America's Manufacturing Comeback - Hearings - U.S. Committee on Small Business & Entrepreneurship",
+        "committee": "SMAL",
+        "score": 0.965,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SMAL_0c1a0d94",
+        "title": "Financing America\u2019s Manufacturing and Industrial Boom - Hearings - U.S. Committee on Small Business & Entrepreneurship",
+        "committee": "SMAL",
+        "score": 0.965,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SMAL_f3942664",
+        "title": "Small Businesses Powering the Clean Energy Economy - Hearings - U.S. Committee on Small Business & Entrepreneurship",
+        "committee": "SMAL",
+        "score": 0.965,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SBUD_300d179a",
+        "title": "The Nomination of the Honorable Dan Bishop, of North Carolina, to be Deputy Director of the Office of Management and Budget",
+        "committee": "SBUD",
+        "score": 0.9299999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SBUD_f4054647",
+        "title": "Markup of Fiscal Year 2025 Budget Resolution - Day 1",
+        "committee": "SBUD",
+        "score": 0.9299999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "HELP_b92f88f2",
+        "title": "NEXT WEEK: Senate HELP Committee to Hold Hearing on Future of Health Care, Protecting Americans\u2019 Health Privacy",
+        "committee": "HELP",
+        "score": 0.9299999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SINT_4b953a4f",
+        "title": "(Reshceduled) Nomination Hearing to consider Mr. William Kirkland to be Assistant Secretary for Indian Affairs within the Department of\u00a0the Interior",
+        "committee": "SINT",
+        "score": 0.9299999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SINT_67c90f1a",
+        "title": "Oversight Hearing\u00a0entitled Delivering Essential Public Health and Social Services to Native Americans  Examining Federal Programs serving Native Ameri",
+        "committee": "SINT",
+        "score": 0.9299999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SINT_4f21b8ae",
+        "title": "Oversight Hearing\u00a0entitled \u201cNative American Education \u2013 Examining Federal Programs at the U.S. Department of Education\u201d",
+        "committee": "SINT",
+        "score": 0.9299999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SINT_6c98e6b8",
+        "title": "Committee Hearings",
+        "committee": "SINT",
+        "score": 0.9249999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SAGR_b48b7854",
+        "title": "Business Meeting",
+        "committee": "SAGR",
+        "score": 0.9249999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SAPP_4457153e",
+        "title": "United States Senate Committee onAPPROPRIATIONS",
+        "committee": "SAPP",
+        "score": 0.92,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SFIN_c711bcfa",
+        "title": "The President\u2019s Fiscal Year 2026 Budget for the Department of Treasury and Tax Reform",
+        "committee": "SFIN",
+        "score": 0.91,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SFIN_ea3b6437",
+        "title": "Hearing to Consider the nominations of Joseph Barloon, of Maryland, to be a Deputy United States Trade Representative Geneva Office, with the rank of ",
+        "committee": "SFIN",
+        "score": 0.9,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SINT_548d86fe",
+        "title": "Schatz, Murkowski Lead Oversight Hearing On Delivering Essential Public Health And Social Services To Native Americans At The Department Of Health And Human Services",
+        "committee": "SINT",
+        "score": 0.8999999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SFIN_ac2d051e",
+        "title": "Member Statements",
+        "committee": "SFIN",
+        "score": 0.8949999999999999,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SENE_81ca25fd",
+        "title": "Hearings and Business Meetings",
+        "committee": "SENE",
+        "score": 0.83,
+        "audio_source": "YouTube"
+      },
+      {
+        "hearing_id": "SENE_307aea9e",
+        "title": "Hearings and Business Meetings",
+        "committee": "SENE",
+        "score": 0.83,
+        "audio_source": "YouTube"
+      },
+      {
+        "hearing_id": "SCOM_334e54f8",
+        "title": "Nominations Hearing for Department of Commerce Nominees - U.S. Senate Committee...",
+        "committee": "SCOM",
+        "score": 0.8200000000000001,
+        "audio_source": "YouTube"
+      },
+      {
+        "hearing_id": "SFRC_5bc802a4",
+        "title": "NOMINATIONS",
+        "committee": "SFRC",
+        "score": 0.805,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SFRC_a9eb8609",
+        "title": "NATO SUMMIT 2025: AN ASSESSMENT OF TRANSATLANTIC SECURITY COOPERATION",
+        "committee": "SFRC",
+        "score": 0.805,
+        "audio_source": "ISVP"
+      },
+      {
+        "hearing_id": "SCOM_f4b3262e",
+        "title": "Press Releases",
+        "committee": "SCOM",
+        "score": 0.8049999999999999,
+        "audio_source": "YouTube"
+      },
+      {
+        "hearing_id": "SCOM_9e108d0d",
+        "title": "Hearings - U.S. Senate Committee on Commerce, Science, & Transportation",
+        "committee": "SCOM",
+        "score": 0.8049999999999999,
+        "audio_source": "YouTube"
+      }
+    ],
+    "requires_preparation": [
+      {
+        "hearing_id": "SENV_7ec1b840",
+        "title": "Majority News",
+        "committee": "SENV",
+        "score": 0.7999999999999999,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SFIN_c200838f",
+        "title": "Hearing to Consider the Nomination of William Long, of Missouri, to be Commissioner of Internal Revenue for the remainder of the term expiring November 12, 2027",
+        "committee": "SFIN",
+        "score": 0.795,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SSJU_797e7046",
+        "title": "Enter the Dragon\u2014China and the Left\u2019s Lawfare Against American Energy Dominance",
+        "committee": "SSJU",
+        "score": 0.7933333333333332,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SSVA_1ecd794e",
+        "title": "Majority News",
+        "committee": "SSVA",
+        "score": 0.785,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SSVA_ecd4db9e",
+        "title": "Majority News",
+        "committee": "SSVA",
+        "score": 0.785,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SSVA_bf768ae8",
+        "title": "Majority News",
+        "committee": "SSVA",
+        "score": 0.785,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SSJU_4eeb9f8b",
+        "title": "Nominations",
+        "committee": "SSJU",
+        "score": 0.7783333333333332,
+        "blockers": []
+      },
+      {
+        "hearing_id": "HELP_f00bc1ea",
+        "title": "Securing the Future of Health Care: Enhancing Cybersecurity and Protecting Americans\u2019 Privacy",
+        "committee": "HELP",
+        "score": 0.7433333333333333,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SSJU_e9316b8f",
+        "title": "Executive Business Meeting",
+        "committee": "SSJU",
+        "score": 0.7433333333333333,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SBAN_269b7c2d",
+        "title": "Scott Pushes for Blue-Collar Comeback, Highlights Trump Nominees at Hearing",
+        "committee": "SBAN",
+        "score": 0.74,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SENE_03d2d48e",
+        "title": "Hearings - U.S. Senate Committee on Energy and Natural Resources",
+        "committee": "SENE",
+        "score": 0.6183333333333333,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SENE_a873a889",
+        "title": "Business Meetings",
+        "committee": "SENE",
+        "score": 0.6033333333333333,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SSVA_926b741c",
+        "title": "Business Meeting - U.S. Senate Committee on Veterans' Affairs",
+        "committee": "SSVA",
+        "score": 0.575,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SENV_5cdc062d",
+        "title": "Minority News",
+        "committee": "SENV",
+        "score": 0.5599999999999999,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SSVA_ade86aa5",
+        "title": "Minority News",
+        "committee": "SSVA",
+        "score": 0.5449999999999999,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SSVA_395c7a82",
+        "title": "Minority News",
+        "committee": "SSVA",
+        "score": 0.5449999999999999,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SBUD_7d6e1d1f",
+        "title": "Business Meeting to Consider the Hon. Dan Bishop to be Deputy Director OMB",
+        "committee": "SBUD",
+        "score": 0.5399999999999999,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SBUD_d28ea72f",
+        "title": "Business Meeting to Consider the Hon. Russell Vought to be Director OMB",
+        "committee": "SBUD",
+        "score": 0.5399999999999999,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SAPP_5367ca93",
+        "title": "United States Senate Committee onAPPROPRIATIONS",
+        "committee": "SAPP",
+        "score": 0.5333333333333333,
+        "blockers": []
+      },
+      {
+        "hearing_id": "SBAN_7338e024",
+        "title": "From Wall Street to Web3: Building Tomorrow\u2019s Digital Asset Markets",
+        "committee": "SBAN",
+        "score": 0.5299999999999999,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SBUD_7a74462f",
+        "title": "CANCELLED:Markup of Fiscal Year 2025 Budget Resolution - Day 2",
+        "committee": "SBUD",
+        "score": 0.5299999999999999,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SAPP_ad7ac735",
+        "title": "United States Senate Committee onAPPROPRIATIONS",
+        "committee": "SAPP",
+        "score": 0.52,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SBAN_1752d7f3",
+        "title": "From Wall Street to Web3: Building Tomorrow\u2019s Digital Asset Markets",
+        "committee": "SBAN",
+        "score": 0.515,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SRUL_1660dc53",
+        "title": "Filter Results",
+        "committee": "SRUL",
+        "score": 0.515,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SAPP_2943cf19",
+        "title": "United States Senate Committee onAPPROPRIATIONS",
+        "committee": "SAPP",
+        "score": 0.51,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SSJU_293cd47f",
+        "title": "Grassley Opens Hearing on Judicial Nominations for Third Circuit, Florida District Courts",
+        "committee": "SSJU",
+        "score": 0.51,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SBUD_d3ffc84e",
+        "title": "Business Meeting to Consider the Hon. Dan Bishop to be Deputy Director OMBhearings",
+        "committee": "SBUD",
+        "score": 0.5,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SAPP_a21298a1",
+        "title": "United States Senate Committee onAPPROPRIATIONS",
+        "committee": "SAPP",
+        "score": 0.495,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SFRC_3ba2b244",
+        "title": "COMMITTEE EVENTS",
+        "committee": "SFRC",
+        "score": 0.495,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SAGR_8d219c60",
+        "title": "Hearing Transcripts",
+        "committee": "SAGR",
+        "score": 0.495,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SENV_32e730a8",
+        "title": "Hearings - U.S. Senate Committee on Environment and Public Works",
+        "committee": "SENV",
+        "score": 0.48500000000000004,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SFRC_984a7183",
+        "title": "Hearing Transcripts",
+        "committee": "SFRC",
+        "score": 0.47500000000000003,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SMAL_55a41c99",
+        "title": "Hearings - U.S. Committee on Small Business & Entrepreneurship",
+        "committee": "SMAL",
+        "score": 0.47000000000000003,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SENV_1ea74ae4",
+        "title": "Business Meetings",
+        "committee": "SENV",
+        "score": 0.455,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SFRC_d28db5ae",
+        "title": "BUSINESS MEETING",
+        "committee": "SFRC",
+        "score": 0.44,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SSJU_096138e9",
+        "title": "FilterResults",
+        "committee": "SSJU",
+        "score": 0.42000000000000004,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "HELP_e699a1d3",
+        "title": "Filter Results",
+        "committee": "HELP",
+        "score": 0.41000000000000003,
+        "blockers": [
+          "No audio source available"
+        ]
+      }
+    ],
+    "not_recommended": [
+      {
+        "hearing_id": "SFIN_1ea79289",
+        "title": "Open Executive Session to Consider Favorably Reporting the Nomination of William Long, of Missouri, to be Commissioner of Internal Revenue for the remainder of the term expiring November 12, 2027",
+        "committee": "SFIN",
+        "score": 0.39499999999999996,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SFIN_db4dfdf0",
+        "title": "Executive Session Transcripts",
+        "committee": "SFIN",
+        "score": 0.375,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SSVA_4dcc004f",
+        "title": "Committee Transcripts",
+        "committee": "SSVA",
+        "score": 0.36333333333333334,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SFIN_f3992a5b",
+        "title": "Printed Hearings",
+        "committee": "SFIN",
+        "score": 0.36000000000000004,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SFIN_f9934497",
+        "title": "Disability Access",
+        "committee": "SFIN",
+        "score": 0.36000000000000004,
+        "blockers": [
+          "No audio source available"
+        ]
+      },
+      {
+        "hearing_id": "SSVA_8b983fd0",
+        "title": "Upcoming Hearings",
+        "committee": "SSVA",
+        "score": 0.35333333333333333,
+        "blockers": [
+          "No audio source available"
+        ]
+      }
+    ]
+  }
+}
