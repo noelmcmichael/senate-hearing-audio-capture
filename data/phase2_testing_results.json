@@ -1,0 +1,71 @@
+{
+  "phase": "Phase 2: Committee Diversity Validation",
+  "start_time": "2025-07-03T11:57:01.607495",
+  "target_hearings": 5,
+  "success_criteria": 0.8,
+  "format_compatibility": "ISVP-compatible hearings only",
+  "results": [
+    {
+      "hearing_number": 1,
+      "hearing_id": "SFRC_5bc802a4",
+      "hearing_title": "NOMINATIONS",
+      "committee": "Foreign Relations",
+      "committee_code": "SFRC",
+      "readiness_score": 0.805,
+      "priority_score": 96.15,
+      "processing_start": "2025-07-03T11:57:01.607630",
+      "processing_end": "2025-07-03T11:57:06.625832",
+      "processing_duration_seconds": 5.018202,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_SFRC_5bc802a4_1751569021",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SFRC_5bc802a4/audio_SFRC_5bc802a4.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SFRC_5bc802a4/transcript_SFRC_5bc802a4.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_SFRC_5bc802a4_1751569021.json"
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "hearing_number": 2,
+      "hearing_id": "SSVA_116cb0a1",
+      "hearing_title": "Correcting Mismanagement of the Veterans Crisis Line - U.S. Senate Committee on...",
+      "committee": "SSVA",
+      "committee_code": "SSVA",
+      "readiness_score": 0.99,
+      "priority_score": 90.7,
+      "processing_start": "2025-07-03T11:57:08.628455",
+      "processing_end": "2025-07-03T11:57:13.640071",
+      "processing_duration_seconds": 5.011616,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_SSVA_116cb0a1_1751569028",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SSVA_116cb0a1/audio_SSVA_116cb0a1.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SSVA_116cb0a1/transcript_SSVA_116cb0a1.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_SSVA_116cb0a1_1751569028.json"
+      },
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "total_hearings": 2,
+    "successful_hearings": 2,
+    "failed_hearings": 0,
+    "success_rate": 1.0,
+    "target_success_rate": 0.8,
+    "phase2_passed": true,
+    "total_processing_time_seconds": 10.029817999999999,
+    "average_processing_time_seconds": 5.014908999999999,
+    "total_errors": 0,
+    "total_warnings": 0,
+    "committees_tested": 2,
+    "committee_codes": [
+      "SSVA",
+      "SFRC"
+    ],
+    "completion_time": "2025-07-03T11:57:13.640238"
+  }
+}
