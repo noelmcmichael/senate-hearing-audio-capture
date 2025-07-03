@@ -1,0 +1,25 @@
+# Example Terraform variables file
+# Copy this to terraform.tfvars and fill in your values
+
+project_id = "your-gcp-project-id"
+region = "us-central1"
+environment = "development"
+notification_email = "your-email@example.com"
+
+# Development environment (default values)
+# db_tier = "db-f1-micro"
+# redis_tier = "BASIC"
+# redis_memory_size = 1
+# cpu_limit = "1000m"
+# memory_limit = "2Gi"
+# max_instances = "2"
+# concurrency = 5
+
+# Production environment values
+# db_tier = "db-custom-2-4096"
+# redis_tier = "STANDARD_HA"
+# redis_memory_size = 4
+# cpu_limit = "2000m"
+# memory_limit = "4Gi"
+# max_instances = "20"
+# concurrency = 10

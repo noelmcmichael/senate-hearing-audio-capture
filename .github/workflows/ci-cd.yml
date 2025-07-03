@@ -1,0 +1,254 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_REGION: us-central1
+  SERVICE_NAME: senate-hearing-processor
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+          
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+        
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov pytest-asyncio
+        
+    - name: Set up test environment
+      run: |
+        mkdir -p output logs data
+        export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test_db
+        export REDIS_URL=redis://localhost:6379
+        
+    - name: Run unit tests
+      run: |
+        python -m pytest tests/ -v --cov=src --cov-report=xml
+        
+    - name: Run integration tests
+      run: |
+        python test_manual_processing.py
+        
+    - name: Run system tests
+      run: |
+        python comprehensive_test_suite.py
+        
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Run security scan
+      uses: securecodewarrior/github-action-add-sarif@v1
+      with:
+        sarif-file: security-scan.sarif
+        
+    - name: Python security check
+      run: |
+        pip install safety bandit
+        safety check
+        bandit -r src/
+
+  build:
+    needs: [test, security]
+    runs-on: ubuntu-latest
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Log in to Google Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: gcr.io
+        username: _json_key
+        password: ${{ secrets.GCP_SA_KEY }}
+        
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+          
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        
+    - name: Image vulnerability scan
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        
+    - name: Upload vulnerability scan results
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+  deploy-staging:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      
+    - name: Deploy to Cloud Run Staging
+      run: |
+        gcloud run deploy ${{ env.SERVICE_NAME }}-staging \
+          --image gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+          --platform managed \
+          --region ${{ env.GCP_REGION }} \
+          --allow-unauthenticated \
+          --set-env-vars "ENV=staging" \
+          --service-account ${{ env.SERVICE_NAME }}@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
+          --memory 4Gi \
+          --cpu 2 \
+          --concurrency 10 \
+          --max-instances 3 \
+          --timeout 3600
+          
+    - name: Run staging tests
+      run: |
+        export STAGING_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }}-staging --region ${{ env.GCP_REGION }} --format 'value(status.url)')
+        python tests/production_test_suite.py --url $STAGING_URL
+
+  deploy-production:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      
+    - name: Deploy to Cloud Run Production
+      run: |
+        gcloud run deploy ${{ env.SERVICE_NAME }} \
+          --image gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+          --platform managed \
+          --region ${{ env.GCP_REGION }} \
+          --no-allow-unauthenticated \
+          --set-env-vars "ENV=production" \
+          --service-account ${{ env.SERVICE_NAME }}@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
+          --memory 4Gi \
+          --cpu 2 \
+          --concurrency 10 \
+          --max-instances 10 \
+          --timeout 3600 \
+          --ingress all
+          
+    - name: Update traffic to new revision
+      run: |
+        gcloud run services update-traffic ${{ env.SERVICE_NAME }} \
+          --to-latest \
+          --region ${{ env.GCP_REGION }}
+          
+    - name: Run production health check
+      run: |
+        export PRODUCTION_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} --region ${{ env.GCP_REGION }} --format 'value(status.url)')
+        python tests/production_health_check.py --url $PRODUCTION_URL
+        
+    - name: Notify deployment
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        channel: '#deployments'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+      if: always()

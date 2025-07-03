@@ -5,7 +5,7 @@ Integrates all API endpoints and serves the React dashboard.
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 import logging
@@ -21,9 +21,20 @@ from .status_management import setup_status_management_routes
 from .search_management import setup_search_routes
 from .transcript_management import setup_transcript_routes
 from .database_enhanced import get_enhanced_db
+from .health import router as health_router
 
 # Import existing dashboard data API
 from .dashboard_data import DashboardDataAPI
+
+# Production imports
+import os
+try:
+    from ..monitoring.metrics import start_metrics_server, metrics_collector
+    from ..config.production import config
+    PRODUCTION_MODE = os.getenv('ENV', 'development') == 'production'
+except ImportError:
+    PRODUCTION_MODE = False
+    config = None
 
 logger = logging.getLogger(__name__)
 
@@ -431,6 +442,26 @@ class EnhancedUIApp:
         setup_status_management_routes(self.app)
         setup_search_routes(self.app)
         setup_transcript_routes(self.app, self.db)
+        
+        # Add health check routes
+        self.app.include_router(health_router, tags=["health"])
+        
+        # Add metrics endpoint for production
+        if PRODUCTION_MODE:
+            try:
+                from prometheus_client import generate_latest
+                @self.app.get("/metrics")
+                async def metrics():
+                    """Prometheus metrics endpoint"""
+                    return Response(
+                        content=generate_latest(),
+                        media_type="text/plain"
+                    )
+                    
+                # Start metrics server
+                start_metrics_server(9090)
+            except ImportError:
+                logger.warning("Prometheus client not available, metrics endpoint disabled")
     
     def _setup_static_files(self):
         """Setup static file serving for React app"""
