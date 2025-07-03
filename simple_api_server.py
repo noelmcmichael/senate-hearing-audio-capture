@@ -5,7 +5,7 @@ Serves hearing data with proper titles.
 """
 
 import sqlite3
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from pathlib import Path
 import json
@@ -183,6 +183,53 @@ def get_hearing_transcript(hearing_id):
         
         return jsonify({
             'success': True,
+            'transcript': transcript_data
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/transcript', methods=['PUT'])
+def update_hearing_transcript(hearing_id):
+    """Update transcript for a specific hearing with speaker assignments."""
+    try:
+        import os
+        
+        data = request.get_json()
+        if not data or 'segments' not in data:
+            return jsonify({
+                'success': False,
+                'error': 'Segments data required'
+            }), 400
+        
+        # Load transcript file for this hearing
+        transcript_dir = Path(__file__).parent / 'output' / 'demo_transcription'
+        transcript_file = transcript_dir / f'hearing_{hearing_id}_transcript.json'
+        
+        if not transcript_file.exists():
+            return jsonify({
+                'success': False,
+                'error': 'Transcript not found for this hearing'
+            }), 404
+        
+        # Load existing transcript
+        with open(transcript_file, 'r') as f:
+            transcript_data = json.load(f)
+        
+        # Update segments with new speaker assignments
+        transcript_data['segments'] = data['segments']
+        transcript_data['updated_at'] = datetime.now().isoformat()
+        
+        # Save updated transcript
+        with open(transcript_file, 'w') as f:
+            json.dump(transcript_data, f, indent=2)
+        
+        return jsonify({
+            'success': True,
+            'message': 'Transcript updated successfully',
             'transcript': transcript_data
         })
         

@@ -134,14 +134,29 @@ const HearingReview = () => {
     setSaveStatus('saving');
     
     try {
-      // Here you would save the updated segments to the backend
-      // For now, we'll simulate a save operation
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch(`http://localhost:8001/api/hearings/${id}/transcript`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ segments })
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to save: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      if (!result.success) {
+        throw new Error(result.error || 'Save failed');
+      }
       
       setSaveStatus('saved');
       
-      // Optionally refresh the data
-      // await refreshData();
+      // Refresh the data to show updated transcript
+      if (refreshData) {
+        await refreshData();
+      }
       
     } catch (error) {
       console.error('Error saving changes:', error);
