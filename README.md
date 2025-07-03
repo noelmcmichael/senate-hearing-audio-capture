@@ -844,6 +844,31 @@ python test_congress_api.py
 - **Dependencies**: Phase 7B functional foundation (✅ Complete), Milestone 2 status system (✅ Complete)
 
 ## Next Steps
+
+### 🎯 CURRENT FOCUS: Multi-Committee Discovery & Manual Processing
+**Plan**: Scale to all Senate committees with manual processing controls
+**Status**: Plan created, awaiting user approval to begin implementation
+**Document**: See `MULTI_COMMITTEE_DISCOVERY_PLAN.md` for detailed step-by-step approach
+
+#### Immediate Implementation (Week 1)
+1. **Committee Structure Discovery**: Map all Senate committees and subcommittees
+2. **Hearing Discovery Engine**: Build comprehensive hearing catalog with ISVP detection
+3. **Manual Processing Framework**: Individual hearing processing with confirmation controls
+4. **Priority Hearing Selection**: Generate test queue with quality assessment
+
+#### Testing & Validation (Week 2)
+1. **Individual Hearing Processing**: Manual testing of 10+ hearings across committees
+2. **Feature Validation**: Test all existing features on new hearings
+3. **Cross-Committee Consistency**: Validate pipeline across different committee types
+4. **Performance Analysis**: Establish benchmarks and identify optimization opportunities
+
+#### System Integration (Week 3)
+1. **Database Enhancement**: Integrate discovery with existing hearing management
+2. **API Extensions**: Committee-focused endpoints and bulk discovery
+3. **Dashboard Refinement**: Enhanced UI for committee browsing and hearing selection
+4. **Documentation**: Complete user guides and deployment procedures
+
+### Completed Milestones
 1. ✅ Set up project structure and documentation
 2. ✅ Analyze target page ISVP implementation
 3. ✅ Build stream URL extraction  
@@ -861,11 +886,13 @@ python test_congress_api.py
 15. ✅ Automated data synchronization (Phase 7A - Dual-source hearing discovery)
 16. ✅ Enhanced UI/UX workflows (Phase 7B - Production-ready dashboard)
 17. 🔄 Enhanced user workflows (Phase 7C - Committee-focused navigation and management)
+
+### Future Production Options
 18. ⏳ Production security and authentication (Phase 8A)
 19. ⏳ Real-time live hearing processing and monitoring
 20. ⏳ Additional committee expansion (Finance, Armed Services, etc.)
 21. ⏳ Advanced speaker diarization and content analysis
-18. ⏳ Service deployment and scaling
+22. ⏳ Service deployment and scaling
 
 ## Notes
 - This tool is intended for civic engagement and policy analysis
