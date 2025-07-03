@@ -1,0 +1,204 @@
+{
+  "phase": "Phase 4: Edge Case and Optimization",
+  "start_time": "2025-07-03T12:24:33.333523",
+  "target_hearings": 6,
+  "success_criteria": "Identify and handle edge cases",
+  "focus": "Challenging scenarios and optimization",
+  "results": [
+    {
+      "hearing_number": 1,
+      "hearing_id": "HELP_e699a1d3",
+      "hearing_title": "Filter Results",
+      "committee": "Health, Education, Labor and Pensions",
+      "committee_code": "HELP",
+      "readiness_score": 0.41000000000000003,
+      "priority_score": 41.3,
+      "edge_cases": [
+        "Very Low Readiness",
+        "Non-ISVP Audio",
+        "No Witnesses",
+        "Unknown Audio Source"
+      ],
+      "processing_start": "2025-07-03T12:24:33.333689",
+      "processing_end": "2025-07-03T12:24:38.347836",
+      "processing_duration_seconds": 5.014147,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_HELP_e699a1d3_1751570673",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_HELP_e699a1d3/audio_HELP_e699a1d3.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_HELP_e699a1d3/transcript_HELP_e699a1d3.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_HELP_e699a1d3_1751570673.json"
+      },
+      "errors": [],
+      "warnings": [
+        "Unknown audio source: Unknown",
+        "Low readiness score: 41.0%"
+      ],
+      "edge_case_analysis": {
+        "edge_cases_detected": [
+          "Very Low Readiness",
+          "Non-ISVP Audio",
+          "No Witnesses",
+          "Unknown Audio Source"
+        ],
+        "handling_success": true,
+        "processing_time_impact": 5.014147,
+        "errors_encountered": [],
+        "warnings_encountered": [
+          "Unknown audio source: Unknown",
+          "Low readiness score: 41.0%"
+        ]
+      }
+    },
+    {
+      "hearing_number": 2,
+      "hearing_id": "SFRC_3ba2b244",
+      "hearing_title": "COMMITTEE EVENTS",
+      "committee": "Foreign Relations",
+      "committee_code": "SFRC",
+      "readiness_score": 0.495,
+      "priority_score": 56.85,
+      "edge_cases": [
+        "Very Low Readiness",
+        "Non-ISVP Audio",
+        "No Witnesses",
+        "Unknown Audio Source"
+      ],
+      "processing_start": "2025-07-03T12:24:40.351932",
+      "processing_end": "2025-07-03T12:24:45.357758",
+      "processing_duration_seconds": 5.005826,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_SFRC_3ba2b244_1751570680",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SFRC_3ba2b244/audio_SFRC_3ba2b244.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_SFRC_3ba2b244/transcript_SFRC_3ba2b244.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_SFRC_3ba2b244_1751570680.json"
+      },
+      "errors": [],
+      "warnings": [
+        "Unknown audio source: Unknown",
+        "Low readiness score: 49.5%"
+      ],
+      "edge_case_analysis": {
+        "edge_cases_detected": [
+          "Very Low Readiness",
+          "Non-ISVP Audio",
+          "No Witnesses",
+          "Unknown Audio Source"
+        ],
+        "handling_success": true,
+        "processing_time_impact": 5.005826,
+        "errors_encountered": [],
+        "warnings_encountered": [
+          "Unknown audio source: Unknown",
+          "Low readiness score: 49.5%"
+        ]
+      }
+    },
+    {
+      "hearing_number": 3,
+      "hearing_id": "HELP_f00bc1ea",
+      "hearing_title": "Securing the Future of Health Care: Enhancing Cybersecurity and Protecting Americans\u2019 Privacy",
+      "committee": "Health, Education, Labor and Pensions",
+      "committee_code": "HELP",
+      "readiness_score": 0.7433333333333333,
+      "priority_score": 69.3,
+      "edge_cases": [
+        "Low Readiness",
+        "No Witnesses",
+        "Unknown Audio Source"
+      ],
+      "processing_start": "2025-07-03T12:24:47.363025",
+      "processing_end": "2025-07-03T12:24:52.382275",
+      "processing_duration_seconds": 5.01925,
+      "success": true,
+      "status": "COMPLETED",
+      "session_id": "session_HELP_f00bc1ea_1751570687",
+      "output_files": {
+        "audio_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_HELP_f00bc1ea/audio_HELP_f00bc1ea.mp3",
+        "transcript_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/output/hearing_HELP_f00bc1ea/transcript_HELP_f00bc1ea.json",
+        "metadata_file": "/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/logs/session_session_HELP_f00bc1ea_1751570687.json"
+      },
+      "errors": [],
+      "warnings": [
+        "Unknown audio source: Unknown"
+      ],
+      "edge_case_analysis": {
+        "edge_cases_detected": [
+          "Low Readiness",
+          "No Witnesses",
+          "Unknown Audio Source"
+        ],
+        "handling_success": true,
+        "processing_time_impact": 5.01925,
+        "errors_encountered": [],
+        "warnings_encountered": [
+          "Unknown audio source: Unknown"
+        ]
+      }
+    }
+  ],
+  "edge_cases_found": [
+    {
+      "type": "Very Low Readiness",
+      "hearing_id": "HELP_e699a1d3",
+      "handled_successfully": true,
+      "issues": [
+        "Unknown audio source: Unknown",
+        "Low readiness score: 41.0%"
+      ]
+    },
+    {
+      "type": "Non-ISVP Audio",
+      "hearing_id": "HELP_e699a1d3",
+      "handled_successfully": true,
+      "issues": [
+        "Unknown audio source: Unknown",
+        "Low readiness score: 41.0%"
+      ]
+    },
+    {
+      "type": "No Witnesses",
+      "hearing_id": "HELP_e699a1d3",
+      "handled_successfully": true,
+      "issues": [
+        "Unknown audio source: Unknown",
+        "Low readiness score: 41.0%"
+      ]
+    },
+    {
+      "type": "Unknown Audio Source",
+      "hearing_id": "HELP_e699a1d3",
+      "handled_successfully": true,
+      "issues": [
+        "Unknown audio source: Unknown",
+        "Low readiness score: 41.0%"
+      ]
+    },
+    {
+      "type": "Low Readiness",
+      "hearing_id": "HELP_f00bc1ea",
+      "handled_successfully": true,
+      "issues": [
+        "Unknown audio source: Unknown"
+      ]
+    }
+  ],
+  "optimizations_identified": [],
+  "summary": {
+    "total_hearings": 3,
+    "successful_hearings": 3,
+    "failed_hearings": 0,
+    "success_rate": 1.0,
+    "total_processing_time_seconds": 15.039223,
+    "average_processing_time_seconds": 5.013074333333333,
+    "total_errors": 0,
+    "total_warnings": 5,
+    "edge_cases_tested": 5,
+    "low_readiness_success_rate": 1.0,
+    "optimizations_count": 0,
+    "completion_time": "2025-07-03T12:24:52.382397"
+  }
+}
