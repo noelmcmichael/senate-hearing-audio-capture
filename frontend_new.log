@@ -1,0 +1,126 @@
+
+> senate-hearing-dashboard@0.1.0 start
+> react-scripts start
+
+(node:5496) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:5496) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:5496) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Failed to compile.
+
+Module not found: Error: Can't resolve './App.css' in '/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/dashboard/src'
+WARNING in [eslint] 
+src/layouts/HearingLayout.js
+  Line 26:6:  React Hook useEffect has a missing dependency: 'fetchHearingData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/Dashboard.js
+  Line 8:3:   'Calendar' is defined but never used                                                                                    no-unused-vars
+  Line 9:3:   'Users' is defined but never used                                                                                       no-unused-vars
+  Line 64:6:  React Hook useEffect has a missing dependency: 'fetchHearings'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 68:6:  React Hook useEffect has a missing dependency: 'applyFiltersAndSort'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/HearingAudio.js
+  Line 3:19:  'AlertCircle' is defined but never used          no-unused-vars
+  Line 6:20:  'transcript' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingReview.js
+  Line 8:3:    'CheckCircle' is defined but never used           no-unused-vars
+  Line 11:3:   'Edit' is defined but never used                  no-unused-vars
+  Line 12:3:   'Trash2' is defined but never used                no-unused-vars
+  Line 16:32:  'refreshData' is assigned a value but never used  no-unused-vars
+  Line 228:9:  'allSpeakers' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingStatus.js
+  Line 1:27:   'useEffect' is defined but never used        no-unused-vars
+  Line 98:15:  'result' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingTranscript.js
+  Line 6:3:    'Users' is defined but never used                                                                                         no-unused-vars
+  Line 7:3:    'Clock' is defined but never used                                                                                         no-unused-vars
+  Line 9:3:    'CheckCircle' is defined but never used                                                                                   no-unused-vars
+  Line 11:3:   'Play' is defined but never used                                                                                          no-unused-vars
+  Line 12:3:   'Pause' is defined but never used                                                                                         no-unused-vars
+  Line 16:32:  'refreshData' is assigned a value but never used                                                                          no-unused-vars
+  Line 27:6:   React Hook useEffect has a missing dependency: 'calculateSpeakerStats'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in ./src/App.js 12:0-19
+Module not found: Error: Can't resolve './App.css' in '/Users/noelmcmichael/Workspace/senate_hearing_audio_capture/dashboard/src'
+
+webpack compiled with 1 error and 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/layouts/HearingLayout.js
+  Line 26:6:  React Hook useEffect has a missing dependency: 'fetchHearingData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/Dashboard.js
+  Line 8:3:   'Calendar' is defined but never used                                                                                    no-unused-vars
+  Line 9:3:   'Users' is defined but never used                                                                                       no-unused-vars
+  Line 64:6:  React Hook useEffect has a missing dependency: 'fetchHearings'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 68:6:  React Hook useEffect has a missing dependency: 'applyFiltersAndSort'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/HearingAudio.js
+  Line 3:19:  'AlertCircle' is defined but never used          no-unused-vars
+  Line 6:20:  'transcript' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingReview.js
+  Line 8:3:    'CheckCircle' is defined but never used           no-unused-vars
+  Line 11:3:   'Edit' is defined but never used                  no-unused-vars
+  Line 12:3:   'Trash2' is defined but never used                no-unused-vars
+  Line 16:32:  'refreshData' is assigned a value but never used  no-unused-vars
+  Line 228:9:  'allSpeakers' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingStatus.js
+  Line 1:27:   'useEffect' is defined but never used        no-unused-vars
+  Line 98:15:  'result' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingTranscript.js
+  Line 6:3:    'Users' is defined but never used                                                                                         no-unused-vars
+  Line 7:3:    'Clock' is defined but never used                                                                                         no-unused-vars
+  Line 9:3:    'CheckCircle' is defined but never used                                                                                   no-unused-vars
+  Line 11:3:   'Play' is defined but never used                                                                                          no-unused-vars
+  Line 12:3:   'Pause' is defined but never used                                                                                         no-unused-vars
+  Line 16:32:  'refreshData' is assigned a value but never used                                                                          no-unused-vars
+  Line 27:6:   React Hook useEffect has a missing dependency: 'calculateSpeakerStats'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/layouts/HearingLayout.js
+  Line 26:6:  React Hook useEffect has a missing dependency: 'fetchHearingData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/Dashboard.js
+  Line 8:3:   'Calendar' is defined but never used                                                                                    no-unused-vars
+  Line 9:3:   'Users' is defined but never used                                                                                       no-unused-vars
+  Line 64:6:  React Hook useEffect has a missing dependency: 'fetchHearings'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+  Line 68:6:  React Hook useEffect has a missing dependency: 'applyFiltersAndSort'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/HearingAudio.js
+  Line 3:19:  'AlertCircle' is defined but never used          no-unused-vars
+  Line 6:20:  'transcript' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingReview.js
+  Line 8:3:    'CheckCircle' is defined but never used           no-unused-vars
+  Line 11:3:   'Edit' is defined but never used                  no-unused-vars
+  Line 12:3:   'Trash2' is defined but never used                no-unused-vars
+  Line 16:32:  'refreshData' is assigned a value but never used  no-unused-vars
+  Line 228:9:  'allSpeakers' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingStatus.js
+  Line 1:27:   'useEffect' is defined but never used        no-unused-vars
+  Line 98:15:  'result' is assigned a value but never used  no-unused-vars
+
+src/pages/HearingTranscript.js
+  Line 6:3:    'Users' is defined but never used                                                                                         no-unused-vars
+  Line 7:3:    'Clock' is defined but never used                                                                                         no-unused-vars
+  Line 9:3:    'CheckCircle' is defined but never used                                                                                   no-unused-vars
+  Line 11:3:   'Play' is defined but never used                                                                                          no-unused-vars
+  Line 12:3:   'Pause' is defined but never used                                                                                         no-unused-vars
+  Line 16:32:  'refreshData' is assigned a value but never used                                                                          no-unused-vars
+  Line 27:6:   React Hook useEffect has a missing dependency: 'calculateSpeakerStats'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning

@@ -39,3 +39,263 @@ INFO:     127.0.0.1:62426 - "GET /api/hearings/3 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:62428 - "GET /api/hearings/4 HTTP/1.1" 200 OK
 2025-07-02 19:57:33,223 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
 INFO:     127.0.0.1:62430 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 19:59:14,591 - src.api.main_app - INFO - GET /api - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62434 - "GET /api HTTP/1.1" 200 OK
+2025-07-02 22:13:57,246 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62518 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:13:57,247 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62518 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:13:58,643 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62518 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:13:58,645 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62520 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:14:11,430 - src.api.main_app - INFO - GET /api/hearings/1 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62526 - "GET /api/hearings/1 HTTP/1.1" 200 OK
+2025-07-02 22:14:24,291 - src.api.main_app - INFO - GET /api/hearings/1 - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62528 - "GET /api/hearings/1 HTTP/1.1" 200 OK
+2025-07-02 22:14:24,294 - src.api.main_app - INFO - GET /api/hearings/1 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62528 - "GET /api/hearings/1 HTTP/1.1" 200 OK
+2025-07-02 22:14:24,307 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62528 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:14:24,308 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62530 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:14:29,155 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.009s
+INFO:     127.0.0.1:62530 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:14:29,161 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62530 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:14:29,162 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62528 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:14:36,197 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62537 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:14:36,197 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62538 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:14:39,181 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62538 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:14:39,182 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62537 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:14:39,185 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62537 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:14:39,187 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62538 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:14:40,802 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62538 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:14:40,804 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62537 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:14:56,252 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62573 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:14:58,756 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62573 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:14:58,757 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62573 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:00,326 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62573 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:00,327 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62583 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:00,333 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62583 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:15:00,336 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62573 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:15:02,060 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62573 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:15:02,063 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62583 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:15:08,516 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62636 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:08,518 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62636 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:10,027 - src.api.main_app - INFO - GET /api/committees - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62636 - "GET /api/committees HTTP/1.1" 200 OK
+2025-07-02 22:15:10,028 - src.api.main_app - INFO - GET /api/committees - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62638 - "GET /api/committees HTTP/1.1" 200 OK
+2025-07-02 22:15:13,559 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.004s
+INFO:     127.0.0.1:62638 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 22:15:13,560 - src.api.main_app - INFO - GET /api/committees/SCOM/stats - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62636 - "GET /api/committees/SCOM/stats HTTP/1.1" 200 OK
+2025-07-02 22:15:13,564 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62638 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 22:15:13,564 - src.api.main_app - INFO - GET /api/committees/SCOM/stats - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62660 - "GET /api/committees/SCOM/stats HTTP/1.1" 200 OK
+2025-07-02 22:15:15,261 - src.api.main_app - INFO - GET /api/hearings/6 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62660 - "GET /api/hearings/6 HTTP/1.1" 200 OK
+2025-07-02 22:15:19,829 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62660 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:19,831 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62692 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:26,859 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62729 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:26,861 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62729 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:29,431 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62729 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:29,432 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62731 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:29,436 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62731 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:15:29,438 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62729 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:15:30,888 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62729 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:15:30,890 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62731 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:15:35,059 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62731 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:15:45,265 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62789 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:45,266 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62789 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:47,813 - src.api.main_app - INFO - GET /api/system/health - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62789 - "GET /api/system/health?include_details=true HTTP/1.1" 200 OK
+2025-07-02 22:15:47,816 - src.api.main_app - INFO - GET /api/system/health - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62791 - "GET /api/system/health?include_details=true HTTP/1.1" 200 OK
+2025-07-02 22:15:50,527 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62791 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:50,528 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62789 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:52,195 - src.api.main_app - INFO - GET /api/system/health - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62789 - "GET /api/system/health?include_details=true HTTP/1.1" 200 OK
+2025-07-02 22:15:52,197 - src.api.main_app - INFO - GET /api/system/health - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62791 - "GET /api/system/health?include_details=true HTTP/1.1" 200 OK
+2025-07-02 22:15:56,745 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62791 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:15:56,747 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:62789 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:22,270 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:63922 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:20:22,274 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:63922 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:20:24,152 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:63922 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:24,153 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:63924 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:25,907 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63924 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:20:25,909 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:63922 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:20:45,863 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64024 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:45,864 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64024 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:53,036 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64026 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:20:53,045 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64026 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:20:56,921 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64026 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:56,922 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64026 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:58,068 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64026 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:20:58,069 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64078 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:21:00,394 - src.api.main_app - INFO - GET /api/committees - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64078 - "GET /api/committees HTTP/1.1" 200 OK
+2025-07-02 22:21:00,396 - src.api.main_app - INFO - GET /api/committees - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64026 - "GET /api/committees HTTP/1.1" 200 OK
+2025-07-02 22:21:02,377 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64026 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 22:21:02,377 - src.api.main_app - INFO - GET /api/committees/SCOM/stats - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64078 - "GET /api/committees/SCOM/stats HTTP/1.1" 200 OK
+2025-07-02 22:21:02,379 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64026 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 22:21:02,379 - src.api.main_app - INFO - GET /api/committees/SCOM/stats - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64078 - "GET /api/committees/SCOM/stats HTTP/1.1" 200 OK
+2025-07-02 22:21:26,651 - src.api.main_app - INFO - GET /api/committees - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64102 - "GET /api/committees HTTP/1.1" 200 OK
+2025-07-02 22:21:26,654 - src.api.main_app - INFO - GET /api/committees - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64102 - "GET /api/committees HTTP/1.1" 200 OK
+2025-07-02 22:21:27,971 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64102 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:21:27,972 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64200 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:21:29,913 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64200 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:21:29,916 - src.api.main_app - INFO - GET /api/hearings/queue - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64102 - "GET /api/hearings/queue?limit=50&offset=0&date_from=2025-06-26 HTTP/1.1" 200 OK
+2025-07-02 22:22:13,165 - src.api.main_app - INFO - GET /api/hearings/1 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64380 - "GET /api/hearings/1 HTTP/1.1" 200 OK
+2025-07-02 22:22:15,021 - src.api.main_app - INFO - GET /api/hearings/1 - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64380 - "GET /api/hearings/1 HTTP/1.1" 200 OK
+2025-07-02 22:22:15,024 - src.api.main_app - INFO - GET /api/hearings/1 - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64390 - "GET /api/hearings/1 HTTP/1.1" 200 OK
+2025-07-02 22:22:15,031 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64390 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:22:15,032 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64380 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:22:17,824 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:64380 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:22:17,834 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64380 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:22:17,835 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64390 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:22:19,303 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64390 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:22:21,098 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64390 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:22:21,099 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64380 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:22:24,987 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64380 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:22:24,987 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64390 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:22:24,990 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64390 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:22:24,992 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64380 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:22:39,682 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64474 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:22:39,685 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64474 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:22:42,403 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:64474 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:22:42,404 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:64476 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:29:58,213 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:49886 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:29:58,216 - src.api.main_app - INFO - GET /api/transcripts - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:49886 - "GET /api/transcripts HTTP/1.1" 200 OK
+2025-07-02 22:29:58,219 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:49886 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:29:58,221 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:49888 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 22:29:59,352 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:49888 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:29:59,353 - src.api.main_app - INFO - GET /api/transcripts/[object Object] - Status: 200 - Time: 0.000s
+INFO:     127.0.0.1:49886 - "GET /api/transcripts/%5Bobject%20Object%5D HTTP/1.1" 200 OK
+2025-07-02 22:37:27,798 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:51686 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,323 - src.api.main_app - INFO - GET /api/committees/SSCI/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62176 - "GET /api/committees/SSCI/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,324 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62179 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,325 - src.api.main_app - INFO - GET /api/committees/SSAF/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62181 - "GET /api/committees/SSAF/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,325 - src.api.main_app - INFO - GET /api/committees/HJUD/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62182 - "GET /api/committees/HJUD/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,326 - src.api.main_app - INFO - GET /api/committees/SSJU/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62184 - "GET /api/committees/SSJU/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,326 - src.api.main_app - INFO - GET /api/committees/SSHR/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62186 - "GET /api/committees/SSHR/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,328 - src.api.main_app - INFO - GET /api/committees/SSBE/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62176 - "GET /api/committees/SSBE/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,328 - src.api.main_app - INFO - GET /api/committees/SBAN/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62179 - "GET /api/committees/SBAN/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,331 - src.api.main_app - INFO - GET /api/committees/SSCI/hearings - Status: 200 - Time: 0.003s
+INFO:     127.0.0.1:62181 - "GET /api/committees/SSCI/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,332 - src.api.main_app - INFO - GET /api/committees/SCOM/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62182 - "GET /api/committees/SCOM/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,332 - src.api.main_app - INFO - GET /api/committees/SSAF/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62184 - "GET /api/committees/SSAF/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,332 - src.api.main_app - INFO - GET /api/committees/HJUD/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62186 - "GET /api/committees/HJUD/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,333 - src.api.main_app - INFO - GET /api/committees/SSJU/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62176 - "GET /api/committees/SSJU/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,334 - src.api.main_app - INFO - GET /api/committees/SSHR/hearings - Status: 200 - Time: 0.002s
+INFO:     127.0.0.1:62179 - "GET /api/committees/SSHR/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,339 - src.api.main_app - INFO - GET /api/committees/SSBE/hearings - Status: 200 - Time: 0.006s
+INFO:     127.0.0.1:62181 - "GET /api/committees/SSBE/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,339 - src.api.main_app - INFO - GET /api/committees/SBAN/hearings - Status: 200 - Time: 0.005s
+INFO:     127.0.0.1:62182 - "GET /api/committees/SBAN/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,340 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.006s
+INFO:     127.0.0.1:62184 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
+2025-07-02 23:20:27,342 - src.api.main_app - INFO - GET /api/transcript-browser/hearings - Status: 200 - Time: 0.001s
+INFO:     127.0.0.1:62184 - "GET /api/transcript-browser/hearings HTTP/1.1" 200 OK
