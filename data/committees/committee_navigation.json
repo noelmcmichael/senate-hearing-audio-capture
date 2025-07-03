@@ -1,0 +1,531 @@
+{
+  "generation_date": "2025-07-03T11:22:55.838774",
+  "categories": [
+    {
+      "name": "Standing Committees",
+      "code": "standing_committees",
+      "count": 17,
+      "committees": [
+        {
+          "code": "SAGR",
+          "name": "Agriculture, Nutrition, and Forestry",
+          "isvp_compatible": false,
+          "subcommittee_count": 1,
+          "website_url": "https://www.agriculture.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SAPP",
+          "name": "Appropriations",
+          "isvp_compatible": false,
+          "subcommittee_count": 1,
+          "website_url": "https://www.appropriations.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SASC",
+          "name": "Armed Services",
+          "isvp_compatible": false,
+          "subcommittee_count": 2,
+          "website_url": "https://www.armed-services.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SBAN",
+          "name": "Banking, Housing, and Urban Affairs",
+          "isvp_compatible": true,
+          "subcommittee_count": 1,
+          "website_url": "https://www.banking.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SBUD",
+          "name": "Budget",
+          "isvp_compatible": false,
+          "subcommittee_count": 0,
+          "website_url": "https://www.budget.senate.gov/",
+          "has_subcommittees": false
+        },
+        {
+          "code": "SCOM",
+          "name": "Commerce, Science, and Transportation",
+          "isvp_compatible": true,
+          "subcommittee_count": 1,
+          "website_url": "https://www.commerce.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SENE",
+          "name": "Energy and Natural Resources",
+          "isvp_compatible": false,
+          "subcommittee_count": 1,
+          "website_url": "https://www.energy.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SENV",
+          "name": "Environment and Public Works",
+          "isvp_compatible": false,
+          "subcommittee_count": 1,
+          "website_url": "https://www.epw.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SFIN",
+          "name": "Finance",
+          "isvp_compatible": false,
+          "subcommittee_count": 1,
+          "website_url": "https://www.finance.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SFRC",
+          "name": "Foreign Relations",
+          "isvp_compatible": false,
+          "subcommittee_count": 1,
+          "website_url": "https://www.foreign.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "HELP",
+          "name": "Health, Education, Labor and Pensions",
+          "isvp_compatible": false,
+          "subcommittee_count": 1,
+          "website_url": "https://www.help.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SHSG",
+          "name": "Homeland Security and Governmental Affairs",
+          "isvp_compatible": false,
+          "subcommittee_count": 4,
+          "website_url": "https://www.hsgac.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SINT",
+          "name": "Indian Affairs",
+          "isvp_compatible": false,
+          "subcommittee_count": 0,
+          "website_url": "https://www.indian.senate.gov/",
+          "has_subcommittees": false
+        },
+        {
+          "code": "SSJU",
+          "name": "Judiciary",
+          "isvp_compatible": true,
+          "subcommittee_count": 1,
+          "website_url": "https://www.judiciary.senate.gov/",
+          "has_subcommittees": true
+        },
+        {
+          "code": "SRUL",
+          "name": "Rules and Administration",
+          "isvp_compatible": false,
+          "subcommittee_count": 0,
+          "website_url": "https://www.rules.senate.gov/",
+          "has_subcommittees": false
+        },
+        {
+          "code": "SMAL",
+          "name": "Small Business and Entrepreneurship",
+          "isvp_compatible": false,
+          "subcommittee_count": 0,
+          "website_url": "https://www.sbc.senate.gov/",
+          "has_subcommittees": false
+        },
+        {
+          "code": "SSVA",
+          "name": "Veterans' Affairs",
+          "isvp_compatible": false,
+          "subcommittee_count": 0,
+          "website_url": "https://www.veterans.senate.gov/",
+          "has_subcommittees": false
+        }
+      ]
+    },
+    {
+      "name": "Select Committees",
+      "code": "select_committees",
+      "count": 3,
+      "committees": [
+        {
+          "code": "SSAG",
+          "name": "Aging",
+          "isvp_compatible": false,
+          "subcommittee_count": 0,
+          "website_url": "https://www.aging.senate.gov/",
+          "has_subcommittees": false
+        },
+        {
+          "code": "SSET",
+          "name": "Ethics",
+          "isvp_compatible": false,
+          "subcommittee_count": 0,
+          "website_url": "https://www.ethics.senate.gov/",
+          "has_subcommittees": false
+        },
+        {
+          "code": "SSCI",
+          "name": "Intelligence",
+          "isvp_compatible": true,
+          "subcommittee_count": 0,
+          "website_url": "https://www.intelligence.senate.gov/",
+          "has_subcommittees": false
+        }
+      ]
+    }
+  ],
+  "quick_access": {
+    "isvp_compatible": [
+      {
+        "code": "SBAN",
+        "name": "Banking, Housing, and Urban Affairs",
+        "isvp_compatible": true,
+        "subcommittee_count": 1,
+        "website_url": "https://www.banking.senate.gov/",
+        "has_subcommittees": true
+      },
+      {
+        "code": "SCOM",
+        "name": "Commerce, Science, and Transportation",
+        "isvp_compatible": true,
+        "subcommittee_count": 1,
+        "website_url": "https://www.commerce.senate.gov/",
+        "has_subcommittees": true
+      },
+      {
+        "code": "SSJU",
+        "name": "Judiciary",
+        "isvp_compatible": true,
+        "subcommittee_count": 1,
+        "website_url": "https://www.judiciary.senate.gov/",
+        "has_subcommittees": true
+      },
+      {
+        "code": "SSCI",
+        "name": "Intelligence",
+        "isvp_compatible": true,
+        "subcommittee_count": 0,
+        "website_url": "https://www.intelligence.senate.gov/",
+        "has_subcommittees": false
+      }
+    ],
+    "most_active": [],
+    "priority_committees": [
+      {
+        "code": "SASC",
+        "name": "Armed Services",
+        "isvp_compatible": false
+      },
+      {
+        "code": "SBAN",
+        "name": "Banking, Housing, and Urban Affairs",
+        "isvp_compatible": true
+      },
+      {
+        "code": "SCOM",
+        "name": "Commerce, Science, and Transportation",
+        "isvp_compatible": true
+      },
+      {
+        "code": "SFRC",
+        "name": "Foreign Relations",
+        "isvp_compatible": false
+      },
+      {
+        "code": "HELP",
+        "name": "Health, Education, Labor and Pensions",
+        "isvp_compatible": false
+      },
+      {
+        "code": "SSJU",
+        "name": "Judiciary",
+        "isvp_compatible": true
+      },
+      {
+        "code": "SSCI",
+        "name": "Intelligence",
+        "isvp_compatible": true
+      }
+    ]
+  },
+  "search_index": [
+    {
+      "code": "SAGR",
+      "name": "Agriculture, Nutrition, and Forestry",
+      "full_name": "Committee on Agriculture, Nutrition, and Forestry",
+      "keywords": [
+        "forestry",
+        "nutrition,",
+        "agriculture,"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SAPP",
+      "name": "Appropriations",
+      "full_name": "Committee on Appropriations",
+      "keywords": [
+        "appropriations",
+        "federal",
+        "spending,",
+        "allocation",
+        "budget"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SASC",
+      "name": "Armed Services",
+      "full_name": "Committee on Armed Services",
+      "keywords": [
+        "affairs,",
+        "defense",
+        "military",
+        "policy",
+        "armed",
+        "services"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SBAN",
+      "name": "Banking, Housing, and Urban Affairs",
+      "full_name": "Committee on Banking, Housing, and Urban Affairs",
+      "keywords": [
+        "urban",
+        "banking,",
+        "housing,",
+        "affairs",
+        "development"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": true
+    },
+    {
+      "code": "SBUD",
+      "name": "Budget",
+      "full_name": "Committee on the Budget",
+      "keywords": [
+        "federal",
+        "budget",
+        "process"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SCOM",
+      "name": "Commerce, Science, and Transportation",
+      "full_name": "Committee on Commerce, Science, and Transportation",
+      "keywords": [
+        "transportation,",
+        "interstate",
+        "science,",
+        "telecommunications",
+        "commerce,",
+        "transportation"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": true
+    },
+    {
+      "code": "SENE",
+      "name": "Energy and Natural Resources",
+      "full_name": "Committee on Energy and Natural Resources",
+      "keywords": [
+        "resources",
+        "natural",
+        "policy,",
+        "energy"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SENV",
+      "name": "Environment and Public Works",
+      "full_name": "Committee on Environment and Public Works",
+      "keywords": [
+        "public",
+        "protection,",
+        "environment",
+        "environmental",
+        "works"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SFIN",
+      "name": "Finance",
+      "full_name": "Committee on Finance",
+      "keywords": [
+        "security",
+        "taxation,",
+        "social",
+        "trade,",
+        "finance"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SFRC",
+      "name": "Foreign Relations",
+      "full_name": "Committee on Foreign Relations",
+      "keywords": [
+        "treaties",
+        "relations",
+        "foreign",
+        "policy,"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "HELP",
+      "name": "Health, Education, Labor and Pensions",
+      "full_name": "Committee on Health, Education, Labor and Pensions",
+      "keywords": [
+        "labor",
+        "health,",
+        "health",
+        "education,",
+        "pensions",
+        "care,"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SHSG",
+      "name": "Homeland Security and Governmental Affairs",
+      "full_name": "Committee on Homeland Security and Governmental Affairs",
+      "keywords": [
+        "homeland",
+        "security",
+        "security,",
+        "governmental",
+        "government",
+        "affairs",
+        "operations"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SINT",
+      "name": "Indian Affairs",
+      "full_name": "Committee on Indian Affairs",
+      "keywords": [
+        "affairs",
+        "indian",
+        "native",
+        "american"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SSJU",
+      "name": "Judiciary",
+      "full_name": "Committee on the Judiciary",
+      "keywords": [
+        "law",
+        "federal",
+        "constitutional",
+        "judiciary",
+        "courts,"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": true
+    },
+    {
+      "code": "SRUL",
+      "name": "Rules and Administration",
+      "full_name": "Committee on Rules and Administration",
+      "keywords": [
+        "rules,",
+        "administration",
+        "federal",
+        "rules",
+        "elections"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SMAL",
+      "name": "Small Business and Entrepreneurship",
+      "full_name": "Committee on Small Business and Entrepreneurship",
+      "keywords": [
+        "business",
+        "policy",
+        "small",
+        "entrepreneurship"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SSVA",
+      "name": "Veterans' Affairs",
+      "full_name": "Committee on Veterans' Affairs",
+      "keywords": [
+        "benefits",
+        "veterans",
+        "programs",
+        "affairs",
+        "veterans'"
+      ],
+      "category": "standing_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SSAG",
+      "name": "Aging",
+      "full_name": "Special Committee on Aging",
+      "keywords": [
+        "older",
+        "aging",
+        "special",
+        "americans",
+        "issues",
+        "affecting"
+      ],
+      "category": "select_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SSET",
+      "name": "Ethics",
+      "full_name": "Select Committee on Ethics",
+      "keywords": [
+        "select",
+        "ethics,",
+        "ethics",
+        "conduct"
+      ],
+      "category": "select_committees",
+      "isvp_compatible": false
+    },
+    {
+      "code": "SSCI",
+      "name": "Intelligence",
+      "full_name": "Select Committee on Intelligence",
+      "keywords": [
+        "intelligence",
+        "select",
+        "activities",
+        "programs"
+      ],
+      "category": "select_committees",
+      "isvp_compatible": true
+    }
+  ]
+}

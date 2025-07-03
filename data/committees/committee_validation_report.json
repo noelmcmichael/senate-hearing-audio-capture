@@ -1,0 +1,99 @@
+{
+  "validation_date": "2025-07-03T11:22:46.051240",
+  "committee_file": "data/committees/committee_structure_refined.json",
+  "official_validation": {
+    "total_committees": 36,
+    "validated_committees": 18,
+    "missing_committees": [],
+    "unknown_committees": [
+      "SAGR_SUBCOM",
+      "SSAG",
+      "SHSG_ARCHIV",
+      "SCOM_SUBCOM",
+      "SFIN_SUBCOM",
+      "SSET",
+      "SHSG_INVEST",
+      "HELP_SUBCOM",
+      "SASC_SUBCOM",
+      "SHSG_PERINV",
+      "SBAN_SUBCOM",
+      "SAPP_SUBCOM",
+      "SSJU_SUBCOM",
+      "SFRC_SUBCOM",
+      "SENV_SUBCOM",
+      "SHSG_SUBCOM",
+      "SENE_SUBCOM",
+      "SASC_WICREE"
+    ],
+    "validation_errors": [],
+    "validation_date": "2025-07-03T11:22:46.051261",
+    "live_validation": {
+      "website_committees_found": 8,
+      "discovered_committees": 25,
+      "matches": 0,
+      "match_rate": 0.0
+    }
+  },
+  "isvp_compatibility": {
+    "total_committees": 36,
+    "claimed_isvp_compatible": 4,
+    "validated_isvp_compatible": 1,
+    "isvp_validation_results": [
+      {
+        "code": "SBAN",
+        "name": "Banking, Housing, and Urban Affairs",
+        "website_url": "https://www.banking.senate.gov/",
+        "is_compatible": false,
+        "validation_method": "website_check",
+        "details": {
+          "found_indicators": [],
+          "response_status": 200
+        }
+      },
+      {
+        "code": "SCOM",
+        "name": "Commerce, Science, and Transportation",
+        "website_url": "https://www.commerce.senate.gov/",
+        "is_compatible": false,
+        "validation_method": "website_check",
+        "details": {
+          "found_indicators": [],
+          "response_status": 200
+        }
+      },
+      {
+        "code": "SSCI",
+        "name": "Intelligence",
+        "website_url": "https://www.intelligence.senate.gov/",
+        "is_compatible": true,
+        "validation_method": "website_check",
+        "details": {
+          "found_indicators": [
+            "isvp",
+            "senate.gov/isvp"
+          ],
+          "response_status": 200
+        }
+      },
+      {
+        "code": "SSJU",
+        "name": "Judiciary",
+        "website_url": "https://www.judiciary.senate.gov/",
+        "is_compatible": false,
+        "validation_method": "website_check",
+        "details": {
+          "found_indicators": [],
+          "response_status": 200
+        }
+      }
+    ]
+  },
+  "subcommittee_structure": {
+    "committees_with_subcommittees": 12,
+    "total_subcommittees": 16,
+    "orphaned_subcommittees": [],
+    "structural_errors": []
+  },
+  "overall_validation_score": 50.0,
+  "validation_status": "FAIR"
+}

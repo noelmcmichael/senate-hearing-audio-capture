@@ -1,0 +1,582 @@
+{
+  "generation_date": "2025-07-03T11:22:55.837783",
+  "source_file": "data/committees/committee_structure_refined.json",
+  "structure": {
+    "standing_committees": [
+      {
+        "code": "SAGR",
+        "name": "Agriculture, Nutrition, and Forestry",
+        "full_name": "Committee on Agriculture, Nutrition, and Forestry",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.agriculture.senate.gov/",
+        "jurisdiction": "Agriculture, nutrition, forestry",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SAGR_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.agriculture.senate.gov/",
+            "parent_code": "SAGR",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:36.470789",
+              "api_source": "Discovered from Agriculture, Nutrition, and Forestry website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737397",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SAPP",
+        "name": "Appropriations",
+        "full_name": "Committee on Appropriations",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.appropriations.senate.gov/",
+        "jurisdiction": "Federal spending, budget allocation",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SAPP_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.appropriations.senate.gov/",
+            "parent_code": "SAPP",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:26.992332",
+              "api_source": "Discovered from Appropriations website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737370",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SASC",
+        "name": "Armed Services",
+        "full_name": "Committee on Armed Services",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.armed-services.senate.gov/",
+        "jurisdiction": "Military affairs, defense policy",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SASC_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.armed-services.senate.gov/",
+            "parent_code": "SASC",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:26.844856",
+              "api_source": "Discovered from Armed Services website"
+            }
+          },
+          {
+            "code": "SASC_WICREE",
+            "name": "Wicker and Reed Announce SASC Subcommittee Leadership for 119th Congress",
+            "full_name": "Subcommittee on Wicker and Reed Announce SASC Subcommittee Leadership for 119th Congress",
+            "website_url": "https://www.armed-services.senate.gov/",
+            "parent_code": "SASC",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:26.844840",
+              "api_source": "Discovered from Armed Services website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737354",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SBAN",
+        "name": "Banking, Housing, and Urban Affairs",
+        "full_name": "Committee on Banking, Housing, and Urban Affairs",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.banking.senate.gov/",
+        "jurisdiction": "Banking, housing, urban development",
+        "isvp_compatible": true,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SBAN_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.banking.senate.gov/",
+            "parent_code": "SBAN",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:27.176603",
+              "api_source": "Discovered from Banking, Housing, and Urban Affairs website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737372",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SBUD",
+        "name": "Budget",
+        "full_name": "Committee on the Budget",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.budget.senate.gov/",
+        "jurisdiction": "Federal budget process",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737374",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SCOM",
+        "name": "Commerce, Science, and Transportation",
+        "full_name": "Committee on Commerce, Science, and Transportation",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.commerce.senate.gov/",
+        "jurisdiction": "Interstate commerce, transportation, telecommunications",
+        "isvp_compatible": true,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SCOM_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.commerce.senate.gov/",
+            "parent_code": "SCOM",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:27.342680",
+              "api_source": "Discovered from Commerce, Science, and Transportation website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737376",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SENE",
+        "name": "Energy and Natural Resources",
+        "full_name": "Committee on Energy and Natural Resources",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.energy.senate.gov/",
+        "jurisdiction": "Energy policy, natural resources",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SENE_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.energy.senate.gov/",
+            "parent_code": "SENE",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:29.406916",
+              "api_source": "Discovered from Energy and Natural Resources website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737379",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SENV",
+        "name": "Environment and Public Works",
+        "full_name": "Committee on Environment and Public Works",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.epw.senate.gov/",
+        "jurisdiction": "Environmental protection, public works",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SENV_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.epw.senate.gov/",
+            "parent_code": "SENV",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:27.880810",
+              "api_source": "Discovered from Environment and Public Works website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737378",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SFIN",
+        "name": "Finance",
+        "full_name": "Committee on Finance",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.finance.senate.gov/",
+        "jurisdiction": "Taxation, trade, Social Security",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SFIN_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.finance.senate.gov/",
+            "parent_code": "SFIN",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:29.564882",
+              "api_source": "Discovered from Finance website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737381",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SFRC",
+        "name": "Foreign Relations",
+        "full_name": "Committee on Foreign Relations",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.foreign.senate.gov/",
+        "jurisdiction": "Foreign policy, treaties",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SFRC_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.foreign.senate.gov/",
+            "parent_code": "SFRC",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:29.671099",
+              "api_source": "Discovered from Foreign Relations website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737383",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "HELP",
+        "name": "Health, Education, Labor and Pensions",
+        "full_name": "Committee on Health, Education, Labor and Pensions",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.help.senate.gov/",
+        "jurisdiction": "Health care, education, labor",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "HELP_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.help.senate.gov/",
+            "parent_code": "HELP",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:29.773501",
+              "api_source": "Discovered from Health, Education, Labor and Pensions website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737384",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SHSG",
+        "name": "Homeland Security and Governmental Affairs",
+        "full_name": "Committee on Homeland Security and Governmental Affairs",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.hsgac.senate.gov/",
+        "jurisdiction": "Homeland security, government operations",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SHSG_INVEST",
+            "name": "Investigations",
+            "full_name": "Subcommittee on Investigations",
+            "website_url": "https://www.hsgac.senate.gov/",
+            "parent_code": "SHSG",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:31.047384",
+              "api_source": "Discovered from Homeland Security and Governmental Affairs website"
+            }
+          },
+          {
+            "code": "SHSG_PERINV",
+            "name": "Permanent Subcommittee on Investigations",
+            "full_name": "Subcommittee on Permanent Subcommittee on Investigations",
+            "website_url": "https://www.hsgac.senate.gov/",
+            "parent_code": "SHSG",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:31.047381",
+              "api_source": "Discovered from Homeland Security and Governmental Affairs website"
+            }
+          },
+          {
+            "code": "SHSG_ARCHIV",
+            "name": "Subcommittee Archives",
+            "full_name": "Subcommittee on Subcommittee Archives",
+            "website_url": "https://www.hsgac.senate.gov/",
+            "parent_code": "SHSG",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:31.047365",
+              "api_source": "Discovered from Homeland Security and Governmental Affairs website"
+            }
+          },
+          {
+            "code": "SHSG_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.hsgac.senate.gov/",
+            "parent_code": "SHSG",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:31.047375",
+              "api_source": "Discovered from Homeland Security and Governmental Affairs website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737386",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SINT",
+        "name": "Indian Affairs",
+        "full_name": "Committee on Indian Affairs",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.indian.senate.gov/",
+        "jurisdiction": "Native American affairs",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737387",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SSJU",
+        "name": "Judiciary",
+        "full_name": "Committee on the Judiciary",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.judiciary.senate.gov/",
+        "jurisdiction": "Federal courts, constitutional law",
+        "isvp_compatible": true,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [
+          {
+            "code": "SSJU_SUBCOM",
+            "name": "Subcommittees",
+            "full_name": "Subcommittee on Subcommittees",
+            "website_url": "https://www.judiciary.senate.gov/",
+            "parent_code": "SSJU",
+            "isvp_compatible": null,
+            "metadata": {
+              "discovery_date": "2025-07-03T11:22:33.580197",
+              "api_source": "Discovered from Judiciary website"
+            }
+          }
+        ],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737391",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SRUL",
+        "name": "Rules and Administration",
+        "full_name": "Committee on Rules and Administration",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.rules.senate.gov/",
+        "jurisdiction": "Senate rules, federal elections",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737392",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SMAL",
+        "name": "Small Business and Entrepreneurship",
+        "full_name": "Committee on Small Business and Entrepreneurship",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.sbc.senate.gov/",
+        "jurisdiction": "Small business policy",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737394",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SSVA",
+        "name": "Veterans' Affairs",
+        "full_name": "Committee on Veterans' Affairs",
+        "type": "committee",
+        "chamber": "Senate",
+        "website_url": "https://www.veterans.senate.gov/",
+        "jurisdiction": "Veterans programs and benefits",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737396",
+          "api_source": "Definitive Senate committee list"
+        }
+      }
+    ],
+    "select_committees": [
+      {
+        "code": "SSAG",
+        "name": "Aging",
+        "full_name": "Special Committee on Aging",
+        "type": "select",
+        "chamber": "Senate",
+        "website_url": "https://www.aging.senate.gov/",
+        "jurisdiction": "Issues affecting older Americans",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737399",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SSET",
+        "name": "Ethics",
+        "full_name": "Select Committee on Ethics",
+        "type": "select",
+        "chamber": "Senate",
+        "website_url": "https://www.ethics.senate.gov/",
+        "jurisdiction": "Senate ethics, conduct",
+        "isvp_compatible": false,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737401",
+          "api_source": "Definitive Senate committee list"
+        }
+      },
+      {
+        "code": "SSCI",
+        "name": "Intelligence",
+        "full_name": "Select Committee on Intelligence",
+        "type": "select",
+        "chamber": "Senate",
+        "website_url": "https://www.intelligence.senate.gov/",
+        "jurisdiction": "Intelligence activities and programs",
+        "isvp_compatible": true,
+        "member_count": null,
+        "chair": null,
+        "ranking_member": null,
+        "subcommittees": [],
+        "metadata": {
+          "discovery_date": "2025-07-03T11:22:26.737389",
+          "api_source": "Definitive Senate committee list"
+        }
+      }
+    ],
+    "joint_committees": [],
+    "special_committees": []
+  },
+  "statistics": {
+    "total_committees": 20,
+    "total_subcommittees": 16,
+    "isvp_compatible": 4,
+    "with_subcommittees": 12
+  }
+}
