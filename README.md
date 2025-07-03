@@ -57,7 +57,7 @@
 2. ✅ Framework setup with dedicated hearing focus
 3. ✅ **Professional transcript import (politicopro)**
 4. 🔄 **Audio capture from Senate website** (IN PROGRESS)
-   - ⏳ Milestone 1: Verify target hearing & URL
+   - ✅ Milestone 1: Verify target hearing & URL
    - ⏳ Milestone 2: Audio capture implementation  
    - ⏳ Milestone 3: Audio quality validation
    - ⏳ Milestone 4: Preparation for Whisper processing
