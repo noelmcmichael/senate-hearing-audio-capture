@@ -112,6 +112,22 @@ class SimpleProcessor:
         
         transcript_file = output_dir / f"hearing_{hearing['id']}_transcript.json"
         
+        # Check if quality transcript already exists
+        if transcript_file.exists():
+            try:
+                with open(transcript_file) as f:
+                    existing_data = json.load(f)
+                existing_segments = len(existing_data.get('segments', []))
+                
+                # If it's a quality transcript (>10 segments), don't overwrite
+                if existing_segments > 10:
+                    logger.info(f"📄 Quality transcript exists: {transcript_file.name} ({existing_segments} segments) - skipping")
+                    return
+                else:
+                    logger.info(f"📄 Replacing simple transcript: {transcript_file.name} ({existing_segments} segments)")
+            except:
+                logger.info(f"📄 Error reading existing transcript, creating new one")
+        
         mock_transcript = {
             "hearing_id": hearing['id'],
             "title": hearing['title'],
