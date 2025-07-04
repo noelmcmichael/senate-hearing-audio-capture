@@ -342,6 +342,84 @@ class EnhancedUIApp:
                     content={"error": f"Failed to load stats for {committee_code}", "detail": str(e)}
                 )
         
+        # Direct capture endpoint for compatibility
+        @self.app.post("/api/capture")
+        async def direct_capture(request_data: dict):
+            """Direct capture endpoint for compatibility with test scripts"""
+            from .capture_service import get_capture_service, CaptureException
+            
+            try:
+                hearing_id = request_data.get('hearing_id')
+                hearing_url = request_data.get('hearing_url')
+                
+                if not hearing_id or not hearing_url:
+                    return JSONResponse(
+                        status_code=400,
+                        content={"error": "Missing hearing_id or hearing_url"}
+                    )
+                
+                capture_service = get_capture_service()
+                result = await capture_service.capture_hearing_audio(
+                    hearing_id=hearing_id,
+                    hearing_url=hearing_url,
+                    capture_options=request_data.get('capture_options', {})
+                )
+                
+                return {
+                    "capture_id": result.get('hearing_id'),
+                    "status": "initiated",
+                    "result": result
+                }
+                
+            except CaptureException as e:
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Capture failed: {str(e)}"}
+                )
+            except Exception as e:
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Unexpected error: {str(e)}"}
+                )
+        
+        # Direct transcription endpoint
+        @self.app.post("/api/transcription")
+        async def direct_transcription(request_data: dict):
+            """Direct transcription endpoint for compatibility with test scripts"""
+            from .transcription_service import get_transcription_service, TranscriptionException
+            
+            try:
+                hearing_id = request_data.get('hearing_id')
+                
+                if not hearing_id:
+                    return JSONResponse(
+                        status_code=400,
+                        content={"error": "Missing hearing_id"}
+                    )
+                
+                transcription_service = get_transcription_service()
+                result = await transcription_service.transcribe_hearing(
+                    hearing_id=hearing_id,
+                    transcription_options=request_data.get('transcription_options', {})
+                )
+                
+                return {
+                    "transcription_id": result.get('hearing_id'),
+                    "status": "initiated",
+                    "result": result
+                }
+                
+            except TranscriptionException as e:
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Transcription failed: {str(e)}"}
+                )
+            except Exception as e:
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Unexpected error: {str(e)}"}
+                )
+
         # Congress API test endpoint
         @self.app.get("/api/test/congress")
         async def test_congress_api():

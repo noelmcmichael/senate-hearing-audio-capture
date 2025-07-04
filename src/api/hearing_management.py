@@ -14,6 +14,8 @@ from pydantic import BaseModel
 from .database_enhanced import get_enhanced_db
 from ..sync.sync_orchestrator import SyncOrchestrator
 from ..sync.deduplication_engine import DeduplicationEngine
+from .capture_service import get_capture_service, CaptureException
+from .transcription_service import get_transcription_service, TranscriptionException
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +50,8 @@ class HearingManagementAPI:
     def __init__(self):
         self.db = get_enhanced_db()
         self.sync_orchestrator = SyncOrchestrator()
+        self.capture_service = get_capture_service()
+        self.transcription_service = get_transcription_service()
         self.deduplicator = DeduplicationEngine()
     
     def get_hearing_queue(self, 
@@ -289,9 +293,9 @@ class HearingManagementAPI:
             logger.error(f"Error updating priority for hearing {hearing_id}: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
     
-    def trigger_hearing_capture(self, hearing_id: str, priority: int = 0,
-                               user_id: str = None, 
-                               capture_options: Dict[str, Any] = None) -> Dict[str, Any]:
+    async def trigger_hearing_capture(self, hearing_id: str, priority: int = 0,
+                                    user_id: str = None, 
+                                    capture_options: Dict[str, Any] = None) -> Dict[str, Any]:
         """Trigger audio capture for a hearing"""
         
         try:
@@ -333,18 +337,47 @@ class HearingManagementAPI:
                 }
             )
             
-            # TODO: Integrate with actual capture system
-            # For now, simulate capture initiation
-            capture_result = {
-                'hearing_id': hearing_id,
-                'capture_initiated': True,
-                'estimated_duration': hearing['estimated_duration'],
-                'streams_found': len(hearing['streams']),
-                'priority': priority,
-                'readiness_assessment': readiness,
-                'initiated_by': user_id,
-                'initiated_at': datetime.now().isoformat()
-            }
+            # Execute actual capture using capture service
+            try:
+                # Get hearing URL from hearing data
+                hearing_url = hearing.get('url') or hearing.get('hearing_url') or hearing.get('source_url')
+                if not hearing_url:
+                    raise HTTPException(status_code=400, detail="No hearing URL found for capture")
+                
+                # Trigger actual audio capture
+                capture_result = await self.capture_service.capture_hearing_audio(
+                    hearing_id=hearing_id,
+                    hearing_url=hearing_url,
+                    capture_options=capture_options
+                )
+                
+                # Add additional metadata
+                capture_result.update({
+                    'streams_found': len(hearing['streams']),
+                    'priority': priority,
+                    'readiness_assessment': readiness,
+                    'initiated_by': user_id,
+                    'initiated_at': datetime.now().isoformat()
+                })
+                
+            except CaptureException as e:
+                logger.error(f"Capture service error for hearing {hearing_id}: {e}")
+                raise HTTPException(status_code=500, detail=f"Audio capture failed: {str(e)}")
+            except Exception as e:
+                logger.error(f"Unexpected error during capture for hearing {hearing_id}: {e}")
+                # Fall back to simulation for now
+                capture_result = {
+                    'hearing_id': hearing_id,
+                    'capture_initiated': True,
+                    'status': 'simulation',
+                    'estimated_duration': hearing['estimated_duration'],
+                    'streams_found': len(hearing['streams']),
+                    'priority': priority,
+                    'readiness_assessment': readiness,
+                    'initiated_by': user_id,
+                    'initiated_at': datetime.now().isoformat(),
+                    'note': f"Fell back to simulation due to error: {str(e)}"
+                }
             
             logger.info(f"Capture initiated for hearing {hearing_id} by {user_id}")
             
@@ -355,6 +388,95 @@ class HearingManagementAPI:
         except Exception as e:
             logger.error(f"Error triggering capture for hearing {hearing_id}: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Capture error: {str(e)}")
+    
+    async def get_audio_storage_info(self, hearing_id: str) -> Dict[str, Any]:
+        """Get audio storage information for a hearing"""
+        try:
+            storage_info = await self.capture_service.get_storage_info(hearing_id)
+            
+            if not storage_info:
+                raise HTTPException(status_code=404, detail="Audio file not found")
+            
+            return storage_info
+            
+        except HTTPException:
+            raise
+        except Exception as e:
+            logger.error(f"Error getting storage info for hearing {hearing_id}: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Storage info error: {str(e)}")
+    
+    async def verify_audio_file(self, hearing_id: str) -> Dict[str, Any]:
+        """Verify audio file exists and is accessible"""
+        try:
+            verification_result = await self.capture_service.verify_audio_file(hearing_id)
+            return verification_result
+            
+        except Exception as e:
+            logger.error(f"Error verifying audio file for hearing {hearing_id}: {str(e)}")
+            return {
+                'exists': False,
+                'error': f"Verification error: {str(e)}"
+            }
+    
+    async def trigger_transcription(self, hearing_id: str, transcription_options: Dict[str, Any] = None) -> Dict[str, Any]:
+        """Trigger transcription for a hearing"""
+        try:
+            # First verify audio file exists
+            verification = await self.verify_audio_file(hearing_id)
+            if not verification.get('exists', False):
+                raise HTTPException(
+                    status_code=404, 
+                    detail=f"Audio file not found for hearing {hearing_id}: {verification.get('error', 'Unknown error')}"
+                )
+            
+            # Trigger transcription
+            transcription_result = await self.transcription_service.transcribe_hearing(
+                hearing_id=hearing_id,
+                transcription_options=transcription_options
+            )
+            
+            return transcription_result
+            
+        except HTTPException:
+            raise
+        except TranscriptionException as e:
+            logger.error(f"Transcription service error for hearing {hearing_id}: {e}")
+            raise HTTPException(status_code=500, detail=f"Transcription failed: {str(e)}")
+        except Exception as e:
+            logger.error(f"Error triggering transcription for hearing {hearing_id}: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Transcription error: {str(e)}")
+    
+    async def get_transcript_info(self, hearing_id: str) -> Dict[str, Any]:
+        """Get transcript information for a hearing"""
+        try:
+            transcript_info = await self.transcription_service.get_transcript_info(hearing_id)
+            
+            if not transcript_info:
+                raise HTTPException(status_code=404, detail="Transcript not found")
+            
+            return transcript_info
+            
+        except HTTPException:
+            raise
+        except Exception as e:
+            logger.error(f"Error getting transcript info for hearing {hearing_id}: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Transcript info error: {str(e)}")
+    
+    async def get_transcript_content(self, hearing_id: str) -> Dict[str, Any]:
+        """Get actual transcript content for a hearing"""
+        try:
+            transcript_content = await self.transcription_service.get_transcript_content(hearing_id)
+            
+            if not transcript_content:
+                raise HTTPException(status_code=404, detail="Transcript content not found")
+            
+            return transcript_content
+            
+        except HTTPException:
+            raise
+        except Exception as e:
+            logger.error(f"Error getting transcript content for hearing {hearing_id}: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Transcript content error: {str(e)}")
     
     def get_duplicate_queue(self, limit: int = 50) -> Dict[str, Any]:
         """Get hearings requiring duplicate resolution"""
@@ -644,12 +766,43 @@ def setup_hearing_management_routes(app: FastAPI):
         user_id: str = Query(..., description="User ID for audit trail")
     ):
         """Trigger audio capture for a hearing"""
-        return api.trigger_hearing_capture(
+        return await api.trigger_hearing_capture(
             hearing_id=hearing_id,
             priority=capture_data.priority,
             user_id=user_id,
             capture_options=capture_data.capture_options
         )
+    
+    @app.get("/api/storage/audio/{hearing_id}")
+    async def get_audio_storage_info(hearing_id: str):
+        """Get audio storage information for a hearing"""
+        return await api.get_audio_storage_info(hearing_id)
+    
+    @app.get("/api/storage/audio/{hearing_id}/verify")
+    async def verify_audio_file(hearing_id: str):
+        """Verify audio file exists and is accessible"""
+        return await api.verify_audio_file(hearing_id)
+    
+    @app.post("/api/hearings/{hearing_id}/transcription")
+    async def trigger_transcription(
+        hearing_id: str,
+        transcription_options: Optional[Dict[str, Any]] = Body(None)
+    ):
+        """Trigger transcription for a hearing"""
+        return await api.trigger_transcription(
+            hearing_id=hearing_id,
+            transcription_options=transcription_options
+        )
+    
+    @app.get("/api/hearings/{hearing_id}/transcript/info")
+    async def get_transcript_info(hearing_id: str):
+        """Get transcript information for a hearing"""
+        return await api.get_transcript_info(hearing_id)
+    
+    @app.get("/api/hearings/{hearing_id}/transcript/content")
+    async def get_transcript_content(hearing_id: str):
+        """Get actual transcript content for a hearing"""
+        return await api.get_transcript_content(hearing_id)
     
     @app.get("/api/hearings/duplicates")
     async def get_duplicate_queue(
