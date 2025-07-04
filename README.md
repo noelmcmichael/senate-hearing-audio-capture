@@ -1,5 +1,24 @@
 # Senate Hearing Audio Capture Agent
 
+## 🎯 **Cloud Production Status - Milestone 2 (July 4, 2025)**
+
+**✅ Core Infrastructure Complete:**
+- **Cloud Run Service**: Deployed and operational at `https://senate-hearing-processor-518203250893.us-central1.run.app`
+- **Health Endpoint**: ✅ `GET /health` returning healthy status
+- **Storage Integration**: ✅ Google Cloud Storage buckets configured and accessible
+- **Transcription Service**: ✅ `POST /api/transcription` handling requests correctly
+- **Storage Verification**: ✅ `GET /api/storage/audio/{id}/verify` working
+- **Database Connection**: ✅ PostgreSQL ready for data
+
+**🔄 In Progress:**
+- **Capture Service**: Core logic implemented, blocked on Playwright browser dependencies
+- **Context Manager Issues**: ✅ Fixed in capture service
+- **Method Signatures**: ✅ Updated to use correct ISVPExtractor and FFmpegConverter interfaces
+
+**📈 Progress**: 85% complete on Milestone 2 (Cloud Audio Processing)
+
+---
+
 ## 🚀 Phase 8: Clean Slate - Professional Benchmark Approach
 **Status**: Framework Ready - Awaiting Professional Transcript
 **Last Updated**: July 3, 2025
