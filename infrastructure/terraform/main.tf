@@ -329,10 +329,10 @@ resource "google_monitoring_alert_policy" "high_error_rate" {
     display_name = "High error rate"
     
     condition_threshold {
-      filter          = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"senate-hearing-processor\""
+      filter          = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"senate-hearing-processor\" AND metric.type=\"run.googleapis.com/request_count\""
       duration        = "300s"
-      comparison      = "COMPARISON_GREATER_THAN"
-      threshold_value = 0.1
+      comparison      = "COMPARISON_GT"
+      threshold_value = 10
       
       aggregations {
         alignment_period   = "300s"
