@@ -51,49 +51,43 @@
 
 ---
 
-## 🚀 PHASE 9: GCP Production Deployment - ✅ COMPLETE
-**Status**: Successfully Deployed to Google Cloud Platform
+## 🚀 PHASE 9: GCP Production Deployment - 🔄 IN PROGRESS
+**Status**: Redeploying to Dedicated Project
 **Started**: January 2, 2025
-**Completed**: January 2, 2025
-**Duration**: ~2 hours (including troubleshooting)
+**Current Step**: Configuring new project deployment
+**Issue**: Initial deployment to wrong project (habuapi), correcting to dedicated project
 
-### ✅ **DEPLOYMENT COMPLETE - INFRASTRUCTURE LIVE**
-- **Cloud Run URL**: https://senate-hearing-processor-hxunmrlj2a-uc.a.run.app
-- **Status**: Application deployed and responding to health checks
-- **Environment**: Development (ready for production scaling)
+### 🎯 **CORRECTIVE ACTION IN PROGRESS**
+- **Issue**: Infrastructure accidentally deployed to existing `habuapi` project
+- **Solution**: Redeploying to dedicated project `senate-hearing-capture`
+- **Status**: New project created, billing enabled, ready for deployment
 
-### 🎯 **Successfully Deployed Components**
-- ✅ **Cloud Run**: Serverless container platform - LIVE
-- ✅ **Cloud SQL**: PostgreSQL database with automated backups - LIVE  
-- ✅ **Redis**: In-memory caching (10.92.129.35) - LIVE
-- ✅ **Cloud Storage**: Audio file storage buckets - LIVE
-- ✅ **Secret Manager**: Secure credential management - LIVE
-- ✅ **Monitoring**: Comprehensive observability setup - LIVE
-- ✅ **Scheduled Processing**: Automated every 6 hours - LIVE
+### ✅ **New Project Setup**
+- **Project ID**: `senate-hearing-capture`
+- **Billing**: Enabled and linked to account 018D63-E2F550-02649C
+- **Region**: us-central1
+- **Environment**: development
 
-### 📊 **Infrastructure Details**
-- **Project**: habuapi
+### 📋 **Current Progress**
+- ✅ **New Project Created**: senate-hearing-capture
+- ✅ **Billing Enabled**: Connected to billing account
+- ✅ **Terraform Config**: Ready for update to new project
+- 🔄 **Infrastructure Deployment**: About to begin
+
+### 🎯 **Next Steps** (Estimated: 30-45 minutes)
+1. **Update Terraform Configuration**: Change project ID to senate-hearing-capture
+2. **Rebuild Docker Image**: Push to new project registry
+3. **Deploy Infrastructure**: Run terraform apply for new project
+4. **Verify System**: Health checks and end-to-end testing
+
+### 📊 **Target Infrastructure**
+- **Project**: senate-hearing-capture
 - **Region**: us-central1
 - **Environment**: development
 - **Database**: senate-hearing-db-development
 - **Redis**: senate-hearing-cache-development
-- **Storage**: habuapi-audio-files-development
-- **Service Account**: senate-hearing-processor@habuapi.iam.gserviceaccount.com
-
-### 🔧 **Technical Achievements**
-- **Docker Multi-Platform**: Successfully built AMD64 image for Cloud Run
-- **Terraform State Management**: Overcame state lock issues
-- **IAM Permissions**: Properly configured service account roles
-- **Container Registry**: Successfully pushed to gcr.io/habuapi
-- **Network Configuration**: Private Redis, public Cloud Run
-- **Automated Scheduling**: Cloud Scheduler job configured
-
-### 🎯 **Next Steps for Production**
-- **Fine-tune service account permissions** for database/storage connectivity
-- **Configure Congress API credentials** in Secret Manager
-- **Set up monitoring dashboards** and alerting rules
-- **Scale to production tier** (db-custom-2-4096, Redis HA)
-- **Enable CI/CD pipeline** with GitHub Actions
+- **Storage**: senate-hearing-capture-audio-files-development
+- **Service Account**: senate-hearing-processor@senate-hearing-capture.iam.gserviceaccount.com
 
 ### ✅ PHASE 7: MULTI-COMMITTEE DISCOVERY COMPLETE
 

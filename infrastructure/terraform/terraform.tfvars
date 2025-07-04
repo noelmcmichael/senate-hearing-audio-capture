@@ -1,7 +1,7 @@
 # Terraform configuration for Senate Hearing Audio Capture
 # Environment: Development deployment
 
-project_id = "habuapi"
+project_id = "senate-hearing-capture"
 region     = "us-central1"
 environment = "development"
 notification_email = "ropak9@gmail.com"
