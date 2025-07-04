@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 import { 
   Search, 
   Filter, 
@@ -75,7 +76,7 @@ const Dashboard = () => {
       // Fetch all hearings from multiple committees
       const committeePromises = committees.map(async (committee) => {
         try {
-          const response = await fetch(`http://localhost:8001/api/committees/${committee.code}/hearings`);
+          const response = await fetch(`${config.apiUrl}/committees/${committee.code}/hearings`);
           if (response.ok) {
             const data = await response.json();
             return data.hearings || [];
@@ -96,7 +97,7 @@ const Dashboard = () => {
       );
 
       // Check transcript availability
-      const transcriptResponse = await fetch('http://localhost:8001/api/transcript-browser/hearings');
+      const transcriptResponse = await fetch(`${config.apiUrl}/transcript-browser/hearings`);
       const transcriptData = transcriptResponse.ok ? await transcriptResponse.json() : { transcripts: [] };
       
       // Enhance hearings with transcript information
