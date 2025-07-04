@@ -1,0 +1,82 @@
+{
+  "hearings": [
+    {
+      "hearing_id": "SCOM-2025-06-10-executive-session-12",
+      "title": "Executive Session 12",
+      "committee_code": "SCOM",
+      "committee_name": "Commerce, Science, and Transportation",
+      "hearing_date": "2025-06-10",
+      "hearing_url": "https://www.commerce.senate.gov/2025/6/executive-session-12",
+      "hearing_type": "Executive Session",
+      "status": "discovered",
+      "sync_confidence": 98.0,
+      "capture_method": "ISVP",
+      "capture_readiness": 98.0,
+      "audio_duration_estimate": 2682,
+      "processing_priority": "high"
+    },
+    {
+      "hearing_id": "SCOM-2025-06-25-rail-network-modernization",
+      "title": "Rail Network Modernization and Safety",
+      "committee_code": "SCOM",
+      "committee_name": "Commerce, Science, and Transportation",
+      "hearing_date": "2025-06-25",
+      "hearing_url": "https://www.commerce.senate.gov/2025/6/rail-network-modernization-and-safety",
+      "hearing_type": "Hearing",
+      "status": "discovered",
+      "sync_confidence": 98.0,
+      "capture_method": "ISVP",
+      "capture_readiness": 98.0,
+      "audio_duration_estimate": 7200,
+      "processing_priority": "high"
+    },
+    {
+      "hearing_id": "HELP-2025-06-12-health-care-privacy",
+      "title": "Health Care Privacy and Data Security",
+      "committee_code": "HELP",
+      "committee_name": "Health, Education, Labor and Pensions",
+      "hearing_date": "2025-06-12",
+      "hearing_url": "https://www.help.senate.gov/hearings/health-care-privacy-and-data-security",
+      "hearing_type": "Hearing",
+      "status": "discovered",
+      "sync_confidence": 93.0,
+      "capture_method": "ISVP",
+      "capture_readiness": 93.0,
+      "audio_duration_estimate": 5400,
+      "processing_priority": "medium"
+    },
+    {
+      "hearing_id": "SSJU-2025-06-24-antitrust-competition",
+      "title": "Deregulation and Competition: Reducing Regulatory Burdens",
+      "committee_code": "SSJU",
+      "committee_name": "Judiciary",
+      "hearing_date": "2025-06-24",
+      "hearing_url": "https://www.judiciary.senate.gov/committee-activity/hearings/deregulation-and-competition-reducing-regulatory-burdens-to-unlock-innovation-and-spur-new-entry",
+      "hearing_type": "Hearing",
+      "status": "discovered",
+      "sync_confidence": 95.0,
+      "capture_method": "ISVP",
+      "capture_readiness": 95.0,
+      "audio_duration_estimate": 8760,
+      "processing_priority": "high"
+    },
+    {
+      "hearing_id": "SSCI-2025-06-15-intelligence-oversight",
+      "title": "Annual Intelligence Oversight Hearing",
+      "committee_code": "SSCI",
+      "committee_name": "Intelligence",
+      "hearing_date": "2025-06-15",
+      "hearing_url": "https://www.intelligence.senate.gov/hearings/annual-intelligence-oversight-hearing-2025",
+      "hearing_type": "Hearing",
+      "status": "discovered",
+      "sync_confidence": 90.0,
+      "capture_method": "ISVP",
+      "capture_readiness": 90.0,
+      "audio_duration_estimate": 6300,
+      "processing_priority": "medium"
+    }
+  ],
+  "created_at": "2025-07-04T14:41:57.161710",
+  "source": "test_data_population",
+  "version": "1.0"
+}

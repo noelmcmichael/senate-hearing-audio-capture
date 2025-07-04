@@ -257,6 +257,16 @@ resource "google_cloud_run_service" "main" {
           value = google_storage_bucket.backups.name
         }
         
+        env {
+          name = "CONGRESS_API_KEY"
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.congress_api_key.secret_id
+              key  = "latest"
+            }
+          }
+        }
+        
         resources {
           limits = {
             cpu    = var.cpu_limit

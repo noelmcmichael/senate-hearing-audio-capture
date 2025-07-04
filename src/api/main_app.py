@@ -342,6 +342,120 @@ class EnhancedUIApp:
                     content={"error": f"Failed to load stats for {committee_code}", "detail": str(e)}
                 )
         
+        # Congress API test endpoint
+        @self.app.get("/api/test/congress")
+        async def test_congress_api():
+            """Test Congress API connectivity and functionality"""
+            import requests
+            
+            # Get API key from environment
+            congress_api_key = os.environ.get('CONGRESS_API_KEY')
+            if not congress_api_key:
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": "Congress API key not configured"}
+                )
+            
+            results = {
+                "api_key_configured": True,
+                "api_key_preview": congress_api_key[:10] + "..." if len(congress_api_key) > 10 else congress_api_key,
+                "tests": {}
+            }
+            
+            try:
+                # Test 1: Basic API connectivity
+                url = "https://api.congress.gov/v3/member"
+                params = {
+                    'api_key': congress_api_key,
+                    'format': 'json',
+                    'limit': 3
+                }
+                
+                response = requests.get(url, params=params, timeout=30)
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    members = data.get('members', [])
+                    results["tests"]["basic_connectivity"] = {
+                        "success": True,
+                        "message": f"Retrieved {len(members)} members successfully",
+                        "sample_member": members[0].get('name', 'Unknown') if members else None
+                    }
+                else:
+                    results["tests"]["basic_connectivity"] = {
+                        "success": False,
+                        "message": f"API call failed with status {response.status_code}",
+                        "error": response.text
+                    }
+                
+                # Test 2: Committee data
+                committee_url = "https://api.congress.gov/v3/committee/senate/scom"
+                committee_params = {
+                    'api_key': congress_api_key,
+                    'format': 'json'
+                }
+                
+                committee_response = requests.get(committee_url, params=committee_params, timeout=30)
+                
+                if committee_response.status_code == 200:
+                    committee_data = committee_response.json()
+                    committee = committee_data.get('committee', {})
+                    results["tests"]["committee_data"] = {
+                        "success": True,
+                        "message": f"Retrieved committee: {committee.get('name', 'Unknown')}",
+                        "committee_code": committee.get('systemCode', 'Unknown')
+                    }
+                else:
+                    results["tests"]["committee_data"] = {
+                        "success": False,
+                        "message": f"Committee API call failed with status {committee_response.status_code}",
+                        "error": committee_response.text
+                    }
+                
+                # Test 3: Recent hearings
+                hearings_url = "https://api.congress.gov/v3/hearing"
+                hearings_params = {
+                    'api_key': congress_api_key,
+                    'format': 'json',
+                    'limit': 2
+                }
+                
+                hearings_response = requests.get(hearings_url, params=hearings_params, timeout=30)
+                
+                if hearings_response.status_code == 200:
+                    hearings_data = hearings_response.json()
+                    hearings = hearings_data.get('hearings', [])
+                    results["tests"]["hearing_data"] = {
+                        "success": True,
+                        "message": f"Retrieved {len(hearings)} hearings successfully",
+                        "sample_hearing": hearings[0].get('title', 'Unknown') if hearings else None
+                    }
+                else:
+                    results["tests"]["hearing_data"] = {
+                        "success": False,
+                        "message": f"Hearings API call failed with status {hearings_response.status_code}",
+                        "error": hearings_response.text
+                    }
+                
+                # Overall status
+                successful_tests = sum(1 for test in results["tests"].values() if test["success"])
+                total_tests = len(results["tests"])
+                results["overall_status"] = {
+                    "success": successful_tests == total_tests,
+                    "successful_tests": successful_tests,
+                    "total_tests": total_tests,
+                    "ready_for_sync": successful_tests >= 2
+                }
+                
+                return results
+                
+            except Exception as e:
+                logger.error(f"Error testing Congress API: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": "Congress API test failed", "detail": str(e)}
+                )
+
         # Enhanced API endpoints
         @self.app.get("/api/overview")
         async def get_system_overview():
