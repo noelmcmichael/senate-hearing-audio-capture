@@ -19,27 +19,36 @@ from google.cloud import storage
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+# Initialize logger
+logger = logging.getLogger(__name__)
+
 # Conditional imports to avoid startup errors
 try:
     from extractors.isvp_extractor import ISVPExtractor
     from converters.ffmpeg_converter import FFmpegConverter
     from utils.page_inspector import PageInspector
+    from extractors.base_extractor import StreamInfo
 except ImportError as e:
     logger.warning(f"Could not import capture dependencies: {e}")
     # Create placeholder classes for now
     class ISVPExtractor:
-        def extract_stream_urls(self, *args, **kwargs):
+        def extract_streams(self, *args, **kwargs):
             raise Exception("ISVP extractor not available")
     
     class FFmpegConverter:
-        def convert_stream_to_audio(self, *args, **kwargs):
+        def __init__(self, *args, **kwargs):
+            pass
+        def convert_stream(self, *args, **kwargs):
             raise Exception("FFmpeg converter not available")
     
     class PageInspector:
         def analyze_page(self, *args, **kwargs):
             raise Exception("Page inspector not available")
-
-logger = logging.getLogger(__name__)
+    
+    class StreamInfo:
+        def __init__(self, *args, **kwargs):
+            self.url = ""
+            raise Exception("StreamInfo not available")
 
 class CloudCaptureService:
     """Service for capturing audio and storing in cloud infrastructure"""
@@ -112,6 +121,11 @@ class CloudCaptureService:
             logger.error(f"Audio capture failed for hearing {hearing_id}: {str(e)}")
             raise CaptureException(f"Capture failed: {str(e)}")
     
+    def _analyze_page_with_context(self, hearing_url: str) -> Dict:
+        """Analyze page using proper context manager"""
+        with PageInspector(headless=True) as inspector:
+            return inspector.analyze_page(hearing_url)
+    
     async def _execute_capture(self, hearing_id: str, hearing_url: str, 
                              options: Dict[str, Any]) -> Dict[str, Any]:
         """Execute the actual audio capture using existing logic"""
@@ -123,37 +137,36 @@ class CloudCaptureService:
         
         try:
             # Step 1: Inspect the page to find ISVP player
-            inspector = PageInspector()
-            page_info = await asyncio.to_thread(inspector.analyze_page, hearing_url)
+            page_info = await asyncio.to_thread(self._analyze_page_with_context, hearing_url)
             
             if not page_info.get('has_isvp_player', False):
                 raise CaptureException("No ISVP player found on hearing page")
             
             # Step 2: Extract stream URL using ISVP extractor
             extractor = ISVPExtractor()
-            stream_urls = await asyncio.to_thread(
-                extractor.extract_stream_urls, 
-                hearing_url,
-                headless=options.get('headless', True)
+            stream_infos = await asyncio.to_thread(
+                extractor.extract_streams, 
+                hearing_url
             )
             
-            if not stream_urls:
+            if not stream_infos:
                 raise CaptureException("No stream URLs found")
             
-            logger.info(f"Found {len(stream_urls)} stream URLs")
+            logger.info(f"Found {len(stream_infos)} stream URLs")
             
             # Step 3: Convert audio using FFmpeg
-            converter = FFmpegConverter()
+            converter = FFmpegConverter(
+                output_format=options['format'],
+                audio_quality=options['quality']
+            )
             
-            # Use the first (highest quality) stream URL
-            primary_stream = stream_urls[0]
+            # Use the first (highest quality) stream
+            primary_stream = stream_infos[0]
             
             conversion_result = await asyncio.to_thread(
-                converter.convert_stream_to_audio,
+                converter.convert_stream,
                 primary_stream,
-                output_file,
-                format=options['format'],
-                quality=options['quality']
+                output_file
             )
             
             if not conversion_result.success:
@@ -164,11 +177,11 @@ class CloudCaptureService:
             
             result = {
                 'local_file': output_file,
-                'streams_found': len(stream_urls),
+                'streams_found': len(stream_infos),
                 'method': 'ISVP',
-                'duration': conversion_result.duration,
+                'duration': conversion_result.duration_seconds,
                 'file_size': file_size,
-                'stream_url': primary_stream
+                'stream_url': primary_stream.url
             }
             
             logger.info(f"Capture execution completed: {file_size} bytes, {conversion_result.duration}s")
