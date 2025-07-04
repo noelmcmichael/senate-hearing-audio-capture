@@ -58,8 +58,10 @@
 **Duration**: ~2 hours (including corrective action)
 
 ### 🎯 **DEPLOYMENT COMPLETE - INFRASTRUCTURE LIVE**
-- **Cloud Run URL**: https://senate-hearing-processor-tw47xzokxq-uc.a.run.app
+- **Cloud Run URL**: https://senate-hearing-processor-518203250893.us-central1.run.app
+- **API Documentation**: https://senate-hearing-processor-518203250893.us-central1.run.app/api/docs
 - **Health Status**: ✅ Healthy and responding
+- **Frontend**: ✅ React dashboard fully functional
 - **Project**: senate-hearing-capture (dedicated project)
 - **Environment**: Development (ready for production scaling)
 
