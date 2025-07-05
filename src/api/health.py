@@ -12,9 +12,12 @@ from datetime import datetime
 from google.cloud import storage
 try:
     from src.config.production import config
-    from src.monitoring.metrics import metrics_collector
 except ImportError:
     config = None
+
+try:
+    from src.monitoring.metrics import metrics_collector
+except ImportError:
     metrics_collector = None
 
 router = APIRouter()
@@ -26,7 +29,7 @@ async def health_check() -> Dict[str, Any]:
         "status": "healthy",
         "timestamp": datetime.utcnow().isoformat(),
         "version": "1.0.0",
-        "environment": config.ENV
+        "environment": config.ENV if config else "unknown"
     }
 
 @router.get("/health/detailed")
@@ -97,7 +100,7 @@ async def _check_database() -> Dict[str, Any]:
         start_time = time.time()
         
         # Parse database URL
-        db_url = config.DATABASE_URL
+        db_url = config.DATABASE_URL if config else None
         if not db_url:
             raise Exception("Database URL not configured")
             
@@ -132,7 +135,7 @@ async def _check_redis() -> Dict[str, Any]:
     try:
         start_time = time.time()
         
-        redis_url = config.REDIS_URL
+        redis_url = config.REDIS_URL if config else None
         if not redis_url:
             raise Exception("Redis URL not configured")
             
@@ -166,7 +169,7 @@ async def _check_storage() -> Dict[str, Any]:
     try:
         start_time = time.time()
         
-        audio_bucket = config.AUDIO_BUCKET
+        audio_bucket = config.AUDIO_BUCKET if config else None
         if not audio_bucket:
             raise Exception("Audio bucket not configured")
             
@@ -211,8 +214,8 @@ async def _check_processing_capability() -> Dict[str, Any]:
         components = {
             'whisper': True,  # Would check if Whisper is available
             'ffmpeg': True,   # Would check if FFmpeg is available
-            'congress_api': bool(config.CONGRESS_API_KEY),
-            'storage': bool(config.AUDIO_BUCKET)
+            'congress_api': bool(config.CONGRESS_API_KEY if config else False),
+            'storage': bool(config.AUDIO_BUCKET if config else False)
         }
         
         all_components_healthy = all(components.values())

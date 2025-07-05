@@ -34,12 +34,17 @@ from .dashboard_data import DashboardDataAPI
 # Production imports
 import os
 try:
-    from ..monitoring.metrics import start_metrics_server, metrics_collector
     from ..config.production import config
-    PRODUCTION_MODE = os.getenv('ENV', 'development') == 'production'
 except ImportError:
-    PRODUCTION_MODE = False
     config = None
+
+try:
+    from ..monitoring.metrics import start_metrics_server, metrics_collector
+except ImportError:
+    start_metrics_server = None
+    metrics_collector = None
+
+PRODUCTION_MODE = os.getenv('ENV', 'development') == 'production'
 
 logger = logging.getLogger(__name__)
 
@@ -744,7 +749,8 @@ class EnhancedUIApp:
                     )
                     
                 # Start metrics server
-                start_metrics_server(9090)
+                if start_metrics_server:
+                    start_metrics_server(9090)
             except ImportError:
                 logger.warning("Prometheus client not available, metrics endpoint disabled")
     
