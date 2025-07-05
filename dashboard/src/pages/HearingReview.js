@@ -11,6 +11,7 @@ import {
   Edit,
   Trash2
 } from 'lucide-react';
+import config from '../config';
 
 const HearingReview = () => {
   const { hearing, transcript, refreshData } = useOutletContext();
@@ -134,7 +135,7 @@ const HearingReview = () => {
     setSaveStatus('saving');
     
     try {
-      const response = await fetch(`http://localhost:8001/api/hearings/${id}/transcript`, {
+      const response = await fetch(`${config.apiUrl}/hearings/${id}/transcript`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

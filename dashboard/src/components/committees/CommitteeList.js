@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CommitteeList.css';
+import config from '../../config';
 
 const CommitteeList = ({ onSelectCommittee }) => {
   const [committees, setCommittees] = useState([]);
@@ -13,7 +14,7 @@ const CommitteeList = ({ onSelectCommittee }) => {
   const fetchCommittees = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8001/api/committees');
+      const response = await fetch(`${config.apiUrl}/committees`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

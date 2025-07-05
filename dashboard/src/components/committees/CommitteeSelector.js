@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CommitteeSelector.css';
+import config from '../../config';
 
 const CommitteeSelector = ({ onSelect, selectedCommittee, placeholder = "Select Committee" }) => {
   const [committees, setCommittees] = useState([]);
@@ -12,7 +13,7 @@ const CommitteeSelector = ({ onSelect, selectedCommittee, placeholder = "Select 
 
   const fetchCommittees = async () => {
     try {
-      const response = await fetch('http://localhost:8001/api/committees');
+      const response = await fetch(`${config.apiUrl}/committees`);
       if (response.ok) {
         const data = await response.json();
         setCommittees(data.committees || []);

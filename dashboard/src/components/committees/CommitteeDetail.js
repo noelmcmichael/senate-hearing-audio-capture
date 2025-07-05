@@ -4,6 +4,7 @@ import SearchBox from '../search/SearchBox';
 import AdvancedSearch from '../search/AdvancedSearch';
 import SearchResults from '../search/SearchResults';
 import './CommitteeDetail.css';
+import config from '../../config';
 
 const CommitteeDetail = ({ committee, onBack, onViewDetails }) => {
   const [hearings, setHearings] = useState([]);
@@ -35,8 +36,8 @@ const CommitteeDetail = ({ committee, onBack, onViewDetails }) => {
       
       // Fetch hearings and stats in parallel
       const [hearingsResponse, statsResponse] = await Promise.all([
-        fetch(`http://localhost:8001/api/committees/${committee.code}/hearings`),
-        fetch(`http://localhost:8001/api/committees/${committee.code}/stats`)
+        fetch(`${config.apiUrl}/committees/${committee.code}/hearings`),
+        fetch(`${config.apiUrl}/committees/${committee.code}/stats`)
       ]);
 
       if (!hearingsResponse.ok || !statsResponse.ok) {
@@ -132,7 +133,7 @@ const CommitteeDetail = ({ committee, onBack, onViewDetails }) => {
 
     try {
       // Add committee filter to search for committee-specific results
-      const searchUrl = `http://localhost:8001/api/search/hearings?query=${encodeURIComponent(query)}&committee=${committee.code}&limit=20`;
+      const searchUrl = `${config.apiUrl}/search/hearings?query=${encodeURIComponent(query)}&committee=${committee.code}&limit=20`;
       const response = await fetch(searchUrl);
       
       if (!response.ok) {
@@ -163,7 +164,7 @@ const CommitteeDetail = ({ committee, onBack, onViewDetails }) => {
         limit: 20
       };
 
-      const response = await fetch('http://localhost:8001/api/search/advanced', {
+      const response = await fetch(`${config.apiUrl}/search/advanced`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,7 +210,7 @@ const CommitteeDetail = ({ committee, onBack, onViewDetails }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8001/api/search/suggest?q=${encodeURIComponent(query)}&limit=5`);
+      const response = await fetch(`${config.apiUrl}/search/suggest?q=${encodeURIComponent(query)}&limit=5`);
       if (response.ok) {
         const data = await response.json();
         setSuggestions(data.suggestions || []);

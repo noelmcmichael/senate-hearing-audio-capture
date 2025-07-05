@@ -10,6 +10,7 @@ import {
   AlertCircle,
   Clock
 } from 'lucide-react';
+import config from '../config';
 
 const HearingLayout = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const HearingLayout = () => {
       setError(null);
 
       // Fetch hearing details
-      const hearingResponse = await fetch(`http://localhost:8001/api/hearings/${id}`);
+      const hearingResponse = await fetch(`${config.apiUrl}/hearings/${id}`);
       if (!hearingResponse.ok) {
         throw new Error(`Failed to fetch hearing: ${hearingResponse.status}`);
       }
@@ -40,7 +41,7 @@ const HearingLayout = () => {
 
       // Fetch transcript if available
       try {
-        const transcriptResponse = await fetch('http://localhost:8001/api/transcript-browser/hearings');
+        const transcriptResponse = await fetch(`${config.apiUrl}/transcript-browser/hearings`);
         if (transcriptResponse.ok) {
           const transcriptData = await transcriptResponse.json();
           const hearingTranscript = transcriptData.transcripts.find(

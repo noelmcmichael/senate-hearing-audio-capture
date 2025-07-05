@@ -9,6 +9,7 @@ import {
   RefreshCw,
   BarChart3
 } from 'lucide-react';
+import config from '../config';
 
 const HearingStatus = () => {
   const { hearing, transcript, refreshData } = useOutletContext();
@@ -82,7 +83,7 @@ const HearingStatus = () => {
     setCaptureResult(null);
 
     try {
-      const response = await fetch(`http://localhost:8001/api/hearings/${id}/capture?user_id=ui_user`, {
+      const response = await fetch(`${config.apiUrl}/hearings/${id}/capture?user_id=ui_user`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
