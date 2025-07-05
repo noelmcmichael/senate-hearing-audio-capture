@@ -1,6 +1,12 @@
+# Node.js
 node_modules/
-playwright-results/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 .cache/
+
+# React build output
+dashboard/build/
 
 # Terraform
 .terraform/
@@ -8,6 +14,14 @@ playwright-results/
 *.tfstate.backup
 terraform.tfvars
 .terraform.lock.hcl
+
+# Testing
+playwright-results/
+test-results/
+coverage/
+
+# Large files
+*.pack
 
 # Python
 __pycache__/
