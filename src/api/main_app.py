@@ -901,6 +901,15 @@ class EnhancedUIApp:
         
         # Check if React build exists
         dashboard_build = Path("dashboard/build")
+        
+        # Debug logging to check directory structure
+        logger.info(f"Current working directory: {Path.cwd()}")
+        logger.info(f"Looking for React build at: {dashboard_build.absolute()}")
+        logger.info(f"Dashboard directory exists: {Path('dashboard').exists()}")
+        if Path('dashboard').exists():
+            dashboard_contents = list(Path('dashboard').iterdir())
+            logger.info(f"Dashboard directory contents: {dashboard_contents}")
+        
         if dashboard_build.exists():
             logger.info(f"React build found at: {dashboard_build.absolute()}")
             # Serve React app static files
