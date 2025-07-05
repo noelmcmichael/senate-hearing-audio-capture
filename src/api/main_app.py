@@ -94,8 +94,19 @@ class EnhancedUIApp:
         # Health check endpoint
         @self.app.get("/")
         async def root():
-            """Root endpoint - serve React app"""
-            return FileResponse("dashboard/build/index.html")
+            """Root endpoint - serve React app or API info"""
+            dashboard_build = Path("dashboard/build")
+            if dashboard_build.exists():
+                return FileResponse("dashboard/build/index.html")
+            else:
+                return {
+                    "name": "Senate Hearing Audio Capture API",
+                    "version": "7B.1.0",
+                    "status": "API-only mode",
+                    "message": "Frontend not available in this deployment",
+                    "health_check": "/health",
+                    "api_info": "/api"
+                }
         
         @self.app.get("/api")
         async def api_info():

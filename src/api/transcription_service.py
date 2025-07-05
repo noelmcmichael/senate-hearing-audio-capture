@@ -23,16 +23,18 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 try:
     from transcription.whisper_transcriber import WhisperTranscriber
     from enrichment.transcript_enricher import TranscriptEnricher
+    TRANSCRIPTION_AVAILABLE = True
 except ImportError as e:
-    logger.warning(f"Could not import transcription dependencies: {e}")
+    print(f"Warning: Could not import transcription dependencies: {e}")
+    TRANSCRIPTION_AVAILABLE = False
     # Create placeholder classes for now
     class WhisperTranscriber:
         def transcribe_file(self, *args, **kwargs):
-            raise Exception("Whisper transcriber not available")
+            raise Exception("Whisper transcriber not available in API-only mode")
     
     class TranscriptEnricher:
         def enrich_transcript(self, *args, **kwargs):
-            raise Exception("Transcript enricher not available")
+            raise Exception("Transcript enricher not available in API-only mode")
 
 logger = logging.getLogger(__name__)
 

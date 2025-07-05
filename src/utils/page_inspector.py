@@ -5,7 +5,20 @@ import re
 import json
 from urllib.parse import urljoin, urlparse
 
-from playwright.sync_api import sync_playwright, Page, Browser, BrowserContext
+try:
+    from playwright.sync_api import sync_playwright, Page, Browser, BrowserContext
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    print("Warning: Playwright not available in API-only mode")
+    PLAYWRIGHT_AVAILABLE = False
+    # Create placeholder classes
+    class sync_playwright:
+        def __enter__(self): return None
+        def __exit__(self, *args): pass
+    class Page: pass
+    class Browser: pass
+    class BrowserContext: pass
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -28,6 +41,8 @@ class PageInspector:
     
     def __enter__(self):
         """Context manager entry."""
+        if not PLAYWRIGHT_AVAILABLE:
+            raise Exception("Playwright not available in API-only mode")
         self._playwright = sync_playwright().start()
         self._browser = self._playwright.chromium.launch(headless=self.headless)
         self._context = self._browser.new_context(

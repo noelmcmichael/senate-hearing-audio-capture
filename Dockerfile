@@ -2,61 +2,19 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies including Node.js and Chrome
+# Install minimal system dependencies
 RUN apt-get update && apt-get install -y \
-    ffmpeg \
     curl \
     wget \
-    gnupg \
     ca-certificates \
-    nodejs \
-    npm \
     && rm -rf /var/lib/apt/lists/*
 
-# Add Google Chrome repository and install Chrome
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update \
-    && apt-get install -y google-chrome-stable \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install additional browser dependencies
-RUN apt-get update && apt-get install -y \
-    xvfb \
-    libxss1 \
-    libgconf-2-4 \
-    libxtst6 \
-    libxrandr2 \
-    libasound2 \
-    libpangocairo-1.0-0 \
-    libatk1.0-0 \
-    libcairo1 \
-    libgtk-3-0 \
-    libgdk-pixbuf2.0-0 \
-    libx11-6 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxext6 \
-    libxfixes3 \
-    libnss3 \
-    libxrender1 \
-    libgbm1 \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements and install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy lightweight requirements and install Python dependencies
+COPY requirements-api-only.txt .
+RUN pip install --no-cache-dir -r requirements-api-only.txt
 
 # Copy application code
 COPY . .
-
-# Build React frontend
-WORKDIR /app/dashboard
-RUN npm install
-RUN npm run build
-
-# Back to app directory
-WORKDIR /app
 
 # Create non-root user
 RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
