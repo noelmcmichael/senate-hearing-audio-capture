@@ -6,7 +6,7 @@ yarn-error.log*
 .cache/
 
 # React build output
-dashboard/build/
+# dashboard/build/  # Commented out to include in deployment
 
 # Terraform
 .terraform/
