@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import DiscoveryDashboard from './components/discovery/DiscoveryDashboard';
 import HearingLayout from './layouts/HearingLayout';
 import HearingTranscript from './pages/HearingTranscript';
 import HearingReview from './pages/HearingReview';
@@ -13,8 +14,9 @@ const App = () => {
     <Router>
       <div className="App">
         <Routes>
-          {/* Dashboard Route */}
+          {/* Dashboard Routes */}
           <Route path="/" element={<Dashboard />} />
+          <Route path="/discovery" element={<DiscoveryDashboard />} />
           
           {/* Hearing Routes */}
           <Route path="/hearings/:id" element={<HearingLayout />}>

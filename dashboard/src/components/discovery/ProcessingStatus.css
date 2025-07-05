@@ -1,0 +1,250 @@
+/* Processing Status Styles */
+.processing-status {
+  background-color: #2A2D36;
+  border-radius: 12px;
+  border: 1px solid #3A3D46;
+  overflow: hidden;
+}
+
+.processing-status.compact {
+  background-color: #34384A;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.status-card {
+  padding: 20px;
+}
+
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.status-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.status-info {
+  flex: 1;
+}
+
+.status-title {
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.status-stage {
+  font-size: 0.9rem;
+  color: #A0A0A0;
+  margin-bottom: 5px;
+}
+
+.status-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-cancel-processing {
+  background-color: #F44336;
+  color: #FFFFFF;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel-processing:hover {
+  background-color: #DA190B;
+}
+
+.progress-section {
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #3A3D46;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #A0A0A0;
+  font-weight: 500;
+}
+
+.status-message {
+  font-size: 0.9rem;
+  color: #C0C0C0;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.status-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 0.7rem;
+  color: #A0A0A0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.status-technical-details {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #3A3D46;
+}
+
+.status-technical-details h4 {
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.status-technical-details pre {
+  background-color: #1F2228;
+  color: #A0A0A0;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  overflow-x: auto;
+  border: 1px solid #3A3D46;
+}
+
+.status-error {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #F44336;
+  border-radius: 8px;
+  border: 1px solid #D32F2F;
+}
+
+.status-error h4 {
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.status-error .error-message {
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Compact Mode Styles */
+.processing-status.compact .status-header {
+  margin-bottom: 10px;
+}
+
+.processing-status.compact .status-icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.processing-status.compact .status-stage {
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+.processing-status.compact .status-message {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.processing-status.compact .progress-bar {
+  height: 6px;
+  margin-bottom: 8px;
+}
+
+.processing-status.compact .status-details {
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.processing-status.compact .detail-item {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.processing-status.compact .detail-label {
+  font-size: 0.7rem;
+}
+
+.processing-status.compact .detail-value {
+  font-size: 0.8rem;
+}
+
+.time-elapsed {
+  font-size: 0.8rem;
+  color: #A0A0A0;
+}
+
+.progress-percent {
+  font-size: 0.8rem;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .status-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .status-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .processing-status.compact .status-header {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .processing-status.compact .status-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .processing-status.compact .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
