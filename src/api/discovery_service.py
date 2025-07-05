@@ -16,7 +16,12 @@ from concurrent.futures import ThreadPoolExecutor
 # Import existing discovery infrastructure
 import sys
 sys.path.append(str(Path(__file__).parent.parent.parent))
-from discover_hearings import HearingDiscoveryEngine, Hearing
+try:
+    from discover_hearings import HearingDiscoveryEngine, Hearing
+except ImportError:
+    # Fallback for production deployment
+    HearingDiscoveryEngine = None
+    Hearing = None
 
 from .database_enhanced import get_enhanced_db
 
@@ -52,7 +57,7 @@ class DiscoveryService:
     """Service for automated hearing discovery and management"""
     
     def __init__(self):
-        self.discovery_engine = HearingDiscoveryEngine()
+        self.discovery_engine = HearingDiscoveryEngine() if HearingDiscoveryEngine else None
         self.db = get_enhanced_db()
         self.executor = ThreadPoolExecutor(max_workers=4)
         self._initialize_discovery_table()
@@ -152,6 +157,10 @@ class DiscoveryService:
     def _run_discovery(self, committee_codes: Optional[List[str]] = None) -> List[Hearing]:
         """Run discovery in background thread"""
         try:
+            if not self.discovery_engine:
+                logger.warning("Discovery engine not available - returning empty result")
+                return []
+                
             if committee_codes:
                 hearings = []
                 for committee_code in committee_codes:
@@ -164,7 +173,7 @@ class DiscoveryService:
             logger.error(f"Discovery engine error: {e}")
             return []
     
-    def _convert_to_discovered_hearing(self, hearing: Hearing) -> DiscoveredHearing:
+    def _convert_to_discovered_hearing(self, hearing) -> DiscoveredHearing:
         """Convert Hearing to DiscoveredHearing"""
         return DiscoveredHearing(
             id=hearing.hearing_id or str(uuid.uuid4()),
