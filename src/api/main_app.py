@@ -20,6 +20,7 @@ from .system_monitoring import setup_system_monitoring_routes
 from .status_management import setup_status_management_routes
 from .search_management import setup_search_routes
 from .transcript_management import setup_transcript_routes
+from .discovery_management import setup_discovery_management_routes
 from .database_enhanced import get_enhanced_db
 from .health import router as health_router
 
@@ -634,6 +635,7 @@ class EnhancedUIApp:
         setup_status_management_routes(self.app)
         setup_search_routes(self.app)
         setup_transcript_routes(self.app, self.db)
+        setup_discovery_management_routes(self.app)
         
         # Add health check routes
         self.app.include_router(health_router, tags=["health"])
