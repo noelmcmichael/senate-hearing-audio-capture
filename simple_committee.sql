@@ -1,0 +1,1 @@
+INSERT INTO committees (committee_code, committee_name, chamber, total_members, majority_party, minority_party) VALUES ('SCOM', 'Senate Committee on Commerce, Science, and Transportation', 'Senate', 28, 'Democrat', 'Republican');
