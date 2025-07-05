@@ -1,5 +1,18 @@
 steps:
+  # Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-f', 'Dockerfile.full', '-t', 'gcr.io/senate-hearing-capture/senate-hearing-processor', '.']
+  
+  # Deploy to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'senate-hearing-processor'
+      - '--image=gcr.io/senate-hearing-capture/senate-hearing-processor'
+      - '--region=us-central1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+
 images:
   - 'gcr.io/senate-hearing-capture/senate-hearing-processor'
