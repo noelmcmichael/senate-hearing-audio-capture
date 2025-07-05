@@ -1,54 +1,37 @@
 # Senate Hearing Audio Capture Agent
 
-## 🎯 **Cloud Production Status - Milestone 2 (July 4, 2025)**
+## 🎯 **UPDATED PLAN: Selective Automation Strategy (December 27, 2024)**
 
-**✅ Core Infrastructure Complete:**
-- **Cloud Run Service**: Deployed and operational at `https://senate-hearing-processor-518203250893.us-central1.run.app`
+**✅ Current Cloud Infrastructure Status:**
+- **Cloud Run Service**: ✅ Deployed and operational at `https://senate-hearing-processor-518203250893.us-central1.run.app`
 - **Health Endpoint**: ✅ `GET /health` returning healthy status
 - **Storage Integration**: ✅ Google Cloud Storage buckets configured and accessible
 - **Transcription Service**: ✅ `POST /api/transcription` handling requests correctly
 - **Storage Verification**: ✅ `GET /api/storage/audio/{id}/verify` working
 - **Database Connection**: ✅ PostgreSQL ready for data
+- **Real Data Processing**: ✅ Actual Senate hearings processed successfully
 
-**🔄 In Progress:**
-- **Capture Service**: Core logic implemented, blocked on Playwright browser dependencies
-- **Context Manager Issues**: ✅ Fixed in capture service
-- **Method Signatures**: ✅ Updated to use correct ISVPExtractor and FFmpegConverter interfaces
+**🔄 Current Implementation Focus:**
+- **Milestone 4**: Discovery Dashboard & Selective Processing (60 minutes)
+- **Milestone 5**: Chrome/Docker Fix & Production Optimization (30 minutes)
 
-**📈 Progress**: ✅ Milestone 2 Complete (85%) + ✅ Milestone 3 Complete (100%)
+**📋 NEW APPROACH: Selective Automation Strategy**
 
-## 🏆 **Milestone 3 COMPLETE: Production Validation (July 4, 2025)**
+### **User Requirements:**
+1. **Discovery Automation**: ✅ Automatically discover hearings that meet requirements
+2. **Manual Trigger**: 🔄 Show discovered hearings with "capture hearing" buttons
+3. **Selective Processing**: 🔄 User chooses which hearings to process  
+4. **Post-Capture Automation**: 🔄 Once triggered, automate full pipeline
+5. **Chrome Support**: 🔄 Fix browser dependencies for Chrome only
+6. **No End-to-End**: ❌ Don't automatically process everything discovered
 
-**✅ Production Validation Results:**
-- **Test Success Rate**: 7/7 tests passed (100%)
-- **Core Functionality**: ✅ All endpoints working correctly
-- **Performance**: ✅ Sub-second response times
-- **Reliability**: ✅ Handles concurrent requests properly
-- **Error Handling**: ✅ Robust error responses with proper status codes
-- **API Quality**: ✅ Consistent JSON response formats
+### **Technical Architecture:**
+- **Discovery Service**: Automated hearing discovery with metadata
+- **Processing Pipeline**: capture → convert → trim → transcribe → speaker labels
+- **Dashboard Interface**: Hearing cards with descriptions and capture buttons
+- **Status Management**: Track processing states (discovered → processing → completed)
 
-**🚀 Production Ready Status:**
-- Cloud infrastructure fully operational and validated
-- All core systems meeting production requirements
-- Ready for real hearing data processing
-- Suitable for production workloads
-
-## 🎉 **REAL DATA PROCESSING COMPLETE (July 4, 2025)**
-
-**✅ Actual Senate Hearings Processed:**
-- **2 Real Hearings** discovered and processed successfully
-- **ISVP Players Detected** on both hearing pages
-- **Media Indicators Found** (5/8 score on both hearings)
-- **100% Success Rate** with real Senate hearing data
-
-**📊 Real Data Validation Results:**
-- ✅ Hearing discovery from live Senate committee websites
-- ✅ ISVP player detection on actual hearing pages  
-- ✅ All cloud services working correctly with real data
-- ✅ Error handling robust for production scenarios
-- ✅ Performance excellent with real hearing URLs
-
-**🏆 Production Status: FULLY VALIDATED AND READY**
+See `UPDATED_PLAN.md` for complete implementation strategy.
 
 ---
 
