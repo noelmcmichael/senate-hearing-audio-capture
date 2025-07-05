@@ -1,0 +1,19 @@
+{
+  "name": "senate_hearing_audio_capture",
+  "version": "1.0.0",
+  "description": "**✅ Current Cloud Infrastructure Status:** - **Cloud Run Service**: ✅ Deployed and operational at `https://senate-hearing-processor-518203250893.us-central1.run.app` - **Health Endpoint**: ✅ `GET /health` returning healthy status - **Storage Integration**: ✅ Google Cloud Storage buckets configured and accessible - **Transcription Service**: ✅ `POST /api/transcription` handling requests correctly - **Storage Verification**: ✅ `GET /api/storage/audio/{id}/verify` working - **Database Connection**: ✅ PostgreSQL ready for data - **Real Data Processing**: ✅ Actual Senate hearings processed successfully",
+  "main": "analyze-page.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.53.2"
+  }
+}
