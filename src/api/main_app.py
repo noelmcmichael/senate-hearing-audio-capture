@@ -22,7 +22,11 @@ from .search_management import setup_search_routes
 from .transcript_management import setup_transcript_routes
 from .discovery_management import setup_discovery_management_routes
 from .database_enhanced import get_enhanced_db
-from .health import router as health_router
+try:
+    from .health import router as health_router
+except ImportError as e:
+    logger.warning(f"Health router import failed: {e}")
+    health_router = None
 
 # Import existing dashboard data API
 from .dashboard_data import DashboardDataAPI
@@ -719,7 +723,13 @@ class EnhancedUIApp:
         setup_discovery_management_routes(self.app)
         
         # Add health check routes
-        self.app.include_router(health_router, tags=["health"])
+        if health_router:
+            self.app.include_router(health_router, tags=["health"])
+        else:
+            # Basic health endpoint if full health module fails to import
+            @self.app.get("/health")
+            async def basic_health():
+                return {"status": "ok", "message": "Basic health check"}
         
         # Add metrics endpoint for production
         if PRODUCTION_MODE:
