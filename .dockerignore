@@ -45,7 +45,7 @@ npm-debug.log
 yarn-error.log
 
 # Build artifacts
-build/
+# build/  # Commented out to include dashboard/build/ for React frontend
 dist/
 *.egg-info/
 
