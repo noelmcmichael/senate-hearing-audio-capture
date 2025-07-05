@@ -2,19 +2,24 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install minimal system dependencies
+# Install system dependencies including Chrome
 RUN apt-get update && apt-get install -y \
+    ffmpeg \
     curl \
     wget \
+    gnupg \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy lightweight requirements and install Python dependencies
-COPY requirements-api-only.txt .
-RUN pip install --no-cache-dir -r requirements-api-only.txt
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy React build files first
+COPY dashboard/build/ ./dashboard/build/
 
 # Copy application code
-COPY . .
+COPY src/ ./src/
 
 # Create non-root user
 RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
