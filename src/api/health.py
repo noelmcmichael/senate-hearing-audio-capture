@@ -10,8 +10,12 @@ import redis
 import time
 from datetime import datetime
 from google.cloud import storage
-from src.config.production import config
-from src.monitoring.metrics import metrics_collector
+try:
+    from src.config.production import config
+    from src.monitoring.metrics import metrics_collector
+except ImportError:
+    config = None
+    metrics_collector = None
 
 router = APIRouter()
 
@@ -62,7 +66,8 @@ async def detailed_health_check() -> Dict[str, Any]:
     }
     
     # Update metrics
-    await metrics_collector.update_system_health('application', all_healthy)
+    if metrics_collector:
+        await metrics_collector.update_system_health('application', all_healthy)
     
     return result
 
@@ -104,7 +109,8 @@ async def _check_database() -> Dict[str, Any]:
         response_time = time.time() - start_time
         
         # Update metrics
-        await metrics_collector.update_system_health('database', True)
+        if metrics_collector:
+            await metrics_collector.update_system_health('database', True)
         
         return {
             "status": "healthy",
@@ -113,7 +119,8 @@ async def _check_database() -> Dict[str, Any]:
         }
         
     except Exception as e:
-        await metrics_collector.update_system_health('database', False)
+        if metrics_collector:
+            await metrics_collector.update_system_health('database', False)
         return {
             "status": "unhealthy",
             "error": str(e),
@@ -136,7 +143,8 @@ async def _check_redis() -> Dict[str, Any]:
         response_time = time.time() - start_time
         
         # Update metrics
-        await metrics_collector.update_system_health('redis', True)
+        if metrics_collector:
+            await metrics_collector.update_system_health('redis', True)
         
         return {
             "status": "healthy",
@@ -145,7 +153,8 @@ async def _check_redis() -> Dict[str, Any]:
         }
         
     except Exception as e:
-        await metrics_collector.update_system_health('redis', False)
+        if metrics_collector:
+            await metrics_collector.update_system_health('redis', False)
         return {
             "status": "unhealthy",
             "error": str(e),
@@ -171,7 +180,8 @@ async def _check_storage() -> Dict[str, Any]:
         response_time = time.time() - start_time
         
         # Update metrics
-        await metrics_collector.update_system_health('storage', True)
+        if metrics_collector:
+            await metrics_collector.update_system_health('storage', True)
         
         return {
             "status": "healthy",
@@ -181,7 +191,8 @@ async def _check_storage() -> Dict[str, Any]:
         }
         
     except Exception as e:
-        await metrics_collector.update_system_health('storage', False)
+        if metrics_collector:
+            await metrics_collector.update_system_health('storage', False)
         return {
             "status": "unhealthy",
             "error": str(e),
@@ -209,7 +220,8 @@ async def _check_processing_capability() -> Dict[str, Any]:
         response_time = time.time() - start_time
         
         # Update metrics
-        await metrics_collector.update_system_health('processing', all_components_healthy)
+        if metrics_collector:
+            await metrics_collector.update_system_health('processing', all_components_healthy)
         
         return {
             "status": "healthy" if all_components_healthy else "unhealthy",
@@ -219,7 +231,8 @@ async def _check_processing_capability() -> Dict[str, Any]:
         }
         
     except Exception as e:
-        await metrics_collector.update_system_health('processing', False)
+        if metrics_collector:
+            await metrics_collector.update_system_health('processing', False)
         return {
             "status": "unhealthy",
             "error": str(e),
@@ -244,5 +257,5 @@ async def liveness_check() -> Dict[str, Any]:
     return {
         "status": "alive",
         "timestamp": datetime.utcnow().isoformat(),
-        "uptime": time.time() - metrics_collector.start_time
+        "uptime": time.time() - (metrics_collector.start_time if metrics_collector else time.time())
     }
