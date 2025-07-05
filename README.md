@@ -1,6 +1,6 @@
 # Senate Hearing Audio Capture Agent
 
-## 🎯 **UPDATED PLAN: Selective Automation Strategy (December 27, 2024)**
+## 🎯 **PRODUCTION DEPLOYMENT COMPLETE (July 5, 2025)**
 
 **✅ Current Cloud Infrastructure Status:**
 - **Cloud Run Service**: ✅ Deployed and operational at `https://senate-hearing-processor-518203250893.us-central1.run.app`
@@ -1150,3 +1150,15 @@ To activate this testing module for your project's frontend dashboard:
 2.  **Set the `baseUrl`**: Change the `baseUrl` to the address of your running frontend application (e.g., `"baseUrl": "http://localhost:3000"`).
 3.  **Define Pages**: Update the `pages` array to list the specific paths of your application you wish to test (e.g., `{"path": "/", "name": "dashboard"}`).
 4.  **Run the Tests**: Execute `node run-tests.js` from your terminal. The results will be saved to the `playwright-results/` directory.
+
+---
+
+## 🔗 **GitHub Repository**
+
+This project is now available on GitHub: https://github.com/noelmcmichael/senate-hearing-audio-capture
+
+**Repository Features:**
+- Complete commit history with milestone tracking
+- Automated CI/CD deployment pipeline
+- Production-ready Docker containerization
+- GCP Cloud Run deployment configuration
