@@ -7,6 +7,7 @@ yarn-error.log*
 
 # React build output
 # dashboard/build/  # Commented out to include in deployment
+# Build directory is now included for deployment
 
 # Terraform
 .terraform/
@@ -29,7 +30,7 @@ __pycache__/
 *$py.class
 *.so
 .Python
-build/
+# build/  # Commented out to include dashboard/build/ for deployment
 develop-eggs/
 dist/
 downloads/
