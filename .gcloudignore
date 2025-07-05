@@ -1,0 +1,111 @@
+# Google Cloud Build ignore file
+# Override default gcloudignore to ensure dashboard/build is included
+
+# Version control
+.git/
+.gitignore
+
+# Documentation
+*.md
+docs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.coverage
+.mypy_cache/
+.tox/
+venv/
+env/
+.venv/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts - BUT KEEP dashboard/build/
+# build/  # Commented out to include dashboard/build/
+dist/
+*.egg-info/
+
+# Test files
+test_*.py
+tests/
+*_test.py
+*.test.js
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Log files
+*.log
+logs/
+
+# Data files (don't include in container)
+data/
+output/
+backup/
+
+# Development scripts
+scripts/dev_*.sh
+scripts/test_*.sh
+
+# Local configuration
+terraform.tfvars
+*.local.yml
+local_config.py
+
+# Infrastructure
+infrastructure/
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Monitoring (for local development)
+monitoring/
+prometheus.yml
+grafana/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache/
+*.cache
+
+# Backup files
+*.bak
+*.backup
+
+# Large files that shouldn't be in container
+*.wav
+*.mp3
+*.mp4
+*.avi
+*.mov
+
+# EXPLICITLY INCLUDE dashboard/build for React frontend
+!dashboard/build/
+!dashboard/build/**
