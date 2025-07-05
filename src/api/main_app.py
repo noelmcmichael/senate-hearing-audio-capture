@@ -640,6 +640,9 @@ class EnhancedUIApp:
                 logger.error(f"Error getting enhanced stats: {str(e)}")
                 raise HTTPException(status_code=500, detail=f"Stats error: {str(e)}")
         
+        # Setup admin bootstrap endpoints
+        self._setup_admin_routes()
+        
         # Setup component API routes
         setup_hearing_management_routes(self.app)
         setup_system_monitoring_routes(self.app)
@@ -667,6 +670,164 @@ class EnhancedUIApp:
                 start_metrics_server(9090)
             except ImportError:
                 logger.warning("Prometheus client not available, metrics endpoint disabled")
+    
+    def _setup_admin_routes(self):
+        """Setup admin bootstrap endpoints"""
+        
+        # Default committees for bootstrap
+        DEFAULT_COMMITTEES = [
+            {
+                'committee_code': 'SCOM',
+                'committee_name': 'Senate Committee on Commerce, Science, and Transportation',
+                'chamber': 'Senate',
+                'total_members': 28,
+                'majority_party': 'Democrat',
+                'minority_party': 'Republican',
+                'metadata': {
+                    'description': 'Committee with jurisdiction over commerce, science, and transportation',
+                    'website': 'https://www.commerce.senate.gov',
+                    'isvp_compatible': True
+                }
+            },
+            {
+                'committee_code': 'SSCI',
+                'committee_name': 'Senate Select Committee on Intelligence',
+                'chamber': 'Senate',
+                'total_members': 21,
+                'majority_party': 'Democrat',
+                'minority_party': 'Republican',
+                'metadata': {
+                    'description': 'Select committee overseeing intelligence community',
+                    'website': 'https://www.intelligence.senate.gov',
+                    'isvp_compatible': True
+                }
+            },
+            {
+                'committee_code': 'SSJU',
+                'committee_name': 'Senate Committee on the Judiciary',
+                'chamber': 'Senate',
+                'total_members': 22,
+                'majority_party': 'Democrat',
+                'minority_party': 'Republican',
+                'metadata': {
+                    'description': 'Committee with jurisdiction over federal judiciary',
+                    'website': 'https://www.judiciary.senate.gov',
+                    'isvp_compatible': True
+                }
+            }
+        ]
+        
+        @self.app.get("/admin/status")
+        async def admin_status():
+            """Check system status for admin purposes"""
+            try:
+                # Get database connection
+                db = get_enhanced_db()
+                
+                # Check if hearings_unified table exists
+                cursor = db.connection.execute("""
+                    SELECT name FROM sqlite_master WHERE type='table' AND name='hearings_unified'
+                """)
+                table_exists = cursor.fetchone() is not None
+                
+                if not table_exists:
+                    return {
+                        "status": "needs_initialization",
+                        "committees": 0,
+                        "hearings": 0,
+                        "bootstrap_needed": True,
+                        "tables_exist": False,
+                        "message": "hearings_unified table does not exist"
+                    }
+                
+                # Check committees (from hearings_unified table)
+                cursor = db.connection.execute("SELECT COUNT(DISTINCT committee_code) FROM hearings_unified")
+                committee_count = cursor.fetchone()[0]
+                
+                # Check hearings
+                cursor = db.connection.execute("SELECT COUNT(*) FROM hearings_unified")
+                hearing_count = cursor.fetchone()[0]
+                
+                return {
+                    "status": "healthy",
+                    "committees": committee_count,
+                    "hearings": hearing_count,
+                    "bootstrap_needed": committee_count == 0,
+                    "tables_exist": True
+                }
+                
+            except Exception as e:
+                logger.error(f"Admin status error: {e}")
+                return {"error": str(e), "details": "Check if database is properly initialized"}
+        
+        @self.app.post("/admin/bootstrap")
+        async def bootstrap_system():
+            """Bootstrap the system with default committees by adding sample hearings"""
+            try:
+                # Get database connection
+                db = get_enhanced_db()
+                
+                # Force creation of the schema if it doesn't exist
+                db._create_schema()
+                
+                # Add sample hearings to create committees in the hearings_unified table
+                committees_added = 0
+                errors = []
+                
+                for committee in DEFAULT_COMMITTEES:
+                    try:
+                        # Create a sample hearing for each committee to bootstrap the system
+                        hearing_id = f"{committee['committee_code']}-BOOTSTRAP-{datetime.now().strftime('%Y%m%d')}"
+                        
+                        db.connection.execute("""
+                            INSERT OR REPLACE INTO hearings_unified 
+                            (committee_code, hearing_title, hearing_date, hearing_type, 
+                             sync_status, sync_confidence, witnesses, last_api_sync)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (
+                            committee['committee_code'],
+                            f"Bootstrap Entry for {committee['committee_name']}",
+                            datetime.now().strftime('%Y-%m-%d'),
+                            'Setup',
+                            'bootstrap',
+                            1.0,
+                            json.dumps({
+                                "bootstrap": True,
+                                "committee_info": committee,
+                                "description": "Bootstrap entry to enable committee discovery"
+                            }),
+                            datetime.now().isoformat()
+                        ))
+                        committees_added += 1
+                        logger.info(f"Added bootstrap entry for {committee['committee_code']}")
+                        
+                    except Exception as e:
+                        error_msg = f"Error adding committee {committee['committee_code']}: {e}"
+                        logger.error(error_msg)
+                        errors.append(error_msg)
+                
+                # Commit changes
+                db.connection.commit()
+                
+                # Get final count
+                cursor = db.connection.execute("SELECT COUNT(DISTINCT committee_code) FROM hearings_unified")
+                total_committees = cursor.fetchone()[0]
+                
+                cursor = db.connection.execute("SELECT COUNT(*) FROM hearings_unified")
+                total_hearings = cursor.fetchone()[0]
+                
+                return {
+                    "success": True,
+                    "committees_added": committees_added,
+                    "total_committees": total_committees,
+                    "total_hearings": total_hearings,
+                    "errors": errors,
+                    "message": f"Bootstrap completed: {committees_added} committees added, {total_committees} total committees, {total_hearings} total hearings"
+                }
+                
+            except Exception as e:
+                logger.error(f"Bootstrap error: {e}")
+                raise HTTPException(status_code=500, detail=f"Bootstrap failed: {str(e)}")
     
     def _setup_static_files(self):
         """Setup static file serving for React app"""
