@@ -55,6 +55,7 @@ class EnhancedUIApp:
         self.dashboard_api = DashboardDataAPI()
         
         self._setup_middleware()
+        self._setup_startup_events()
         self._setup_routes()
         self._setup_static_files()
         self._initialize_demo_data()
@@ -87,6 +88,87 @@ class EnhancedUIApp:
                 f"Time: {process_time:.3f}s"
             )
             return response
+    
+    def _setup_startup_events(self):
+        """Setup startup events for automatic database bootstrap"""
+        
+        @self.app.on_event("startup")
+        async def startup_event():
+            """Auto-bootstrap database if empty on startup"""
+            try:
+                logger.info("Checking database state on startup...")
+                
+                # Check if database is empty
+                db = get_enhanced_db()
+                committees = db.get_all_committees()
+                committee_count = len(committees)
+                
+                if committee_count == 0:
+                    logger.info("Database is empty - running auto-bootstrap...")
+                    
+                    # Default committees for bootstrap
+                    DEFAULT_COMMITTEES = [
+                        {
+                            'committee_code': 'SCOM',
+                            'committee_name': 'Senate Committee on Commerce, Science, and Transportation',
+                        },
+                        {
+                            'committee_code': 'SSCI',
+                            'committee_name': 'Senate Select Committee on Intelligence',
+                        },
+                        {
+                            'committee_code': 'SSJU',
+                            'committee_name': 'Senate Committee on the Judiciary',
+                        }
+                    ]
+                    
+                    # Bootstrap committees
+                    committees_added = 0
+                    for committee in DEFAULT_COMMITTEES:
+                        try:
+                            # Create a sample hearing for each committee to bootstrap the system
+                            hearing_id = f"{committee['committee_code']}-BOOTSTRAP-{datetime.now().strftime('%Y%m%d')}"
+                            
+                            db.connection.execute("""
+                                INSERT OR REPLACE INTO hearings_unified 
+                                (hearing_id, committee_code, committee_name, title, date, url, status, 
+                                 audio_url, audio_duration, transcript_json, processing_notes, quality_score,
+                                 bootstrap, created_at, updated_at)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            """, (
+                                hearing_id,
+                                committee['committee_code'],
+                                committee['committee_name'],
+                                f"Bootstrap Entry for {committee['committee_name']}",
+                                datetime.now().strftime('%Y-%m-%d'),
+                                f"https://example.com/bootstrap/{committee['committee_code'].lower()}",
+                                'bootstrap',
+                                None,
+                                None,
+                                None,
+                                "Auto-generated bootstrap entry",
+                                1.0,
+                                True,
+                                datetime.now().isoformat(),
+                                datetime.now().isoformat()
+                            ))
+                            
+                            committees_added += 1
+                            logger.info(f"Added bootstrap entry for {committee['committee_code']}")
+                            
+                        except Exception as e:
+                            logger.error(f"Error adding bootstrap entry for {committee['committee_code']}: {e}")
+                    
+                    db.connection.commit()
+                    logger.info(f"Auto-bootstrap completed: {committees_added} committees added")
+                    
+                else:
+                    logger.info(f"Database already has {committee_count} committees - skipping bootstrap")
+                
+            except Exception as e:
+                logger.error(f"Error during startup bootstrap: {e}")
+                # Don't fail the startup if bootstrap fails
+                pass
     
     def _setup_routes(self):
         """Setup all API routes"""

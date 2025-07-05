@@ -1,5 +1,5 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f', 'Dockerfile.api', '-t', 'gcr.io/senate-hearing-capture/senate-hearing-processor', '.']
+    args: ['build', '-f', 'Dockerfile.full', '-t', 'gcr.io/senate-hearing-capture/senate-hearing-processor', '.']
 images:
   - 'gcr.io/senate-hearing-capture/senate-hearing-processor'

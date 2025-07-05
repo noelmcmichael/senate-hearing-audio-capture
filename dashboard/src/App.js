@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import DiscoveryDashboard from './components/discovery/DiscoveryDashboard';
+import AdminPage from './pages/AdminPage';
 import HearingLayout from './layouts/HearingLayout';
 import HearingTranscript from './pages/HearingTranscript';
 import HearingReview from './pages/HearingReview';
@@ -17,6 +18,7 @@ const App = () => {
           {/* Dashboard Routes */}
           <Route path="/" element={<Dashboard />} />
           <Route path="/discovery" element={<DiscoveryDashboard />} />
+          <Route path="/admin" element={<AdminPage />} />
           
           {/* Hearing Routes */}
           <Route path="/hearings/:id" element={<HearingLayout />}>
