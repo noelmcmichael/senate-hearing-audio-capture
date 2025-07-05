@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 import logging
+import json
 from pydantic import BaseModel
 
 from .database_enhanced import get_enhanced_db
@@ -134,15 +135,18 @@ class HearingManagementAPI:
                 hearing = dict(row)
                 
                 # Parse JSON fields (handle missing fields gracefully)
-                if hearing.get('streams'):
-                    hearing['streams'] = eval(hearing['streams']) if hearing['streams'] != '{}' else {}
-                else:
-                    hearing['streams'] = {}
-                    
-                # Handle optional fields that may not exist in demo database
-                hearing['witnesses'] = eval(hearing['witnesses']) if hearing.get('witnesses') and hearing['witnesses'] != '[]' else []
-                hearing['documents'] = eval(hearing['documents']) if hearing.get('documents') and hearing['documents'] != '[]' else []
-                hearing['external_urls'] = eval(hearing['external_urls']) if hearing.get('external_urls') and hearing['external_urls'] != '[]' else []
+                def safe_json_parse(value, default):
+                    if not value or value in ['{}', '[]', 'null', 'NULL']:
+                        return default
+                    try:
+                        return json.loads(value)
+                    except (json.JSONDecodeError, TypeError):
+                        return default
+                
+                hearing['streams'] = safe_json_parse(hearing.get('streams'), {})
+                hearing['witnesses'] = safe_json_parse(hearing.get('witnesses'), [])
+                hearing['documents'] = safe_json_parse(hearing.get('documents'), [])
+                hearing['external_urls'] = safe_json_parse(hearing.get('external_urls'), [])
                 
                 # Add computed fields
                 hearing['has_streams'] = bool(hearing['streams'])
@@ -207,13 +211,20 @@ class HearingManagementAPI:
             
             hearing = dict(row)
             
+            # Parse JSON fields safely
+            def safe_json_parse(value, default):
+                if not value or value in ['{}', '[]', 'null', 'NULL']:
+                    return default
+                try:
+                    return json.loads(value)
+                except (json.JSONDecodeError, TypeError):
+                    return default
+            
             # Parse JSON fields (handle missing fields gracefully)
-            for field in ['streams', 'witnesses', 'documents', 'external_urls']:
-                if hearing.get(field):
-                    hearing[field] = eval(hearing[field]) if hearing[field] not in ['{}', '[]'] else ([] if field != 'streams' else {})
-                else:
-                    # Set default values for missing fields
-                    hearing[field] = [] if field != 'streams' else {}
+            hearing['streams'] = safe_json_parse(hearing.get('streams'), {})
+            hearing['witnesses'] = safe_json_parse(hearing.get('witnesses'), [])
+            hearing['documents'] = safe_json_parse(hearing.get('documents'), [])
+            hearing['external_urls'] = safe_json_parse(hearing.get('external_urls'), [])
             
             # Add computed fields
             hearing['has_streams'] = bool(hearing['streams'])
