@@ -173,22 +173,7 @@ class EnhancedUIApp:
     def _setup_routes(self):
         """Setup all API routes"""
         
-        # Health check endpoint
-        @self.app.get("/")
-        async def root():
-            """Root endpoint - serve React app or API info"""
-            dashboard_build = Path("dashboard/build")
-            if dashboard_build.exists():
-                return FileResponse("dashboard/build/index.html")
-            else:
-                return {
-                    "name": "Senate Hearing Audio Capture API",
-                    "version": "7B.1.0",
-                    "status": "API-only mode",
-                    "message": "Frontend not available in this deployment",
-                    "health_check": "/health",
-                    "api_info": "/api"
-                }
+        # Root route is now handled by static file serving in _setup_static_files()
         
         @self.app.get("/api")
         async def api_info():
@@ -917,13 +902,18 @@ class EnhancedUIApp:
         # Check if React build exists
         dashboard_build = Path("dashboard/build")
         if dashboard_build.exists():
+            logger.info(f"React build found at: {dashboard_build.absolute()}")
             # Serve React app static files
             self.app.mount("/static", StaticFiles(directory="dashboard/build/static"), name="static")
             
-            # Catch-all route for React Router
+            # Catch-all route for React Router (including root)
             @self.app.get("/{path:path}")
             async def serve_react_app(path: str):
                 """Serve React app for client-side routing"""
+                # Handle root path
+                if path == "":
+                    return FileResponse(dashboard_build / "index.html")
+                    
                 file_path = dashboard_build / path
                 
                 if file_path.exists() and file_path.is_file():
@@ -933,6 +923,19 @@ class EnhancedUIApp:
                     return FileResponse(dashboard_build / "index.html")
         else:
             logger.warning("React build not found. Run 'npm run build' in dashboard directory.")
+            
+            # Fallback API-only mode
+            @self.app.get("/")
+            async def api_only_root():
+                """API-only root endpoint when React build not available"""
+                return {
+                    "name": "Senate Hearing Audio Capture API",
+                    "version": "7B.1.0",
+                    "status": "API-only mode",
+                    "message": "Frontend not available in this deployment",
+                    "health_check": "/health",
+                    "api_info": "/api"
+                }
     
     def _initialize_demo_data(self):
         """Initialize demo data for development"""
