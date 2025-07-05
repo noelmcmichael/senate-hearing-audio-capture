@@ -5,7 +5,7 @@ Orchestrates the full processing pipeline: capture → convert → trim → tran
 
 import asyncio
 import logging
-from typing import Dict, Any, Optional, Callable
+from typing import Dict, Any, Optional, Callable, List
 from datetime import datetime
 from pathlib import Path
 import json
@@ -16,6 +16,8 @@ from enum import Enum
 from .discovery_service import get_discovery_service
 from .capture_service import get_capture_service, CaptureException
 from .transcription_service import get_transcription_service, TranscriptionException
+from ..audio.trimming import get_audio_trimmer
+from ..speaker.enhanced_labeling import get_enhanced_speaker_labeler
 
 logger = logging.getLogger(__name__)
 
@@ -50,6 +52,8 @@ class PipelineController:
         self.discovery_service = get_discovery_service()
         self.capture_service = get_capture_service()
         self.transcription_service = get_transcription_service()
+        self.audio_trimmer = get_audio_trimmer()
+        self.speaker_labeler = get_enhanced_speaker_labeler()
         self.active_processes: Dict[str, ProcessingProgress] = {}
         self.progress_callbacks: Dict[str, Callable] = {}
         self.output_dir = Path("output")
@@ -217,22 +221,39 @@ class PipelineController:
             raise
     
     async def _trim_audio(self, hearing_id: str, audio_path: Path, options: Dict[str, Any]) -> Path:
-        """Trim silence from beginning of audio"""
+        """Trim silence from beginning of audio using AudioTrimmer"""
         try:
+            logger.info(f"Starting audio trimming for {hearing_id}")
+            
             # Output path for trimmed audio
             output_path = audio_path.parent / f"{audio_path.stem}_trimmed.mp3"
             
-            # For now, simulate trimming
-            await asyncio.sleep(1)  # Simulate processing time
+            # Get trimming parameters from options
+            trim_params = options.get("trimming", {})
             
-            # In production, this would detect silence and trim:
-            # ffmpeg -i input.mp3 -af silenceremove=start_periods=1:start_duration=1:start_threshold=-60dB output.mp3
+            # Use smart trimming with silence detection
+            trim_result = self.audio_trimmer.smart_trim(
+                audio_path=audio_path,
+                output_path=output_path,
+                params=trim_params
+            )
             
-            # For demo, copy the file
-            import shutil
-            shutil.copy(audio_path, output_path)
+            # Log trimming results
+            trimming_info = trim_result["trimming"]
+            optimization_info = trim_result["optimization"]
             
-            logger.info(f"Audio trimmed successfully for {hearing_id}: {output_path}")
+            logger.info(f"Audio trimmed successfully for {hearing_id}:")
+            logger.info(f"  - Original duration: {trimming_info['original_duration']:.1f}s")
+            logger.info(f"  - New duration: {trimming_info['new_duration']:.1f}s")
+            logger.info(f"  - Trimmed: {trimming_info['trimmed_seconds']:.1f}s")
+            logger.info(f"  - Quality improvement: {optimization_info['content_improvement']:.1f}%")
+            logger.info(f"  - File size reduction: {optimization_info['file_size_reduction']:.1f}%")
+            
+            # Store trimming metadata for later use
+            metadata_path = output_path.parent / f"{output_path.stem}_trim_metadata.json"
+            with open(metadata_path, 'w') as f:
+                json.dump(trim_result, f, indent=2)
+            
             return output_path
             
         except Exception as e:
@@ -266,8 +287,10 @@ class PipelineController:
             raise TranscriptionException(f"Audio transcription failed: {e}")
     
     async def _add_speaker_labels(self, hearing_id: str, transcript_path: Path, options: Dict[str, Any]) -> Path:
-        """Add speaker labels to transcript"""
+        """Add speaker labels to transcript using enhanced congressional metadata"""
         try:
+            logger.info(f"Starting speaker labeling for {hearing_id}")
+            
             # Output path for labeled transcript
             output_path = transcript_path.parent / f"{transcript_path.stem}_labeled.json"
             
@@ -275,32 +298,92 @@ class PipelineController:
             with open(transcript_path, 'r') as f:
                 transcript = json.load(f)
             
-            # For now, simulate speaker labeling
-            await asyncio.sleep(1)  # Simulate processing time
+            # Get hearing information for committee context
+            hearings = self.discovery_service.get_discovered_hearings()
+            hearing = next((h for h in hearings if h.id == hearing_id), None)
             
-            # In production, this would use congressional metadata and speaker identification
-            # For demo, add basic speaker labels
-            if "segments" in transcript:
-                for i, segment in enumerate(transcript["segments"]):
-                    if i % 4 == 0:
-                        segment["speaker"] = "CHAIR"
-                    elif i % 4 == 1:
-                        segment["speaker"] = "RANKING_MEMBER"
-                    elif i % 4 == 2:
-                        segment["speaker"] = "MEMBER"
-                    else:
-                        segment["speaker"] = "WITNESS"
+            committee_code = hearing.committee_code if hearing else "UNKNOWN"
+            logger.info(f"Using committee code for speaker labeling: {committee_code}")
+            
+            # Get segments from transcript
+            segments = transcript.get("segments", [])
+            if not segments:
+                logger.warning(f"No segments found in transcript for {hearing_id}")
+                # Still save the transcript even if no segments
+                with open(output_path, 'w') as f:
+                    json.dump(transcript, f, indent=2)
+                return output_path
+            
+            # Enhance segments with speaker identification
+            enhanced_segments = self.speaker_labeler.enhance_transcript_segments(
+                segments, committee_code, hearing_id
+            )
+            
+            # Update transcript with enhanced segments
+            transcript["segments"] = enhanced_segments
+            
+            # Add metadata about speaker labeling
+            transcript["speaker_labeling"] = {
+                "enhanced": True,
+                "committee_code": committee_code,
+                "labeling_timestamp": datetime.now().isoformat(),
+                "total_segments": len(enhanced_segments),
+                "enhanced_segments": len([s for s in enhanced_segments if s.get("enhanced_speaker", {}).get("confidence", 0) > 0.5])
+            }
             
             # Save labeled transcript
             with open(output_path, 'w') as f:
                 json.dump(transcript, f, indent=2)
             
-            logger.info(f"Speaker labels added successfully for {hearing_id}: {output_path}")
+            # Log speaker labeling results
+            speaker_stats = self._analyze_speaker_labeling_results(enhanced_segments)
+            logger.info(f"Speaker labeling completed for {hearing_id}:")
+            logger.info(f"  - Total segments: {len(enhanced_segments)}")
+            logger.info(f"  - High confidence: {speaker_stats['high_confidence']}")
+            logger.info(f"  - Roles identified: {', '.join(speaker_stats['roles_found'])}")
+            logger.info(f"  - Metadata matches: {speaker_stats['metadata_matches']}")
+            
             return output_path
             
         except Exception as e:
             logger.error(f"Speaker labeling failed for {hearing_id}: {e}")
             raise
+    
+    def _analyze_speaker_labeling_results(self, segments: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze speaker labeling results for logging"""
+        try:
+            high_confidence = 0
+            roles_found = set()
+            metadata_matches = 0
+            
+            for segment in segments:
+                enhanced_speaker = segment.get("enhanced_speaker", {})
+                confidence = enhanced_speaker.get("confidence", 0)
+                role = enhanced_speaker.get("role", "UNKNOWN")
+                source = enhanced_speaker.get("source", "unknown")
+                
+                if confidence > 0.7:
+                    high_confidence += 1
+                
+                if role != "UNKNOWN":
+                    roles_found.add(role)
+                
+                if source == "metadata":
+                    metadata_matches += 1
+            
+            return {
+                "high_confidence": high_confidence,
+                "roles_found": list(roles_found),
+                "metadata_matches": metadata_matches
+            }
+            
+        except Exception as e:
+            logger.error(f"Error analyzing speaker labeling results: {e}")
+            return {
+                "high_confidence": 0,
+                "roles_found": [],
+                "metadata_matches": 0
+            }
     
     async def _store_results(self, hearing_id: str, results: Dict[str, Any]):
         """Store final processing results"""
