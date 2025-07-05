@@ -87,3 +87,8 @@ browser_profiles/
 
 # FFmpeg temp files
 ffmpeg_*.log
+# Large files and caches
+dashboard/node_modules/
+infrastructure/terraform/.terraform/
+**/*.pack
+**/.cache/
