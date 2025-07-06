@@ -487,13 +487,16 @@ def transcribe_hearing(hearing_id):
 
 @app.route('/api/hearings/<int:hearing_id>/transcription/progress', methods=['GET'])
 def get_transcription_progress(hearing_id):
-    """Get transcription progress for a specific hearing."""
+    """Get detailed transcription progress for a specific hearing."""
     try:
-        # For now, return the current processing stage
-        # In a full implementation, this would track real-time progress
+        from progress_tracker import progress_tracker
+        
+        # Get detailed progress from tracker
+        progress_data = progress_tracker.get_progress(hearing_id)
+        
+        # Get hearing info from database
         conn = get_db_connection()
         cursor = conn.cursor()
-        
         cursor.execute('SELECT id, hearing_title, processing_stage, updated_at FROM hearings_unified WHERE id = ?', (hearing_id,))
         hearing = cursor.fetchone()
         conn.close()
@@ -504,7 +507,27 @@ def get_transcription_progress(hearing_id):
                 'error': 'Hearing not found'
             }), 404
         
-        # Determine progress based on processing stage
+        # If we have detailed progress data, use it
+        if progress_data:
+            return jsonify({
+                'success': True,
+                'hearing_id': hearing_id,
+                'hearing_title': hearing['hearing_title'],
+                'processing_stage': hearing['processing_stage'],
+                'detailed_progress': {
+                    'stage': progress_data['stage'],
+                    'overall_progress': progress_data['overall_progress'],
+                    'message': progress_data['message'],
+                    'chunk_progress': progress_data.get('chunk_progress'),
+                    'estimated_time_remaining': progress_data.get('estimated_time_remaining'),
+                    'error': progress_data.get('error'),
+                    'started_at': progress_data.get('started_at'),
+                    'last_updated': progress_data.get('last_updated'),
+                    'is_chunked_processing': progress_data.get('chunk_progress') is not None
+                }
+            })
+        
+        # Fallback to basic progress based on processing stage
         progress_map = {
             'discovered': {'percent': 0, 'message': 'Hearing discovered, ready for processing'},
             'analyzed': {'percent': 10, 'message': 'Hearing analyzed, ready for capture'},
@@ -521,8 +544,15 @@ def get_transcription_progress(hearing_id):
             'hearing_id': hearing_id,
             'hearing_title': hearing['hearing_title'],
             'processing_stage': stage,
-            'progress_percent': progress['percent'],
-            'progress_message': progress['message'],
+            'detailed_progress': {
+                'stage': stage,
+                'overall_progress': progress['percent'],
+                'message': progress['message'],
+                'chunk_progress': None,
+                'estimated_time_remaining': None,
+                'error': None,
+                'is_chunked_processing': False
+            },
             'last_updated': hearing['updated_at']
         })
         

@@ -16,6 +16,7 @@ import time
 
 from audio_analyzer import AudioAnalyzer
 from audio_chunker import AudioChunker, ChunkingResult, AudioChunk
+from progress_tracker import progress_tracker, ChunkedProgressCallback
 
 class EnhancedTranscriptionService:
     """Enhanced service for handling audio transcription with chunking support."""
@@ -64,40 +65,51 @@ class EnhancedTranscriptionService:
         if not self.api_key:
             raise Exception("OpenAI API key not found. Please set it in Memex settings.")
         
-        # Find audio file for this hearing
-        audio_file = self._find_audio_file(hearing_id)
-        if not audio_file:
-            raise Exception(f"No audio file found for hearing {hearing_id}")
+        # Initialize progress tracking
+        progress_tracker.start_operation(hearing_id, 'transcription')
         
-        # Get hearing details
-        hearing_info = self._get_hearing_info(hearing_id)
+        # Create enhanced progress callback
+        if progress_callback is None:
+            progress_callback = ChunkedProgressCallback(hearing_id, progress_tracker)
         
-        if progress_callback:
+        try:
+            # Find audio file for this hearing
+            audio_file = self._find_audio_file(hearing_id)
+            if not audio_file:
+                raise Exception(f"No audio file found for hearing {hearing_id}")
+            
+            # Get hearing details
+            hearing_info = self._get_hearing_info(hearing_id)
+            
             progress_callback("analyzing", 0, "Analyzing audio file...")
+            
+            # Analyze audio file to determine processing approach
+            analysis = self.analyzer.analyze_file(audio_file)
         
-        # Analyze audio file to determine processing approach
-        analysis = self.analyzer.analyze_file(audio_file)
-        
-        # Choose processing method based on file size
-        if analysis.needs_chunking:
-            print(f"🔧 Large file detected ({analysis.file_size_mb:.2f}MB), using chunked processing")
-            transcript_data = self._transcribe_with_chunking(audio_file, hearing_info, analysis, progress_callback)
-        else:
-            print(f"📁 Small file ({analysis.file_size_mb:.2f}MB), using direct processing")
-            transcript_data = self._transcribe_direct(audio_file, hearing_info, progress_callback)
-        
-        # Save transcript to file
-        transcript_file = self.output_dir / f'hearing_{hearing_id}_transcript.json'
-        with open(transcript_file, 'w') as f:
-            json.dump(transcript_data, f, indent=2)
-        
-        # Update database with transcript
-        self._update_database_transcript(hearing_id, transcript_data)
-        
-        if progress_callback:
+            # Choose processing method based on file size
+            if analysis.needs_chunking:
+                print(f"🔧 Large file detected ({analysis.file_size_mb:.2f}MB), using chunked processing")
+                transcript_data = self._transcribe_with_chunking(audio_file, hearing_info, analysis, progress_callback)
+            else:
+                print(f"📁 Small file ({analysis.file_size_mb:.2f}MB), using direct processing")
+                transcript_data = self._transcribe_direct(audio_file, hearing_info, progress_callback)
+            
+            # Save transcript to file
+            transcript_file = self.output_dir / f'hearing_{hearing_id}_transcript.json'
+            with open(transcript_file, 'w') as f:
+                json.dump(transcript_data, f, indent=2)
+            
+            # Update database with transcript
+            self._update_database_transcript(hearing_id, transcript_data)
+            
             progress_callback("completed", 100, "Transcription completed successfully")
-        
-        return transcript_data
+            progress_tracker.complete_operation(hearing_id, success=True)
+            
+            return transcript_data
+            
+        except Exception as e:
+            progress_tracker.complete_operation(hearing_id, success=False, error=str(e))
+            raise
     
     def _transcribe_with_chunking(self, audio_file: Path, hearing_info: Dict, analysis, progress_callback=None) -> Dict[str, Any]:
         """Transcribe large audio file using chunking approach."""
@@ -119,28 +131,22 @@ class EnhancedTranscriptionService:
             # Process each chunk
             all_segments = []
             total_chunks = len(chunking_result.chunks)
-            base_progress = 10
-            chunk_progress_range = 80  # 10% to 90% for chunk processing
             
             for i, chunk in enumerate(chunking_result.chunks):
-                chunk_start_progress = base_progress + (i * chunk_progress_range // total_chunks)
-                chunk_end_progress = base_progress + ((i + 1) * chunk_progress_range // total_chunks)
-                
-                if progress_callback:
-                    progress_callback("processing", chunk_start_progress, 
-                                    f"Processing chunk {i+1}/{total_chunks} ({chunk.file_size_mb:.1f}MB)...")
+                # Update progress callback to show detailed chunk progress
+                progress_callback(f"processing_chunk_{i+1}_of_{total_chunks}", 0, 
+                                f"Starting chunk {i+1}/{total_chunks} ({chunk.file_size_mb:.1f}MB)...")
                 
                 # Transcribe chunk with retries
-                chunk_segments = self._transcribe_chunk_with_retries(chunk, hearing_info, i)
+                chunk_segments = self._transcribe_chunk_with_retries(chunk, hearing_info, i, progress_callback, total_chunks)
                 
                 # Adjust timestamps for chunk position in original audio
                 adjusted_segments = self._adjust_chunk_timestamps(chunk_segments, chunk)
                 
                 all_segments.extend(adjusted_segments)
                 
-                if progress_callback:
-                    progress_callback("processing", chunk_end_progress, 
-                                    f"Completed chunk {i+1}/{total_chunks}")
+                progress_callback(f"processing_chunk_{i+1}_of_{total_chunks}", 100, 
+                                f"Completed chunk {i+1}/{total_chunks} - {len(chunk_segments)} segments")
                 
                 # Small delay between API calls
                 if i < total_chunks - 1:  # Don't delay after last chunk
@@ -184,22 +190,38 @@ class EnhancedTranscriptionService:
                 progress_callback("cleanup", 95, "Cleaning up temporary files...")
             self.chunker.cleanup_chunks(chunking_result)
     
-    def _transcribe_chunk_with_retries(self, chunk: AudioChunk, hearing_info: Dict, chunk_index: int) -> List[Dict]:
+    def _transcribe_chunk_with_retries(self, chunk: AudioChunk, hearing_info: Dict, chunk_index: int, progress_callback=None, total_chunks=1) -> List[Dict]:
         """Transcribe a single chunk with retry logic."""
         
         for attempt in range(self.max_retries):
             try:
-                return self._transcribe_single_chunk(chunk, hearing_info, chunk_index)
+                if progress_callback:
+                    progress_callback(f"processing_chunk_{chunk_index+1}_of_{total_chunks}", 
+                                    25 + (attempt * 25), 
+                                    f"Transcribing chunk {chunk_index+1}/{total_chunks} (attempt {attempt+1})...")
+                
+                result = self._transcribe_single_chunk(chunk, hearing_info, chunk_index)
+                
+                if progress_callback:
+                    progress_callback(f"processing_chunk_{chunk_index+1}_of_{total_chunks}", 
+                                    90, 
+                                    f"Processing chunk {chunk_index+1}/{total_chunks} response...")
+                
+                return result
             
             except Exception as e:
-                print(f"⚠️  Chunk {chunk_index} attempt {attempt + 1} failed: {e}")
+                print(f"⚠️  Chunk {chunk_index+1} attempt {attempt + 1} failed: {e}")
                 
                 if attempt < self.max_retries - 1:
-                    print(f"🔄 Retrying chunk {chunk_index} in {self.retry_delay}s...")
+                    if progress_callback:
+                        progress_callback(f"processing_chunk_{chunk_index+1}_of_{total_chunks}", 
+                                        10 + (attempt * 15), 
+                                        f"Retrying chunk {chunk_index+1}/{total_chunks} in {self.retry_delay}s...")
+                    print(f"🔄 Retrying chunk {chunk_index+1} in {self.retry_delay}s...")
                     time.sleep(self.retry_delay)
                 else:
-                    print(f"❌ Chunk {chunk_index} failed after {self.max_retries} attempts")
-                    raise Exception(f"Failed to transcribe chunk {chunk_index} after {self.max_retries} attempts: {e}")
+                    print(f"❌ Chunk {chunk_index+1} failed after {self.max_retries} attempts")
+                    raise Exception(f"Failed to transcribe chunk {chunk_index+1} after {self.max_retries} attempts: {e}")
     
     def _transcribe_single_chunk(self, chunk: AudioChunk, hearing_info: Dict, chunk_index: int) -> List[Dict]:
         """Transcribe a single audio chunk using OpenAI Whisper API."""
