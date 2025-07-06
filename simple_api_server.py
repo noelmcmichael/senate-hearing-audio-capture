@@ -43,6 +43,7 @@ def get_all_hearings():
                 streams,
                 participant_list,
                 content_summary,
+                full_text_content,
                 created_at,
                 updated_at
             FROM hearings_unified 
@@ -74,6 +75,8 @@ def get_all_hearings():
                 'has_streams': bool(streams),
                 'participant_list': row['participant_list'],
                 'content_summary': row['content_summary'],
+                'full_text_content': row['full_text_content'],
+                'has_transcript': bool(row['full_text_content']),
                 'created_at': row['created_at'],
                 'updated_at': row['updated_at']
             }
