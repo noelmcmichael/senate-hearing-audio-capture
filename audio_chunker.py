@@ -16,6 +16,17 @@ from datetime import datetime
 
 from audio_analyzer import AudioAnalyzer, AudioAnalysis
 
+# Import streaming processor for memory optimization
+try:
+    from streaming_audio_processor import (
+        StreamingAudioProcessor,
+        initialize_streaming_processor,
+        shutdown_streaming_processor
+    )
+    STREAMING_AVAILABLE = True
+except ImportError:
+    STREAMING_AVAILABLE = False
+
 @dataclass
 class AudioChunk:
     """Container for audio chunk information."""
@@ -69,14 +80,87 @@ class ChunkingResult:
 class AudioChunker:
     """System for splitting large audio files into API-compatible chunks."""
     
-    def __init__(self, temp_base_dir: Optional[Path] = None):
+    def __init__(self, temp_base_dir: Optional[Path] = None, use_streaming: bool = True):
         """Initialize the audio chunker."""
         self.analyzer = AudioAnalyzer()
         self.overlap_duration = 30.0  # 30 seconds overlap
         self.max_chunk_size_mb = 20.0  # Safe under 25MB API limit
         self.temp_base_dir = temp_base_dir or Path(__file__).parent / 'output' / 'temp_chunks'
         self.temp_base_dir.mkdir(parents=True, exist_ok=True)
+        self.use_streaming = use_streaming and STREAMING_AVAILABLE
+        self.streaming_processor = None
         
+    async def chunk_audio_file_streaming(self, audio_file: Path, hearing_id: Optional[str] = None) -> ChunkingResult:
+        """Split an audio file into chunks using streaming for memory optimization."""
+        if not self.use_streaming:
+            raise ValueError("Streaming not available, use chunk_audio_file() instead")
+            
+        # Initialize streaming processor if needed
+        if not self.streaming_processor:
+            self.streaming_processor = StreamingAudioProcessor()
+            await self.streaming_processor.start()
+        
+        # Analyze the audio file first
+        analysis = self.analyzer.analyze_file(audio_file)
+        
+        if not analysis.needs_chunking:
+            raise ValueError(f"Audio file {audio_file.name} doesn't need chunking (size: {analysis.file_size_mb:.2f}MB)")
+        
+        print(f"🔧 Chunking audio file with streaming: {audio_file.name}")
+        print(f"📊 File size: {analysis.file_size_mb:.2f}MB, Duration: {analysis.duration_minutes:.2f} minutes")
+        print(f"📦 Will create {analysis.estimated_chunks} chunks with {self.overlap_duration}s overlap")
+        
+        # Create temporary directory for chunks
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        hearing_prefix = hearing_id or "unknown"
+        temp_dir = self.temp_base_dir / f"{hearing_prefix}_{timestamp}_streaming"
+        temp_dir.mkdir(parents=True, exist_ok=True)
+        
+        try:
+            # Calculate chunk parameters
+            chunk_params = self._calculate_chunk_parameters(analysis)
+            
+            # Create chunk specifications for streaming
+            chunk_specs = self._create_chunk_specifications(chunk_params)
+            
+            # Create chunks using streaming processor
+            chunk_paths = await self.streaming_processor.create_chunks_streaming(
+                str(audio_file), chunk_specs
+            )
+            
+            # Create chunk objects from the created files
+            chunks = self._create_chunk_objects_from_files(chunk_paths, chunk_specs, temp_dir)
+            
+            # Create metadata file
+            metadata_file = temp_dir / "chunking_metadata.json"
+            
+            # Create result object
+            result = ChunkingResult(
+                original_file=audio_file,
+                chunks=chunks,
+                total_chunks=len(chunks),
+                temp_directory=temp_dir,
+                overlap_duration=self.overlap_duration,
+                metadata_file=metadata_file,
+                created_at=datetime.now().isoformat()
+            )
+            
+            # Save metadata
+            self._save_metadata(result)
+            
+            # Validate chunks
+            if not self._validate_chunks(chunks):
+                raise Exception("Chunk validation failed")
+            
+            print(f"✅ Successfully created {len(chunks)} chunks using streaming")
+            return result
+            
+        except Exception as e:
+            # Cleanup on error
+            if temp_dir.exists():
+                shutil.rmtree(temp_dir)
+            raise
+    
     def chunk_audio_file(self, audio_file: Path, hearing_id: Optional[str] = None) -> ChunkingResult:
         """Split an audio file into chunks suitable for API processing."""
         
@@ -277,6 +361,98 @@ class AudioChunker:
             print(f"❌ Chunk validation failed")
             
         return all_valid
+    
+    def _create_chunk_specifications(self, chunk_params: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Create chunk specifications for streaming processor."""
+        specs = []
+        
+        base_duration = chunk_params['base_chunk_duration']
+        overlap = chunk_params['overlap_duration']
+        total_duration = chunk_params['total_duration']
+        
+        current_start = 0.0
+        chunk_index = 0
+        
+        while current_start < total_duration:
+            # Calculate chunk end time
+            chunk_end = min(current_start + base_duration + overlap, total_duration)
+            
+            # For the first chunk, no overlap at the beginning
+            actual_start = current_start
+            if chunk_index > 0:
+                actual_start = max(0, current_start - overlap)
+            
+            spec = {
+                'chunk_index': chunk_index,
+                'start_time': actual_start,
+                'duration': chunk_end - actual_start,
+                'end_time': chunk_end,
+                'overlap_start': 0.0 if chunk_index == 0 else overlap,
+                'overlap_end': 0.0 if chunk_end >= total_duration else overlap
+            }
+            
+            specs.append(spec)
+            
+            # Move to next chunk start
+            current_start += base_duration
+            chunk_index += 1
+            
+        return specs
+    
+    def _create_chunk_objects_from_files(self, chunk_paths: List[str], 
+                                       chunk_specs: List[Dict[str, Any]], 
+                                       temp_dir: Path) -> List[AudioChunk]:
+        """Create AudioChunk objects from streaming-created files."""
+        chunks = []
+        
+        for chunk_path, spec in zip(chunk_paths, chunk_specs):
+            chunk_path_obj = Path(chunk_path)
+            
+            # Get file info
+            chunk_size = chunk_path_obj.stat().st_size
+            chunk_size_mb = chunk_size / (1024 * 1024)
+            
+            # Create chunk object
+            chunk = AudioChunk(
+                chunk_index=spec['chunk_index'],
+                file_path=chunk_path_obj,
+                start_time=spec['start_time'],
+                end_time=spec['end_time'],
+                duration=spec['duration'],
+                file_size_bytes=chunk_size,
+                file_size_mb=chunk_size_mb,
+                overlap_start=spec['overlap_start'],
+                overlap_end=spec['overlap_end']
+            )
+            
+            chunks.append(chunk)
+            
+        return chunks
+    
+    def _validate_chunks(self, chunks: List[AudioChunk]) -> bool:
+        """Validate that chunks are properly created."""
+        for chunk in chunks:
+            # Check file exists and has content
+            if not chunk.file_path.exists():
+                print(f"❌ Chunk file not found: {chunk.file_path}")
+                return False
+                
+            if chunk.file_size_bytes == 0:
+                print(f"❌ Empty chunk file: {chunk.file_path}")
+                return False
+                
+            # Check size limit
+            if chunk.file_size_mb > self.max_chunk_size_mb:
+                print(f"❌ Chunk too large: {chunk.file_path} ({chunk.file_size_mb:.2f}MB)")
+                return False
+                
+        return True
+    
+    async def cleanup_streaming_processor(self):
+        """Cleanup streaming processor resources."""
+        if self.streaming_processor:
+            await self.streaming_processor.stop()
+            self.streaming_processor = None
 
 def main():
     """Test the audio chunker with the real captured audio file."""
