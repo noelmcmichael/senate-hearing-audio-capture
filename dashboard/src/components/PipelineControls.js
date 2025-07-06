@@ -12,10 +12,12 @@ import {
   Upload,
   RotateCcw
 } from 'lucide-react';
+import ChunkedProgressIndicator from './ChunkedProgressIndicator';
 
 const PipelineControls = ({ hearing, onStageChange }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStage, setProcessingStage] = useState(null);
+  const [showProgressIndicator, setShowProgressIndicator] = useState(false);
 
   const pipelineStages = [
     { 
@@ -91,6 +93,11 @@ const PipelineControls = ({ hearing, onStageChange }) => {
     setIsProcessing(true);
     setProcessingStage(stageId);
     
+    // Show progress indicator for transcription
+    if (action === 'transcribe') {
+      setShowProgressIndicator(true);
+    }
+    
     try {
       let endpoint;
       if (action === 'capture') {
@@ -110,20 +117,44 @@ const PipelineControls = ({ hearing, onStageChange }) => {
       const result = await response.json();
       
       if (result.success) {
-        // Refresh hearing data
-        if (onStageChange) {
-          onStageChange(result.current_stage);
+        // For transcribe action, keep progress indicator until completion
+        if (action !== 'transcribe') {
+          // Refresh hearing data immediately for non-transcribe actions
+          if (onStageChange) {
+            onStageChange(result.current_stage);
+          }
+          setIsProcessing(false);
+          setProcessingStage(null);
         }
+        // For transcribe, the progress indicator will handle completion
       } else {
         console.error('Stage action failed:', result.error);
         alert(`Failed to ${action}: ${result.error}`);
+        setIsProcessing(false);
+        setProcessingStage(null);
+        setShowProgressIndicator(false);
       }
     } catch (error) {
       console.error('Error performing stage action:', error);
       alert(`Error performing ${action}: ${error.message}`);
-    } finally {
       setIsProcessing(false);
       setProcessingStage(null);
+      setShowProgressIndicator(false);
+    }
+  };
+
+  const handleTranscriptionComplete = (success, error) => {
+    setIsProcessing(false);
+    setProcessingStage(null);
+    setShowProgressIndicator(false);
+    
+    if (success) {
+      // Refresh hearing data to show new stage
+      if (onStageChange) {
+        onStageChange('transcribed');
+      }
+    } else {
+      alert(`Transcription failed: ${error || 'Unknown error'}`);
     }
   };
 
@@ -271,6 +302,17 @@ const PipelineControls = ({ hearing, onStageChange }) => {
           Reset All Pipeline
         </button>
       </div>
+      
+      {/* Chunked Progress Indicator */}
+      {showProgressIndicator && (
+        <div className="progress-indicator-section">
+          <ChunkedProgressIndicator
+            hearingId={hearing?.id}
+            isActive={showProgressIndicator}
+            onComplete={handleTranscriptionComplete}
+          />
+        </div>
+      )}
     </div>
   );
 };

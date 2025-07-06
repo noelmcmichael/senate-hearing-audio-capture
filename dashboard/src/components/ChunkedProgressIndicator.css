@@ -1,0 +1,145 @@
+/* ChunkedProgressIndicator.css */
+
+.chunked-progress-indicator {
+  @apply bg-white rounded-lg border border-gray-200 shadow-sm p-4 space-y-4;
+}
+
+.chunked-progress-indicator.error {
+  @apply border-red-200 bg-red-50;
+}
+
+.chunked-progress-indicator.loading {
+  @apply bg-gray-50;
+}
+
+/* Progress Header */
+.progress-header {
+  @apply flex items-center justify-between;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  @apply w-full;
+}
+
+.progress-bar {
+  @apply w-full h-3 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-500 ease-out;
+}
+
+/* Progress Message */
+.progress-message {
+  @apply min-h-[1.25rem];
+}
+
+/* Chunk Progress */
+.chunk-progress {
+  @apply bg-gray-50 rounded-lg p-3 space-y-3;
+}
+
+.chunk-header {
+  @apply flex items-center justify-between;
+}
+
+/* Chunk Grid */
+.chunk-grid {
+  @apply grid gap-2;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  max-width: 400px;
+}
+
+.chunk-indicator {
+  @apply relative h-8 w-8 rounded border-2 flex items-center justify-center text-xs font-medium transition-all duration-300;
+}
+
+.chunk-indicator.pending {
+  @apply border-gray-300 bg-white text-gray-500;
+}
+
+.chunk-indicator.processing {
+  @apply border-blue-500 bg-blue-50 text-blue-700 animate-pulse;
+}
+
+.chunk-indicator.completed {
+  @apply border-green-500 bg-green-50 text-green-700;
+}
+
+.chunk-number {
+  @apply relative z-10;
+}
+
+.chunk-progress-fill {
+  @apply absolute bottom-0 left-0 h-1 bg-blue-500 transition-all duration-300;
+}
+
+/* Current Chunk Progress */
+.current-chunk-progress {
+  @apply space-y-1;
+}
+
+.chunk-progress-bar {
+  @apply w-full h-2 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.chunk-progress-bar .chunk-progress-fill {
+  @apply h-full bg-gradient-to-r from-blue-400 to-blue-500 transition-all duration-500;
+  position: static;
+}
+
+/* Error Display */
+.error-display {
+  @apply bg-red-50 border border-red-200 rounded-lg p-3;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .chunked-progress-indicator {
+    @apply p-3 space-y-3;
+  }
+  
+  .chunk-grid {
+    grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+    max-width: 300px;
+  }
+  
+  .chunk-indicator {
+    @apply h-6 w-6 text-xs;
+  }
+  
+  .progress-header {
+    @apply flex-col items-start gap-2;
+  }
+}
+
+/* Animation for processing state */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+  }
+}
+
+.chunk-indicator.processing {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Loading state animation */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.chunked-progress-indicator.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s infinite;
+}
