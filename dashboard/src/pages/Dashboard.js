@@ -308,6 +308,8 @@ const Dashboard = () => {
           return 'Discovered';
         case 'processing':
           return 'Processing';
+        case 'new':
+          return 'Ready to Capture';
         default:
           return 'Ready to Capture';
       }
@@ -356,7 +358,8 @@ const Dashboard = () => {
 
   const getVariedStatus = (hearing) => {
     // Return actual hearing status, not artificial variety
-    return hearing.processing_stage || 'pending';
+    // Use processing_stage first, fall back to status, then default
+    return hearing.processing_stage || hearing.status || 'pending';
   };
 
   const getHearingType = (hearing) => {
@@ -814,7 +817,7 @@ const Dashboard = () => {
                         ⏳ Processing...
                       </div>
                     );
-                  } else if (status === 'discovered' || status === 'analyzed' || !status) {
+                  } else if (status === 'discovered' || status === 'analyzed' || status === 'new' || !status) {
                     return (
                       <button
                         onClick={(e) => handleCaptureAudio(hearing, e)}

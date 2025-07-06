@@ -3,7 +3,7 @@ Main FastAPI application for Phase 7B Enhanced UI.
 Integrates all API endpoints and serves the React dashboard.
 """
 
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Body, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -342,6 +342,170 @@ class EnhancedUIApp:
                     content={"error": f"Failed to load hearings for {committee_code}", "detail": str(e)}
                 )
         
+        @self.app.get("/api/hearings/{hearing_id}")
+        async def get_hearing_details(hearing_id: int):
+            """Get details for a specific hearing"""
+            try:
+                cursor = self.db.connection.execute("""
+                    SELECT 
+                        id,
+                        committee_code,
+                        hearing_title,
+                        hearing_date,
+                        hearing_type,
+                        sync_confidence,
+                        streams,
+                        created_at,
+                        updated_at,
+                        status,
+                        processing_stage,
+                        assigned_reviewer,
+                        status_updated_at,
+                        reviewer_notes,
+                        search_keywords,
+                        participant_list,
+                        content_summary
+                    FROM hearings_unified 
+                    WHERE id = ?
+                """, (hearing_id,))
+                
+                row = cursor.fetchone()
+                if not row:
+                    return JSONResponse(
+                        status_code=404,
+                        content={"error": "Hearing not found", "hearing_id": hearing_id}
+                    )
+                
+                hearing_data = {
+                    'id': row[0],
+                    'committee_code': row[1],
+                    'hearing_title': row[2],
+                    'hearing_date': row[3],
+                    'hearing_type': row[4],
+                    'sync_confidence': row[5],
+                    'streams': json.loads(row[6]) if row[6] else {},
+                    'created_at': row[7],
+                    'updated_at': row[8],
+                    'status': row[9],
+                    'processing_stage': row[10],
+                    'assigned_reviewer': row[11],
+                    'status_updated_at': row[12],
+                    'reviewer_notes': row[13],
+                    'search_keywords': row[14],
+                    'participant_list': row[15],
+                    'content_summary': row[16],
+                    'has_streams': bool(json.loads(row[6]) if row[6] else {})
+                }
+                
+                return {
+                    'hearing': hearing_data
+                }
+                
+            except Exception as e:
+                logger.error(f"Error getting hearing {hearing_id}: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Failed to load hearing {hearing_id}", "detail": str(e)}
+                )
+
+        @self.app.post("/api/hearings/{hearing_id}/capture")
+        async def capture_hearing_audio(hearing_id: int, request_data: dict = Body(...), user_id: str = Query(None)):
+            """Capture audio for a specific hearing"""
+            try:
+                # Get hearing details first
+                cursor = self.db.connection.execute("""
+                    SELECT hearing_title, streams, status, processing_stage 
+                    FROM hearings_unified 
+                    WHERE id = ?
+                """, (hearing_id,))
+                
+                row = cursor.fetchone()
+                if not row:
+                    return JSONResponse(
+                        status_code=404,
+                        content={"error": "Hearing not found", "hearing_id": hearing_id}
+                    )
+                
+                hearing_title, streams_json, status, processing_stage = row
+                streams = json.loads(streams_json) if streams_json else {}
+                
+                # Check if hearing can be captured
+                if not streams or 'isvp' not in streams:
+                    return JSONResponse(
+                        status_code=400,
+                        content={"error": "No ISVP stream available for this hearing", "hearing_id": hearing_id}
+                    )
+                
+                # Update hearing status to indicate capture started
+                self.db.connection.execute("""
+                    UPDATE hearings_unified 
+                    SET status = 'processing', 
+                        processing_stage = 'captured',
+                        status_updated_at = ?
+                    WHERE id = ?
+                """, (datetime.now().isoformat(), hearing_id))
+                self.db.connection.commit()
+                
+                # Return success response (in production, this would trigger actual capture)
+                return {
+                    "capture_id": hearing_id,
+                    "status": "initiated",
+                    "hearing_title": hearing_title,
+                    "stream_url": streams.get('isvp'),
+                    "message": f"Audio capture initiated for '{hearing_title}'"
+                }
+                
+            except Exception as e:
+                logger.error(f"Error capturing hearing {hearing_id}: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Failed to initiate capture for hearing {hearing_id}", "detail": str(e)}
+                )
+
+        @self.app.get("/api/hearings/{hearing_id}/status")
+        async def get_hearing_status(hearing_id: int):
+            """Get processing status for a specific hearing"""
+            try:
+                cursor = self.db.connection.execute("""
+                    SELECT 
+                        id, hearing_title, status, processing_stage, 
+                        status_updated_at, assigned_reviewer, reviewer_notes
+                    FROM hearings_unified 
+                    WHERE id = ?
+                """, (hearing_id,))
+                
+                row = cursor.fetchone()
+                if not row:
+                    return JSONResponse(
+                        status_code=404,
+                        content={"error": "Hearing not found", "hearing_id": hearing_id}
+                    )
+                
+                return {
+                    "hearing_id": row[0],
+                    "hearing_title": row[1],
+                    "status": row[2],
+                    "processing_stage": row[3],
+                    "status_updated_at": row[4],
+                    "assigned_reviewer": row[5],
+                    "reviewer_notes": row[6],
+                    "progress_percentage": {
+                        'discovered': 10,
+                        'analyzed': 20,
+                        'captured': 40,
+                        'transcribed': 70,
+                        'reviewed': 90,
+                        'published': 100
+                    }.get(row[3], 0)
+                }
+                
+            except Exception as e:
+                logger.error(f"Error getting status for hearing {hearing_id}: {e}")
+                return JSONResponse(
+                    status_code=500,
+                    content={"error": f"Failed to get status for hearing {hearing_id}", "detail": str(e)}
+                )
+
         @self.app.get("/api/committees/{committee_code}/stats")
         async def get_committee_stats(committee_code: str):
             """Get detailed statistics for a specific committee"""

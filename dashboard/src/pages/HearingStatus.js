@@ -217,7 +217,7 @@ const HearingStatus = () => {
 
         {/* Quick Actions */}
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          {hearing.has_streams && !['captured', 'transcribed', 'reviewed', 'published'].includes(hearing.processing_stage) && (
+          {(hearing.has_streams || (hearing.streams && Object.keys(hearing.streams).length > 0)) && !['captured', 'transcribed', 'reviewed', 'published'].includes(hearing.processing_stage) && (
             <button
               onClick={handleTriggerCapture}
               disabled={isCapturing}
