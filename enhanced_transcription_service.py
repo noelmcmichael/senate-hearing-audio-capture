@@ -18,6 +18,17 @@ from audio_analyzer import AudioAnalyzer
 from audio_chunker import AudioChunker, ChunkingResult, AudioChunk
 from progress_tracker import progress_tracker, ChunkedProgressCallback
 
+# Import parallel processing capabilities
+try:
+    from async_transcription_integration import (
+        transcribe_audio_with_optimization,
+        initialize_parallel_processing,
+        shutdown_parallel_processing
+    )
+    PARALLEL_PROCESSING_AVAILABLE = True
+except ImportError:
+    PARALLEL_PROCESSING_AVAILABLE = False
+
 class EnhancedTranscriptionService:
     """Enhanced service for handling audio transcription with chunking support."""
     
@@ -60,8 +71,8 @@ class EnhancedTranscriptionService:
         except Exception as e:
             return None
     
-    def transcribe_hearing(self, hearing_id, progress_callback=None):
-        """Transcribe audio for a specific hearing with chunking support."""
+    def transcribe_hearing(self, hearing_id, progress_callback=None, prefer_parallel=True):
+        """Transcribe audio for a specific hearing with enhanced parallel processing support."""
         if not self.api_key:
             raise Exception("OpenAI API key not found. Please set it in Memex settings.")
         
@@ -81,6 +92,43 @@ class EnhancedTranscriptionService:
             # Get hearing details
             hearing_info = self._get_hearing_info(hearing_id)
             
+            # Try parallel processing first if available and preferred
+            if PARALLEL_PROCESSING_AVAILABLE and prefer_parallel:
+                try:
+                    print(f"🚀 Attempting parallel processing for hearing {hearing_id}")
+                    
+                    # Initialize parallel processing
+                    initialize_parallel_processing()
+                    
+                    # Use optimized transcription
+                    result = transcribe_audio_with_optimization(
+                        str(audio_file), hearing_id, prefer_parallel=True
+                    )
+                    
+                    # Convert result format to match expected structure
+                    if isinstance(result, dict) and 'transcript_path' in result:
+                        # Load transcript data
+                        with open(result['transcript_path'], 'r') as f:
+                            transcript_data = json.load(f)
+                        
+                        # Update database with transcript
+                        self._update_database_transcript(hearing_id, transcript_data)
+                        
+                        progress_tracker.complete_operation(hearing_id, success=True)
+                        print(f"✅ Parallel processing completed successfully")
+                        return transcript_data
+                        
+                except Exception as e:
+                    print(f"⚠️ Parallel processing failed, falling back to standard: {e}")
+                    # Continue with standard processing
+                finally:
+                    # Cleanup parallel processing
+                    try:
+                        shutdown_parallel_processing()
+                    except:
+                        pass
+            
+            # Standard processing (fallback or when parallel not preferred)
             progress_callback("analyzing", 0, "Analyzing audio file...")
             
             # Analyze audio file to determine processing approach
