@@ -1,0 +1,9 @@
+{
+  "production_mode": true,
+  "automatic_processing": false,
+  "manual_control_required": true,
+  "default_hearing_status": "new",
+  "default_processing_stage": "discovered",
+  "require_user_confirmation": true,
+  "timestamp": "2025-07-06T08:37:33.943657"
+}
