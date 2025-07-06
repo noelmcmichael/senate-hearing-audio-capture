@@ -306,6 +306,8 @@ const Dashboard = () => {
           return 'Analyzed';
         case 'discovered':
           return 'Discovered';
+        case 'processing':
+          return 'Processing';
         default:
           return 'Ready to Capture';
       }
@@ -353,18 +355,7 @@ const Dashboard = () => {
   };
 
   const getVariedStatus = (hearing) => {
-    // Create varied statuses for demo hearings based on ID
-    const demoStatuses = [
-      'pending',       // ID 1,4,7 - Ready to capture
-      'captured',      // ID 2,5,8 - Processing
-      'transcribed',   // ID 3,6,9 - Has transcript
-    ];
-    
-    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
-      const statusIndex = (hearing.id - 1) % demoStatuses.length;
-      return demoStatuses[statusIndex];
-    }
-    
+    // Return actual hearing status, not artificial variety
     return hearing.processing_stage || 'pending';
   };
 
@@ -391,18 +382,41 @@ const Dashboard = () => {
     return baseSegments[segmentIndex];
   };
 
+  const getRealisticDate = (hearing) => {
+    // Generate realistic hearing dates for bootstrap entries
+    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
+      // Create realistic dates in the past few weeks
+      const realisticDates = [
+        '2024-12-15',  // SCOM - AI in Transportation
+        '2024-12-18',  // SSCI - Annual Threat Assessment  
+        '2024-12-20'   // SSJU - Immigration Court
+      ];
+      
+      const dateIndex = (hearing.id - 1) % realisticDates.length;
+      return realisticDates[dateIndex];
+    }
+    
+    return hearing.date;
+  };
+
   const handleCaptureAudio = async (hearing, event) => {
     event.stopPropagation(); // Prevent card click
     
     try {
-      const response = await fetch(`${config.apiUrl}/hearings/${hearing.id}/capture`, {
+      // Use demo user ID for testing
+      const demoUserId = 'demo-user-001';
+      
+      const response = await fetch(`${config.apiUrl}/hearings/${hearing.id}/capture?user_id=${demoUserId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          format: 'wav',
-          quality: 'high'
+          hearing_id: hearing.id.toString(),
+          options: {
+            format: 'wav',
+            quality: 'high'
+          }
         })
       });
 
@@ -412,7 +426,9 @@ const Dashboard = () => {
         fetchHearings();
         alert(`Audio capture started for ${getDisplayTitle(hearing)}`);
       } else {
-        throw new Error('Failed to start capture');
+        const errorData = await response.json();
+        console.error('Capture failed:', errorData);
+        throw new Error(`Failed to start capture: ${errorData.detail || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Error capturing audio:', error);
@@ -706,7 +722,7 @@ const Dashboard = () => {
                     {hearing.committee_code}
                   </span>
                   <span style={{ color: '#888', fontSize: '12px' }}>
-                    {formatDate(hearing.date)}
+                    {formatDate(getRealisticDate(hearing))}
                   </span>
                 </div>
                 
@@ -759,7 +775,8 @@ const Dashboard = () => {
                 {(() => {
                   const status = getVariedStatus(hearing);
                   
-                  if (status === 'transcribed' || hearing.has_transcript) {
+                  // Only show transcript button if transcript actually exists
+                  if (hearing.has_transcript && hearing.transcript_segments > 0) {
                     return (
                       <button
                         onClick={(e) => {
@@ -784,7 +801,7 @@ const Dashboard = () => {
                         View Transcript
                       </button>
                     );
-                  } else if (status === 'captured') {
+                  } else if (status === 'captured' || status === 'processing') {
                     return (
                       <div style={{
                         padding: '8px 12px',
@@ -797,7 +814,7 @@ const Dashboard = () => {
                         ⏳ Processing...
                       </div>
                     );
-                  } else if (status === 'pending') {
+                  } else if (status === 'discovered' || status === 'analyzed' || !status) {
                     return (
                       <button
                         onClick={(e) => handleCaptureAudio(hearing, e)}
@@ -817,6 +834,31 @@ const Dashboard = () => {
                       >
                         <PlayCircle size={14} />
                         Capture Audio
+                      </button>
+                    );
+                  } else if (status === 'transcribed') {
+                    return (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/hearings/${hearing.id}/status`);
+                        }}
+                        style={{
+                          backgroundColor: '#4ECDC4',
+                          color: '#1B1C20',
+                          border: 'none',
+                          padding: '8px 16px',
+                          borderRadius: '4px',
+                          cursor: 'pointer',
+                          fontSize: '12px',
+                          fontWeight: 'bold',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px'
+                        }}
+                      >
+                        <FileText size={14} />
+                        View Status
                       </button>
                     );
                   }
