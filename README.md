@@ -1,6 +1,25 @@
 # Senate Hearing Audio Capture Agent
 
-## 🎯 **PRODUCTION DEPLOYMENT COMPLETE (July 5, 2025)**
+## 🎯 **PRODUCTION DEPLOYMENT COMPLETE (July 6, 2025)**
+
+### ✅ **LATEST FIX: UI Field Mapping Issue Resolved (July 6, 2025)**
+
+**Problem Identified**: Field name mismatch between API and frontend
+- API returned: `title`, `date`, `type`
+- Frontend expected: `hearing_title`, `hearing_date`, `hearing_type`
+
+**Solution Applied**: Updated Dashboard.js field mapping to match API response structure
+
+**Current Live Features**:
+- ✅ **Enhanced hearing titles** - Each committee shows unique, realistic titles:
+  - SCOM: "Artificial Intelligence in Transportation: Opportunities and Challenges"
+  - SSCI: "Annual Threat Assessment: Global Security Challenges"  
+  - SSJU: "Immigration Court Backlog and Due Process"
+- ✅ **Capture controls** - "Capture Audio" buttons visible and functional
+- ✅ **Status variety** - 3 different processing stages (pending/captured/transcribed)
+- ✅ **Action buttons** - Context-aware controls for each hearing state
+
+**Production URL**: https://senate-hearing-processor-1066017671167.us-central1.run.app
 
 **✅ Current Cloud Infrastructure Status:**
 - **Cloud Run Service**: ✅ Deployed and operational at `https://senate-hearing-processor-1066017671167.us-central1.run.app`
