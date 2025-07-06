@@ -103,20 +103,19 @@ class EnhancedUIApp:
         
         @self.app.on_event("startup")
         async def startup_event():
-            """Auto-bootstrap database if empty on startup"""
+            """Auto-bootstrap database on every startup"""
             try:
                 logger.info("Checking database state on startup...")
                 
-                # Check if database is empty
+                # Force database creation and get connection
                 db = get_enhanced_db()
-                committees = db.get_all_committees()
-                committee_count = len(committees)
+                db._create_schema()
                 
-                if committee_count == 0:
-                    logger.info("Database is empty - running auto-bootstrap...")
-                    
-                    # Default committees for bootstrap
-                    DEFAULT_COMMITTEES = [
+                # Always ensure bootstrap data exists (Cloud Run containers are ephemeral)
+                logger.info("Ensuring bootstrap data exists...")
+                
+                # Default committees for bootstrap
+                DEFAULT_COMMITTEES = [
                         {
                             'committee_code': 'SCOM',
                             'committee_name': 'Senate Committee on Commerce, Science, and Transportation',
@@ -129,50 +128,39 @@ class EnhancedUIApp:
                             'committee_code': 'SSJU',
                             'committee_name': 'Senate Committee on the Judiciary',
                         }
-                    ]
-                    
-                    # Bootstrap committees
-                    committees_added = 0
-                    for committee in DEFAULT_COMMITTEES:
-                        try:
-                            # Create a sample hearing for each committee to bootstrap the system
-                            hearing_id = f"{committee['committee_code']}-BOOTSTRAP-{datetime.now().strftime('%Y%m%d')}"
-                            
-                            db.connection.execute("""
-                                INSERT OR REPLACE INTO hearings_unified 
-                                (hearing_id, committee_code, committee_name, title, date, url, status, 
-                                 audio_url, audio_duration, transcript_json, processing_notes, quality_score,
-                                 bootstrap, created_at, updated_at)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                            """, (
-                                hearing_id,
-                                committee['committee_code'],
-                                committee['committee_name'],
-                                f"Bootstrap Entry for {committee['committee_name']}",
-                                datetime.now().strftime('%Y-%m-%d'),
-                                f"https://example.com/bootstrap/{committee['committee_code'].lower()}",
-                                'bootstrap',
-                                None,
-                                None,
-                                None,
-                                "Auto-generated bootstrap entry",
-                                1.0,
-                                True,
-                                datetime.now().isoformat(),
-                                datetime.now().isoformat()
-                            ))
-                            
-                            committees_added += 1
-                            logger.info(f"Added bootstrap entry for {committee['committee_code']}")
-                            
-                        except Exception as e:
-                            logger.error(f"Error adding bootstrap entry for {committee['committee_code']}: {e}")
-                    
-                    db.connection.commit()
-                    logger.info(f"Auto-bootstrap completed: {committees_added} committees added")
-                    
-                else:
-                    logger.info(f"Database already has {committee_count} committees - skipping bootstrap")
+                ]
+                
+                # Bootstrap committees
+                committees_added = 0
+                for committee in DEFAULT_COMMITTEES:
+                    try:
+                        # Create a sample hearing for each committee to bootstrap the system
+                        hearing_id = f"{committee['committee_code']}-BOOTSTRAP-{datetime.now().strftime('%Y%m%d')}"
+                        
+                        db.connection.execute("""
+                            INSERT OR REPLACE INTO hearings_unified 
+                            (committee_code, hearing_title, hearing_date, hearing_type, 
+                             sync_confidence, streams, created_at, updated_at)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (
+                            committee['committee_code'],
+                            f"Bootstrap Entry for {committee['committee_name']}",
+                            datetime.now().strftime('%Y-%m-%d'),
+                            'Setup',
+                            1.0,
+                            '{}',
+                            datetime.now().isoformat(),
+                            datetime.now().isoformat()
+                        ))
+                        
+                        committees_added += 1
+                        logger.info(f"Added bootstrap entry for {committee['committee_code']}")
+                        
+                    except Exception as e:
+                        logger.error(f"Error adding bootstrap entry for {committee['committee_code']}: {e}")
+                
+                db.connection.commit()
+                logger.info(f"Auto-bootstrap completed: {committees_added} committees added")
                 
             except Exception as e:
                 logger.error(f"Error during startup bootstrap: {e}")
@@ -865,20 +853,16 @@ class EnhancedUIApp:
                         db.connection.execute("""
                             INSERT OR REPLACE INTO hearings_unified 
                             (committee_code, hearing_title, hearing_date, hearing_type, 
-                             sync_status, sync_confidence, witnesses, last_api_sync)
+                             sync_confidence, streams, created_at, updated_at)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                         """, (
                             committee['committee_code'],
                             f"Bootstrap Entry for {committee['committee_name']}",
                             datetime.now().strftime('%Y-%m-%d'),
                             'Setup',
-                            'bootstrap',
                             1.0,
-                            json.dumps({
-                                "bootstrap": True,
-                                "committee_info": committee,
-                                "description": "Bootstrap entry to enable committee discovery"
-                            }),
+                            '{}',
+                            datetime.now().isoformat(),
                             datetime.now().isoformat()
                         ))
                         committees_added += 1
