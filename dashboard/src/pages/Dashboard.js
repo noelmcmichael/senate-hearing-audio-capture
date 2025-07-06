@@ -142,7 +142,7 @@ const Dashboard = () => {
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(hearing =>
-        hearing.hearing_title?.toLowerCase().includes(query) ||
+        hearing.title?.toLowerCase().includes(query) ||
         hearing.committee_code?.toLowerCase().includes(query) ||
         hearing.participant_list?.toLowerCase().includes(query)
       );
@@ -181,12 +181,12 @@ const Dashboard = () => {
       
       switch (sortBy) {
         case 'date':
-          aValue = new Date(a.hearing_date || 0);
-          bValue = new Date(b.hearing_date || 0);
+          aValue = new Date(a.date || 0);
+          bValue = new Date(b.date || 0);
           break;
         case 'title':
-          aValue = a.hearing_title || '';
-          bValue = b.hearing_title || '';
+          aValue = a.title || '';
+          bValue = b.title || '';
           break;
         case 'committee':
           aValue = a.committee_code || '';
@@ -314,7 +314,7 @@ const Dashboard = () => {
 
   const getDisplayTitle = (hearing) => {
     // Handle bootstrap entries with better titles
-    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
+    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
       const committeeName = hearing.committee_code;
       const committeeInfo = committees.find(c => c.code === committeeName);
       
@@ -343,7 +343,7 @@ const Dashboard = () => {
     }
     
     // Return original title or fallback
-    return hearing.hearing_title || `${hearing.committee_code} Hearing - ${formatDate(hearing.hearing_date)}`;
+    return hearing.title || `${hearing.committee_code} Hearing - ${formatDate(hearing.date)}`;
   };
 
   const isCaptureable = (hearing) => {
@@ -360,7 +360,7 @@ const Dashboard = () => {
       'transcribed',   // ID 3,6,9 - Has transcript
     ];
     
-    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
+    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
       const statusIndex = (hearing.id - 1) % demoStatuses.length;
       return demoStatuses[statusIndex];
     }
@@ -369,7 +369,7 @@ const Dashboard = () => {
   };
 
   const getHearingType = (hearing) => {
-    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
+    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
       const hearingTypes = {
         'SCOM': ['Legislative', 'Oversight', 'Regulatory'],
         'SSCI': ['Intelligence', 'Oversight', 'Classified'],
@@ -381,7 +381,7 @@ const Dashboard = () => {
       return types[typeIndex];
     }
     
-    return hearing.hearing_type || 'Legislative';
+    return hearing.type || 'Legislative';
   };
 
   const getEstimatedSegments = (hearing) => {
@@ -706,7 +706,7 @@ const Dashboard = () => {
                     {hearing.committee_code}
                   </span>
                   <span style={{ color: '#888', fontSize: '12px' }}>
-                    {formatDate(hearing.hearing_date)}
+                    {formatDate(hearing.date)}
                   </span>
                 </div>
                 
