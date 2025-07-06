@@ -1,0 +1,164 @@
+/* TranscriptionControls.css */
+
+.transcription-controls {
+  @apply bg-white border border-gray-200 rounded-lg p-4 space-y-4;
+}
+
+/* Controls Header */
+.controls-header {
+  @apply border-b border-gray-100 pb-3;
+}
+
+.controls-status {
+  @apply flex items-center gap-2;
+}
+
+.status-message {
+  @apply text-gray-700 font-medium;
+}
+
+/* Controls Actions */
+.controls-actions {
+  @apply flex items-center gap-3 flex-wrap;
+}
+
+.control-btn {
+  @apply flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.control-btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Cancel Button */
+.cancel-btn {
+  @apply bg-red-100 text-red-700 border border-red-200 hover:bg-red-200 focus:ring-red-500;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  @apply shadow-md;
+}
+
+/* Retry Button */
+.retry-btn {
+  @apply bg-blue-100 text-blue-700 border border-blue-200 hover:bg-blue-200 focus:ring-blue-500;
+}
+
+.retry-btn:hover:not(:disabled) {
+  @apply shadow-md;
+}
+
+/* Pause Button */
+.pause-btn {
+  @apply bg-orange-100 text-orange-700 border border-orange-200 hover:bg-orange-200 focus:ring-orange-500;
+}
+
+.pause-btn.disabled {
+  @apply bg-gray-100 text-gray-400 border-gray-200;
+}
+
+/* Chunk Error Controls */
+.chunk-error-controls {
+  @apply bg-red-50 border border-red-200 rounded-lg p-3 space-y-3;
+}
+
+.error-message {
+  @apply flex items-center gap-2 text-red-700 text-sm;
+}
+
+.chunk-actions {
+  @apply flex items-center gap-2;
+}
+
+.chunk-retry-btn {
+  @apply flex items-center gap-1 px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700 transition-colors;
+}
+
+.chunk-skip-btn {
+  @apply flex items-center gap-1 px-3 py-1 bg-gray-400 text-white rounded text-sm opacity-50 cursor-not-allowed;
+}
+
+/* Usage Tips */
+.usage-tips {
+  @apply bg-blue-50 border border-blue-200 rounded-lg p-3;
+}
+
+.usage-tips h5 {
+  @apply text-blue-800 font-medium text-sm m-0 mb-2;
+}
+
+.usage-tips ul {
+  @apply list-disc list-inside space-y-1 text-sm text-blue-700 ml-2;
+}
+
+.usage-tips li {
+  @apply leading-relaxed;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .transcription-controls {
+    @apply p-3;
+  }
+  
+  .controls-actions {
+    @apply flex-col items-stretch;
+  }
+  
+  .control-btn {
+    @apply justify-center text-sm;
+  }
+  
+  .chunk-actions {
+    @apply flex-col;
+  }
+  
+  .usage-tips {
+    @apply p-2;
+  }
+  
+  .usage-tips ul {
+    @apply text-xs;
+  }
+}
+
+/* Animation for status changes */
+.controls-status {
+  animation: statusChange 0.3s ease-out;
+}
+
+@keyframes statusChange {
+  0% {
+    opacity: 0.7;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading state animations */
+.control-btn .animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hover effects */
+.control-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

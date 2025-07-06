@@ -13,11 +13,15 @@ import {
   RotateCcw
 } from 'lucide-react';
 import ChunkedProgressIndicator from './ChunkedProgressIndicator';
+import TranscriptionWarnings from './TranscriptionWarnings';
+import TranscriptionControls from './TranscriptionControls';
 
 const PipelineControls = ({ hearing, onStageChange }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStage, setProcessingStage] = useState(null);
   const [showProgressIndicator, setShowProgressIndicator] = useState(false);
+  const [showTranscriptionWarnings, setShowTranscriptionWarnings] = useState(false);
+  const [transcriptionError, setTranscriptionError] = useState(null);
 
   const pipelineStages = [
     { 
@@ -90,13 +94,14 @@ const PipelineControls = ({ hearing, onStageChange }) => {
   const handleStageAction = async (action, stageId) => {
     if (isProcessing) return;
     
+    // For transcription, show warnings/preview first
+    if (action === 'transcribe') {
+      setShowTranscriptionWarnings(true);
+      return;
+    }
+    
     setIsProcessing(true);
     setProcessingStage(stageId);
-    
-    // Show progress indicator for transcription
-    if (action === 'transcribe') {
-      setShowProgressIndicator(true);
-    }
     
     try {
       let endpoint;
@@ -149,12 +154,99 @@ const PipelineControls = ({ hearing, onStageChange }) => {
     setShowProgressIndicator(false);
     
     if (success) {
+      setTranscriptionError(null);
       // Refresh hearing data to show new stage
       if (onStageChange) {
         onStageChange('transcribed');
       }
     } else {
-      alert(`Transcription failed: ${error || 'Unknown error'}`);
+      setTranscriptionError(error || 'Unknown error');
+    }
+  };
+
+  const handleWarningsProceed = async (audioInfo) => {
+    setShowTranscriptionWarnings(false);
+    setIsProcessing(true);
+    setProcessingStage('transcribed');
+    setShowProgressIndicator(true);
+    setTranscriptionError(null);
+    
+    try {
+      const response = await fetch(`http://localhost:8001/api/hearings/${hearing.id}/pipeline/transcribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ audioInfo })
+      });
+      
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Transcription failed to start');
+      }
+    } catch (error) {
+      console.error('Error starting transcription:', error);
+      setTranscriptionError(error.message);
+      setIsProcessing(false);
+      setProcessingStage(null);
+      setShowProgressIndicator(false);
+    }
+  };
+
+  const handleWarningsCancel = () => {
+    setShowTranscriptionWarnings(false);
+  };
+
+  const handleCancelTranscription = async (hearingId) => {
+    try {
+      const response = await fetch(`http://localhost:8001/api/hearings/${hearingId}/transcription/cancel`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (response.ok) {
+        setIsProcessing(false);
+        setProcessingStage(null);
+        setShowProgressIndicator(false);
+        setTranscriptionError(null);
+      } else {
+        throw new Error('Failed to cancel transcription');
+      }
+    } catch (error) {
+      console.error('Error cancelling transcription:', error);
+      throw error;
+    }
+  };
+
+  const handleRetryTranscription = async (hearingId) => {
+    setTranscriptionError(null);
+    setIsProcessing(true);
+    setProcessingStage('transcribed');
+    setShowProgressIndicator(true);
+    
+    try {
+      const response = await fetch(`http://localhost:8001/api/hearings/${hearingId}/pipeline/transcribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ retry: true })
+      });
+      
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Retry failed to start');
+      }
+    } catch (error) {
+      console.error('Error retrying transcription:', error);
+      setTranscriptionError(error.message);
+      setIsProcessing(false);
+      setProcessingStage(null);
+      setShowProgressIndicator(false);
     }
   };
 
@@ -313,6 +405,28 @@ const PipelineControls = ({ hearing, onStageChange }) => {
           />
         </div>
       )}
+
+      {/* Transcription Controls */}
+      {(isProcessing || transcriptionError) && (
+        <div className="transcription-controls-section">
+          <TranscriptionControls
+            hearingId={hearing?.id}
+            isProcessing={isProcessing && processingStage === 'transcribed'}
+            canCancel={isProcessing && processingStage === 'transcribed'}
+            canRetry={!!transcriptionError && !isProcessing}
+            onCancel={handleCancelTranscription}
+            onRetry={handleRetryTranscription}
+          />
+        </div>
+      )}
+
+      {/* Transcription Warnings Modal */}
+      <TranscriptionWarnings
+        hearing={hearing}
+        isVisible={showTranscriptionWarnings}
+        onProceed={handleWarningsProceed}
+        onCancel={handleWarningsCancel}
+      />
     </div>
   );
 };

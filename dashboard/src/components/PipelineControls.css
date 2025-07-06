@@ -55,6 +55,11 @@
   border-top: 1px solid #374151;
 }
 
+/* Transcription Controls Section */
+.transcription-controls-section {
+  margin-top: 16px;
+}
+
 .pipeline-stage {
   background: #1f2937;
   border: 1px solid #374151;
