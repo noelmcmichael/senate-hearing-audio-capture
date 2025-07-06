@@ -328,7 +328,7 @@ def capture_hearing_audio(hearing_id):
         cursor.execute('''
             UPDATE hearings_unified 
             SET status = 'processing', 
-                processing_stage = 'capturing',
+                processing_stage = 'captured',
                 updated_at = ?
             WHERE id = ?
         ''', (datetime.now().isoformat(), hearing_id))
