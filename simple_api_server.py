@@ -405,9 +405,9 @@ def analyze_hearing(hearing_id):
 
 @app.route('/api/hearings/<int:hearing_id>/pipeline/transcribe', methods=['POST'])
 def transcribe_hearing(hearing_id):
-    """Trigger transcription for a specific hearing."""
+    """Trigger transcription for a specific hearing with progress tracking."""
     try:
-        from transcription_service import TranscriptionService
+        from enhanced_transcription_service import EnhancedTranscriptionService
         
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -428,11 +428,24 @@ def transcribe_hearing(hearing_id):
                 'error': f'Hearing must be in "captured" stage to transcribe. Current stage: {hearing["processing_stage"]}'
             }), 400
         
-        # Perform actual transcription
-        transcription_service = TranscriptionService()
+        # Create enhanced transcription service
+        transcription_service = EnhancedTranscriptionService()
+        
+        # Track progress with callback
+        progress_data = {
+            'stage': 'starting',
+            'percent': 0,
+            'message': 'Initializing transcription...'
+        }
+        
+        def progress_callback(stage, percent, message):
+            progress_data['stage'] = stage
+            progress_data['percent'] = percent
+            progress_data['message'] = message
+            print(f"Progress: {stage} - {percent}% - {message}")
         
         try:
-            transcript_data = transcription_service.transcribe_hearing(hearing_id)
+            transcript_data = transcription_service.transcribe_hearing(hearing_id, progress_callback=progress_callback)
             
             # Update to transcribed stage
             cursor.execute('''
@@ -453,7 +466,10 @@ def transcribe_hearing(hearing_id):
                 'previous_stage': 'captured',
                 'current_stage': 'transcribed',
                 'transcript_segments': len(transcript_data['transcription']['segments']),
-                'transcript_duration': transcript_data['transcription']['duration']
+                'transcript_duration': transcript_data['transcription']['duration'],
+                'transcript_characters': len(transcript_data['transcription']['text']),
+                'processing_method': transcript_data['metadata']['source'],
+                'chunks_processed': transcript_data['metadata'].get('total_chunks', 1)
             })
             
         except Exception as transcription_error:
@@ -467,6 +483,53 @@ def transcribe_hearing(hearing_id):
         return jsonify({
             'success': False,
             'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/transcription/progress', methods=['GET'])
+def get_transcription_progress(hearing_id):
+    """Get transcription progress for a specific hearing."""
+    try:
+        # For now, return the current processing stage
+        # In a full implementation, this would track real-time progress
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute('SELECT id, hearing_title, processing_stage, updated_at FROM hearings_unified WHERE id = ?', (hearing_id,))
+        hearing = cursor.fetchone()
+        conn.close()
+        
+        if not hearing:
+            return jsonify({
+                'success': False,
+                'error': 'Hearing not found'
+            }), 404
+        
+        # Determine progress based on processing stage
+        progress_map = {
+            'discovered': {'percent': 0, 'message': 'Hearing discovered, ready for processing'},
+            'analyzed': {'percent': 10, 'message': 'Hearing analyzed, ready for capture'},
+            'captured': {'percent': 20, 'message': 'Audio captured, ready for transcription'},
+            'transcribed': {'percent': 100, 'message': 'Transcription completed'},
+            'reviewed': {'percent': 100, 'message': 'Transcription reviewed and finalized'}
+        }
+        
+        stage = hearing['processing_stage']
+        progress = progress_map.get(stage, {'percent': 0, 'message': f'Unknown stage: {stage}'})
+        
+        return jsonify({
+            'success': True,
+            'hearing_id': hearing_id,
+            'hearing_title': hearing['hearing_title'],
+            'processing_stage': stage,
+            'progress_percent': progress['percent'],
+            'progress_message': progress['message'],
+            'last_updated': hearing['updated_at']
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Error getting transcription progress: {str(e)}'
         }), 500
 
 @app.route('/api/hearings/<int:hearing_id>/pipeline/review', methods=['POST'])
