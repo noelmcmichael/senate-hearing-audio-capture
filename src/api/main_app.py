@@ -15,13 +15,13 @@ from datetime import datetime
 from typing import Dict, Any
 
 # Import API modules
-from .hearing_management import setup_hearing_management_routes
-from .system_monitoring import setup_system_monitoring_routes
-from .status_management import setup_status_management_routes
-from .search_management import setup_search_routes
-from .transcript_management import setup_transcript_routes
-from .discovery_management import setup_discovery_management_routes
-from .database_enhanced import get_enhanced_db
+from hearing_management import setup_hearing_management_routes
+from system_monitoring import setup_system_monitoring_routes
+from status_management import setup_status_management_routes
+from search_management import setup_search_routes
+from transcript_management import setup_transcript_routes
+from discovery_management import setup_discovery_management_routes
+from database_enhanced import get_enhanced_db
 try:
     from .health import router as health_router
 except ImportError as e:

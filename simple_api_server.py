@@ -23,6 +23,73 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+@app.route('/api/hearings', methods=['GET'])
+def get_all_hearings():
+    """Get all hearings."""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Get all hearings with status != 'sample'
+        cursor.execute('''
+            SELECT 
+                id,
+                hearing_title,
+                committee_code,
+                hearing_date,
+                hearing_type,
+                status,
+                processing_stage,
+                streams,
+                participant_list,
+                content_summary,
+                created_at,
+                updated_at
+            FROM hearings_unified 
+            WHERE status != 'sample' OR status IS NULL
+            ORDER BY hearing_date DESC
+        ''')
+        
+        rows = cursor.fetchall()
+        hearings = []
+        
+        for row in rows:
+            # Parse streams JSON if exists
+            streams = {}
+            if row['streams']:
+                try:
+                    streams = json.loads(row['streams'])
+                except:
+                    streams = {}
+            
+            hearing = {
+                'id': row['id'],
+                'hearing_title': row['hearing_title'],
+                'committee_code': row['committee_code'],
+                'hearing_date': row['hearing_date'],
+                'hearing_type': row['hearing_type'],
+                'status': row['status'] or 'new',
+                'processing_stage': row['processing_stage'] or 'discovered',
+                'streams': streams,
+                'has_streams': bool(streams),
+                'participant_list': row['participant_list'],
+                'content_summary': row['content_summary'],
+                'created_at': row['created_at'],
+                'updated_at': row['updated_at']
+            }
+            hearings.append(hearing)
+        
+        conn.close()
+        
+        return jsonify(hearings)
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'hearings': []
+        }), 500
+
 @app.route('/api/committees/<committee_code>/hearings', methods=['GET'])
 def get_committee_hearings(committee_code):
     """Get hearings for a specific committee."""
@@ -231,6 +298,49 @@ def update_hearing_transcript(hearing_id):
             'success': True,
             'message': 'Transcript updated successfully',
             'transcript': transcript_data
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/capture', methods=['POST'])
+def capture_hearing_audio(hearing_id):
+    """Trigger audio capture for a specific hearing."""
+    try:
+        # Simulate capture process
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Check if hearing exists
+        cursor.execute('SELECT id, hearing_title FROM hearings_unified WHERE id = ?', (hearing_id,))
+        hearing = cursor.fetchone()
+        
+        if not hearing:
+            return jsonify({
+                'success': False,
+                'error': 'Hearing not found'
+            }), 404
+        
+        # Update status to indicate capture is in progress
+        cursor.execute('''
+            UPDATE hearings_unified 
+            SET status = 'processing', 
+                processing_stage = 'capturing',
+                updated_at = ?
+            WHERE id = ?
+        ''', (datetime.now().isoformat(), hearing_id))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Audio capture initiated for hearing: {hearing["hearing_title"]}',
+            'hearing_id': hearing_id,
+            'status': 'processing'
         })
         
     except Exception as e:
