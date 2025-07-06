@@ -1,10 +1,16 @@
 # Senate Hearing Audio Capture Agent
 
-## 🎯 **PHASE 3.2 FRONTEND INTEGRATION COMPLETE (July 6, 2025)**
+## 🎯 **PHASE 3.4 TRANSCRIPTION IMPLEMENTATION (July 6, 2025)**
+
+### 🚧 **ISSUE IDENTIFIED: Missing Actual Transcription**
+
+**Problem**: Manual pipeline controls work, but clicking "Transcribe" only updates database status without generating actual transcripts.
+
+**Current Status**: Implementing real transcription functionality with OpenAI Whisper API.
 
 ### ✅ **CAPTURE BUTTON FUNCTIONALITY VALIDATED (100% Success Rate)**
 
-**Current Status**: Ready for production deployment - all frontend issues resolved.
+**Previous Status**: Ready for production deployment - all frontend issues resolved.
 
 ---
 

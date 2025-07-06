@@ -211,6 +211,8 @@ def get_hearing_details(hearing_id):
             'participant_list': row['participant_list'],
             'content_summary': row['content_summary'],
             'streams': row['streams'],
+            'full_text_content': row['full_text_content'],
+            'has_transcript': bool(row['full_text_content']),
             'created_at': row['created_at'],
             'updated_at': row['updated_at']
         }
@@ -402,6 +404,8 @@ def analyze_hearing(hearing_id):
 def transcribe_hearing(hearing_id):
     """Trigger transcription for a specific hearing."""
     try:
+        from transcription_service import TranscriptionService
+        
         conn = get_db_connection()
         cursor = conn.cursor()
         
@@ -421,25 +425,40 @@ def transcribe_hearing(hearing_id):
                 'error': f'Hearing must be in "captured" stage to transcribe. Current stage: {hearing["processing_stage"]}'
             }), 400
         
-        # Update to transcribed stage
-        cursor.execute('''
-            UPDATE hearings_unified 
-            SET status = 'processing', 
-                processing_stage = 'transcribed',
-                updated_at = ?
-            WHERE id = ?
-        ''', (datetime.now().isoformat(), hearing_id))
+        # Perform actual transcription
+        transcription_service = TranscriptionService()
         
-        conn.commit()
-        conn.close()
-        
-        return jsonify({
-            'success': True,
-            'message': f'Transcription initiated for hearing: {hearing["hearing_title"]}',
-            'hearing_id': hearing_id,
-            'previous_stage': 'captured',
-            'current_stage': 'transcribed'
-        })
+        try:
+            transcript_data = transcription_service.transcribe_hearing(hearing_id)
+            
+            # Update to transcribed stage
+            cursor.execute('''
+                UPDATE hearings_unified 
+                SET status = 'processing', 
+                    processing_stage = 'transcribed',
+                    updated_at = ?
+                WHERE id = ?
+            ''', (datetime.now().isoformat(), hearing_id))
+            
+            conn.commit()
+            conn.close()
+            
+            return jsonify({
+                'success': True,
+                'message': f'Transcription completed for hearing: {hearing["hearing_title"]}',
+                'hearing_id': hearing_id,
+                'previous_stage': 'captured',
+                'current_stage': 'transcribed',
+                'transcript_segments': len(transcript_data['transcription']['segments']),
+                'transcript_duration': transcript_data['transcription']['duration']
+            })
+            
+        except Exception as transcription_error:
+            conn.close()
+            return jsonify({
+                'success': False,
+                'error': f'Transcription failed: {str(transcription_error)}'
+            }), 500
         
     except Exception as e:
         return jsonify({

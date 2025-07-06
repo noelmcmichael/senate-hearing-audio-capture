@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import config from '../config';
 import PipelineControls from '../components/PipelineControls';
+import TranscriptDisplay from '../components/TranscriptDisplay';
 import '../components/PipelineControls.css';
 
 const HearingStatus = () => {
@@ -389,6 +390,9 @@ const HearingStatus = () => {
           )}
         </div>
       </div>
+
+      {/* Transcript Display */}
+      <TranscriptDisplay hearing={hearing} />
     </div>
   );
 };
