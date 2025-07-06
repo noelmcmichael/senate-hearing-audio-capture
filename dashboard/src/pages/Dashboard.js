@@ -318,7 +318,7 @@ const Dashboard = () => {
 
   const getDisplayTitle = (hearing) => {
     // Handle bootstrap entries with better titles
-    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
+    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
       const committeeName = hearing.committee_code;
       const committeeInfo = committees.find(c => c.code === committeeName);
       
@@ -347,7 +347,7 @@ const Dashboard = () => {
     }
     
     // Return original title or fallback
-    return hearing.title || `${hearing.committee_code} Hearing - ${formatDate(hearing.date)}`;
+    return hearing.hearing_title || `${hearing.committee_code} Hearing - ${formatDate(hearing.hearing_date)}`;
   };
 
   const isCaptureable = (hearing) => {
@@ -363,7 +363,7 @@ const Dashboard = () => {
   };
 
   const getHearingType = (hearing) => {
-    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
+    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
       const hearingTypes = {
         'SCOM': ['Legislative', 'Oversight', 'Regulatory'],
         'SSCI': ['Intelligence', 'Oversight', 'Classified'],
@@ -375,7 +375,7 @@ const Dashboard = () => {
       return types[typeIndex];
     }
     
-    return hearing.type || 'Legislative';
+    return hearing.hearing_type || 'Legislative';
   };
 
   const getEstimatedSegments = (hearing) => {
@@ -387,7 +387,7 @@ const Dashboard = () => {
 
   const getRealisticDate = (hearing) => {
     // Generate realistic hearing dates for bootstrap entries
-    if (hearing.title && hearing.title.startsWith('Bootstrap Entry for')) {
+    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
       // Create realistic dates in the past few weeks
       const realisticDates = [
         '2024-12-15',  // SCOM - AI in Transportation
@@ -399,7 +399,7 @@ const Dashboard = () => {
       return realisticDates[dateIndex];
     }
     
-    return hearing.date;
+    return hearing.hearing_date;
   };
 
   const handleCaptureAudio = async (hearing, event) => {
