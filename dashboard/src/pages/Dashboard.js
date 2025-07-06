@@ -223,7 +223,10 @@ const Dashboard = () => {
   const handleHearingClick = (hearing) => {
     if (hearing.has_transcript) {
       navigate(`/hearings/${hearing.id}`);
+    } else if (hearing.processing_stage === 'captured' || hearing.processing_stage === 'transcribed') {
+      navigate(`/hearings/${hearing.id}/status`);
     } else {
+      // For bootstrap/demo hearings, show status page
       navigate(`/hearings/${hearing.id}/status`);
     }
   };
@@ -298,8 +301,55 @@ const Dashboard = () => {
         case 'discovered':
           return 'Discovered';
         default:
-          return 'Unknown Status';
+          return 'Ready to Capture';
       }
+    }
+  };
+
+  const getDisplayTitle = (hearing) => {
+    // Handle bootstrap entries with better titles
+    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
+      const committeeName = hearing.committee_code;
+      const committeeInfo = committees.find(c => c.code === committeeName);
+      return `${committeeInfo?.name || committeeName} - Demo Hearing`;
+    }
+    
+    // Return original title or fallback
+    return hearing.hearing_title || `${hearing.committee_code} Hearing - ${formatDate(hearing.hearing_date)}`;
+  };
+
+  const isCaptureable = (hearing) => {
+    // Check if hearing can be captured (not already in progress or completed)
+    const nonCaptureableStages = ['captured', 'transcribed', 'reviewed', 'published'];
+    return !nonCaptureableStages.includes(hearing.processing_stage);
+  };
+
+  const handleCaptureAudio = async (hearing, event) => {
+    event.stopPropagation(); // Prevent card click
+    
+    try {
+      const response = await fetch(`${config.apiUrl}/hearings/${hearing.id}/capture`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          format: 'wav',
+          quality: 'high'
+        })
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        // Refresh hearings to show updated status
+        fetchHearings();
+        alert(`Audio capture started for ${getDisplayTitle(hearing)}`);
+      } else {
+        throw new Error('Failed to start capture');
+      }
+    } catch (error) {
+      console.error('Error capturing audio:', error);
+      alert('Failed to start audio capture. Please try again.');
     }
   };
 
@@ -608,7 +658,7 @@ const Dashboard = () => {
                 fontSize: '16px',
                 lineHeight: '1.4'
               }}>
-                {hearing.hearing_title}
+                {getDisplayTitle(hearing)}
               </h3>
 
               {/* Metadata */}
@@ -632,19 +682,61 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Transcript indicator */}
-              {hearing.has_transcript && (
-                <div style={{
-                  marginTop: '12px',
-                  padding: '8px',
-                  backgroundColor: '#1B1C20',
-                  borderRadius: '4px',
-                  fontSize: '12px',
-                  color: '#4ECDC4'
-                }}>
-                  📄 Transcript Available • Click to view
-                </div>
-              )}
+              {/* Action buttons */}
+              <div style={{ 
+                marginTop: '12px',
+                display: 'flex',
+                gap: '8px',
+                flexWrap: 'wrap'
+              }}>
+                {hearing.has_transcript && (
+                  <div style={{
+                    padding: '8px 12px',
+                    backgroundColor: '#1B1C20',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    color: '#4ECDC4',
+                    border: '1px solid #4ECDC4'
+                  }}>
+                    📄 Transcript Available
+                  </div>
+                )}
+                
+                {isCaptureable(hearing) && (
+                  <button
+                    onClick={(e) => handleCaptureAudio(hearing, e)}
+                    style={{
+                      backgroundColor: '#4ECDC4',
+                      color: '#1B1C20',
+                      border: 'none',
+                      padding: '8px 16px',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      fontSize: '12px',
+                      fontWeight: 'bold',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <PlayCircle size={14} />
+                    Capture Audio
+                  </button>
+                )}
+                
+                {hearing.processing_stage === 'captured' && (
+                  <div style={{
+                    padding: '8px 12px',
+                    backgroundColor: '#FFA500',
+                    color: '#1B1C20',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                  }}>
+                    ⏳ Processing...
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
