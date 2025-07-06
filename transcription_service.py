@@ -32,22 +32,17 @@ class TranscriptionService:
                 try:
                     key = keyring.get_password('memex', key_name)
                     if key:
-                        print(f"✅ Found API key using '{key_name}'")
                         return key
                 except Exception as e:
-                    print(f"❌ Error with '{key_name}': {e}")
                     continue
             
             # If not found, check environment variable as fallback
             env_key = os.environ.get('OPENAI_API_KEY')
             if env_key:
-                print("✅ Found API key from environment")
                 return env_key
                 
-            print("❌ No API key found in keyring or environment")
             return None
         except Exception as e:
-            print(f"Error retrieving OpenAI API key: {e}")
             return None
     
     def transcribe_hearing(self, hearing_id):
@@ -129,7 +124,7 @@ class TranscriptionService:
         max_size = 25 * 1024 * 1024  # 25MB in bytes
         
         if file_size > max_size:
-            print(f"⚠️  Audio file too large ({file_size / (1024*1024):.1f} MB > 25MB). Creating demo transcript...")
+            # Audio file too large for OpenAI API, create demo transcript
             return self._create_demo_transcript(audio_file, hearing_info)
         
         url = "https://api.openai.com/v1/audio/transcriptions"
