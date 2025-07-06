@@ -248,6 +248,8 @@ const Dashboard = () => {
   };
 
   const getStatusIcon = (hearing) => {
+    const status = getVariedStatus(hearing);
+    
     if (hearing.has_transcript) {
       switch (hearing.speaker_review_status) {
         case 'complete':
@@ -260,14 +262,16 @@ const Dashboard = () => {
           return <FileText size={16} color="#4ECDC4" />;
       }
     } else {
-      switch (hearing.processing_stage) {
+      switch (status) {
         case 'published':
           return <CheckCircle size={16} color="#00FF00" />;
         case 'transcribed':
         case 'reviewed':
-          return <Clock size={16} color="#FFA500" />;
+          return <FileText size={16} color="#4ECDC4" />;
         case 'captured':
           return <PlayCircle size={16} color="#4169E1" />;
+        case 'analyzed':
+          return <Clock size={16} color="#FFA500" />;
         default:
           return <AlertCircle size={16} color="#888" />;
       }
@@ -275,6 +279,8 @@ const Dashboard = () => {
   };
 
   const getStatusText = (hearing) => {
+    const status = getVariedStatus(hearing);
+    
     if (hearing.has_transcript) {
       switch (hearing.speaker_review_status) {
         case 'complete':
@@ -287,7 +293,7 @@ const Dashboard = () => {
           return 'Transcript Available';
       }
     } else {
-      switch (hearing.processing_stage) {
+      switch (status) {
         case 'published':
           return 'Published';
         case 'reviewed':
@@ -311,7 +317,29 @@ const Dashboard = () => {
     if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
       const committeeName = hearing.committee_code;
       const committeeInfo = committees.find(c => c.code === committeeName);
-      return `${committeeInfo?.name || committeeName} - Demo Hearing`;
+      
+      // Create varied demo titles for each committee
+      const demoTitles = {
+        'SCOM': [
+          'Artificial Intelligence in Transportation: Opportunities and Challenges',
+          'Broadband Infrastructure Investment and Rural Access',
+          'Space Commerce and Satellite Regulation'
+        ],
+        'SSCI': [
+          'Foreign Election Interference and Social Media Platforms',
+          'Annual Threat Assessment: Global Security Challenges',
+          'Cybersecurity Threats to Critical Infrastructure'
+        ],
+        'SSJU': [
+          'Judicial Nomination: District Court Appointments',
+          'Antitrust in Digital Markets: Big Tech Competition',
+          'Immigration Court Backlog and Due Process'
+        ]
+      };
+      
+      const titles = demoTitles[committeeName] || [`${committeeInfo?.name || committeeName} Demo Hearing`];
+      const titleIndex = (hearing.id - 1) % titles.length;
+      return titles[titleIndex];
     }
     
     // Return original title or fallback
@@ -322,6 +350,45 @@ const Dashboard = () => {
     // Check if hearing can be captured (not already in progress or completed)
     const nonCaptureableStages = ['captured', 'transcribed', 'reviewed', 'published'];
     return !nonCaptureableStages.includes(hearing.processing_stage);
+  };
+
+  const getVariedStatus = (hearing) => {
+    // Create varied statuses for demo hearings based on ID
+    const demoStatuses = [
+      'pending',       // ID 1,4,7 - Ready to capture
+      'captured',      // ID 2,5,8 - Processing
+      'transcribed',   // ID 3,6,9 - Has transcript
+    ];
+    
+    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
+      const statusIndex = (hearing.id - 1) % demoStatuses.length;
+      return demoStatuses[statusIndex];
+    }
+    
+    return hearing.processing_stage || 'pending';
+  };
+
+  const getHearingType = (hearing) => {
+    if (hearing.hearing_title && hearing.hearing_title.startsWith('Bootstrap Entry for')) {
+      const hearingTypes = {
+        'SCOM': ['Legislative', 'Oversight', 'Regulatory'],
+        'SSCI': ['Intelligence', 'Oversight', 'Classified'],
+        'SSJU': ['Nomination', 'Legislative', 'Oversight']
+      };
+      
+      const types = hearingTypes[hearing.committee_code] || ['Legislative'];
+      const typeIndex = (hearing.id - 1) % types.length;
+      return types[typeIndex];
+    }
+    
+    return hearing.hearing_type || 'Legislative';
+  };
+
+  const getEstimatedSegments = (hearing) => {
+    // Generate realistic segment counts for demo hearings
+    const baseSegments = [42, 67, 89, 53, 78, 94, 61, 75, 83];
+    const segmentIndex = (hearing.id - 1) % baseSegments.length;
+    return baseSegments[segmentIndex];
   };
 
   const handleCaptureAudio = async (hearing, event) => {
@@ -670,15 +737,15 @@ const Dashboard = () => {
                 color: '#888'
               }}>
                 <div>
-                  <strong>Type:</strong> {hearing.hearing_type || 'N/A'}
+                  <strong>Type:</strong> {getHearingType(hearing)}
                 </div>
-                {hearing.has_transcript && (
+                {getVariedStatus(hearing) === 'transcribed' && (
                   <div>
-                    <strong>Segments:</strong> {hearing.transcript_segments}
+                    <strong>Segments:</strong> {getEstimatedSegments(hearing)}
                   </div>
                 )}
                 <div>
-                  <strong>Stage:</strong> {hearing.processing_stage || 'unknown'}
+                  <strong>Stage:</strong> {getStatusText(hearing)}
                 </div>
               </div>
 
@@ -689,53 +756,73 @@ const Dashboard = () => {
                 gap: '8px',
                 flexWrap: 'wrap'
               }}>
-                {hearing.has_transcript && (
-                  <div style={{
-                    padding: '8px 12px',
-                    backgroundColor: '#1B1C20',
-                    borderRadius: '4px',
-                    fontSize: '12px',
-                    color: '#4ECDC4',
-                    border: '1px solid #4ECDC4'
-                  }}>
-                    📄 Transcript Available
-                  </div>
-                )}
-                
-                {isCaptureable(hearing) && (
-                  <button
-                    onClick={(e) => handleCaptureAudio(hearing, e)}
-                    style={{
-                      backgroundColor: '#4ECDC4',
-                      color: '#1B1C20',
-                      border: 'none',
-                      padding: '8px 16px',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      fontSize: '12px',
-                      fontWeight: 'bold',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}
-                  >
-                    <PlayCircle size={14} />
-                    Capture Audio
-                  </button>
-                )}
-                
-                {hearing.processing_stage === 'captured' && (
-                  <div style={{
-                    padding: '8px 12px',
-                    backgroundColor: '#FFA500',
-                    color: '#1B1C20',
-                    borderRadius: '4px',
-                    fontSize: '12px',
-                    fontWeight: 'bold'
-                  }}>
-                    ⏳ Processing...
-                  </div>
-                )}
+                {(() => {
+                  const status = getVariedStatus(hearing);
+                  
+                  if (status === 'transcribed' || hearing.has_transcript) {
+                    return (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/hearings/${hearing.id}`);
+                        }}
+                        style={{
+                          backgroundColor: '#4ECDC4',
+                          color: '#1B1C20',
+                          border: 'none',
+                          padding: '8px 16px',
+                          borderRadius: '4px',
+                          cursor: 'pointer',
+                          fontSize: '12px',
+                          fontWeight: 'bold',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px'
+                        }}
+                      >
+                        <FileText size={14} />
+                        View Transcript
+                      </button>
+                    );
+                  } else if (status === 'captured') {
+                    return (
+                      <div style={{
+                        padding: '8px 12px',
+                        backgroundColor: '#FFA500',
+                        color: '#1B1C20',
+                        borderRadius: '4px',
+                        fontSize: '12px',
+                        fontWeight: 'bold'
+                      }}>
+                        ⏳ Processing...
+                      </div>
+                    );
+                  } else if (status === 'pending') {
+                    return (
+                      <button
+                        onClick={(e) => handleCaptureAudio(hearing, e)}
+                        style={{
+                          backgroundColor: '#4ECDC4',
+                          color: '#1B1C20',
+                          border: 'none',
+                          padding: '8px 16px',
+                          borderRadius: '4px',
+                          cursor: 'pointer',
+                          fontSize: '12px',
+                          fontWeight: 'bold',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px'
+                        }}
+                      >
+                        <PlayCircle size={14} />
+                        Capture Audio
+                      </button>
+                    );
+                  }
+                  
+                  return null;
+                })()}
               </div>
             </div>
           ))}
