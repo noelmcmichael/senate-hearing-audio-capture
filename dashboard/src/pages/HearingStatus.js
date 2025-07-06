@@ -10,6 +10,8 @@ import {
   BarChart3
 } from 'lucide-react';
 import config from '../config';
+import PipelineControls from '../components/PipelineControls';
+import '../components/PipelineControls.css';
 
 const HearingStatus = () => {
   const { hearing, transcript, refreshData } = useOutletContext();
@@ -287,7 +289,7 @@ const HearingStatus = () => {
         )}
       </div>
 
-      {/* Pipeline Stages */}
+      {/* Pipeline Controls - Enhanced Manual Controls */}
       <div style={{
         backgroundColor: '#2A2B32',
         border: '1px solid #444',
@@ -295,83 +297,13 @@ const HearingStatus = () => {
         padding: '20px',
         marginBottom: '20px'
       }}>
-        <h3 style={{ color: '#FFFFFF', margin: '0 0 20px 0', fontSize: '18px' }}>
-          Pipeline Stages
-        </h3>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {pipelineStages.map((stage, index) => {
-            const status = getStageStatus(stage.id);
-            const color = getStageColor(status);
-            
-            return (
-              <div
-                key={stage.id}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '16px',
-                  backgroundColor: status === 'current' ? '#1B1C20' : 'transparent',
-                  border: `1px solid ${status === 'current' ? color : '#444'}`,
-                  borderRadius: '6px'
-                }}
-              >
-                {/* Icon */}
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  backgroundColor: color,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: status === 'pending' ? '#888' : '#1B1C20'
-                }}>
-                  {status === 'complete' ? <CheckCircle size={20} /> : stage.icon}
-                </div>
-
-                {/* Content */}
-                <div style={{ flex: 1 }}>
-                  <h4 style={{
-                    color: status === 'pending' ? '#888' : '#FFFFFF',
-                    margin: '0 0 4px 0',
-                    fontSize: '16px'
-                  }}>
-                    {stage.name}
-                    {status === 'current' && (
-                      <span style={{
-                        marginLeft: '8px',
-                        fontSize: '12px',
-                        color: color,
-                        fontWeight: 'normal'
-                      }}>
-                        (In Progress)
-                      </span>
-                    )}
-                  </h4>
-                  <p style={{
-                    color: '#888',
-                    margin: 0,
-                    fontSize: '14px'
-                  }}>
-                    {stage.description}
-                  </p>
-                </div>
-
-                {/* Status Indicator */}
-                <div style={{
-                  color: color,
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase'
-                }}>
-                  {status}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <PipelineControls 
+          hearing={hearing} 
+          onStageChange={(newStage) => {
+            // Refresh the hearing data when stage changes
+            refreshData();
+          }}
+        />
       </div>
 
       {/* Technical Details */}

@@ -349,6 +349,257 @@ def capture_hearing_audio(hearing_id):
             'error': str(e)
         }), 500
 
+@app.route('/api/hearings/<int:hearing_id>/pipeline/analyze', methods=['POST'])
+def analyze_hearing(hearing_id):
+    """Trigger analysis for a specific hearing."""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Check if hearing exists and is in correct state
+        cursor.execute('SELECT id, hearing_title, processing_stage FROM hearings_unified WHERE id = ?', (hearing_id,))
+        hearing = cursor.fetchone()
+        
+        if not hearing:
+            return jsonify({
+                'success': False,
+                'error': 'Hearing not found'
+            }), 404
+        
+        if hearing['processing_stage'] != 'discovered':
+            return jsonify({
+                'success': False,
+                'error': f'Hearing must be in "discovered" stage to analyze. Current stage: {hearing["processing_stage"]}'
+            }), 400
+        
+        # Update to analyzed stage
+        cursor.execute('''
+            UPDATE hearings_unified 
+            SET status = 'processing', 
+                processing_stage = 'analyzed',
+                updated_at = ?
+            WHERE id = ?
+        ''', (datetime.now().isoformat(), hearing_id))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Analysis initiated for hearing: {hearing["hearing_title"]}',
+            'hearing_id': hearing_id,
+            'previous_stage': 'discovered',
+            'current_stage': 'analyzed'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/pipeline/transcribe', methods=['POST'])
+def transcribe_hearing(hearing_id):
+    """Trigger transcription for a specific hearing."""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Check if hearing exists and is in correct state
+        cursor.execute('SELECT id, hearing_title, processing_stage FROM hearings_unified WHERE id = ?', (hearing_id,))
+        hearing = cursor.fetchone()
+        
+        if not hearing:
+            return jsonify({
+                'success': False,
+                'error': 'Hearing not found'
+            }), 404
+        
+        if hearing['processing_stage'] != 'captured':
+            return jsonify({
+                'success': False,
+                'error': f'Hearing must be in "captured" stage to transcribe. Current stage: {hearing["processing_stage"]}'
+            }), 400
+        
+        # Update to transcribed stage
+        cursor.execute('''
+            UPDATE hearings_unified 
+            SET status = 'processing', 
+                processing_stage = 'transcribed',
+                updated_at = ?
+            WHERE id = ?
+        ''', (datetime.now().isoformat(), hearing_id))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Transcription initiated for hearing: {hearing["hearing_title"]}',
+            'hearing_id': hearing_id,
+            'previous_stage': 'captured',
+            'current_stage': 'transcribed'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/pipeline/review', methods=['POST'])
+def review_hearing(hearing_id):
+    """Trigger review for a specific hearing."""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Check if hearing exists and is in correct state
+        cursor.execute('SELECT id, hearing_title, processing_stage FROM hearings_unified WHERE id = ?', (hearing_id,))
+        hearing = cursor.fetchone()
+        
+        if not hearing:
+            return jsonify({
+                'success': False,
+                'error': 'Hearing not found'
+            }), 404
+        
+        if hearing['processing_stage'] != 'transcribed':
+            return jsonify({
+                'success': False,
+                'error': f'Hearing must be in "transcribed" stage to review. Current stage: {hearing["processing_stage"]}'
+            }), 400
+        
+        # Update to reviewed stage
+        cursor.execute('''
+            UPDATE hearings_unified 
+            SET status = 'processing', 
+                processing_stage = 'reviewed',
+                updated_at = ?
+            WHERE id = ?
+        ''', (datetime.now().isoformat(), hearing_id))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Review initiated for hearing: {hearing["hearing_title"]}',
+            'hearing_id': hearing_id,
+            'previous_stage': 'transcribed',
+            'current_stage': 'reviewed'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/pipeline/publish', methods=['POST'])
+def publish_hearing(hearing_id):
+    """Trigger publication for a specific hearing."""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Check if hearing exists and is in correct state
+        cursor.execute('SELECT id, hearing_title, processing_stage FROM hearings_unified WHERE id = ?', (hearing_id,))
+        hearing = cursor.fetchone()
+        
+        if not hearing:
+            return jsonify({
+                'success': False,
+                'error': 'Hearing not found'
+            }), 404
+        
+        if hearing['processing_stage'] != 'reviewed':
+            return jsonify({
+                'success': False,
+                'error': f'Hearing must be in "reviewed" stage to publish. Current stage: {hearing["processing_stage"]}'
+            }), 400
+        
+        # Update to published stage
+        cursor.execute('''
+            UPDATE hearings_unified 
+            SET status = 'complete', 
+                processing_stage = 'published',
+                updated_at = ?
+            WHERE id = ?
+        ''', (datetime.now().isoformat(), hearing_id))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Publication completed for hearing: {hearing["hearing_title"]}',
+            'hearing_id': hearing_id,
+            'previous_stage': 'reviewed',
+            'current_stage': 'published'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/hearings/<int:hearing_id>/pipeline/reset', methods=['POST'])
+def reset_hearing_stage(hearing_id):
+    """Reset hearing to a previous stage."""
+    try:
+        data = request.get_json() or {}
+        target_stage = data.get('stage', 'discovered')
+        
+        # Validate target stage
+        valid_stages = ['discovered', 'analyzed', 'captured', 'transcribed', 'reviewed']
+        if target_stage not in valid_stages:
+            return jsonify({
+                'success': False,
+                'error': f'Invalid stage. Must be one of: {valid_stages}'
+            }), 400
+        
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Check if hearing exists
+        cursor.execute('SELECT id, hearing_title, processing_stage FROM hearings_unified WHERE id = ?', (hearing_id,))
+        hearing = cursor.fetchone()
+        
+        if not hearing:
+            return jsonify({
+                'success': False,
+                'error': 'Hearing not found'
+            }), 404
+        
+        # Update to target stage
+        status = 'new' if target_stage == 'discovered' else 'processing'
+        cursor.execute('''
+            UPDATE hearings_unified 
+            SET status = ?, 
+                processing_stage = ?,
+                updated_at = ?
+            WHERE id = ?
+        ''', (status, target_stage, datetime.now().isoformat(), hearing_id))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Reset hearing: {hearing["hearing_title"]} to {target_stage} stage',
+            'hearing_id': hearing_id,
+            'previous_stage': hearing['processing_stage'],
+            'current_stage': target_stage
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint."""
