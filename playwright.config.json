@@ -1,14 +1,28 @@
 {
-  "baseUrl": "https://www.wikipedia.org",
+  "baseUrl": "http://localhost:3000",
   "pages": [
     {
       "path": "/",
-      "name": "home"
+      "name": "dashboard"
     },
     {
-      "path": "/wiki/Main_Page",
-      "name": "main_page"
+      "path": "/hearings/12/transcript",
+      "name": "hearing_transcript"
+    },
+    {
+      "path": "/hearings/12",
+      "name": "hearing_detail"
     }
   ],
-  "outputDir": "playwright-results"
+  "outputDir": "playwright-results",
+  "testSettings": {
+    "waitForServer": {
+      "frontend": "http://localhost:3000",
+      "backend": "http://localhost:8001/api/health"
+    },
+    "testData": {
+      "hearingWithTranscript": 12,
+      "hearingWithoutTranscript": 11
+    }
+  }
 }
