@@ -142,6 +142,7 @@ const Dashboard = () => {
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(hearing =>
+        hearing.hearing_title?.toLowerCase().includes(query) ||
         hearing.title?.toLowerCase().includes(query) ||
         hearing.committee_code?.toLowerCase().includes(query) ||
         hearing.participant_list?.toLowerCase().includes(query)
@@ -185,8 +186,8 @@ const Dashboard = () => {
           bValue = new Date(b.date || 0);
           break;
         case 'title':
-          aValue = a.title || '';
-          bValue = b.title || '';
+          aValue = getDisplayTitle(a);
+          bValue = getDisplayTitle(b);
           break;
         case 'committee':
           aValue = a.committee_code || '';
