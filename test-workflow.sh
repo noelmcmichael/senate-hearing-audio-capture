@@ -77,6 +77,24 @@ if [ "$SKIP_COMPREHENSIVE" != "true" ]; then
     else
         echo "⚠️  enhanced-comprehensive-test.js not found"
     fi
+    
+    echo ""
+    echo "🔌 Running API Testing Suite..."
+    echo "==============================="
+    if [ -f "tests/playwright/api-testing.js" ]; then
+        node tests/playwright/api-testing.js
+    else
+        echo "⚠️  api-testing.js not found"
+    fi
+    
+    echo ""
+    echo "👁️ Running Visual Regression Tests..."
+    echo "===================================="
+    if [ -f "tests/playwright/visual-regression.js" ]; then
+        node tests/playwright/visual-regression.js
+    else
+        echo "⚠️  visual-regression.js not found"
+    fi
 else
     echo ""
     echo "⚠️  Skipping comprehensive tests - servers not running"
