@@ -6,12 +6,24 @@
       "name": "dashboard"
     },
     {
-      "path": "/hearings/12/transcript",
+      "path": "/hearings/12",
       "name": "hearing_transcript"
     },
     {
-      "path": "/hearings/12",
-      "name": "hearing_detail"
+      "path": "/hearings/12/status",
+      "name": "hearing_status"
+    },
+    {
+      "path": "/hearings/12/review",
+      "name": "hearing_review"
+    },
+    {
+      "path": "/discovery",
+      "name": "discovery_dashboard"
+    },
+    {
+      "path": "/admin",
+      "name": "admin_page"
     }
   ],
   "outputDir": "playwright-results",
@@ -23,6 +35,12 @@
     "testData": {
       "hearingWithTranscript": 12,
       "hearingWithoutTranscript": 11
+    },
+    "routing": {
+      "note": "React Router config: /hearings/:id -> HearingLayout with HearingTranscript as index",
+      "transcriptRoute": "/hearings/12",
+      "statusRoute": "/hearings/12/status",
+      "reviewRoute": "/hearings/12/review"
     }
   }
 }
