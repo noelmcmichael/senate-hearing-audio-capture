@@ -1,0 +1,199 @@
+{
+  "end_to_end": {
+    "test_name": "end_to_end_processing",
+    "success": false,
+    "processing_time": 0.0,
+    "memory_usage_mb": 0.0,
+    "chunks_processed": 0,
+    "validation_passed": false,
+    "frontend_integration": false,
+    "error_message": "End-to-end test failed: 'PreprocessingValidator' object has no attribute 'validate_complete_pipeline'",
+    "performance_metrics": {}
+  },
+  "frontend_integration": {
+    "test_name": "frontend_integration",
+    "success": false,
+    "processing_time": 0.0,
+    "memory_usage_mb": 0.0,
+    "chunks_processed": 0,
+    "validation_passed": false,
+    "frontend_integration": false,
+    "error_message": "Missing frontend files: src/components/ChunkedProgressIndicator.js, src/components/ChunkedProgressIndicator.css, src/components/TranscriptionWarnings.js, src/components/TranscriptionWarnings.css, src/components/TranscriptionControls.js, src/components/TranscriptionControls.css",
+    "performance_metrics": {}
+  },
+  "performance_benchmarking": {
+    "test_name": "performance_benchmarking",
+    "success": true,
+    "processing_time": 0.0,
+    "memory_usage_mb": 0.0,
+    "chunks_processed": 0,
+    "validation_passed": false,
+    "frontend_integration": false,
+    "error_message": "",
+    "performance_metrics": {
+      "benchmark_scenarios": 3,
+      "results": [
+        {
+          "scenario": "small_file",
+          "file_size_mb": 15,
+          "expected_chunks": 1,
+          "actual_chunks": 1,
+          "total_time": 0.15251708030700684,
+          "chunking_performance": {
+            "success": true,
+            "chunking_time": 0.05127096176147461,
+            "analysis": {
+              "file_size_mb": 0.11471271514892578,
+              "requires_chunking": false,
+              "estimated_chunks": 1,
+              "chunk_size_limit_mb": 20
+            },
+            "chunks_per_second": 19.50421770225905,
+            "memory_efficient": true
+          },
+          "transcription_performance": {
+            "total_processing_time": 0.1010749340057373,
+            "chunks_per_second": 9.893649793956206,
+            "average_chunk_time": 0.1010749340057373,
+            "memory_efficiency": true,
+            "parallel_processing": false
+          },
+          "throughput_mb_per_second": 98.34964037998884
+        },
+        {
+          "scenario": "medium_file",
+          "file_size_mb": 35,
+          "expected_chunks": 2,
+          "actual_chunks": 1,
+          "total_time": 0.15257477760314941,
+          "chunking_performance": {
+            "success": true,
+            "chunking_time": 0.05138897895812988,
+            "analysis": {
+              "file_size_mb": 0.2673006057739258,
+              "requires_chunking": false,
+              "estimated_chunks": 1,
+              "chunk_size_limit_mb": 20
+            },
+            "chunks_per_second": 19.45942535294909,
+            "memory_efficient": true
+          },
+          "transcription_performance": {
+            "total_processing_time": 0.10108017921447754,
+            "chunks_per_second": 9.89313639697991,
+            "average_chunk_time": 0.10108017921447754,
+            "memory_efficiency": true,
+            "parallel_processing": false
+          },
+          "throughput_mb_per_second": 229.3957136941456
+        },
+        {
+          "scenario": "large_file",
+          "file_size_mb": 65,
+          "expected_chunks": 4,
+          "actual_chunks": 1,
+          "total_time": 0.1528027057647705,
+          "chunking_performance": {
+            "success": true,
+            "chunking_time": 0.051605939865112305,
+            "analysis": {
+              "file_size_mb": 0.49619483947753906,
+              "requires_chunking": false,
+              "estimated_chunks": 1,
+              "chunk_size_limit_mb": 20
+            },
+            "chunks_per_second": 19.377614333036114,
+            "memory_efficient": true
+          },
+          "transcription_performance": {
+            "total_processing_time": 0.10106325149536133,
+            "chunks_per_second": 9.8947934605676,
+            "average_chunk_time": 0.10106325149536133,
+            "memory_efficiency": true,
+            "parallel_processing": false
+          },
+          "throughput_mb_per_second": 425.3851374861328
+        }
+      ],
+      "average_throughput": 251.04349718675576,
+      "chunking_efficiency": true,
+      "transcription_efficiency": false
+    }
+  },
+  "system_health": {
+    "test_name": "system_health_monitoring",
+    "success": false,
+    "processing_time": 0.0,
+    "memory_usage_mb": 0.0,
+    "chunks_processed": 0,
+    "validation_passed": false,
+    "frontend_integration": false,
+    "error_message": "Unhealthy components: optimized_service",
+    "performance_metrics": {
+      "total_components": 3,
+      "healthy_components": 2,
+      "health_percentage": 66.66666666666666,
+      "health_checks": {
+        "optimized_service": {
+          "healthy": false,
+          "service_status": "initialized",
+          "components_available": {
+            "preprocessing_validator": false,
+            "async_service": true,
+            "streaming_processor": false
+          },
+          "response_time": 0.05
+        },
+        "preprocessing_validator": {
+          "healthy": true,
+          "validator_components": {
+            "system_resource_validator": true,
+            "audio_file_validator": true,
+            "api_access_validator": true,
+            "hearing_metadata_validator": true
+          },
+          "validation_ready": true
+        },
+        "component_integration": {
+          "healthy": true,
+          "integration_tests": {
+            "service_validator": true,
+            "async_components": true,
+            "streaming_components": true
+          },
+          "cross_component_communication": true
+        }
+      }
+    }
+  },
+  "summary": {
+    "test_completion_time": 1751843231.0640268,
+    "integration_capabilities": {
+      "successful_test_categories": 1,
+      "total_test_categories": 4,
+      "overall_success_rate": 25.0,
+      "end_to_end_functional": false,
+      "frontend_integrated": false,
+      "performance_acceptable": true,
+      "system_healthy": false
+    },
+    "performance_summary": {
+      "processing_pipeline_works": false,
+      "chunks_processing_capable": false,
+      "frontend_components_ready": false,
+      "benchmarking_complete": true,
+      "health_monitoring_active": false
+    },
+    "system_readiness": {
+      "production_ready": false,
+      "integration_complete": false,
+      "components_healthy": false,
+      "performance_validated": true
+    },
+    "recommendations": [
+      "Fix end-to-end processing: End-to-end test failed: 'PreprocessingValidator' object has no attribute 'validate_complete_pipeline'",
+      "Fix frontend integration: Missing frontend files: src/components/ChunkedProgressIndicator.js, src/components/ChunkedProgressIndicator.css, src/components/TranscriptionWarnings.js, src/components/TranscriptionWarnings.css, src/components/TranscriptionControls.js, src/components/TranscriptionControls.css",
+      "Address health issues: Unhealthy components: optimized_service"
+    ]
+  }
+}

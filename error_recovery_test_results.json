@@ -1,0 +1,154 @@
+{
+  "retry_mechanisms": [
+    {
+      "scenario_name": "API Rate Limit Hit",
+      "total_attempts": 5,
+      "successful_recoveries": 2,
+      "failed_recoveries": 3,
+      "recovery_success_rate": 40.0,
+      "average_recovery_time": 0.20123052597045898,
+      "retry_attempts_used": 5,
+      "error_patterns_detected": [
+        "rate_limit"
+      ],
+      "fallback_activations": 0,
+      "system_stability": false
+    },
+    {
+      "scenario_name": "API Rate Limit Burst",
+      "total_attempts": 5,
+      "successful_recoveries": 3,
+      "failed_recoveries": 2,
+      "recovery_success_rate": 60.0,
+      "average_recovery_time": 0.5012497107187907,
+      "retry_attempts_used": 8,
+      "error_patterns_detected": [
+        "unknown"
+      ],
+      "fallback_activations": 0,
+      "system_stability": false
+    },
+    {
+      "scenario_name": "Network Timeout",
+      "total_attempts": 5,
+      "successful_recoveries": 4,
+      "failed_recoveries": 1,
+      "recovery_success_rate": 80.0,
+      "average_recovery_time": 0.15104901790618896,
+      "retry_attempts_used": 10,
+      "error_patterns_detected": [
+        "network_error"
+      ],
+      "fallback_activations": 0,
+      "system_stability": true
+    },
+    {
+      "scenario_name": "Connection Reset",
+      "total_attempts": 5,
+      "successful_recoveries": 4,
+      "failed_recoveries": 1,
+      "recovery_success_rate": 80.0,
+      "average_recovery_time": 0.02508944272994995,
+      "retry_attempts_used": 3,
+      "error_patterns_detected": [
+        "unknown"
+      ],
+      "fallback_activations": 0,
+      "system_stability": true
+    },
+    {
+      "scenario_name": "DNS Resolution Failure",
+      "total_attempts": 5,
+      "successful_recoveries": 3,
+      "failed_recoveries": 2,
+      "recovery_success_rate": 60.0,
+      "average_recovery_time": 0.0,
+      "retry_attempts_used": 0,
+      "error_patterns_detected": [
+        "unknown"
+      ],
+      "fallback_activations": 0,
+      "system_stability": false
+    },
+    {
+      "scenario_name": "Server Internal Error",
+      "total_attempts": 5,
+      "successful_recoveries": 5,
+      "failed_recoveries": 0,
+      "recovery_success_rate": 100.0,
+      "average_recovery_time": 0.12051739692687988,
+      "retry_attempts_used": 6,
+      "error_patterns_detected": [
+        "api_error"
+      ],
+      "fallback_activations": 0,
+      "system_stability": true
+    }
+  ],
+  "concurrent_error_handling": {
+    "concurrent_tasks": 10,
+    "successful_tasks": 10,
+    "failed_tasks": 0,
+    "error_tasks": 4,
+    "success_rate": 100.0,
+    "error_rate": 40.0,
+    "total_processing_time": 0.941784143447876,
+    "average_task_time": 0.0941784143447876,
+    "error_distribution": {
+      "rate_limit": 2,
+      "unknown": 1,
+      "api_error": 1
+    }
+  },
+  "system_recovery": {
+    "rate_limit_exhaustion": {
+      "rate_limit_hits": 5,
+      "recovery_attempts": 1,
+      "recovery_successful": true,
+      "total_recovery_time": 1.001349925994873,
+      "recovery_efficiency": true
+    },
+    "network_interruption": {
+      "interruption_duration": 2.0,
+      "immediate_retry_success": true,
+      "delayed_retry_success": false,
+      "total_recovery_time": 0.6018970012664795,
+      "recovery_pattern_correct": false
+    },
+    "resource_exhaustion": {
+      "resource_exhausted": true,
+      "cleanup_time": 1.0,
+      "recovery_attempts": 3,
+      "successful_recoveries": 2,
+      "recovery_rate": 66.66666666666666,
+      "total_recovery_time": 0.20101022720336914,
+      "recovery_effective": true
+    }
+  },
+  "summary": {
+    "test_completion_time": 1751843096.603141,
+    "error_recovery_capabilities": {
+      "average_recovery_rate": 70.0,
+      "stable_scenarios": 3,
+      "total_scenarios_tested": 6,
+      "error_pattern_coverage": 4,
+      "concurrent_success_rate": 100.0,
+      "concurrent_error_handling_rate": 60.0
+    },
+    "system_resilience": {
+      "handles_individual_errors": false,
+      "handles_concurrent_errors": true,
+      "recovers_from_system_failures": false,
+      "maintains_stability": false
+    },
+    "recovery_characteristics": {
+      "retry_mechanism_effective": false,
+      "concurrent_processing_resilient": true,
+      "system_recovery_robust": true,
+      "error_pattern_recognition": true
+    },
+    "recommendations": [
+      "Improve recovery mechanisms for: network_interruption"
+    ]
+  }
+}

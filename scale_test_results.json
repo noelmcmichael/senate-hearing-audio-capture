@@ -1,0 +1,274 @@
+{
+  "incremental_load": [
+    {
+      "concurrent_files": 1,
+      "total_chunks": 2,
+      "processing_time": 0.3016703128814697,
+      "peak_memory_mb": 39.40625,
+      "memory_efficiency": 0.9984139571768438,
+      "resource_pool_hits": 0,
+      "cleanup_events": 0,
+      "error_count": 0,
+      "success_rate": 100.0,
+      "chunks_per_second": 6.629754120969227
+    },
+    {
+      "concurrent_files": 2,
+      "total_chunks": 5,
+      "processing_time": 0.3024430274963379,
+      "peak_memory_mb": 39.453125,
+      "memory_efficiency": 0.9988118811881188,
+      "resource_pool_hits": 0,
+      "cleanup_events": 0,
+      "error_count": 0,
+      "success_rate": 100.0,
+      "chunks_per_second": 16.532039245178307
+    },
+    {
+      "concurrent_files": 4,
+      "total_chunks": 12,
+      "processing_time": 0.4026458263397217,
+      "peak_memory_mb": 39.515625,
+      "memory_efficiency": 0.9984183471727955,
+      "resource_pool_hits": 0,
+      "cleanup_events": 0,
+      "error_count": 0,
+      "success_rate": 100.0,
+      "chunks_per_second": 29.802866973903065
+    },
+    {
+      "concurrent_files": 6,
+      "total_chunks": 18,
+      "processing_time": 0.5040452480316162,
+      "peak_memory_mb": 39.578125,
+      "memory_efficiency": 0.9984208448480063,
+      "resource_pool_hits": 0,
+      "cleanup_events": 0,
+      "error_count": 0,
+      "success_rate": 100.0,
+      "chunks_per_second": 35.71107965067245
+    },
+    {
+      "concurrent_files": 8,
+      "total_chunks": 24,
+      "processing_time": 0.5031359195709229,
+      "peak_memory_mb": 39.609375,
+      "memory_efficiency": 0.9992110453648915,
+      "resource_pool_hits": 0,
+      "cleanup_events": 0,
+      "error_count": 0,
+      "success_rate": 100.0,
+      "chunks_per_second": 47.70082807935346
+    }
+  ],
+  "memory_pressure": {
+    "gradual_increase": {
+      "scenario": "gradual_increase",
+      "file_range": "2-8",
+      "results": [
+        {
+          "concurrent_files": 2,
+          "total_chunks": 5,
+          "processing_time": 0.3023350238800049,
+          "peak_memory_mb": 39.609375,
+          "memory_efficiency": 1.0,
+          "resource_pool_hits": 0,
+          "cleanup_events": 0,
+          "error_count": 0,
+          "success_rate": 100.0,
+          "chunks_per_second": 16.537945011572567
+        },
+        {
+          "concurrent_files": 4,
+          "total_chunks": 12,
+          "processing_time": 0.40356874465942383,
+          "peak_memory_mb": 39.609375,
+          "memory_efficiency": 1.0,
+          "resource_pool_hits": 0,
+          "cleanup_events": 0,
+          "error_count": 0,
+          "success_rate": 100.0,
+          "chunks_per_second": 29.734711022100917
+        },
+        {
+          "concurrent_files": 6,
+          "total_chunks": 18,
+          "processing_time": 0.5038242340087891,
+          "peak_memory_mb": 39.65625,
+          "memory_efficiency": 0.9992119779353822,
+          "resource_pool_hits": 0,
+          "cleanup_events": 0,
+          "error_count": 0,
+          "success_rate": 100.0,
+          "chunks_per_second": 35.726745132482044
+        },
+        {
+          "concurrent_files": 8,
+          "total_chunks": 24,
+          "processing_time": 0.5035347938537598,
+          "peak_memory_mb": 39.703125,
+          "memory_efficiency": 1.0,
+          "resource_pool_hits": 0,
+          "cleanup_events": 0,
+          "error_count": 0,
+          "success_rate": 100.0,
+          "chunks_per_second": 47.66304194456571
+        }
+      ],
+      "memory_trend": [
+        39.609375,
+        39.609375,
+        39.65625,
+        39.703125
+      ],
+      "performance_trend": [
+        16.537945011572567,
+        29.734711022100917,
+        35.726745132482044,
+        47.66304194456571
+      ]
+    },
+    "sudden_spike": {
+      "scenario": "sudden_spike",
+      "low_load": {
+        "concurrent_files": 2,
+        "total_chunks": 5,
+        "processing_time": 0.30265116691589355,
+        "peak_memory_mb": 39.703125,
+        "memory_efficiency": 1.0,
+        "resource_pool_hits": 0,
+        "cleanup_events": 0,
+        "error_count": 0,
+        "success_rate": 100.0,
+        "chunks_per_second": 16.520669822460967
+      },
+      "high_load": {
+        "concurrent_files": 10,
+        "total_chunks": 32,
+        "processing_time": 0.5075249671936035,
+        "peak_memory_mb": 39.734375,
+        "memory_efficiency": 0.9992135273299253,
+        "resource_pool_hits": 0,
+        "cleanup_events": 0,
+        "error_count": 0,
+        "success_rate": 100.0,
+        "chunks_per_second": 63.05108530314547
+      },
+      "memory_increase": 0.03125,
+      "performance_impact": -2.816496908462105
+    },
+    "sustained_high": {
+      "scenario": "sustained_high",
+      "iterations": 3,
+      "results": [
+        {
+          "concurrent_files": 8,
+          "total_chunks": 24,
+          "processing_time": 0.5041899681091309,
+          "peak_memory_mb": 39.734375,
+          "memory_efficiency": 1.0,
+          "resource_pool_hits": 0,
+          "cleanup_events": 0,
+          "error_count": 0,
+          "success_rate": 100.0,
+          "chunks_per_second": 47.60110576973093
+        },
+        {
+          "concurrent_files": 8,
+          "total_chunks": 24,
+          "processing_time": 0.5039632320404053,
+          "peak_memory_mb": 39.734375,
+          "memory_efficiency": 1.0,
+          "resource_pool_hits": 0,
+          "cleanup_events": 0,
+          "error_count": 0,
+          "success_rate": 100.0,
+          "chunks_per_second": 47.62252179158141
+        },
+        {
+          "concurrent_files": 8,
+          "total_chunks": 24,
+          "processing_time": 0.5037529468536377,
+          "peak_memory_mb": 39.6875,
+          "memory_efficiency": 1.0,
+          "resource_pool_hits": 0,
+          "cleanup_events": 0,
+          "error_count": 0,
+          "success_rate": 100.0,
+          "chunks_per_second": 47.64240120062871
+        }
+      ],
+      "average_memory": 39.71875,
+      "average_performance": 47.62200958731368,
+      "consistency": 100.0
+    }
+  },
+  "resource_pooling": {
+    "pool_efficiency_test": [
+      {
+        "iteration": 1,
+        "processing_time": 0.4031949043273926,
+        "memory_peak": 39.6875,
+        "resource_hits": 0,
+        "cleanup_events": 0
+      },
+      {
+        "iteration": 2,
+        "processing_time": 0.403378963470459,
+        "memory_peak": 39.6875,
+        "resource_hits": 0,
+        "cleanup_events": 0
+      },
+      {
+        "iteration": 3,
+        "processing_time": 0.40419697761535645,
+        "memory_peak": 39.6875,
+        "resource_hits": 0,
+        "cleanup_events": 0
+      },
+      {
+        "iteration": 4,
+        "processing_time": 0.4033162593841553,
+        "memory_peak": 39.6875,
+        "resource_hits": 0,
+        "cleanup_events": 0
+      },
+      {
+        "iteration": 5,
+        "processing_time": 0.40405726432800293,
+        "memory_peak": 39.6875,
+        "resource_hits": 0,
+        "cleanup_events": 0
+      }
+    ],
+    "average_processing_time": 0.40362887382507323,
+    "average_memory_peak": 39.6875,
+    "total_resource_hits": 0,
+    "total_cleanup_events": 0,
+    "efficiency_trend": [
+      0.4031949043273926,
+      0.403378963470459,
+      0.40419697761535645,
+      0.4033162593841553,
+      0.40405726432800293
+    ]
+  },
+  "summary": {
+    "test_completion_time": 1751842967.3661819,
+    "scale_capabilities": {
+      "max_concurrent_files": 8,
+      "max_throughput_chunks_per_sec": 47.70082807935346,
+      "average_success_rate": 100.0,
+      "memory_scalability_levels": 4
+    },
+    "performance_characteristics": {
+      "handles_concurrent_processing": true,
+      "memory_efficient": true,
+      "resource_pooling_effective": true,
+      "scales_under_pressure": true
+    },
+    "recommendations": [
+      "Consider increasing resource pool size for better reuse"
+    ]
+  }
+}
