@@ -498,57 +498,57 @@ def transcribe_hearing(hearing_id):
                 'error': f'Hearing must be in "captured" stage to transcribe. Current stage: {hearing["processing_stage"]}'
             }), 400
         
-        # Simulate transcription process
-        def simulate_transcription():
-            """Simulate the transcription process with realistic timing."""
-            stages = [
-                ('initializing', 10, 'Initializing transcription service...'),
-                ('analyzing', 25, 'Analyzing audio file...'),
-                ('chunking', 40, 'Creating audio chunks...'),
-                ('transcribing', 80, 'Transcribing audio content...'),
-                ('finalizing', 95, 'Finalizing transcript...'),
-                ('completed', 100, 'Transcription completed!')
-            ]
+        # Import and use the real synchronous transcription service
+        def run_transcription():
+            """Run transcription in a proper thread context."""
+            try:
+                from transcription_service import EnhancedTranscriptionService
+                
+                # Initialize the transcription service
+                transcription_service = EnhancedTranscriptionService()
+                
+                # Run real transcription
+                result = transcription_service.transcribe_hearing(hearing_id)
+                
+                if not result:
+                    raise Exception("Transcription service returned no data")
+                
+                # Extract transcript data from the result
+                if 'transcription' in result:
+                    return result['transcription']
+                else:
+                    return result
+                    
+            except Exception as e:
+                print(f"Transcription error: {e}")
+                raise e
+        
+        try:
+            # Run transcription
+            transcript_data = run_transcription()
             
-            for stage, percent, message in stages:
-                print(f"Progress: {stage} - {percent}% - {message}")
-                time.sleep(0.5)  # Simulate processing time
-            
-            # Generate mock transcript data
-            mock_transcript = {
-                'text': f'This is a simulated transcript for hearing: {hearing["hearing_title"]}. '
-                       'The transcription process has been completed successfully using the optimized pipeline. '
-                       'This demonstrates the chunked processing capabilities and real-time progress tracking.',
+        except Exception as e:
+            # Fallback to simulated transcription with detailed error message
+            print(f"WARNING: Transcription service failed: {e}")
+            print("Using simulated transcription as fallback")
+            transcript_data = {
+                'text': f'FALLBACK: This is a fallback transcript for hearing: {hearing["hearing_title"]}. '
+                       f'Original transcription failed: {str(e)}',
                 'segments': [
                     {
                         'start': 0.0,
                         'end': 30.0,
-                        'text': f'This is a simulated transcript for hearing: {hearing["hearing_title"]}.',
-                        'speaker': 'Speaker 1'
-                    },
-                    {
-                        'start': 30.0,
-                        'end': 60.0,
-                        'text': 'The transcription process has been completed successfully using the optimized pipeline.',
-                        'speaker': 'Speaker 2'
-                    },
-                    {
-                        'start': 60.0,
-                        'end': 90.0,
-                        'text': 'This demonstrates the chunked processing capabilities and real-time progress tracking.',
+                        'text': f'FALLBACK: This is a fallback transcript for hearing: {hearing["hearing_title"]}.',
                         'speaker': 'Speaker 1'
                     }
                 ],
-                'duration': 90.0,
-                'chunks_processed': 3,
-                'processing_time': 2.5
+                'duration': 30.0,
+                'chunks_processed': 1,
+                'processing_time': 0.5,
+                'fallback_note': f'This is fallback data - original error: {str(e)}'
             }
-            
-            return mock_transcript
         
         try:
-            # Run simulated transcription
-            transcript_data = simulate_transcription()
             
             # Store transcript data
             transcript_json = json.dumps({
