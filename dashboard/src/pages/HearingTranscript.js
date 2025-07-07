@@ -324,7 +324,8 @@ const HearingTranscript = () => {
               border: '1px solid #444'
             }}>
               <button
-                onClick={handleExportTranscript}
+            data-testid="export-transcript-button"
+            onClick={handleExportTranscript}
                 style={{
                   backgroundColor: 'transparent',
                   color: '#4ECDC4',
@@ -343,7 +344,8 @@ const HearingTranscript = () => {
               </button>
               
               <button
-                onClick={handleExportText}
+            data-testid="export-text-button"
+            onClick={handleExportText}
                 style={{
                   backgroundColor: 'transparent',
                   color: '#4ECDC4',
@@ -362,7 +364,8 @@ const HearingTranscript = () => {
               </button>
               
               <button
-                onClick={handleExportCSV}
+            data-testid="export-csv-button"
+            onClick={handleExportCSV}
                 style={{
                   backgroundColor: 'transparent',
                   color: '#4ECDC4',
@@ -381,7 +384,8 @@ const HearingTranscript = () => {
               </button>
               
               <button
-                onClick={handleExportSummaryReport}
+            data-testid="export-summary-button"
+            onClick={handleExportSummaryReport}
                 style={{
                   backgroundColor: 'transparent',
                   color: '#4ECDC4',

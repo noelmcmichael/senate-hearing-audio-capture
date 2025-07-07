@@ -1,0 +1,2936 @@
+[
+  {
+    "file": "App_backup.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 125,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 126,
+        "element": "onClick={() => onViewTranscript(transcript.filename)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 317,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 318,
+        "element": "onClick={onBack}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 342,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 355,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 371,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 387,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 565,
+        "element": "<div className=\"container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 576,
+        "element": "<div className=\"container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 596,
+        "element": "<div className=\"container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 597,
+        "element": "<div className=\"header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 604,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 605,
+        "element": "onClick={onNavigateToCommittees}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 622,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 623,
+        "element": "onClick={onNavigateToHearings}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 640,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 641,
+        "element": "onClick={onNavigateToTranscripts}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 658,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 659,
+        "element": "onClick={onNavigateToHealth}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 685,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 692,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 699,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 706,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 713,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 723,
+        "element": "<div className=\"card\" style={{ marginBottom: '2rem'",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 770,
+        "element": "<div className=\"card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 793,
+        "element": "<div className=\"card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 825,
+        "element": "<div className=\"card\" style={{ marginBottom: '2rem'",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 834,
+        "element": "<div className=\"card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 836,
+        "element": "<table",
+        "suggestion": "Add data-testid attribute to table"
+      }
+    ]
+  },
+  {
+    "file": "App_old.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 123,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 124,
+        "element": "onClick={() => onViewTranscript(transcript.filename)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 315,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 316,
+        "element": "onClick={onBack}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 340,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 353,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 369,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 385,
+        "element": "<Nav",
+        "suggestion": "Add data-testid attribute to nav"
+      },
+      {
+        "type": "missing-testid",
+        "line": 563,
+        "element": "<div className=\"container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 574,
+        "element": "<div className=\"container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 594,
+        "element": "<div className=\"container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 595,
+        "element": "<div className=\"header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 602,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 603,
+        "element": "onClick={onNavigateToCommittees}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 620,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 621,
+        "element": "onClick={onNavigateToHearings}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 638,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 639,
+        "element": "onClick={onNavigateToTranscripts}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 656,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 657,
+        "element": "onClick={onNavigateToHealth}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 683,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 690,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 697,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 704,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 711,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 721,
+        "element": "<div className=\"card\" style={{ marginBottom: '2rem'",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 768,
+        "element": "<div className=\"card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 791,
+        "element": "<div className=\"card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 823,
+        "element": "<div className=\"card\" style={{ marginBottom: '2rem'",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 832,
+        "element": "<div className=\"card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 834,
+        "element": "<table",
+        "suggestion": "Add data-testid attribute to table"
+      }
+    ]
+  },
+  {
+    "file": "components/ChunkedProgressIndicator.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 163,
+        "element": "<div className=\"progress-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 183,
+        "element": "<div className=\"progress-bar-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 200,
+        "element": "<div className=\"chunk-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      }
+    ]
+  },
+  {
+    "file": "components/PipelineControls.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 297,
+        "element": "<div className=\"stage-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 323,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 324,
+        "element": "onClick={() => handleStageAction(stage.nextAction, stage.nextStage)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 344,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 345,
+        "element": "onClick={() => handleReset(stage.id)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 355,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 356,
+        "element": "onClick={() => alert(`Details for ${stage.name} stage`)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 368,
+        "element": "<div className=\"section-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 388,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 389,
+        "element": "onClick={() => handleReset('discovered')}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/TranscriptDisplay.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 110,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 111,
+        "element": "onClick={() => {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 127,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 128,
+        "element": "onClick={() => {",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/TranscriptViewer/AudioPlayer.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 110,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 111,
+        "element": "onClick={() => skipToSegment('prev')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 118,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 119,
+        "element": "onClick={togglePlayPause}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 125,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 126,
+        "element": "onClick={() => skipToSegment('next')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 142,
+        "element": "<div className=\"progress-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 145,
+        "element": "onClick={handleSeek}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 168,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 174,
+        "element": "onChange={handleVolumeChange}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 182,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 185,
+        "element": "onChange={handlePlaybackRateChange}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/TranscriptViewer/BulkOperations.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 30,
+        "element": "<div className=\"bulk-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 38,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 39,
+        "element": "onClick={onClearSelection}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 52,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 55,
+        "element": "onChange={(e) => setSelectedSpeaker(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 67,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 68,
+        "element": "onClick={handleBulkAssign}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/TranscriptViewer/SpeakerAssigner.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 46,
+        "element": "<div className=\"assignment-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 56,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 57,
+        "element": "onClick={() => setIsEditing(true)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 68,
+        "element": "<div className=\"options-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 70,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 71,
+        "element": "onClick={() => setIsEditing(false)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 80,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 82,
+        "element": "onClick={() => handleSpeakerSelect(speaker)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 93,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 96,
+        "element": "onChange={(e) => setCustomSpeaker(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 105,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 106,
+        "element": "onClick={handleCustomSpeakerSubmit}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/TranscriptViewer/TranscriptViewer.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 209,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 209,
+        "element": "<button onClick={loadTranscript} className=\"retry-button\">",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 230,
+        "element": "<div className=\"transcript-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 242,
+        "element": "<div className=\"header-actions\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 249,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 250,
+        "element": "onClick={handleExportTranscript}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 292,
+        "element": "<div className=\"segment-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 303,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 306,
+        "element": "onChange={() => toggleSegmentSelection(segment.id)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 309,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 310,
+        "element": "onClick={() => seekToSegment(index)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/TranscriptionControls.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 91,
+        "element": "<div className=\"controls-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 101,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 102,
+        "element": "onClick={handleCancel}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 123,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 124,
+        "element": "onClick={handleRetry}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 145,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 146,
+        "element": "onClick={() => alert('Pause functionality coming soon')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 166,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 167,
+        "element": "onClick={() => handleRetry()}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 179,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 180,
+        "element": "onClick={() => alert('Skip chunk functionality coming soon')}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/TranscriptionWarnings.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 128,
+        "element": "<div className=\"modal-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 130,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 131,
+        "element": "onClick={onCancel}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 154,
+        "element": "<div className=\"section-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 188,
+        "element": "<div className=\"warning-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 208,
+        "element": "<div className=\"section-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 261,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 262,
+        "element": "onClick={onCancel}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 267,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 268,
+        "element": "onClick={() => onProceed(audioInfo)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/committees/CommitteeDetail.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 242,
+        "element": "<div className=\"committee-detail-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 243,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 243,
+        "element": "<button className=\"btn-back\" onClick={onBack}>← Back</button>",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 253,
+        "element": "<div className=\"committee-detail-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 254,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 254,
+        "element": "<button className=\"btn-back\" onClick={onBack}>← Back</button>",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 264,
+        "element": "<div className=\"committee-detail-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 265,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 265,
+        "element": "<button className=\"btn-back\" onClick={onBack}>← Back to Committees</button>",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 288,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 290,
+        "element": "onClick={() => setActiveTab('hearings')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 294,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 296,
+        "element": "onClick={() => setActiveTab('stats')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 307,
+        "element": "<div className=\"search-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 310,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 312,
+        "element": "onClick={() => setShowAdvancedSearch(true)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 317,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 319,
+        "element": "onClick={handleSearchClear}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 340,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 342,
+        "element": "onChange={(e) => setStatusFilter(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 361,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 363,
+        "element": "onClick={handleBulkStatusUpdate}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 367,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 369,
+        "element": "onClick={() => setSelectedHearings([])}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 402,
+        "element": "<div key={hearing.id} className=\"hearing-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 404,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 407,
+        "element": "onChange={() => toggleHearingSelection(hearing.id)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 412,
+        "element": "<div className=\"hearing-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 436,
+        "element": "onClick={() => handleStatusClick(hearing)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 467,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 469,
+        "element": "onClick={(e) => {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 476,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 478,
+        "element": "onClick={() => handleStatusClick(hearing)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 495,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 519,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 531,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      }
+    ]
+  },
+  {
+    "file": "components/committees/CommitteeList.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 48,
+        "element": "<div className=\"committee-list-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 59,
+        "element": "<div className=\"committee-list-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 69,
+        "element": "<div className=\"committee-list-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 86,
+        "element": "onClick={() => onSelectCommittee && onSelectCommittee(committee)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 88,
+        "element": "<div className=\"committee-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 112,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      }
+    ]
+  },
+  {
+    "file": "components/committees/CommitteeSelector.js",
+    "issues": [
+      {
+        "type": "interactive-no-testid",
+        "line": 43,
+        "element": "<div className=\"selector-button\" onClick={toggleDropdown}>",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 59,
+        "element": "<div className=\"dropdown-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 66,
+        "element": "onClick={() => handleSelect(committee)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/discovery/DiscoveryControls.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 75,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 77,
+        "element": "onClick={() => setShowCommitteeSelect(!showCommitteeSelect)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 90,
+        "element": "<div className=\"committee-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 91,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 93,
+        "element": "onClick={handleSelectAll}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 103,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 106,
+        "element": "onChange={() => handleCommitteeToggle(committee.code)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 120,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 122,
+        "element": "onChange={(e) => onStatusFilterChange(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 138,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 140,
+        "element": "onClick={handleDiscoveryRun}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 145,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 147,
+        "element": "onClick={onRefresh}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/discovery/DiscoveryDashboard.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 74,
+        "element": "<div className=\"dashboard-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 96,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 100,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 104,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 108,
+        "element": "<div className=\"stat-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 141,
+        "element": "<div className=\"hearings-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 144,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 146,
+        "element": "onChange={(e) => setStatusFilter(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 161,
+        "element": "<div className=\"loading-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      }
+    ]
+  },
+  {
+    "file": "components/discovery/HearingCard.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 59,
+        "element": "<div className=\"hearing-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 60,
+        "element": "<div className=\"hearing-card-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 60,
+        "element": "<div className=\"hearing-card-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 69,
+        "element": "<div className=\"hearing-card-content\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 138,
+        "element": "<div className=\"hearing-card-actions\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 139,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 141,
+        "element": "onClick={() => setShowDetails(!showDetails)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 147,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 149,
+        "element": "onClick={handleCapture}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 157,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 159,
+        "element": "onClick={onCancel}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 166,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 168,
+        "element": "onClick={() => window.open(`/hearings/${hearing.id}`, '_blank')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 184,
+        "element": "<a href={hearing.url} target=\"_blank\" rel=\"noopener noreferrer\">",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/discovery/ProcessingStatus.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 81,
+        "element": "<div className=\"status-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 111,
+        "element": "<div className=\"status-card\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*card.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 112,
+        "element": "<div className=\"status-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 126,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 128,
+        "element": "onClick={onCancel}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/hearings/HearingDetailsModal.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 146,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 147,
+        "element": "onClick={onClose}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 525,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 526,
+        "element": "onClick={() => onViewTranscript && onViewTranscript(hearing.id)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 547,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 548,
+        "element": "onClick={handleCapture}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 583,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 584,
+        "element": "onClick={onClose}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/hearings/HearingQueue.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 222,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 223,
+        "element": "onClick={fetchHearings}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 256,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 257,
+        "element": "onClick={fetchHearings}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 285,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 287,
+        "element": "onClick={() => handleCommitteeFilter(committee)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 309,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 311,
+        "element": "onChange={(e) => handleFilterChange('sync_status', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 334,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 336,
+        "element": "onChange={(e) => handleFilterChange('has_streams', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 357,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 359,
+        "element": "onChange={(e) => handleFilterChange('date_range', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 529,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 530,
+        "element": "onClick={() => onTriggerCapture && onTriggerCapture(hearing.id)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 550,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 551,
+        "element": "onClick={(e) => {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 572,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "missing-testid",
+        "line": 607,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 609,
+        "element": "onClick={() => setPagination(prev => ({ ...prev, offset: Math.max(0, prev.offset - prev.limit) }))}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 626,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 628,
+        "element": "onClick={() => setPagination(prev => ({ ...prev, offset: prev.offset + prev.limit }))}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/monitoring/SystemHealth.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 228,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 229,
+        "element": "onClick={fetchHealthData}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 279,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 282,
+        "element": "onChange={(e) => setAutoRefresh(e.target.checked)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 288,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 289,
+        "element": "onClick={fetchHealthData}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 531,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 532,
+        "element": "onClick={() => onResolveAlert && onResolveAlert(alert.alert_id)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/search/AdvancedSearch.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 80,
+        "element": "<div className=\"advanced-search-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 82,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 83,
+        "element": "onClick={onClose}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 96,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 100,
+        "element": "onChange={(e) => handleInputChange('query', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 109,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 112,
+        "element": "onChange={(e) => handleInputChange('committee', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 126,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 129,
+        "element": "onChange={(e) => handleInputChange('status', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 144,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 147,
+        "element": "onChange={(e) => handleInputChange('processing_stage', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 162,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 166,
+        "element": "onChange={(e) => handleInputChange('hearing_type', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 175,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 179,
+        "element": "onChange={(e) => handleInputChange('participants', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 189,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 192,
+        "element": "onChange={(e) => handleInputChange('date_from', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 197,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 200,
+        "element": "onChange={(e) => handleInputChange('date_to', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 210,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 214,
+        "element": "onChange={(e) => handleInputChange('assigned_reviewer', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 234,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 235,
+        "element": "onClick={() => handleInputChange(key, '')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 249,
+        "element": "<div className=\"advanced-search-footer\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*footer.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 251,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 252,
+        "element": "onClick={handleReset}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 259,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 260,
+        "element": "onClick={onClose}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 265,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 266,
+        "element": "onClick={handleSearch}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/search/SearchBox.js",
+    "issues": [
+      {
+        "type": "interactive-no-testid",
+        "line": 64,
+        "element": "const handleSuggestionClick = (suggestion) => {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 93,
+        "element": "handleSuggestionClick(suggestions[activeSuggestion]);",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 128,
+        "element": "<div className=\"search-box-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 129,
+        "element": "<form",
+        "suggestion": "Add data-testid attribute to form"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 129,
+        "element": "<form onSubmit={handleSubmit} className=\"search-box-form\">",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 130,
+        "element": "<div className=\"search-input-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 131,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 135,
+        "element": "onChange={handleInputChange}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 137,
+        "element": "onBlur={handleBlur}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 142,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 169,
+        "element": "onClick={() => handleSuggestionClick(suggestion)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/search/SearchFilters.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 101,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 103,
+        "element": "onClick={() => handleFilterChange('status',",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 125,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 127,
+        "element": "onChange={(e) => handleFilterChange('committee', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 142,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 144,
+        "element": "onChange={(e) => handleFilterChange('date_range', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 166,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 168,
+        "element": "onClick={() => handleFilterChange('processing_stage',",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 184,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 187,
+        "element": "onChange={(e) => handleFilterChange('hearing_type', e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 197,
+        "element": "<div className=\"filters-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 206,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 206,
+        "element": "<button onClick={handleClearAll} className=\"clear-filters-button\">",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 210,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 211,
+        "element": "onClick={onToggleAdvanced}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 251,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 252,
+        "element": "onClick={() => handleFilterChange(key, '')}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/search/SearchResults.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 74,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 75,
+        "element": "onClick={() => onPageChange?.(current_page - 1)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 84,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 85,
+        "element": "onClick={() => onPageChange?.(current_page + 1)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 100,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 102,
+        "element": "onClick={() => handleSortChange(option)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 179,
+        "element": "onClick={() => onResultClick?.(result)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 181,
+        "element": "<div className=\"result-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 222,
+        "element": "onClick={(newStatus) => onStatusChange?.(result.id, newStatus)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 242,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 244,
+        "element": "onClick={(e) => {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 251,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 253,
+        "element": "onClick={(e) => {",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/search/SearchSuggestions.js",
+    "issues": [
+      {
+        "type": "interactive-no-testid",
+        "line": 6,
+        "element": "onSuggestionClick,",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 47,
+        "element": "const handleSuggestionClick = (suggestion) => {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 94,
+        "element": "<div className=\"suggestion-category-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 108,
+        "element": "onClick={() => handleSuggestionClick(suggestion)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 158,
+        "element": "<div className=\"suggestion-category-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 166,
+        "element": "onClick={() => handleSuggestionClick(suggestion)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 184,
+        "element": "<div className=\"search-suggestions-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 223,
+        "element": "<div className=\"suggestions-footer\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*footer.*[\"']"
+      }
+    ]
+  },
+  {
+    "file": "components/status/StatusIndicator.js",
+    "issues": [
+      {
+        "type": "interactive-no-testid",
+        "line": 15,
+        "element": "onClick = null,",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 87,
+        "element": "if (clickable && onClick) {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 98,
+        "element": "<div className=\"status-indicator-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 110,
+        "element": "onClick={handleClick}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/status/StatusManager.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 157,
+        "element": "<div className=\"status-manager-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 164,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 166,
+        "element": "onClick={onClose}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 199,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 201,
+        "element": "onChange={(e) => setSelectedStatus(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 220,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 222,
+        "element": "onChange={(e) => setSelectedStage(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 236,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 238,
+        "element": "onChange={(e) => setAssignedReviewer(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 252,
+        "element": "<textarea",
+        "suggestion": "Add data-testid attribute to textarea"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 254,
+        "element": "onChange={(e) => setReviewerNotes(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 263,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 265,
+        "element": "onClick={onClose}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 270,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 272,
+        "element": "onClick={handleStatusUpdate}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/status/StatusWorkflow.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 116,
+        "element": "<div className=\"workflow-header\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*header.*[\"']"
+      },
+      {
+        "type": "missing-testid",
+        "line": 139,
+        "element": "<div key={`${stage.status}-${stage.stage}`} className=\"workflow-stage-container\"",
+        "suggestion": "Add data-testid attribute to div.*className.*[\"'].*container.*[\"']"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 146,
+        "element": "onClick={() => handleStageClick(stage, index)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "components/transcripts/TranscriptBrowser.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 123,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 124,
+        "element": "onClick={fetchTranscripts}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 174,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 175,
+        "element": "onClick={onBack}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 202,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 206,
+        "element": "onChange={(e) => setSearchQuery(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 341,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 342,
+        "element": "onClick={() => handleViewTranscript(transcript)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 363,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 364,
+        "element": "onClick={(e) => {",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "layouts/HearingLayout.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 160,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 161,
+        "element": "onClick={() => navigate('/')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 204,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 205,
+        "element": "onClick={() => navigate('/')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 264,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 265,
+        "element": "onClick={() => handleNavigation('transcript')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 297,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 298,
+        "element": "onClick={() => handleNavigation('review')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 330,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 331,
+        "element": "onClick={() => handleNavigation('status')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 350,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 351,
+        "element": "onClick={() => handleNavigation('audio')}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "pages/AdminPage.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 198,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 199,
+        "element": "onClick={handleBootstrap}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 228,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 229,
+        "element": "onClick={fetchStatus}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 246,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 247,
+        "element": "onClick={() => window.location.href = '/'}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "pages/Dashboard.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 508,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 512,
+        "element": "onChange={(e) => setSearchQuery(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 526,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 527,
+        "element": "onClick={() => setShowFilters(!showFilters)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 546,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 548,
+        "element": "onChange={(e) => setSortBy(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 564,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 565,
+        "element": "onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 606,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 608,
+        "element": "onClick={() => toggleCommitteeFilter(committee.code)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 632,
+        "element": "<select",
+        "suggestion": "Add data-testid attribute to select"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 634,
+        "element": "onChange={(e) => setStatusFilter(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 654,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 655,
+        "element": "onClick={clearFilters}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 687,
+        "element": "onClick={() => handleHearingClick(hearing)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 784,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 785,
+        "element": "onClick={(e) => {",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 822,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 823,
+        "element": "onClick={(e) => handleCaptureAudio(hearing, e)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 844,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 845,
+        "element": "onClick={(e) => {",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "pages/HearingReview.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 222,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 223,
+        "element": "onClick={() => navigate(`/hearings/${id}/status`)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 274,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 275,
+        "element": "onClick={jumpToNextUnknown}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 290,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 291,
+        "element": "onClick={handleSaveChanges}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 312,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 313,
+        "element": "onClick={() => navigate(`/hearings/${id}`)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 365,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 366,
+        "element": "onClick={() => navigateToSegment('prev')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 380,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 381,
+        "element": "onClick={() => navigateToSegment('next')}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 472,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 474,
+        "element": "onClick={() => handleSpeakerAssignment(speaker.name)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 521,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 523,
+        "element": "onClick={() => handleSpeakerAssignment(speaker.name)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 548,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 549,
+        "element": "onClick={() => setShowAddSpeaker(true)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 569,
+        "element": "<input",
+        "suggestion": "Add data-testid attribute to input"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 572,
+        "element": "onChange={(e) => setNewSpeakerName(e.target.value)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 590,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 591,
+        "element": "onClick={handleAddCustomSpeaker}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 606,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 607,
+        "element": "onClick={() => {",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "pages/HearingStatus.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 185,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 186,
+        "element": "onClick={refreshData}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 224,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 225,
+        "element": "onClick={handleTriggerCapture}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 248,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 249,
+        "element": "onClick={() => navigate(`/hearings/${id}`)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  },
+  {
+    "file": "pages/HearingTranscript.js",
+    "issues": [
+      {
+        "type": "missing-testid",
+        "line": 247,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 248,
+        "element": "onClick={() => navigate(`/hearings/${id}/status`)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 298,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 299,
+        "element": "onClick={() => navigate(`/hearings/${id}/review`)}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 326,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 327,
+        "element": "onClick={handleExportTranscript}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 345,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 346,
+        "element": "onClick={handleExportText}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 364,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 365,
+        "element": "onClick={handleExportCSV}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "missing-testid",
+        "line": 379,
+        "element": "<Table",
+        "suggestion": "Add data-testid attribute to table"
+      },
+      {
+        "type": "missing-testid",
+        "line": 383,
+        "element": "<button",
+        "suggestion": "Add data-testid attribute to button"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 384,
+        "element": "onClick={handleExportSummaryReport}",
+        "suggestion": "Add data-testid to interactive element"
+      },
+      {
+        "type": "interactive-no-testid",
+        "line": 529,
+        "element": "onClick={() => setSelectedSegment(selectedSegment === index ? null : index)}",
+        "suggestion": "Add data-testid to interactive element"
+      }
+    ]
+  }
+]

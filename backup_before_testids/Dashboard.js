@@ -506,7 +506,6 @@ const Dashboard = () => {
               color: '#888'
             }} />
             <input
-              data-testid="search-input"
               type="text"
               placeholder="Search hearings..."
               value={searchQuery}
@@ -525,7 +524,6 @@ const Dashboard = () => {
 
           {/* Filter Toggle */}
           <button
-            data-testid="filter-toggle"
             onClick={() => setShowFilters(!showFilters)}
             style={{
               backgroundColor: showFilters ? '#4ECDC4' : 'transparent',
@@ -546,7 +544,6 @@ const Dashboard = () => {
           {/* Sort Controls */}
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <select
-              data-testid="sort-select"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               style={{
@@ -565,7 +562,6 @@ const Dashboard = () => {
             </select>
             
             <button
-              data-testid="sort-order-toggle"
               onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
               style={{
                 backgroundColor: 'transparent',
@@ -608,7 +604,6 @@ const Dashboard = () => {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                   {committees.map(committee => (
                     <button
-                      data-testid={`committee-filter-${committee.code}`}
                       key={committee.code}
                       onClick={() => toggleCommitteeFilter(committee.code)}
                       style={{
@@ -635,7 +630,6 @@ const Dashboard = () => {
                   Status
                 </h4>
                 <select
-                  data-testid="status-filter"
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
                   style={{
@@ -658,7 +652,6 @@ const Dashboard = () => {
               {/* Clear Filters */}
               <div style={{ display: 'flex', alignItems: 'end' }}>
                 <button
-                  data-testid="clear-filters"
                   onClick={clearFilters}
                   style={{
                     backgroundColor: 'transparent',
@@ -690,7 +683,6 @@ const Dashboard = () => {
         }}>
           {filteredHearings.map(hearing => (
             <div
-              data-testid={`hearing-card-${hearing.id}`}
               key={hearing.id}
               onClick={() => handleHearingClick(hearing)}
               style={{
