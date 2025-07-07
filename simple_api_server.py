@@ -253,6 +253,12 @@ def get_hearing_transcript(hearing_id):
         with open(transcript_file, 'r') as f:
             transcript_data = json.load(f)
         
+        # Normalize the transcript structure for frontend consumption
+        # If segments are nested under transcription, move them to top level
+        if 'transcription' in transcript_data and 'segments' in transcript_data['transcription']:
+            transcript_data['segments'] = transcript_data['transcription']['segments']
+            transcript_data['confidence'] = transcript_data.get('confidence', 0.85)
+        
         return jsonify({
             'success': True,
             'transcript': transcript_data
