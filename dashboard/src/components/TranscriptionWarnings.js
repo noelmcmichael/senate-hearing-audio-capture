@@ -63,6 +63,9 @@ const TranscriptionWarnings = ({ hearing, onProceed, onCancel, isVisible = false
   };
 
   const formatFileSize = (sizeMB) => {
+    if (sizeMB === undefined || sizeMB === null || isNaN(sizeMB)) {
+      return 'Unknown';
+    }
     if (sizeMB >= 1000) {
       return `${(sizeMB / 1000).toFixed(1)} GB`;
     }
@@ -70,6 +73,9 @@ const TranscriptionWarnings = ({ hearing, onProceed, onCancel, isVisible = false
   };
 
   const formatDuration = (minutes) => {
+    if (minutes === undefined || minutes === null || isNaN(minutes)) {
+      return 'Unknown';
+    }
     if (minutes >= 60) {
       const hours = Math.floor(minutes / 60);
       const remainingMinutes = minutes % 60;
@@ -81,8 +87,9 @@ const TranscriptionWarnings = ({ hearing, onProceed, onCancel, isVisible = false
   const getWarningLevel = () => {
     if (!audioInfo) return 'info';
     
-    if (audioInfo.file_size_mb > 100) return 'high';
-    if (audioInfo.file_size_mb > 50) return 'medium';
+    const fileSizeMB = audioInfo.file_size_mb || 0;
+    if (fileSizeMB > 100) return 'high';
+    if (fileSizeMB > 50) return 'medium';
     if (audioInfo.will_be_chunked) return 'low';
     return 'info';
   };
@@ -170,7 +177,7 @@ const TranscriptionWarnings = ({ hearing, onProceed, onCancel, isVisible = false
                   {audioInfo.will_be_chunked && (
                     <div className="info-item">
                       <span className="info-label">Expected Chunks:</span>
-                      <span className="info-value">{audioInfo.estimated_chunks} chunks</span>
+                      <span className="info-value">{audioInfo.estimated_chunks || 'Unknown'} chunks</span>
                     </div>
                   )}
                 </div>
@@ -187,7 +194,7 @@ const TranscriptionWarnings = ({ hearing, onProceed, onCancel, isVisible = false
                   <div className="chunking-details">
                     <h5>Chunked Processing Details:</h5>
                     <ul>
-                      <li>Audio will be split into {audioInfo.estimated_chunks} chunks</li>
+                      <li>Audio will be split into {audioInfo.estimated_chunks || 'Unknown'} chunks</li>
                       <li>Each chunk processed separately for reliability</li>
                       <li>Real-time progress tracking available</li>
                       <li>Automatic retry for failed chunks</li>

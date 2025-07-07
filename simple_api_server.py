@@ -435,12 +435,21 @@ def get_audio_info(hearing_id):
                 streams = []
         
         # Simulate audio info (since we don't have actual audio files)
+        # Check if this is a long hearing based on title
+        is_long_hearing = any(keyword in hearing['hearing_title'].lower() for keyword in ['oversight', 'nomination', 'committee'])
+        estimated_duration = 7200 if is_long_hearing else 3600  # 2 hours vs 1 hour
+        estimated_size_mb = 85.0 if is_long_hearing else 25.0
+        
         audio_info = {
             'has_audio': len(streams) > 0,
             'streams': streams,
-            'estimated_duration': 3600,  # 1 hour default
-            'estimated_size_mb': 25.0,
-            'requires_chunking': len(streams) > 0,
+            'estimated_duration': estimated_duration,
+            'file_size_mb': estimated_size_mb,  # Use file_size_mb to match component expectation
+            'duration_minutes': estimated_duration / 60,  # Duration in minutes for component
+            'will_be_chunked': estimated_size_mb > 25,  # Will be chunked if > 25MB
+            'estimated_chunks': max(1, int(estimated_size_mb / 25)),  # Rough estimate
+            'estimated_processing_time': estimated_duration / 60 * 0.2,  # 20% of audio duration
+            'requires_chunking': estimated_size_mb > 25,
             'processing_stage': hearing['processing_stage'],
             'warnings': []
         }
