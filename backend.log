@@ -1,0 +1,38 @@
+🚀 Starting Simple API Server for Phase 7C...
+API will be available at: http://localhost:8001
+Endpoints:
+  - GET /api/committees/{code}/hearings
+  - GET /api/transcript-browser/hearings
+  - GET /api/hearings/{id}
+  - GET /api/health
+
+ * Serving Flask app 'simple_api_server'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://192.168.1.111:8001
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [06/Jul/2025 18:13:24] "GET /api/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:13:59] "GET /api/hearings/44 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:07] "GET /api/hearings/44/transcript HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SCOM/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSJU/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SBAN/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSCI/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSAF/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/HJUD/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSHR/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSBE/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSAF/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSJU/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SBAN/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SCOM/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSCI/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSHR/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/HJUD/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/committees/SSBE/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/transcript-browser/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:26] "GET /api/transcript-browser/hearings HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2025 18:14:51] "[33mGET /api/hearings/46/transcript HTTP/1.1[0m" 404 -
+127.0.0.1 - - [06/Jul/2025 18:14:59] "[33mGET /api/hearings/11/transcript HTTP/1.1[0m" 404 -

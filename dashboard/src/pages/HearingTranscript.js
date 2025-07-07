@@ -88,7 +88,7 @@ const HearingTranscript = () => {
   };
 
   const handleExportTranscript = () => {
-    if (!transcript) return;
+    if (!transcript || !transcript.segments) return;
 
     const exportData = {
       hearing_id: hearing.id,
@@ -112,7 +112,7 @@ const HearingTranscript = () => {
   };
 
   const handleExportText = () => {
-    if (!transcript) return;
+    if (!transcript || !transcript.segments) return;
 
     let textContent = `${hearing.hearing_title}\n`;
     textContent += `Committee: ${hearing.committee_code}\n`;
@@ -133,7 +133,7 @@ const HearingTranscript = () => {
   };
 
   const handleExportCSV = () => {
-    if (!transcript) return;
+    if (!transcript || !transcript.segments) return;
 
     // CSV header
     let csvContent = 'Hearing ID,Title,Committee,Date,Start Time,End Time,Duration (sec),Speaker,Text\n';
@@ -165,7 +165,7 @@ const HearingTranscript = () => {
   };
 
   const handleExportSummaryReport = () => {
-    if (!transcript) return;
+    if (!transcript || !transcript.segments) return;
 
     const progress = getSpeakerReviewProgress();
     const speakerCounts = {};
@@ -512,7 +512,8 @@ const HearingTranscript = () => {
           borderRadius: '6px',
           padding: '20px'
         }}>
-          {transcript.segments.map((segment, index) => (
+          {transcript.segments && transcript.segments.length > 0 ? (
+            transcript.segments.map((segment, index) => (
             <div
               key={index}
               style={{
@@ -578,7 +579,19 @@ const HearingTranscript = () => {
                 {formatDuration(segment.end - segment.start)}
               </div>
             </div>
-          ))}
+          ))) : (
+            <div style={{
+              textAlign: 'center',
+              color: '#888',
+              padding: '40px 20px',
+              fontSize: '16px'
+            }}>
+              <FileText size={32} color="#888" style={{ marginBottom: '12px' }} />
+              <p style={{ margin: '0', lineHeight: '1.6' }}>
+                No transcript segments available.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
