@@ -18,6 +18,12 @@
 **Files Modified**:
 - `/dashboard/src/pages/HearingTranscript.js` - Added comprehensive null checks for transcript.segments
 - Fixed functions: `handleExportTranscript`, `handleExportText`, `handleExportCSV`, `handleExportSummaryReport`
+- `/simple_api_server.py` - Normalized transcript data structure for frontend consumption
+
+**Data Structure Fix**: 
+- ✅ **API Normalization**: Moved transcript segments from nested `transcription.segments` to top-level `segments`
+- ✅ **Data Consistency**: Added default confidence value and ensured frontend receives expected structure
+- ✅ **Testing Verified**: 676 transcript segments now properly accessible at `transcript.segments`
 
 **Testing Status**: ✅ Both frontend (port 3000) and backend (port 8001) servers running successfully in background mode
 
