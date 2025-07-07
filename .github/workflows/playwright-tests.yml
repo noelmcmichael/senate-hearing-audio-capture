@@ -11,19 +11,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     
-    services:
-      # Start services needed for tests
-      backend:
-        image: python:3.11
-        ports:
-          - 8001:8001
-        env:
-          FLASK_ENV: test
-        options: >-
-          --health-cmd "curl -f http://localhost:8001/api/health"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 3
+    # No services - we'll start our own servers
           
     steps:
     - uses: actions/checkout@v4
@@ -44,8 +32,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Install Node.js dependencies
+    - name: Install Node.js dependencies (root)
       run: npm ci
+        
+    - name: Install Node.js dependencies (dashboard)
+      run: |
+        cd dashboard
+        npm ci
       
     - name: Install Playwright browsers
       run: npx playwright install --with-deps
@@ -53,21 +46,33 @@ jobs:
     - name: Start backend server
       run: |
         cd ${{ github.workspace }}
-        python start_api.py &
+        python simple_api_server.py &
         sleep 10
       env:
         FLASK_ENV: test
         
     - name: Start frontend server
       run: |
-        cd ${{ github.workspace }}
+        cd ${{ github.workspace }}/dashboard
         npm start &
-        sleep 15
+        sleep 20
       env:
-        CI: true
+        CI: false
+        BROWSER: none
+        
+    - name: Wait for servers to be ready
+      run: |
+        # Wait for backend
+        timeout 60 bash -c 'until curl -f http://localhost:8001/api/health; do sleep 2; done'
+        # Wait for frontend  
+        timeout 60 bash -c 'until curl -f http://localhost:3000; do sleep 2; done'
         
     - name: Run Playwright tests
-      run: node run-tests.js
+      run: |
+        # Run comprehensive test suite
+        node tests/playwright/enhanced-comprehensive-test.js
+        node tests/playwright/performance-monitoring.js
+        node tests/playwright/advanced-coverage.js
       
     - name: Upload test results
       uses: actions/upload-artifact@v4
