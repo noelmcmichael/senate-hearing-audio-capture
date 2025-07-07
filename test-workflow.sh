@@ -52,6 +52,31 @@ if [ "$SKIP_COMPREHENSIVE" != "true" ]; then
         echo "❌ run-tests.js not found"
         exit 1
     fi
+    
+    echo ""
+    echo "⚡ Running Performance Monitoring..."
+    echo "==================================="
+    if [ -f "tests/playwright/performance-monitoring.js" ]; then
+        node tests/playwright/performance-monitoring.js
+        
+        # Check for performance alerts
+        if [ -f "performance-alerts.js" ]; then
+            echo ""
+            echo "🚨 Checking Performance Alerts..."
+            node performance-alerts.js check
+        fi
+    else
+        echo "⚠️  performance-monitoring.js not found"
+    fi
+    
+    echo ""
+    echo "🎯 Running Enhanced Tests with Test IDs..."
+    echo "========================================="
+    if [ -f "tests/playwright/enhanced-comprehensive-test.js" ]; then
+        node tests/playwright/enhanced-comprehensive-test.js
+    else
+        echo "⚠️  enhanced-comprehensive-test.js not found"
+    fi
 else
     echo ""
     echo "⚠️  Skipping comprehensive tests - servers not running"
