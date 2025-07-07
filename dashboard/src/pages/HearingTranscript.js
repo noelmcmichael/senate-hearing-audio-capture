@@ -210,55 +210,65 @@ const HearingTranscript = () => {
     URL.revokeObjectURL(url);
   };
 
+  // Consistent container to prevent layout shifts
+  const containerStyle = {
+    minHeight: '400px',
+    width: '100%'
+  };
+
   if (!hearing) {
     return (
-      <div style={{ 
-        textAlign: 'center', 
-        color: '#888', 
-        padding: '60px 20px',
-        fontSize: '18px'
-      }}>
-        Loading hearing data...
+      <div style={containerStyle}>
+        <div style={{ 
+          textAlign: 'center', 
+          color: '#888', 
+          padding: '60px 20px',
+          fontSize: '18px'
+        }}>
+          Loading hearing data...
+        </div>
       </div>
     );
   }
 
   if (!transcript) {
     return (
-      <div style={{ 
-        textAlign: 'center', 
-        padding: '60px 20px'
-      }}>
-        <div style={{
-          backgroundColor: '#2A2B32',
-          border: '1px solid #444',
-          borderRadius: '8px',
-          padding: '40px',
-          maxWidth: '500px',
-          margin: '0 auto'
+      <div style={containerStyle}>
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '60px 20px'
         }}>
-          <FileText size={48} color="#888" style={{ marginBottom: '20px' }} />
-          <h3 style={{ color: '#FFFFFF', margin: '0 0 16px 0' }}>
-            No Transcript Available
-          </h3>
-          <p style={{ color: '#888', margin: '0 0 24px 0', lineHeight: '1.6' }}>
-            This hearing has not been transcribed yet. Check the Status tab to see the current pipeline progress.
-          </p>
-          <button
-            onClick={() => navigate(`/hearings/${id}/status`)}
-            style={{
-              backgroundColor: '#4ECDC4',
-              color: '#1B1C20',
-              border: 'none',
-              padding: '12px 24px',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: 'bold'
-            }}
-          >
-            View Status
-          </button>
+          <div style={{
+            backgroundColor: '#2A2B32',
+            border: '1px solid #444',
+            borderRadius: '8px',
+            padding: '40px',
+            maxWidth: '500px',
+            margin: '0 auto'
+          }}>
+            <FileText size={48} color="#888" style={{ marginBottom: '20px' }} />
+            <h3 style={{ color: '#FFFFFF', margin: '0 0 16px 0' }}>
+              No Transcript Available
+            </h3>
+            <p style={{ color: '#888', margin: '0 0 24px 0', lineHeight: '1.6' }}>
+              This hearing has not been transcribed yet. Check the Status tab to see the current pipeline progress.
+            </p>
+            <button
+              onClick={() => navigate(`/hearings/${id}/status`)}
+              style={{
+                backgroundColor: '#4ECDC4',
+                color: '#1B1C20',
+                border: 'none',
+                padding: '12px 24px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                fontWeight: 'bold'
+              }}
+            >
+              View Status
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -269,7 +279,7 @@ const HearingTranscript = () => {
   const unknownSpeakers = speakerStats['UNKNOWN']?.count || 0;
 
   return (
-    <div>
+    <div style={containerStyle}>
       {/* Transcript Header */}
       <div style={{
         backgroundColor: '#2A2B32',

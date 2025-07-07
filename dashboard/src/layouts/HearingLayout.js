@@ -133,14 +133,88 @@ const HearingLayout = () => {
 
   if (loading) {
     return (
-      <div style={{ 
-        minHeight: '100vh', 
-        backgroundColor: '#1B1C20',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        <div style={{ color: '#FFFFFF', fontSize: '18px' }}>Loading hearing...</div>
+      <div style={{ minHeight: '100vh', backgroundColor: '#1B1C20' }}>
+        {/* Skeleton Header */}
+        <div style={{
+          backgroundColor: '#2A2B32',
+          borderBottom: '1px solid #444',
+          padding: '20px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '20px',
+            marginBottom: '20px'
+          }}>
+            <div style={{
+              width: '24px',
+              height: '24px',
+              backgroundColor: '#444',
+              borderRadius: '4px'
+            }} />
+            <div style={{
+              width: '300px',
+              height: '24px',
+              backgroundColor: '#444',
+              borderRadius: '4px'
+            }} />
+          </div>
+          
+          {/* Skeleton Tabs */}
+          <div style={{ display: 'flex', gap: '20px' }}>
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} style={{
+                width: '80px',
+                height: '32px',
+                backgroundColor: '#444',
+                borderRadius: '4px'
+              }} />
+            ))}
+          </div>
+        </div>
+        
+        {/* Skeleton Content */}
+        <div style={{ padding: '20px' }}>
+          <div style={{
+            backgroundColor: '#2A2B32',
+            border: '1px solid #444',
+            borderRadius: '8px',
+            padding: '20px',
+            marginBottom: '20px'
+          }}>
+            <div style={{
+              width: '200px',
+              height: '20px',
+              backgroundColor: '#444',
+              borderRadius: '4px',
+              marginBottom: '10px'
+            }} />
+            <div style={{
+              width: '150px',
+              height: '16px',
+              backgroundColor: '#444',
+              borderRadius: '4px'
+            }} />
+          </div>
+          
+          {/* Skeleton table rows */}
+          {[1, 2, 3, 4, 5].map(i => (
+            <div key={i} style={{
+              backgroundColor: '#2A2B32',
+              border: '1px solid #444',
+              borderRadius: '8px',
+              padding: '15px',
+              marginBottom: '10px'
+            }}>
+              <div style={{
+                width: '100%',
+                height: '16px',
+                backgroundColor: '#444',
+                borderRadius: '4px'
+              }} />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
