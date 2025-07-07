@@ -240,7 +240,32 @@ def get_hearing_transcript(hearing_id):
         import os
         import glob
         
-        # Load transcript file for this hearing
+        # First check database for transcript
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute('SELECT full_text_content FROM hearings_unified WHERE id = ?', (hearing_id,))
+        result = cursor.fetchone()
+        conn.close()
+        
+        if result and result['full_text_content']:
+            try:
+                transcript_data = json.loads(result['full_text_content'])
+                
+                # Normalize the transcript structure for frontend consumption
+                # If segments are nested under transcription, move them to top level
+                if 'transcription' in transcript_data and 'segments' in transcript_data['transcription']:
+                    transcript_data['segments'] = transcript_data['transcription']['segments']
+                    transcript_data['confidence'] = transcript_data.get('confidence', 0.85)
+                
+                return jsonify({
+                    'success': True,
+                    'transcript': transcript_data
+                })
+            except json.JSONDecodeError:
+                pass  # Fall through to file-based lookup
+        
+        # Fallback: Load transcript file for this hearing
         transcript_dir = Path(__file__).parent / 'output' / 'demo_transcription'
         transcript_file = transcript_dir / f'hearing_{hearing_id}_transcript.json'
         
@@ -498,14 +523,14 @@ def transcribe_hearing(hearing_id):
                 'error': f'Hearing must be in "captured" stage to transcribe. Current stage: {hearing["processing_stage"]}'
             }), 400
         
-        # Import and use the real synchronous transcription service
+        # Import and use the simple, thread-safe transcription service
         def run_transcription():
-            """Run transcription in a proper thread context."""
+            """Run transcription using simple, thread-safe service."""
             try:
-                from transcription_service import EnhancedTranscriptionService
+                from simple_transcription_service import SimpleTranscriptionService
                 
-                # Initialize the transcription service
-                transcription_service = EnhancedTranscriptionService()
+                # Initialize the simple transcription service
+                transcription_service = SimpleTranscriptionService()
                 
                 # Run real transcription
                 result = transcription_service.transcribe_hearing(hearing_id)
