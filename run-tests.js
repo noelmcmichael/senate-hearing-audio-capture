@@ -32,6 +32,7 @@ async function checkServerHealth(url) {
 }
 
 async function main() {
+  const startTime = performance.now();
   console.log('🚀 Starting Senate Hearing Transcription System Test Suite...');
   
   // Clean up previous results
@@ -124,11 +125,34 @@ async function main() {
 
   fs.writeFileSync(path.join(outputDir, 'summary.json'), JSON.stringify(combinedSummary, null, 2));
 
+  // Create CI/CD summary for GitHub Actions
+  const ciSummary = {
+    success: !hasErrors,
+    total: testResults.length,
+    passed: testResults.filter(r => r.result === 'passed').length,
+    failed: testResults.filter(r => r.result === 'failed').length,
+    duration: performance.now() - startTime,
+    failures: testResults.filter(r => r.result === 'failed').map(r => r.test),
+    timestamp: new Date().toISOString()
+  };
+  
+  fs.writeFileSync(path.join(outputDir, 'test_summary.json'), JSON.stringify(ciSummary, null, 2));
+
   console.log(`\n📊 Test run complete. Summary written to ${path.join(outputDir, 'summary.json')}`);
   console.log(`📁 All results saved to: ${outputDir}/`);
   
   if (fs.existsSync(path.join(outputDir, 'test_report.html'))) {
     console.log(`📄 HTML Report: ${outputDir}/test_report.html`);
+  }
+
+  // Print CI/CD summary
+  console.log('\n📋 CI/CD Summary:');
+  console.log(`   Status: ${ciSummary.success ? '✅ PASSED' : '❌ FAILED'}`);
+  console.log(`   Tests: ${ciSummary.passed}/${ciSummary.total} passed`);
+  console.log(`   Duration: ${Math.round(ciSummary.duration)}ms`);
+  
+  if (ciSummary.failed > 0) {
+    console.log(`   Failed: ${ciSummary.failures.join(', ')}`);
   }
 
   if (hasErrors) {
