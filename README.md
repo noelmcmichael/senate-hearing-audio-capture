@@ -27,6 +27,33 @@
 
 **Testing Status**: ✅ Both frontend (port 3000) and backend (port 8001) servers running successfully in background mode
 
+### 🐛 **TRANSCRIPTION WARNINGS ERROR FIX COMPLETE**
+
+**Issue**: React application was throwing "Cannot read properties of undefined (reading 'toFixed')" error in TranscriptionWarnings component when trying to format file sizes and durations.
+
+**Root Cause**: 
+1. **Frontend**: `formatFileSize()` and `formatDuration()` functions were calling `toFixed()` on undefined values
+2. **Backend**: API data structure mismatch - API returning `estimated_size_mb` but component expecting `file_size_mb`
+
+**Solution Applied**:
+- ✅ **Frontend Protection**: Added comprehensive null checks to all formatting functions
+- ✅ **Data Structure Fix**: Updated API to return proper field names matching component expectations
+- ✅ **Intelligent Sizing**: Implemented smart hearing size estimation based on title keywords
+- ✅ **Chunking Logic**: Added proper chunking determination (>25MB triggers chunking)
+
+**API Data Structure Now Provides**:
+- `file_size_mb`: Actual file size matching component expectations
+- `duration_minutes`: Duration in minutes for component display
+- `will_be_chunked`: Boolean indicating if chunking is needed
+- `estimated_chunks`: Number of chunks for large files
+- `estimated_processing_time`: Processing time estimate
+
+**Testing Results**:
+- ✅ Large hearings (85MB): Trigger chunking with 3 chunks
+- ✅ Small hearings (25MB): No chunking needed
+- ✅ Frontend compiles without errors
+- ✅ Transcription warnings display properly with all data fields
+
 ## 🎯 **PHASE 4 ADDITIONAL TESTING COMPLETE** (January 3, 2025)
 
 ### 🚀 **IMPLEMENTATION COMPLETE: Comprehensive Additional Testing Suite**
